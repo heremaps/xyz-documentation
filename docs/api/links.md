@@ -1,0 +1,65 @@
+# HERE XYZ Links
+
+Here is the current list of links used in the Beta.
+
+## API and Service
+
+
+### Base URL for API
+[`https://xyz.api.here.com/hub/`](https://xyz.api.here.com/hub/)
+
+### Swagger API documentation
+[`https://xyz.api.here.com/hub/static/swagger/`](https://xyz.api.here.com/hub/static/swagger/)
+
+### ReDoc API documentation
+[`https://xyz.api.here.com/hub/static/redoc/`](https://xyz.api.here.com/hub/static/redoc/)
+
+## XYZ Tools
+
+### Token Generation UI
+
+[`https://xyz.api.here.com/token-ui/`](https://xyz.api.here.com/token-ui/)
+
+### Maps UI Playground
+
+[`https://xyz.api.here.com/maps/`](https://xyz.api.here.com/maps/)
+
+### Maps UI Documentation
+
+[`https://xyz.api.here.com/maps/latest/documentation`](https://xyz.api.here.com/maps/latest/documentation)
+
+### JavaScript Maps UI Components
+Common [`https://xyz.api.here.com/maps/latest/xyz-maps-common.min.js`](https://xyz.api.here.com/maps/latest/xyz-maps-common.min.js)
+
+Core [`https://xyz.api.here.com/maps/latest/xyz-maps-core.min.js`](https://xyz.api.here.com/maps/latest/xyz-maps-core.min.js)
+
+Display [`https://xyz.api.here.com/maps/latest/xyz-maps-display.min.js`](https://xyz.api.here.com/maps/latest/xyz-maps-display.min.js)
+
+Plugins (MVT) [`https://xyz.api.here.com/maps/latest/xyz-maps-plugins.min.js`](https://xyz.api.here.com/maps/latest/xyz-maps-plugins.min.js)
+
+And here now ready for you to copy and paste into your HTML header:
+
+```html
+<script src="https://xyz.api.here.com/maps/latest/xyz-maps-common.min.js" type="text/javascript" charset="UTF-8" ></script>
+<script src="https://xyz.api.here.com/maps/latest/xyz-maps-core.min.js" type="text/javascript" charset="UTF-8" ></script>
+<script src="https://xyz.api.here.com/maps/latest/xyz-maps-display.min.js" type="text/javascript" charset="UTF-8" ></script>
+<script src="https://xyz.api.here.com/maps/latest/xyz-maps-plugins.min.js" type="text/javascript" charset="UTF-8" ></script>
+```
+
+## Open Source Tools
+
+### GeoJSON Tool
+
+[`http://geojson.tools/`](http://geojson.tools/)
+
+### Tangram Play
+
+[`http://geojson.tools/tangram/`](http://geojson.tools/tangram/)
+
+## HERE Developer Portal Documentation
+
+!!! warning
+    This link only works on the internal network (or on VPN) at the moment and will be updated
+    once the documentation is released to Developer Portal
+
+[`https://dv.developer.here.com/documentation`](https://dv.developer.here.com/documentation)
