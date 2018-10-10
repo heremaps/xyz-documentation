@@ -151,5 +151,3 @@ You can even delete all of your features by using the following request:
 ```HTTP
 DELETE /spaces/{spaceId}/features?tags=*
 ```
-
-In this case the 

@@ -4,8 +4,8 @@ We think developers deserve an easy to use, convenient and streamlined experienc
 
 [![CLI](../assets/images/cli.png)](../assets/images/cli.png)
 
-!!! tip "Open Source on GitHub"
-    HERE CLI will be Open Source, so that other teams and developers like yourself can contribute new functionality and features.
+!!! tip "HERE CLI on GitHub"
+    [HERE CLI is Open Source](https://github.com/heremaps/here-cli), where developers like yourself can contribute new functionality and features.
 
 In this section, we'll quickly introduce you to the HERE CLI, how to install it and how to make the
 most of it while working on your project.
@@ -80,7 +80,7 @@ When you are sure your system has `node` and `npm` installed you can go ahead an
 version of HERE CLI with following command:
 
 ``` sh
-npm install -g http://techpreview.xyz/herecli.tgz
+npm install -g @here/cli
 ```
 
 !!! note "Administrative permissions"
@@ -91,24 +91,21 @@ npm install -g http://techpreview.xyz/herecli.tgz
     To elevate you permissions, either start an **Admin Command Prompt** or **Admin PowerShell** on Windows,
     or use `sudo` on Linux or macOS.
 
-!!! info "Moving to NPM Registry"
-    In the near future the `HERE CLI` package will be published to the [npm regsitry](https://www.npmjs.com/) and can be installed directly from there.
-
 ### Configure HERE CLI
 
 HERE CLI needs to have access to your projects to help you work with your data. For that, you
 need to configure your `appId` and `appCode`. You only need to do this once for a project.
 
 ``` sh
-here configure account
+here configure set
 ```
 
-When prompted, enter your `Email` and your `Password`.
+When prompted, enter your `appId` and your `appCode`.
 
 The CLI will immediately try to *verify* if the entries can be
 used to log into HERE XYZ and report back to you accordingly.
 
-!!! question "Where is my `Email` and `Password` stored?"
+!!! question "Where is my `appId` and `appCode` stored?"
 
     Don't worry, the information entered is safely stored and encrypted on your local machine (if you are curious, look for a file called `.herecli` in your home directory
     which contains the configuration data)

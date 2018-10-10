@@ -12,7 +12,6 @@ you know that your code infringes on other people's patents.
 Coordinating up front makes it much easier to avoid
 frustration later on.
 
-### Code reviews
-All submissions, including submissions by project members, require review. We
-use Github pull requests for this purpose.
+### Content reviews
+All submissions require review. We use Github pull requests for this purpose.
 

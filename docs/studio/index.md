@@ -24,8 +24,10 @@ is called a *layer*. You can add many layers to make your map and put them on to
 
 ## Upload your data
 
-You can create a layer and upload data by clicking on the `+ Add` command below your project name.
-This brings up a data selection dialog where you can pick from data that you already have in your Hub, or upload a new file. This file would preferably be GeoJSON, but you can also use JSON, CSV or a Shapefile.
+You can create an empty layer or upload data by clicking on the `+ Add` command below your project name.
+This brings up a data selection dialog where you can pick from data that you already have in your Hub,
+
+or upload a new file. This file would preferably be GeoJSON, but you can also use JSON, CSV or a Shapefile.
 
 [![Project](../assets/images/studio-addlayer.png)](../assets/images/studio-addlayer.png)
 
@@ -47,6 +49,35 @@ You can always get using the corresponding `Map` button.
 !!! tip
     A similar data table view is also available from the main `Data Hub` where you can also edit
     the name and description of the space.
+
+## Create or edit content
+
+You can also use Studio to visually edit the features contained in your layers. Once you have
+selected a layer from the list, you will see a `Pencil` button in the top left hand corner of
+the map.
+
+[![Project](../assets/images/studio-editLayer.png)](../assets/images/studio-editLayer.png)
+
+When you switch into editing mode, the sidebar moves out of the way to give you more room to
+work with the features in the layer visually on the map.
+
+!!! note "Geographic Feature Editor"
+    Studio has a very powerful feature editor built-in. In fact, you get access to the same
+    editor that drives the community map editing capabilities in the [**HERE Map Creator**](http://mapcreator.here.com)
+
+[![Project](../assets/images/studio-editFeatures.png)](../assets/images/studio-editFeatures.png)
+
+On the top of the screen you find a toolbar you can use to create new features like points, lines
+or area polygons. This new - or of course any of the existing features you select on the map - can
+then be moved or even re-shaped visually by dragging control points. It's just like in a drawing
+program like Illustrator or Sketch.
+
+[![Project](../assets/images/studio-editToolbar.png)](../assets/images/studio-editToolbar.png)
+
+If you make a mistake or want to change something, you can undo (or redo) any change you made.
+You need to commit any changes you want to keep permanently in your data by selecting the
+`save` button. You can also `revert` back to the original version if you want to start over
+again.
 
 ## Style your layer
 

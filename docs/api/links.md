@@ -58,8 +58,4 @@ And here now ready for you to copy and paste into your HTML header:
 
 ## HERE Developer Portal Documentation
 
-!!! warning
-    This link only works on the internal network (or on VPN) at the moment and will be updated
-    once the documentation is released to Developer Portal
-
-[`https://dv.developer.here.com/documentation`](https://dv.developer.here.com/documentation)
+[`https://developer.here.com/documentation/xyz/`](https://developer.here.com/documentation/xyz/)

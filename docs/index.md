@@ -1,8 +1,8 @@
 
 ## Make great maps easier and faster
 
-HERE XYZ is a *real-time cloud-based location platform*
-that offers simple APIs, SDKs, Components, and Interactive tools
+HERE XYZ is an open, interoperable and real-time location data management service from HERE Technologies
+that offers simple APIs, SDKs, components, and interactive tools
 that enable everyone to make maps easier and faster.
 
 
@@ -35,16 +35,12 @@ See our **[getting started guide](getting-started.md)** for more details.
 Then, install the latest version of our CLI with `npm`:
 
 ``` sh
-npm install -g http://techpreview.xyz/herecli.tgz
+npm install -g @here/cli
 ```
-
-!!! info "Moving to NPM Registry"
-    In the near future the `HERE CLI` package will be published to the [npm regsitry](https://www.npmjs.com/) and can be installed directly from there.
-
 
 ## What to expect
 
-* Powerful **map data management** and **visualization tools** that make working with
+* Powerful **map data management** and **display tools** that make working with
   map data convenient and effective. The tools are easy to understand even if
   you have no prior experience with geospatial, location or projections concepts.
 
