@@ -58,4 +58,4 @@ And here now ready for you to copy and paste into your HTML header:
 
 ## HERE Developer Portal Documentation
 
-[`https://developer.here.com/documentation/xyz/`](https://developer.here.com/documentation/xyz/)
+[`https://developer.here.com/documentation/xyz`](https://developer.here.com/documentation/xyz)
