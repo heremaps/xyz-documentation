@@ -80,25 +80,25 @@ As the name suggests, a **MultiLineString** *coordinates* array contains **LineS
 
 Each element of a **Polygon** *coordinates* array has to be a special **LineString** *coordinates* array. This special kind is called a ***'linear ring'*** in the RFC specification. In a ***'linear ring'*** the first and last elements in the *coordinates* array are the same.
 
-If the **Polygon** contains more than one ***'linear ring'***, that is a shape with holes, the first ring must describe the exterior ring, the following the holes.
+If the **Polygon** contains more than one ***'linear ring'***, that is a shape with holes, the first ring must describe the exterior ring, the following the holes. The coordinates of the exterior ring must be listed counterclockwise, the coordinates of the hole(s) clockwise.
 
 ### Example Polygon
 
 ```JSON
 {
-   "type": "Polygon", 
-   "coordinates": [
-          [
-            [-77.0578,38.87254],[-77.0584,38.8700],[-77.0555,38.8688],[-77.0531,38.8706],[-77.0546,38.8729],[-77.0578,38.87254]
-          ],
-          [
-            [-77.0567,38.8715],[-77.0569,38.8706],[-77.0558,38.8702],[-77.0549,38.8708],[-77.0555,38.8717],[-77.0567,38.8715]
-          ]
-        ]
+  "type": "Polygon",
+  "coordinates": [
+    [
+      [-77.0578,38.87254],[-77.0584,38.87],[-77.0555,38.8688],[-77.0531,38.8706],[-77.0546,38.8729],[-77.0578,38.87254]
+    ],
+    [
+      [-77.0567,38.8715],[-77.0555,38.8717],[-77.0549,38.8708],[-77.0558,38.8702],[-77.0569,38.8706],[-77.0567,38.8715]
+    ]
+  ]
 }
 ```
 
-[View this **Polygon** on map](http://geojson.tools/index.html?url=data:text/json,{%22type%22:%20%22Polygon%22,%22coordinates%22:%20[[[-77.0578,38.87254],[-77.0584,38.8700],[-77.0555,38.8688],[-77.0531,38.8706],[-77.0546,38.8729],[-77.0578,38.87254]],[[-77.0567,38.8715],[-77.0569,38.8706],[-77.0558,38.8702],[-77.0549,38.8708],[-77.0555,38.8717],[-77.0567,38.8715]]]})
+[View this **Polygon** on map](http://geojson.tools/index.html?url=data:text/json,{%22type%22:%20%22Polygon%22,%22coordinates%22:%20[[[-77.0578,38.87254],[-77.0584,38.8700],[-77.0555,38.8688],[-77.0531,38.8706],[-77.0546,38.8729],[-77.0578,38.87254]],[[-77.0567,38.8715],[-77.0555,38.8717],[-77.0549,38.8708],[-77.0558,38.8702],[-77.0569,38.8706],[-77.0567,38.8715]]]})
 
 ## Multipolygon
 
