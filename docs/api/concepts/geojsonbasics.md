@@ -7,7 +7,7 @@ A GeoJSON document contains one object with can be a *Feature*, a *FeatureCollec
 
 ## Point
 
-The *coordinates* array of the **Point** object usually contains two to three dimensions representing longitude, latitude and possibly altitude in this order.
+The *coordinates* array of the **Point** object usually contains two to three dimensions representing longitude, latitude and possibly elevation in this order.
 
 ### Example Point
 
