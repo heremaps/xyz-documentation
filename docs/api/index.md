@@ -17,7 +17,7 @@ For everything you want to do via the API, you need to use a token as described 
 
 When you have a space it's very easy to store any GeoJSON data you want in a Space and retrieve it when needed.
 No need to worry about how to store data effectively if you want to use it on a map - in fact
-you don't have do understand the geospatial details. We make sure that we put your content in a
+you don't have to understand the geospatial details. We make sure that we put your content in a
 safe place (the space) so it can be used very efficiently on a map.
 
 Spaces are by definition worldwide and can include any type of GeoJSON feature. Within
