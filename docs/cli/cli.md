@@ -83,23 +83,32 @@ Create a new Space, the SpaceId will be generated automatically.
 
 ##### Options
 
-`-a` interactively assign tags in the form 'key@value'
+`-f, --file <file>`    geojson file to upload
 
-`-c, --chunk [chunk]`  chunk size for large uploads
+`-c, --chunk [chunk]`  chunk size
 
-`-f, --file <path>` path to file name
+`-t, --tags [tags]`    tags for the xyz space
 
-`-i <unique ID>` property containing unique values
+`-x, --lon [lon]`      longitude field name
 
-`-p, --ptag [ptag]` property key and indexed tag
+`-y, --lat [lat]`     latitude field name
 
-`-t, --tags [tags]`    tags for the features
+`-z, --alt [alt]`      altitude field name
 
-`-x, --lon [lon]` longitude field name
+`-p, --ptag [ptag]`    property names to be used to add tag
 
-`-y, --lat [lat]` latitude field name
+`-i, --id [id]`        property name(s) to be used as the feature ID
 
-`-z, --alt [alt]` altitude field name
+`-a, --assign`         list the sample data and allows you to assign fields which needs to be selected as tags
+
+`-u, --unique`         option to enforce uniqueness to the id by creating a hash of feature and use that as id
+
+`-o, --override`       override the data even if it share same id
+
+`-s, --stream `        streaming data support for large file uploads
+
+`-h, --help`           output usage information
+
 
 ##### Upload geojson
 
