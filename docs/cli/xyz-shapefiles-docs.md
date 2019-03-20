@@ -73,7 +73,7 @@ QGIS is an open-source desktop GIS tool that lets you edit, visualize, manage, a
 
 You can install the HERE XYZ QGIS plugin from within QGIS Plugin search tool if you have the "show experimental plugins" option checked in the plugin console settings.
 
-![experimental](qgis_plugin_experimental.png)
+![experimental](../assets/images/qgis_plugin_experimental.png)
 
 You can easily open almost any shapefile in QGIS, at which point you can save it to your XYZ spaces using the HERE XYZ QGIS plugin, or export it as GeoJSON to the desktop to use the HERE XYZ CLI streaming upload options.
 
