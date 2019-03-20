@@ -22,7 +22,7 @@ Unlike a GeoJSON file, a shapefile is made up of a number of separate files. Sha
 
 - `.shp` - contains the geometries of the features (points, lines, polygons)
 - `.dbf` - contains the attributes for the features 
-- `.prj` - contains information aboute the projection and coordinate reference system (CRS)
+- `.prj` - contains information about the projection and coordinate reference system (CRS)
 
 If the shapefile uses lat/lon coordinates and the WGS84 projection, and is under 200MB, you should be able to upload it using the HERE XYZ CLI. 
 
@@ -52,13 +52,24 @@ You can install it using `npm`:
 Note that `mapshaper` can modify shapefiles directly, or convert shapefiles into GeoJSON. Converting to GeoJSON will give you more options and faster uploads when bringing the data into XYZ. The [mapshaper documentation](https://github.com/mbloch/mapshaper/wiki/Command-Reference) provides a wide variety of options, but a simple conversion command is:
 
 	mapshaper my_geodata.shp -o my_geodata.geojson
+	here xyz upload spaceID -f my_geodata.geojson -a
 	
-(Note that you can also specify `-o format=geojson` but `mapshaper` will also attempt use the extension of the output filename to determine the format.)
-		
+`-a` lets you interactively pick property values to convert into tags. You can use `-s` to stream the file and upload it much more quickly, but in this case you will need to specify the property keys with `-p`
+
+	here xyz upload spaceID -f my_geodata.geojson -p property_name -s
+	
+Depending on the size of the shapefile you may be able to pipe the geojson from `mapshaper` directly to the XYZ HERE CLI, using the `-` option in `mapshaper`: 
+
+	mapshaper my_geodata.shp -o format=geojson - | here xyz upload spaceID -a -t specific_tag
+
+You can also stream it:
+	
+	mapshaper my_geodata.shp -o format=geojson - | here xyz upload spaceID -p property_name -t specific_tag -s
+	
 
 ### HERE XYZ QGIS plugin
 
-QGIS is an open source desktop GIS tool that lets you edit, visualize, manage, analyse and convert geospatial data. You can upload and download data from your XYZ spaces using the [HERE XYZ QGIS plugin](https://plugins.qgis.org/plugins/XYZHubConnector/). (The plugin is also available [on Github](https://github.com/heremaps/xyz-qgis-plugin).)
+QGIS is an open-source desktop GIS tool that lets you edit, visualize, manage, analyze and convert geospatial data. You can upload and download data from your XYZ spaces using the [HERE XYZ QGIS plugin](https://plugins.qgis.org/plugins/XYZHubConnector/). (The plugin is also available [on Github](https://github.com/heremaps/xyz-qgis-plugin).)
 
 You can install the HERE XYZ QGIS plugin from within QGIS Plugin search tool if you have the "show experimental plugins" option checked in the plugin console settings.
 
@@ -73,13 +84,13 @@ Some shapefiles may contain very large and extremely detailed individual lines o
 
 ### Adjusting 'chunk' parameters
 
-In order to optimize upload speed, the CLI "chunks" features together and then sends the chunk to the CLI. There are typically 200-400 features per chunk. While a large feature may be small enough to be uploaded, when combined with other features, it may be too large for the API.
+In order to optimize upload speed, the CLI "chunks" features together and then sends the chunk to the API. There are typically 200-400 features per chunk. While a large feature may be small enough to be uploaded, when combined with other features, the chunk may be too large for the API.
 
 You can adjust the chunk size using `-c` -- in this example, the CLI will upload 100 features per API request:
 	
 	here xyz upload spaceID -f large_features.shapefile -c 100
 
-Depending on the size of the feature, you may want to try `c -10` (ten per request) or `c -1` (one at a time).
+Depending on the size of the feature, you may want to try `c -10` (ten per request) or even `c -1` (which would load one feature at a time).
 
 ### mapshaper
 
@@ -91,11 +102,9 @@ Depending on the zoom level and extent your web map (think the border of France 
 	
 More information on simplification is available here: https://github.com/mbloch/mapshaper/wiki/Command-Reference#-simplify
 
-Note that for smaller shapefiles you can pipe output from `mapshaper` directly to the HERE XYZ CLI.
+As previously mentioned, for smaller shapefiles you can pipe output from `mapshaper` directly to the HERE XYZ CLI, accelerating your TTM (Time To Map).
 
 	mapshaper big_shapefile.shp -o format=geojson - | here xyz upload spaceID -p property_name -t specific_tag -s
-	
-In this case, you must specify the output format as `format=geojson` as there is no filename extension for `mapshaper` to reference. The `-` enables `stout`.
 	
 ### QGIS
 
@@ -103,12 +112,12 @@ In this case, you must specify the output format as `format=geojson` as there is
 - choose Vector -> Geometry Tools -> Simplify
 - save the simplified data to a new XYZ space using the HERE XYZ plugin
 
-Note that the Simplify tool works in decimal degrees, and the default is 1 degree, which is probably not what you want. Useful values depend on the extent and zoom levels of your map, but `0.01`, `0.001` and `0.0001` are interesting values.
+Note that the Simplify tool works in decimal degrees, and the default is 1 degree, which is probably not what you want. Useful values depend on the extent and zoom levels of your map, but `0.01`, `0.001`, `0.0001`, and `0.00001` are interesting values.
 
 
 ## Very large shapefiles (> 200MB)
 
-The HERE XYZ CLI will attempt to load the entire shapefile into memory before uploading it to the API. This will generally work for shapefiles up to 200-300MB, but you will start to see Node.js memory errors for shapefiles larger than that.
+The HERE XYZ CLI will attempt to load the entire shapefile into memory before uploading it to the API. This will generally work for shapefiles up to 200MB, but you will start to see Node.js memory errors beyond that.
 
 While GeoJSON and CSVs can be streamed via the `upload -s` option, this option is not yet available for shapefiles. You will have the most success converting the shapefile to GeoJSON and then uploading to XYZ.
 
@@ -117,7 +126,7 @@ While GeoJSON and CSVs can be streamed via the `upload -s` option, this option i
 	
 _Note that `-a` is not available when `-s` is used, but you can still specify properties to convert into tags using `-p`._
 
-You can also open the very large shapefile in QGIS and save directly to an XYZ space using the XYZ QGIS plugin, though this will be slower than using the CLI streaming feature.
+You can also open the very large shapefile in QGIS and save directly to an XYZ space using the XYZ QGIS plugin, though this will be slower than using the CLI streaming feature as the QGIS plugin is not multi-threaded.
 	
 ## Projections and CRS (Coordinate Reference Systems)
 
