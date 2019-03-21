@@ -124,7 +124,20 @@ XYZ will attempt to choose the columns containing the latitude and longitude fie
     
 If your csv uses different names, you can specify the latitude field with `-y` and longitude with `-x`.
 
-##### Upload shapefile
+##### Upload and stream large csv and geojson files
+
+You can upload large geojson and csv files to your XYZ space by using `-s` -- this will stream the file and avoid Node memory errors.
+
+    here xyz upload YOUR_SPACE_ID -f /Users/xyz/big_data.csv -s
+
+
+    here xyz upload YOUR_SPACE_ID -f /Users/xyz/big_data.csv -s
+
+!!! warning "-a is not available with -s, use -p instead"
+
+    When a file is streamed with `-s` it is not loaded into memory and -a is not available to preview and assign tags. You can specify tag using `-p`.
+    
+##### Upload a shapefile
 
 ```
 here xyz upload YOUR_SPACE_ID -f /Users/dhatb/data.shp
@@ -140,7 +153,7 @@ More tips in the [Working with Shapefiles](../xyz-shapefiles-docs) tutorial.
     another command directly into the input stream of the HERE CLI like
     `cmd | here xyz upload YOUR_SPACE_ID`
 
-##### Upload with unique ID
+##### Upload with a unique ID
 
 ```
 here xyz upload YOUR_SPACE_ID -f /Users/dhatb/data.csv -i unique_id
