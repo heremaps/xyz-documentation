@@ -32,13 +32,6 @@ here --help
 As explained earlier, HERE CLI needs to know you to interact with your Spaces. You can use
 
 ```
-here configure set
-```
-
-to configure the AppId and AppCode. It will immediately try to verify these credentials.
-Alternatively you can run
-
-```
 here configure account
 ```
 to configure with the e-mail address and password you use for your HERE account.
@@ -63,15 +56,13 @@ To list all Spaces you have access to you can use
 here xyz list
 ```
 
-This command will list all the Spaces for which the user is authorized.
-
 #### Create a new Space
 
 ```
 here xyz create -t "sample test xyz" -d "sample creation"
 ```
 
-Create a new Space, the SpaceId will be generated automatically.
+When you create a new Space, the SpaceID will be generated automatically.
 
 ##### Options
 
@@ -79,33 +70,33 @@ Create a new Space, the SpaceId will be generated automatically.
 
 `-d <desc>` description for space
 
+When you have many spaces, you will be glad you added meaningful titles and descriptions.
+
 #### Upload/Update data to a Space
 
 ##### Options
 
 `-f, --file <file>`    geojson file to upload
 
-`-c, --chunk [chunk]`  chunk size
+`-c, --chunk [chunk]`  chunk size (adjusts the number of features uploaded at once)
 
-`-t, --tags [tags]`    tags for the xyz space
+`-t, --tags [tags]`    tags for the xyz space (used to filter data from the API)
 
-`-x, --lon [lon]`      longitude field name
+`-x, --lon [lon]`      choose longitude field name, if not well known
 
-`-y, --lat [lat]`     latitude field name
+`-y, --lat [lat]`     latitude field name, if not well known
 
-`-z, --alt [alt]`      altitude field name
-
-`-p, --ptag [ptag]`    property names to be used to add tag
+`-p, --ptag [ptag]`    property name(s) whose values will to be used to generate tags
 
 `-i, --id [id]`        property name(s) to be used as the feature ID
 
-`-a, --assign`         list the sample data and allows you to assign fields which needs to be selected as tags
+`-a, --assign`         list a sample of properties, allowing you to assign fields to be selected as tags
 
-`-u, --unique`         option to enforce uniqueness to the id by creating a hash of feature and use that as id
+`-u, --unique`         option to enforce uniqueness to the id by creating a hash of features to use that as id
 
-`-o, --override`       override the data even if it share same id
+`-o, --override`       allow duplicate features to be uploaded even if they share the same feature id
 
-`-s, --stream `        streaming data support for large file uploads
+`-s, --stream `        stream large geojson and csv files (> 200 MB) (-a unavailable with streaming, use -p)
 
 `-h, --help`           output usage information
 
@@ -113,7 +104,7 @@ Create a new Space, the SpaceId will be generated automatically.
 ##### Upload geojson
 
 ```
-here xyz upload YOUR_SPACE_ID -f /Users/dhatb/data.geojson
+here xyz upload YOUR_SPACE_ID -f /Users/xyz/data.geojson
 ```
 
 Upload geojson data to a Space with name YOUR_SPACE_ID
@@ -121,10 +112,17 @@ Upload geojson data to a Space with name YOUR_SPACE_ID
 ##### Upload csv
 
 ```
-here xyz upload YOUR_SPACE_ID -f /Users/dhatb/data.csv
+here xyz upload YOUR_SPACE_ID -f /Users/xyz/data.csv
 ```
 
-Upload csv data to a Space with name YOUR_SPACE_ID
+Upload csv data to a Space with name YOUR_SPACE_ID.
+
+XYZ will attempt to choose the columns containing the latitude and longitude fields based on well known names including:
+
+    y, ycoord, ycoordinate, coordy, coordinatey, latitude, lat
+    x, xcoord, xcoordinate, coordx, coordinatex, longitude, lon, lng, long, longitud 
+    
+If your csv uses different names, you can specify the latitude field with `-y` and longitude with `-x`.
 
 ##### Upload shapefile
 
@@ -132,7 +130,9 @@ Upload csv data to a Space with name YOUR_SPACE_ID
 here xyz upload YOUR_SPACE_ID -f /Users/dhatb/data.shp
 ```
 
-Upload shapefile data to a Space with name YOUR_SPACE_ID
+Upload shapefile data to a Space with name YOUR_SPACE_ID.
+
+More tips in the [Working with Shapefiles](../xyz-shapefiles-docs) tutorial.
 
 !!! tip
 
@@ -146,19 +146,19 @@ Upload shapefile data to a Space with name YOUR_SPACE_ID
 here xyz upload YOUR_SPACE_ID -f /Users/dhatb/data.csv -i unique_id
 ```
 
-Upload data to a Space named YOUR_SPACE_ID with a unique ID of unique_id.
+Upload data to a Space named YOUR_SPACE_ID with a unique ID of unique_id. This should be used if your data has truly unique identifiers. Note that many GIS systems will assign incrementing integers that conflict across files.
 
-##### Upload with assign
+##### Upload and assign tags
 
 ```
 here xyz upload YOUR_SPACE_ID -f file.geojson -a
 ```
 
-Uploads data and provides a list of keynames and previews the first few values.
+Uploads data and allows users to select tags from a list of feature keynames, with a preview of the first few values. These tags can be used to filter data when querying the HERE XYZ API.
 
 ###### Response
 
-The resulting values are for example:
+Use the up and down arrows to navigate, and the space bar to select values:
 
 ```
 1: year: 1996, 2005, 2015
@@ -168,18 +168,13 @@ The resulting values are for example:
 5: streetname: FOLSOM ST, 19th AVE, VALENCIA ST
 6: class: CLASS III, CLASS I, CLASS IV
 7: length: 263.2, 120.9, 708.4
-
-type numbers of keys (e.g., 1,3,5,6) to convert as key@value tags:
 ```
-You type
-```
->1,3,5,6
-```
+Press return to select these values.
 
 ###### Response
 
 ```
-year@1996, treatment@green_paint, streetname@folsom_st, class@class_iv
+year@1996, 1996, treatment@green_paint, green_paint streetname@folsom_st, folsom_st class@class_iv, class_iv
 ```
 
 ##### Upload with a Property Tag
@@ -187,7 +182,7 @@ year@1996, treatment@green_paint, streetname@folsom_st, class@class_iv
 ```
 here xyz upload -f file.geojson -p treatment
 ```
-Uploads data and adds an existing property as tag for which the values are returned as the values of the tag
+Uploads data and adds the value of the selected featyre property as tag. These tags can be used to filter data when querying the HERE XYZ API.
 
 ###### Response
 
