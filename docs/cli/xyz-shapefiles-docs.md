@@ -66,6 +66,8 @@ You can also stream it:
 	
 	mapshaper my_geodata.shp -o format=geojson - | here xyz upload spaceID -p property_name -t specific_tag -s
 	
+(If you see unusual errors when piping from `mapshaper` to XYZ, you may have more success keeping the conversion and uploading as separate steps.)
+	
 
 ### HERE XYZ QGIS plugin
 
@@ -98,7 +100,7 @@ You can simplify lines and polygons in shapefiles using `-simplify`.
 
 	mapshaper very_large_features.shp -simplify dp 20% -o simplified_features.geojson
 	
-Depending on the zoom level and extent your web map (think the border of France at zoom 10 vs zoom 3), you can also try `10%`, `5%`, and `1%`.
+Depending on the zoom level and extent your web map, you can also try `10%`, `5%`, and `1%`.
 	
 More information on simplification is available here: https://github.com/mbloch/mapshaper/wiki/Command-Reference#-simplify
 
