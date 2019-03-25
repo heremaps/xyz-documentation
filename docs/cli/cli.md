@@ -288,3 +288,101 @@ id type lat description
 YOUR_TOKEN_NR_1 PERMANENT 1534451767 xyz-hub=readFeatures,createFeatures,updateFeatures,deleteFeatures,manageSpaces
 YOUR_TOKEN_NR_2 PERMANENT 1534516620 xyz-hub=readFeatures
 ```
+
+#### Learn more about your spaces
+
+##### Get a list of tags used in a space
+
+```
+here xyz analyze spaceID
+```
+
+###### Response
+
+```
+here xyz describe spaceID
+Operation may take a while. Please wait ......
+==========================================================
+                     Summary for Space zcispwpB
+==========================================================
+Total 891 features
+GeometryType  Count
+------------  -----
+Point         891  
+
+Total unique tag Count : 19
+Unique tag list  :["small","type@small","ne_10m_airports","mid","type@mid","mid_and_military","type@mid_and_military","major_and_military","type@major_and_military","military_mid","type@military_mid","military","type@military","major","type@major","military_major","type@military_major","spaceport","type@spaceport"]
+TagName                  Count
+-----------------------  -----
+ne_10m_airports          891  
+mid                      475  
+type@mid                 475  
+type@major               367  
+major                    367  
+type@mid_and_military    14   
+major_and_military       14   
+type@major_and_military  14   
+mid_and_military         14   
+type@military_mid        10   
+military_mid             10   
+type@military_major      4    
+military_major           4    
+spaceport                3    
+type@spaceport           3    
+type@military            2    
+military                 2    
+type@small               2    
+small                    2    
+```
+
+
+!!! warning "`describe` only returns the first 500,000 features in a space"
+
+    In order to avoid Node.js memory errors, only the first 500,000 features are described.
+
+
+##### Get a count of values of a property in a space
+
+```
+here xyz analyze spaceID
+```
+
+###### Response
+
+Use the arrow keys and select a property by pressing the space bar:
+
+```
+here xyz analyze zcispwpB
+Operation may take a while. Please wait ......
+? Select the properties to analyze 
+ ◯ 1 : name : Sahnewal , Solapur , Birsa Munda
+❯◉ 2 : type : small , mid , mid
+ ◯ 3 : abbrev : LUH , SSE , IXR
+ ◯ 4 : gps_code : VILD , VASL , VERC
+ ◯ 5 : location : terminal , terminal , terminal
+ ◯ 6 : iata_code : LUH , SSE , IXR
+ ◯ 7 : natlscale : 8 , 8 , 8
+```
+
+In this case, the CLI will count and sort the values of the `type` property.
+
+```
+PropertyName  Value               Count
+------------  ------------------  -----
+type          mid                 475  
+type          major               367  
+type          mid and military    14   
+type          major and military  14   
+type          military mid        10   
+type          military major      4    
+type          spaceport           3    
+type          small               2    
+type          military            2    
+
+Total unique property values in space zcispwpB : 
+
+PropertyName  Count
+------------  -----
+type          9    
+```
+
