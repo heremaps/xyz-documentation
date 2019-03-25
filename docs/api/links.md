@@ -1,6 +1,6 @@
 # HERE XYZ Links
 
-Here is the current list of links used in the Beta.
+Here is a list of links for working with HERE XYZ
 
 ## API and Service
 

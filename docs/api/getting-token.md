@@ -1,9 +1,3 @@
-!!! info "Beta Notes"
-    For now during the Beta phase, you need to generate the project token manually as described
-    here. In the near future, this functionality will be included into the Studio application as well as the CLI and then there is rarely the need to do this manually. Still it's good to know how
-    to do this if you want to have more fine-grained access permissions to your spaces.
-
-
 HERE XYZ Hub APIs use project tokens that are tied to your `appId`&`appCode` or HERE Accounts SSO identity. Make sure to keep your `appId`&`appCode` safe and don't include them directly in any web pages as they are the key to generate new access tokens.
 
 Usually you would use two tokens:

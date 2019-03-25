@@ -5,6 +5,11 @@ whenever necessary.
 You can easily share a link to your map or copy & paste a snippet of code that you can
 directly include on a web page or in a blog for example.
 
+<video width="100%"  controls>
+  <source src="../../assets/videos/publish-legend.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>   
+
 ## Project Settings
 
 You can control the publishing from the **Project Settings** dialog. There you can see if
