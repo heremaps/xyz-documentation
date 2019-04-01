@@ -94,18 +94,18 @@ npm install -g @here/cli
 ### Configure HERE CLI
 
 HERE CLI needs to have access to your projects to help you work with your data. For that, you
-need to configure your `appId` and `appCode`. You only need to do this once for a project.
+need to log in using your HERE developer account. You only need to do this once for a project.
 
 ``` sh
-here configure set
+here configure account
 ```
 
-When prompted, enter your `appId` and your `appCode`.
+When prompted, enter your email and password that you use in the HERE Developer portal.
 
 The CLI will immediately try to *verify* if the entries can be
 used to log into HERE XYZ and report back to you accordingly.
 
-!!! question "Where is my `appId` and `appCode` stored?"
+!!! question "Where is my login information stored?"
 
     Don't worry, the information entered is safely stored and encrypted on your local machine (if you are curious, look for a file called `.herecli` in your home directory
     which contains the configuration data)
