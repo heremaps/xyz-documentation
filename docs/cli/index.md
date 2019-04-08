@@ -2,7 +2,7 @@
 
 We think developers deserve an easy to use, convenient and streamlined experience to work with XYZ Hub APIs. That’s why we’ve built the HERE CLI. HERE CLI is a Node.js command line interface which works not only with HERE XYZ Hub, but eventually, with any HERE API. Right now, it allows you to interact with HERE XYZ Hub to create and manage your Projects and easily upload and manage your datasets.
 
-[![CLI](../assets/images/cli.png)](../assets/images/cli.png)
+<script id="asciicast-ohII9SQNs1RIuaSkfAO5UgHlX" src="https://asciinema.org/a/ohII9SQNs1RIuaSkfAO5UgHlX.js" async></script>
 
 !!! tip "HERE CLI on GitHub"
     [HERE CLI is Open Source](https://github.com/heremaps/here-cli), where developers like yourself can contribute new functionality and features.

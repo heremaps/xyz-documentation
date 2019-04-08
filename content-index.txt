@@ -1,0 +1,44 @@
+  - Introduction: index.md
+  - Getting Started: getting-started.md
+  - XYZ Studio:
+    - Quick Tour: studio/index.md
+    - Publish a map: studio/publish.md
+  - XYZ Hub API:
+    - Overview: api/index.md
+    - Manage Tokens: api/getting-token.md
+    - Quick Start:
+      - Acquiring Credentials: api/quickstart/acquiringcredentials.md
+      - Read Spaces: api/quickstart/readspaces.md
+      - Create a Space: api/quickstart/createspace.md
+      - Write to a Space: api/quickstart/writetospace.md
+    - Concepts:
+      - GeoJSON Basics: api/concepts/geojsonbasics.md
+      - Namespaces: api/concepts/namespaces.md
+      - Tags and Tagging: api/concepts/tags.md
+      - Tiles: api/concepts/tiles.md
+    - Walkthrough:
+      - Creating a Space: api/walkthrough/creatingaspace.md
+      - Adding and Deleting Features: api/walkthrough/addinganddeleting.md
+      - Search by Bounding Box: api/walkthrough/searchbyboundingbox.md
+      - Search by Tags: api/walkthrough/searchbytags.md
+      - Iterate over Features: api/walkthrough/iterateoverfeatures.md
+    - Developer Guide:
+        - Working with Spaces: api/devguide/workwithspaces.md
+        - Working with Features: api/devguide/workwithfeatures.md
+        - Tagging: api/devguide/tagging.md
+        - Accessing Features: api/devguide/accessingfeatures.md
+    - API Reference: api/apireference.md
+    - Useful Links: api/links.md
+  - XYZ Maps JS:
+    - Overview: ui/index.md
+    - Getting started: ui/gettingstarted.md
+    - Display your space: ui/yourxyzspace.md
+    - Style your data: ui/styleyourdata.md
+    - Add interactivity: ui/tapfeature.md
+  - GeoJSON Tool:
+    - Overview: viewer-tool/index.md
+    - GeoJSON Basics: viewer-tool/geojsonbasics.md
+    - Advanced Features: viewer-tool/advanced.md
+  - HERE CLI:
+    - Overview: cli/index.md
+    - Commands: cli/cli.md
