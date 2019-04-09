@@ -3,6 +3,7 @@
 ### Studio Release 1.0.2
 
 This one's all about the improved user experience! We've also released fixes for usage statistics in account dashboard.
+
 * We've added more visual cues in billing section of account dashboard.
 * We've made copy changes in studio to reflect the term Database Storage everywhere.
 
