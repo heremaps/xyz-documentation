@@ -1,5 +1,95 @@
 # Release notes for XYZ
-  
+
+### Studio Release 1.0.2
+
+This one's all about the improved user experience! We've also released fixes for usage statistics in account dashboard.
+
+* We've added more visual cues in billing section of account dashboard.
+* We've made copy changes in studio to reflect the term Database Storage everywhere.
+
+🔨 **IMPROVED** 🔧
+* UI/UX of Account Dashboard
+* UI/UX of Site Tour
+* Other minor UI improvements.
+
+🐜 **FIXED** 🐜
+* Studo account dashboard will now show accurate usage converted into percentage. Note: the usage isn't tracked in real-time, so your numbers won't change immediately as you are working with data in Studio.
+* You will now experience appropriate messages for your usage stastitics. We have taken care of pay-as-you-grow users as well.
+* Other minor bug fixes.
+
+🔮 **COMING SOON** 🔮
+* Microsoft building footprint data integration with XYZ Studio
+
+---
+
+### XYZ Maps 0.9.31 (2019-4-4)
+
+:lower_left_crayon: **Editor** :lower_left_crayon:
+* fixed: place drawingboard at the very top, regardless of link-layer's presence
+
+:radio_button: **Core** :radio_button:
+* fixed: only first tag is sent if url parameters are changed for SpaceProvider
+
+:control_knobs: **Plugins** :control_knobs:
+* added: support for 1024 pixel tileSize in MVTLayer
+
+:hammer_and_pick: **General** :hammer_and_pick:
+* workaround: (timing critical) in case of display got destroyed and listener is waiting for async execution.
+
+:desktop_computer: **Display** :desktop_computer:
+* added: UI support for expandable copyright information
+* added: trigger "resize" event on map resize
+
+:gear: **Common** :gear:
+* added: Map.forEach(...)
+* fixed: delete item in Set has no effect
+
+---
+
+### Studio Release 1.0.0
+We’ve reached version 1.0.0 and are GA (Generally Available) now! This release introduces an account dashboard as well as a new site tour to guide first-time users
+
+*TL;DR:* 
+- Introducing the Studio account dashboard, a place to view your plans and track your usage. 
+- We’ve added tours to guide you through the Studio dashboard and project interfaces. 
+- We’ve removed shapefile upload support, and now provide a link to a tutorial on using the CLI to upload shape files. 
+- Feedback and issue reporting is now available in published projects.
+
+✨ **NEW** ✨
+
+- We’ve added a site tour that will walk Studio newcomers through the dashboard, and another quick tour of their first project.
+- Introducing the account management dashboard! This new dashboard, which you can access by clicking on your username in the top right corner, is a visual representation of your plan usage. Usage is tracked in two ways: data storage and data transfer.
+  - If you have multiple plans, you’ll see a list and some summary stats about your usage. You can click on an individual plan to view more specifics about usage associated with that plan.  
+  - If you only have one plan, you’ll be taken directly to the plan details.
+  - Note: the usage isn’t tracked in real-time, so your numbers won’t change immediately as you are working with data in Studio.
+
+📌 **Special Bulletin: More info on Plans**
+> Customers can now get access to HERE XYZ under a Freemium Plan.  <br/><br/>
+> This Freemium Plan entitles HERE XYZ customers to the following:  
+> €/$0 per month for 2.5GB of Data Transfer and 5GB of Database Storage.  
+> €/$1 for every additional 100MB of Data Transfer.  
+> €/$3 per month for every additional 5GB of Database Storage <br/><br/>
+> Data Transfer means the movement of all data to or from the HERE XYZ service.  
+> Database Storage means data stored by the HERE XYZ service.  
+> Learn more at developer.here.com/plans  
+
+
+🔨 **IMPROVED** 🔧
+
+- There is now an option in published projects allowing anyone to provide us with feedback or report an issue.
+- Improved error messaging for file uploads.
+- We’ve removed shapefile support from Studio file uploading, but added link to a tutorial for using the HERE CLI to upload shapefiles. The CLI can provide a more comprehensive approach for handling the unique requirements of shape files.
+
+🐜 **FIXED** 🐜
+
+- Fixed a bug where properties named “id” could not be used to create style groups.
+
+🔮 **COMING SOON** 🔮
+
+- Improved map performance for large Spaces.
+
+---
+
 ### Studio release 0.2.0
 
 This one’s all about the tables! We’ve made improvements to the functionality and performance of our data tables in Studio. 
