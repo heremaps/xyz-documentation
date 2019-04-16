@@ -23,7 +23,7 @@ However, for those who want to get at the data directly, we have another option.
 
 HERE Technologies worked with [geocode.earth](https://geocode.earth) to enhance the original Microsoft Building Footprint dataset to add admin attributes to each polygon. As a result, the enhanced dataset can be filtered by admin attribute to focus on the data of interest.
 
-The data is available in two formats – GeoJSON and GeoJSONL. ([Learn more about GeoJSONL over at interline.io](https://www.interline.io/blog/here-cli-supports-geojsonl/).)
+The data is available in two formats – GeoJSON and GeoJSONL. ([Learn more about GeoJSONL over at interline.io](https://www.interline.io/blog/here-cli-supports-geojsonl/).) It maintains the [ODbL license granted by Microsoft](https://github.com/Microsoft/USBuildingFootprints/blob/master/LICENCE-DATA). 
 
 Both formats can be efficiently uploaded to HERE XYZ Spaces using the HERE CLI using the `-s` streaming option.
 
