@@ -80,8 +80,7 @@ Both formats can be efficiently uploaded to HERE XYZ Spaces using the HERE CLI u
 | West Virginia | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/WestVirginia.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/WestVirginia.geojson)| 0.98 GB |
 | Wisconsin | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/Wisconsin.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/Wisconsin.geojson)| 3.20 GB |
 | Wyoming | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/Wyoming.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/Wyoming.geojson)| 0.36 GB |
-| Canada | | |
-| region | geojsonl | geojson | size |
+| 🇨🇦 | | |
 | Alberta | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/Alberta.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/Alberta.geojson)| 1.81 GB |
 | British Columbia | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/BritishColumbia.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/BritishColumbia.geojson)| 1.49 GB |
 | Manitoba | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/Manitoba.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/Manitoba.geojson)| 0.71 GB |
