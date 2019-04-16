@@ -15,7 +15,7 @@ We started with the source data from Microsoft and processed it so that users of
 - supports maximum zoom in
 - allows exploration of the source data.
 
-Take a look at an [XYZ Studio map](https://xyz.here.com/viewer/?project_id=c9884248-dbda-4c2b-a45c-8a46d0c7d3fb) with the dataset (just San Francisco)
+Take a look [at a map created by XYZ Studio](https://xyz.here.com/viewer/?project_id=c9884248-dbda-4c2b-a45c-8a46d0c7d3fb) filtered to focus on selected ZIP codes in San Francisco.
 
 This experience is possible because the data is in an XYZ Space, something that we think makes sense for most large geospatial datasets.
 
