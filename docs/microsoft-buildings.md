@@ -80,6 +80,7 @@ Both datasets can be efficiently uploaded to HERE XYZ Spaces using the HERE CLI.
 | West Virginia | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/WestVirginia.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/WestVirginia.geojson)| 0.98 GB |
 | Wisconsin | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/Wisconsin.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/Wisconsin.geojson)| 3.20 GB |
 | Wyoming | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/Wyoming.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/Wyoming.geojson)| 0.36 GB |
+| | | |
 | Alberta | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/Alberta.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/Alberta.geojson)| 1.81 GB |
 | British Columbia | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/BritishColumbia.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/BritishColumbia.geojson)| 1.49 GB |
 | Manitoba | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/Manitoba.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/Manitoba.geojson)| 0.71 GB |
@@ -87,7 +88,7 @@ Both datasets can be efficiently uploaded to HERE XYZ Spaces using the HERE CLI.
 | Newfoundland and Labrador | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/NewfoundlandAndLabrador.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/NewfoundlandAndLabrador.geojson)| 0.22 GB |
 | Northwest Territories | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/NorthwestTerritories.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/NorthwestTerritories.geojson)| 0.02 GB |
 | Nova Scotia | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/NovaScotia.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/NovaScotia.geojson)| 0.35 GB |
-| Nunavut | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/Nunavut.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/Nunavut.geojson)| 0.00 GB |
+| Nunavut | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/Nunavut.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/Nunavut.geojson)| 0.01 GB |
 | Ontario | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/Ontario.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/Ontario.geojson)| 3.71 GB |
 | Prince Edward Island | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/PrinceEdwardIsland.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/PrinceEdwardIsland.geojson)| 0.07 GB |
 | Quebec | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/Quebec.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/Quebec.geojson)| 2.23 GB |
