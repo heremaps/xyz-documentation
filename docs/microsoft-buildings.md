@@ -15,6 +15,7 @@ We started with the source data from Microsoft and processed it so that users of
 - supports maximum zoom in
 - allows exploration of the source data.
 
+Take a look at an XYZ Studio map with the dataset.
 
 To explore the data yourself <show -v with SpaceID>
 
