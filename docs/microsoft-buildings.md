@@ -95,3 +95,4 @@ Both formats can be efficiently uploaded to HERE XYZ Spaces using the HERE CLI u
 | Saskatchewan | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/Saskatchewan.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/Saskatchewan.geojson)| 0.97 GB |
 | Yukon Territory | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/YukonTerritory.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/YukonTerritory.geojson)| 0.02 GB |
            
+This geocoded dataset is also available in a shared XYZ Zpace, `XHmWfTCt`, using access tokens from your own HERE XYZ account.
