@@ -27,8 +27,8 @@ The data is available in two formats – GeoJSON and GeoJSONL. ([Learn more abou
 
 Both formats can be efficiently uploaded to HERE XYZ Spaces using the HERE CLI using the `-s` streaming option.
 
-| region | geojsonl | geojson | size |
-|--------|----------|---------|------|
+| region | geojsonl | geojson | size | sample map |
+|--------|----------|---------|------|------------|
 | Alabama | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/Alabama.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/Alabama.geojson)| 2.29 GB |
 | Alaska | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/Alaska.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/Alaska.geojson)| 0.11 GB |
 | Arizona | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/Arizona.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/Arizona.geojson)| 2.59 GB |
@@ -93,7 +93,7 @@ Both formats can be efficiently uploaded to HERE XYZ Spaces using the HERE CLI u
 | Prince Edward Island | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/PrinceEdwardIsland.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/PrinceEdwardIsland.geojson)| 0.07 GB |
 | Quebec | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/Quebec.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/Quebec.geojson)| 2.23 GB |
 | Saskatchewan | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/Saskatchewan.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/Saskatchewan.geojson)| 0.97 GB |
-| Yukon Territory | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/YukonTerritory.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/YukonTerritory.geojson)| 0.02 GB |
+| Yukon Territory | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/YukonTerritory.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/YukonTerritory.geojson)| 0.02 GB | [Whitehorse](ehorse&property=street#14.624999999999996/60.7211/-135.0556) |
            
 This geocoded dataset is also available in a shared XYZ Space, `XHmWfTCt`, which available using access tokens from your own HERE XYZ account.
 
