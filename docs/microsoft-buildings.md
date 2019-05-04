@@ -96,3 +96,7 @@ Both formats can be efficiently uploaded to HERE XYZ Spaces using the HERE CLI u
 | Yukon Territory | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/YukonTerritory.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/YukonTerritory.geojson)| 0.02 GB |
            
 This geocoded dataset is also available in a shared XYZ Zpace, `XHmWfTCt`, using access tokens from your own HERE XYZ account.
+
+You can use XYZ tags to preview and extract various admin levels, including `street`, `neighborhood`, `postalcode`,`locality`, and `county`.
+
+http://geojson.tools/xyz_space_invader/?space=XHmWfTCt&token=AZAMz96qYi3wWNrtOfYFMFc&basemap=4&buildings=0&points=3&tags=postalcode%4085283&property=street#16/33.36736/-111.92297
