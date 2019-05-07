@@ -27,7 +27,7 @@ The data is available in two formats – GeoJSON and GeoJSONL. ([Learn more abou
 
 Both formats can be efficiently uploaded to HERE XYZ Spaces using the HERE CLI using the `-s` streaming option.
 
-| region | geojsonl | geojson | size | HERE XYZ sample map |
+| region | geojsonl | geojson | size | HERE XYZ map (by tag) |
 |--------|----------|---------|------|------------|
 | Alabama | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/Alabama.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/Alabama.geojson)| 2.29 GB |
 | Alaska | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/Alaska.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/Alaska.geojson)| 0.11 GB |
