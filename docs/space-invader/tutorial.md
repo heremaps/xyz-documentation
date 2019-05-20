@@ -26,17 +26,20 @@ Here are some examples to get you familiar with the interface and what Space Inv
 
 The Los Angeles Times gathers, normalizes and aggregates precinct level election data from counties in Southern California. Here is data for the 2018 Gubernatorial Primary from the 7500 precincts in Los Angeles County, Orange County, and San Diego County. 
 
-![ca-gov-votes-precinct](screenshots/ca-gov-votes-precinct.png)
+(this will be a GIF soon)
 
-_note: these URLs are based on the latest branch -- this will change, and the root URL (for now) is xyz-space-invader.netlify.com_
+![ca-gov-votes-range-precinct](screenshots/ca-gov-votes-range-precinct.png)
 
-There are several different visualization modes that can help get you familiar with your data and prepare it for visualization.
+
+There are several different visualization modes that can help get you familiar with your data and prepare it for visualization. _note: these URLs are based on the latest branch -- this will change, and the root URL (for now) is xyz-space-invader.netlify.com_
 
 ### X-ray mode
 
 X-ray mode shows you an overview of the geometries in the space. This is especially useful when you have overlapping geometries, or different types of geometries, or you just want to see the coverage of the data set.
 
 https://min-max--xyz-space-invader.netlify.com/?space=ylnRzWDL&token=AOsE9k2EdCdT8lEX12PDZ38&basemap=refill-dark&buildings=0&outlines=1&roads=1&water=0&colors=xray#11.6/34.0256/-118.3172
+
+
 
 _Note: You can toggle polygon outlines on and off (either press 'o' or click on 'outlines' in the top left panel)_
 
