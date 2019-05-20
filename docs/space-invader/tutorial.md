@@ -97,7 +97,7 @@ More interesting views of AirBnB listings data include:
 
 US Census data by income (California and San Francisco)
 
-![census-california-zip-income](census-california-zip-income.png)
+![census-california-zip-income](/screenshots/census-california-zip-income.png)
 
 https://min-max--xyz-space-invader.netlify.com/?space=zK3K5S6b&token=AOsE9k2EdCdT8lEX12PDZ38&basemap=none&buildings=0&points=1&lines=1&outlines=0&highlight=0&roads=0&water=0&colors=range&tags=zip&property=B19013001&palette=viridisPlasma&paletteFlip=false#7.775416573527989/37.645/-121.339
 
@@ -107,7 +107,7 @@ Filter by tags to show data by
 - zip code
 - census tract (SF only)
 
-[The income of certain counties and zip codes is so far above the average that it triggers the 4-sigma filter.]()
+[](The income of certain counties and zip codes is so far above the average that it triggers the 4-sigma filter.)
 
 ## Tags (WIP)
 
