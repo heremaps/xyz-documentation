@@ -8,11 +8,11 @@ It can also read and analyze properties of features in the viewport, and dynamic
 
 From the HERE XYZ `/statistics` endpoint, it reads the number of features and the size of the space along with the bounding box of the data, and attempts to center the map there (unless the map is already centered within the bbox).
 
-Multiple color palettes can be applied to property ranges and ranks, and it is designed to be easy to add more.
+Multiple color palettes can be applied to property ranges and ranks, and it is designed to be easy to add more palettes.
 
 Multiple basemaps are available. Basemap properties such as roads and buildings can be toggled on and off. The size of points and lines can also be increased and decreased to help visualize data sets of various density. 
 
-XYZ Space Invader can show hundreds of thousands to millions of features, though this depends greatly on geographic density of data, zoom level, and kind and complexity of the geometries involved. In general you will be able to show more points and lines than polygons at any given zoom level.
+XYZ Space Invader can show hundreds of thousands to millions of features, though this depends greatly on geographic density of data, zoom level, and kind and complexity of the geometries involved. In general you will be able to show more points and lines than polygons at any given zoom level. We're also working on ways to intelligently handle dense data sets using tags and hexbins.
 
 ## To get started
 
@@ -132,3 +132,6 @@ AirBnB listings in the Hollywood Hills:
 
 https://xyz-space-invader.netlify.com/?space=40ILezn0&token=AOsE9k2EdCdT8lEX12PDZ38&basemap=refill&buildings=0&outlines=1&roads=1&water=0&colors=range&points=0&lines=0&highlight=0&tags=neighbourhood%40hollywood_hills%2Blistings&property=price&palette=viridis&paletteFlip=true#13.779166666666672/34.1220/-118.3403
 
+## Feedback
+
+If you have suggestions or run into bugs, please file a [Github issue](https://github.com/burritojustice/xyz_space_invader/issues).
