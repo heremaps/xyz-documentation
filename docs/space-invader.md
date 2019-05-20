@@ -1,4 +1,4 @@
-#XYZ Space Invader
+# XYZ Space Invader
 
 XYZ Space Invader lets you inspect and analyze data, properties, and tags in an XYZ Space.
 
@@ -14,7 +14,7 @@ Multiple basemaps are available. Basemap properties such as roads and buildings 
 
 XYZ Space Invader can show hundreds of thousands to millions of features, though this depends greatly on geographic density of data, zoom level, and kind and complexity of the geometries involved. In general you will be able to show more points and lines than polygons at any given zoom level.
 
-##To get started
+## To get started
 
 - [install the HERE CLI](https://www.here.xyz/cli/)
 - upload a GeoJSON file, CSV or Shapefile to an XYZ Space, and add tags based on properties https://www.here.xyz/cli/cli/
@@ -28,7 +28,7 @@ The Los Angeles Times gathers, normalizes and aggregates precinct level election
 
 _note: these URLs are based on the latest branch -- this will change, and the root URL (for now) is xyz-space-invader.netlify.com_
 
-###X-ray mode
+### X-ray mode
 
 X-ray mode shows you an overview of the geometries in the space. This is especially useful when you have overlapping geometries, or different types of geometries, or you just want to see the coverage of the data set.
 
@@ -36,17 +36,17 @@ https://min-max--xyz-space-invader.netlify.com/?space=ylnRzWDL&token=AOsE9k2EdCd
 
 _Note: You can toggle polygon outlines on and off (either press 'o' or click on 'outlines' in the top left panel)_
 
-###Hash mode
+### Hash mode
 
 This generates unique colors based on a hash of all a feature's properties. This is useful for distinguishing adjacent or nearby features. Note however that this does not guarantee that similar colors will not be adjacent to each other. 
 
 https://min-max--xyz-space-invader.netlify.com/?space=ylnRzWDL&token=AOsE9k2EdCdT8lEX12PDZ38&basemap=refill-dark&buildings=0&outlines=1&roads=1&water=0&colors=hash&points=0&lines=0&highlight=0&property=winner&palette=viridisInferno&paletteFlip=false#13.795833333333333/34.0581/-118.2976
 
-##Coloring features by property
+## Coloring features by property
 
 There are several ways to generate colors by the value of an individual property. Once the mode is selected, click on a property in the center left pane to analyze it.
 
-###Property
+### Property
 
 This is the most primitive -- it generates a simple color hash of the selected property value.
 
@@ -54,7 +54,7 @@ https://min-max--xyz-space-invader.netlify.com/?space=ylnRzWDL&token=AOsE9k2EdCd
 
 Color choices are consistent for any specific property value.
 
-###Range
+### Range
 
 This is ideal for non-discrete numerical values, and will apply a color palette across from the min to max values of the property seen in the viewport.
 
@@ -103,5 +103,18 @@ Filter by tags to show data by
 - zip code
 - census tract (SF only)
 
-The income of certain counties and zip codes is so far above the mean that it triggers the 4-sigma filter.
+The income of certain counties and zip codes is so far above the average that it triggers the 4-sigma filter.
+
+
+## Tags (WIP)
+
+Excavation Permits in San Francisco, by rank:
+
+https://min-max--xyz-space-invader.netlify.com/?space=ZLvdcZgi&token=AOsE9k2EdCdT8lEX12PDZ38&basemap=refill-dark&buildings=0&outlines=1&roads=1&water=0&colors=rank&points=0&lines=0&highlight=0&property=Permit_Reason&palette=viridis&paletteFlip=false#12.973739133520723/37.7546/-122.4372
+
+AirBnB listings in the Hollywood Hills:
+
+
+
+https://min-max--xyz-space-invader.netlify.com/?space=40ILezn0&token=AOsE9k2EdCdT8lEX12PDZ38&basemap=refill&buildings=0&outlines=1&roads=1&water=0&colors=range&points=0&lines=0&highlight=0&tags=neighbourhood%40hollywood_hills%2Blistings&property=price&palette=viridis&paletteFlip=true#13.779166666666672/34.1220/-118.3403
 
