@@ -84,7 +84,7 @@ The benefit of this approach can be seen in this dataset of AirBnB listings:
 
 https://min-max--xyz-space-invader.netlify.com/?space=40ILezn0&token=AOsE9k2EdCdT8lEX12PDZ38&basemap=refill-dark&buildings=0&outlines=1&roads=1&water=0&colors=range&points=3&lines=0&highlight=0&tags=listings&property=price&palette=viridis&paletteFlip=false#14.200000000000005/34.0837/-118.3770
 
-![airbnb-la-range](screenshots/airbnb-la-range)
+![airbnb-la-range](screenshots/airbnb-la-range.png)
 
 Most properties in the Los Angeles area are under $250 a night, but a few listings are as high as $10,000 or even $25,000. By considering a 'display max' closer to the median and mean, a meaningful spread of colors can be shown, as opposed to just two for very high and very low.
 
@@ -97,6 +97,8 @@ More interesting views of AirBnB listings data include:
 
 US Census data by income (California and San Francisco)
 
+![census-california-zip-income](census-california-zip-income.png)
+
 https://min-max--xyz-space-invader.netlify.com/?space=zK3K5S6b&token=AOsE9k2EdCdT8lEX12PDZ38&basemap=none&buildings=0&points=1&lines=1&outlines=0&highlight=0&roads=0&water=0&colors=range&tags=zip&property=B19013001&palette=viridisPlasma&paletteFlip=false#7.775416573527989/37.645/-121.339
 
 Filter by tags to show data by
@@ -105,8 +107,7 @@ Filter by tags to show data by
 - zip code
 - census tract (SF only)
 
-The income of certain counties and zip codes is so far above the average that it triggers the 4-sigma filter.
-
+[The income of certain counties and zip codes is so far above the average that it triggers the 4-sigma filter.]()
 
 ## Tags (WIP)
 
