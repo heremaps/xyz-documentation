@@ -114,7 +114,7 @@ https://min-max--xyz-space-invader.netlify.com/?space=ZLvdcZgi&token=AOsE9k2EdCd
 
 AirBnB listings in the Hollywood Hills:
 
-
+![airbnb-hollywood_hills-range-tags](https://github.com/heremaps/xyz-documentation/blob/master/docs/space-invader/airbnb-hollywood_hills-range-tags.png)
 
 https://min-max--xyz-space-invader.netlify.com/?space=40ILezn0&token=AOsE9k2EdCdT8lEX12PDZ38&basemap=refill&buildings=0&outlines=1&roads=1&water=0&colors=range&points=0&lines=0&highlight=0&tags=neighbourhood%40hollywood_hills%2Blistings&property=price&palette=viridis&paletteFlip=true#13.779166666666672/34.1220/-118.3403
 
