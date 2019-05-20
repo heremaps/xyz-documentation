@@ -26,7 +26,7 @@ Here are some examples to get you familiar with the interface and what Space Inv
 
 The Los Angeles Times gathers, normalizes and aggregates precinct level election data from counties in Southern California. Here is data for the 2018 Gubernatorial Primary from the 7500 precincts in Los Angeles County, Orange County, and San Diego County. 
 
-![ca-gov-votes-precinct](screeenshots/ca-gov-votes-precinct.png)
+![ca-gov-votes-precinct](screenshots/ca-gov-votes-precinct.png)
 
 _note: these URLs are based on the latest branch -- this will change, and the root URL (for now) is xyz-space-invader.netlify.com_
 
