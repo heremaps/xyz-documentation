@@ -76,13 +76,15 @@ Some useful visualizations include:
 
 Basic statistics are generated for the values of the selected property, including, min, max, median, mean, standard deviation, and sigma.
 
-A dynamic decile histogram is generated in order to give you an idea of how the data is distributed in the viewport.
+A dynamically generated histogram is generated in order to give you an idea of how the data is distributed in the viewport.
 
-A quick note on outliers: In many datasets, a few outliers can cause a max so high that the majority of features get 'squished' into the opposite end of the color palette. You can see the high and the low, but there may be thousands of values in the 'low' colors. For the time being, we limit the "display" max to be four sigmas above the mean. This in effect 'squishes' the outliers into the high end of the color range, while the majority of the values get more room in the color palette. More fine-grained controls for manipulating the min and max values to handle value ran
+A quick note on outliers: In many datasets, a few outliers can cause a max so high that the majority of features get 'squished' into the opposite end of the color palette. You can see the high and the low, but there may be thousands of values in the 'low' colors. For the time being, we limit the "display" max to be four sigmas above the mean. This in effect 'squishes' the outliers into the high end of the color range, while the majority of the values get more room in the color palette. More fine-grained controls for manipulating the min and max values to handle various value ranges are in the works.
 
 The benefit of this approach can be seen in this dataset of AirBnB listings:
 
 https://min-max--xyz-space-invader.netlify.com/?space=40ILezn0&token=AOsE9k2EdCdT8lEX12PDZ38&basemap=refill-dark&buildings=0&outlines=1&roads=1&water=0&colors=range&points=3&lines=0&highlight=0&tags=listings&property=price&palette=viridis&paletteFlip=false#14.200000000000005/34.0837/-118.3770
+
+![airbnb-la-range](screenshots/airbnb-la-range)
 
 Most properties in the Los Angeles area are under $250 a night, but a few listings are as high as $10,000 or even $25,000. By considering a 'display max' closer to the median and mean, a meaningful spread of colors can be shown, as opposed to just two for very high and very low.
 
