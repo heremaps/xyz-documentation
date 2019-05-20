@@ -26,7 +26,11 @@ Here are some examples to get you familiar with the interface and what Space Inv
 
 The Los Angeles Times gathers, normalizes and aggregates precinct level election data from counties in Southern California. Here is data for the 2018 Gubernatorial Primary from the 7500 precincts in Los Angeles County, Orange County, and San Diego County. 
 
+![ca-gov-votes-precinct](screeenshots/ca-gov-votes-precinct.png)
+
 _note: these URLs are based on the latest branch -- this will change, and the root URL (for now) is xyz-space-invader.netlify.com_
+
+There are several different visualization modes that can help get you familiar with your data and prepare it for visualization.
 
 ### X-ray mode
 
@@ -58,6 +62,8 @@ Color choices are consistent for any specific property value.
 
 This is ideal for non-discrete numerical values, and will apply a color palette across from the min to max values of the property seen in the viewport.
 
+![ca-gov-votes-range-precinct](screeenshots/ca-gov-votes-range-precinct.png)
+
 https://min-max--xyz-space-invader.netlify.com/?space=ylnRzWDL&token=AOsE9k2EdCdT8lEX12PDZ38&basemap=refill-dark&buildings=0&outlines=1&roads=1&water=0&colors=range&points=0&lines=0&highlight=0&property=gov_votes&palette=viridisInferno&paletteFlip=false#11.050000000000011/34.0306/-118.1441
 
 You can choose between several different color palettes, and you can also "flip" each palette, depending on if you want to emphasize the lower or higher values with 'brighter' values.
@@ -66,11 +72,11 @@ Individual values of properties in the viewport can be sorted either by count or
 
 Note that the color of an individual feature may change as you pan or zoom the map as different `min` and `max` values become visible in the viewport. This allows better inspection of otherwise subtle differences between "local" values, especially when "global" `min` and `max` is extreme compared to local values. (However, we recognize that being able to compare local values to global `min` and `max` values is also necessary. This will come in a later release.)
 
-Some useful visualizations include:
+### Rank
 
-- sort by total votes (range)
-- sort by votes per candidate (range)
-- sort by winner (rank)
+This mode sorts values by their frequency in the viewport. This is best for a relatively small number non-numeric values.
+
+[ca-gov-winner-rank-precinct](screenshots/ca-gov-winner-rank-precinct.png)
 
 #### Statistics
 
@@ -97,7 +103,7 @@ More interesting views of AirBnB listings data include:
 
 US Census data by income (California and San Francisco)
 
-![census-california-zip-income](/screenshots/census-california-zip-income.png)
+![census-california-zip-income](screenshots/census-california-zip-income.png)
 
 https://min-max--xyz-space-invader.netlify.com/?space=zK3K5S6b&token=AOsE9k2EdCdT8lEX12PDZ38&basemap=none&buildings=0&points=1&lines=1&outlines=0&highlight=0&roads=0&water=0&colors=range&tags=zip&property=B19013001&palette=viridisPlasma&paletteFlip=false#7.775416573527989/37.645/-121.339
 
