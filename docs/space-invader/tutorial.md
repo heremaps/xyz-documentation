@@ -62,7 +62,7 @@ Color choices are consistent for any specific property value.
 
 This is ideal for non-discrete numerical values, and will apply a color palette across from the min to max values of the property seen in the viewport.
 
-![ca-gov-votes-range-precinct](screeenshots/ca-gov-votes-range-precinct.png)
+![ca-gov-votes-range-precinct](screenshots/ca-gov-votes-range-precinct.png)
 
 https://min-max--xyz-space-invader.netlify.com/?space=ylnRzWDL&token=AOsE9k2EdCdT8lEX12PDZ38&basemap=refill-dark&buildings=0&outlines=1&roads=1&water=0&colors=range&points=0&lines=0&highlight=0&property=gov_votes&palette=viridisInferno&paletteFlip=false#11.050000000000011/34.0306/-118.1441
 
@@ -76,7 +76,7 @@ Note that the color of an individual feature may change as you pan or zoom the m
 
 This mode sorts values by their frequency in the viewport. This is best for a relatively small number non-numeric values.
 
-[ca-gov-winner-rank-precinct](screenshots/ca-gov-winner-rank-precinct.png)
+![ca-gov-winner-rank-precinct](screenshots/ca-gov-winner-rank-precinct.png)
 
 #### Statistics
 
