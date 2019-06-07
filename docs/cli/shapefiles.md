@@ -9,8 +9,8 @@ In this tutorial, we'll cover what you need to do to successfully import shapefi
 This document assumes:
 
 - you have already have a free [HERE developer account](https://developer.here.com/)
-- you have installed the [HERE XYZ CLI](https://codelabs.here.xyz/tutorial/01-installing-the-here-cli#0)
-- you have reviewed the [Using the CLI](https://codelabs.here.xyz/tutorial/02-using-the-xyz-cli) codelab
+- you have installed the [HERE XYZ CLI](https://developer.here.com/tutorials/install-here-cli/)
+- you have reviewed the [Using the CLI](https://developer.here.com/tutorials/using-the-xyz-cli/) codelab
  
 You should also install
 - [mapshaper](https://github.com/mbloch/mapshaper)
