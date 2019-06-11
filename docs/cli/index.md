@@ -8,7 +8,7 @@ We think developers deserve an easy to use, convenient and streamlined experienc
     [HERE CLI is Open Source](https://github.com/heremaps/here-cli), where developers like yourself can contribute new functionality and features.
 
 In this section, we'll quickly introduce you to the HERE CLI, how to install it and how to make the
-most of it while working on your project. There are many more tips in the [CLI tutorial](../CLI).
+most of it while working on your project. There are many more tips in the [CLI tutorial](https://developer.here.com/tutorials/using-the-xyz-cli/).
 
 ## Introduction
 
@@ -110,4 +110,4 @@ used to log into HERE XYZ and report back to you accordingly.
     Don't worry, the information entered is safely stored and encrypted on your local machine (if you are curious, look for a file called `.herecli` in your home directory
     which contains the configuration data)
     
-To learn more about the HERE CLI's advanced options, take a look at the [detailed tutorial](../CLI).
+To learn more about the HERE CLI's advanced options, take a look at the [detailed tutorial](https://developer.here.com/tutorials/using-the-xyz-cli/).

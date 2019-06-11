@@ -1,5 +1,34 @@
 # Release notes for XYZ
 
+### Studio and Viewer release 1.1.1
+
+The XYZ Studio is all set to get you hooked on to the public datasets staring with Microsoft building footprint data.
+
+**TL;DR:**
+
+* You can now add Microsoft building footprint data to your project. You can also filter the data using tags.
+* You can add copyright information in your maps.
+* Studio login page just got interesting.
+
+✨ **NEW** ✨
+
+* Most awaited Microsoft building footprint data (US and Canada) is made available in studio. You can filter the data using tags. You can also style them as you want.
+* Support for large datasets by using multiple space providers.
+* You can have your own copyright information to be shown in maps. You can anytime edit or delete them in project dashboard or data hub.
+** Added a new basemap style which we call a spring basemap. 😉 Right in time for the spring.
+** Unsplash images added to the studio login page.
+** Small animations in side panel and project thumbnails.
+
+🔨 **IMPROVED** 🔧
+* UX for the plan details page of account dashboard.
+* Project dashboard thumbnails.
+* Other minor UI improvements.
+
+🐜 **FIXED** 🐜
+* Fixed an issue of multiple plans get overplayed in footer of studio account dashboard.
+* Other minor bug fixes.
+
+
 ### Studio Release 1.0.2
 
 This one's all about the improved user experience! We've also released fixes for usage statistics in account dashboard.
