@@ -101,6 +101,27 @@ PUT /spaces/{spaceId}/features
 with the same body:
 
 ```JSON
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "featureclass": "River"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            ...
+          ], ... [
+              ...
+          ]
+        ]
+      }
+    }
+  ]
+}
 ```
 
 and you will get the same response:
@@ -108,9 +129,69 @@ and you will get the same response:
 ### Response
 
 ```JSON
+{
+  "features": [
+    {
+      "geometry": {
+        "type": "LineString",
+       "coordinates": [
+          [
+            ...
+          ], ... [
+              ...
+          ]
+       ]
+      },
+      "id": "NTvvEciZlE",
+      "type": "Feature",
+      "properties": {
+        "featureclass": "River",
+        "@ns:com:here:xyz": {
+          "createdAt": 1528461230706,
+          "space": "{spaceId}",
+          "tags": [
+            "river"
+          ],
+          "updatedAt": 1528461230706
+        }
+      },
+      "bbox": [
+        44.41260826914623,
+        31.5295270854107,
+        45.66944420664623,
+        32.563421942181535
+      ]
+    }
+  ],
+  "type": "FeatureCollection"
+}
 ```
 
 So, it is just a matter of taste and keeping the previous uploaded features.
+
+### Validation Errors
+
+If you are using the validation feature, you sometimes will get an error message when adding or modifying features, such as this one:
+
+```JSON
+{
+  "type": "FeatureCollection",
+  ...
+  "features": [],
+  "failed": [
+    {
+      "id": null,
+      "position": 0,
+      "message": "Feature on position 0 has JSON schema validations errors/warnings.\n[[1,151][/properties] The object must have a property whose name is \"city\"., [1,151][/properties] The object must have a property whose name is \"employees\"., [1,151][/properties] The object must have a property whose name is \"name\"., [1,151][/properties] The object must have a property whose name is \"country\".]"
+    }
+  ]
+}
+```
+
+The *failed* property contains all the features that schema validation rejected.  
+The *id* is the id you sent. If you did not send one, the id will be null as in the example.  
+*Position* is the position (zero-based) in the uploaded feature collection.  
+The *message* contains the schema validation errors with a detailed description of what does not confirm to your schema.
 
 ## Delete Features
 

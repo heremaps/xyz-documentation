@@ -23,24 +23,19 @@ from.
 You can always call up help on the HERE CLI either by not providing any parameter at all or
 by using the `--help` switch.
 
-```
-here --help
-```
+    here --help
 
 ### configure
 
 As explained earlier, HERE CLI needs to know you to interact with your Spaces. You can use
 
-```
-here configure account
-```
+    here configure account
+
 to configure with the e-mail address and password you use for your HERE account.
 
 You can also run
 
-```
-here configure verify
-```
+    here configure verify
 
 to check if the credentials provided can be used to interact with HERE APIs.
 
@@ -50,17 +45,13 @@ The `xyz` command is used to interact with XYZ Spaces.
 
 #### List all Spaces
 
-To list all Spaces you have access to you can use
+To list all Spaces you have access to (with or without Schema Validation) you can use
 
-```
-here xyz list
-```
+    here xyz list
 
 #### Create a new Space
 
-```
-here xyz create -t "sample test xyz" -d "sample creation"
-```
+    here xyz create -t "sample test xyz" -d "sample creation" -s <schema definition>
 
 When you create a new Space, the SpaceID will be generated automatically.
 
@@ -70,7 +61,13 @@ When you create a new Space, the SpaceID will be generated automatically.
 
 `-d <desc>` description for space
 
-When you have many spaces, you will be glad you added meaningful titles and descriptions.
+`-s <schema definition>` schema for space with schema validation
+
+When you have many spaces, you will be glad you added meaningful titles and descriptions.  
+The schema definition can be in the form of a web address or a schema json.
+
+!!! note "Schema validation is not transactional (yet)"
+    The schema validation will be non transactional (Transaction = FALSE) i.e. upload all the objects which passes schema definition and display the list of objects rejected.
 
 #### Upload/Update data to a Space
 
@@ -96,24 +93,19 @@ When you have many spaces, you will be glad you added meaningful titles and desc
 
 `-o, --override`       allow duplicate features to be uploaded even if they share the same feature id
 
-`-s, --stream `        stream large geojson and csv files (> 200 MB) (-a unavailable with streaming, use -p)
+`-s, --stream`        stream large geojson and csv files (> 200 MB) (-a unavailable with streaming, use -p)
 
 `-h, --help`           output usage information
 
-
 ##### Upload geojson
 
-```
-here xyz upload YOUR_SPACE_ID -f /Users/xyz/data.geojson
-```
+    here xyz upload YOUR_SPACE_ID -f /Users/xyz/data.geojson
 
 Upload geojson data to a Space with name YOUR_SPACE_ID
 
 ##### Upload csv
 
-```
-here xyz upload YOUR_SPACE_ID -f /Users/xyz/data.csv
-```
+    here xyz upload YOUR_SPACE_ID -f /Users/xyz/data.csv
 
 Upload csv data to a Space with name YOUR_SPACE_ID.
 
@@ -121,7 +113,7 @@ XYZ will attempt to choose the columns containing the latitude and longitude fie
 
     y, ycoord, ycoordinate, coordy, coordinatey, latitude, lat
     x, xcoord, xcoordinate, coordx, coordinatex, longitude, lon, lng, long, longitud 
-    
+
 If your csv uses different names, you can specify the latitude field with `-y` and longitude with `-x`.
 
 ##### Upload and stream large csv and geojson files
@@ -136,12 +128,10 @@ You can upload large geojson and csv files to your XYZ space by using `-s` -- th
 !!! warning "-a is not available with -s, use -p instead"
 
     When a file is streamed with `-s` it is not loaded into memory and -a is not available to preview and assign tags. You can specify tag using `-p`.
-    
+
 ##### Upload a shapefile
 
-```
-here xyz upload YOUR_SPACE_ID -f /Users/dhatb/data.shp
-```
+    here xyz upload YOUR_SPACE_ID -f /Users/dhatb/data.shp
 
 Upload shapefile data to a Space with name YOUR_SPACE_ID.
 
@@ -155,17 +145,13 @@ More tips in the [Working with Shapefiles](../xyz-shapefiles-docs) tutorial.
 
 ##### Upload with a unique ID
 
-```
-here xyz upload YOUR_SPACE_ID -f /Users/dhatb/data.csv -i unique_id
-```
+    here xyz upload YOUR_SPACE_ID -f /Users/dhatb/data.csv -i unique_id
 
 Upload data to a Space named YOUR_SPACE_ID with a unique ID of unique_id. This should be used if your data has truly unique identifiers. Note that many GIS systems will assign incrementing integers that conflict across files.
 
 ##### Upload and assign tags
 
-```
-here xyz upload YOUR_SPACE_ID -f file.geojson -a
-```
+    here xyz upload YOUR_SPACE_ID -f file.geojson -a
 
 Uploads data and allows users to select tags from a list of feature keynames, with a preview of the first few values. These tags can be used to filter data when querying the HERE XYZ API.
 
@@ -173,41 +159,33 @@ Uploads data and allows users to select tags from a list of feature keynames, wi
 
 Use the up and down arrows to navigate, and the space bar to select values:
 
-```
-1: year: 1996, 2005, 2015
-2: buffered: NO, YES, YES
-3: treatment: GREEN PAINT, SHARROWS, HIT POSTS
-4: globalid: c74ea99ef, 2d88ec21, 8e2ecaa2
-5: streetname: FOLSOM ST, 19th AVE, VALENCIA ST
-6: class: CLASS III, CLASS I, CLASS IV
-7: length: 263.2, 120.9, 708.4
-```
+    1: year: 1996, 2005, 2015
+    2: buffered: NO, YES, YES
+    3: treatment: GREEN PAINT, SHARROWS, HIT POSTS
+    4: globalid: c74ea99ef, 2d88ec21, 8e2ecaa2
+    5: streetname: FOLSOM ST, 19th AVE, VALENCIA ST
+    6: class: CLASS III, CLASS I, CLASS IV
+    7: length: 263.2, 120.9, 708.4
+
 Press return to select these values.
 
 ###### Response
 
-```
-year@1996, 1996, treatment@green_paint, green_paint streetname@folsom_st, folsom_st class@class_iv, class_iv
-```
+    year@1996, 1996, treatment@green_paint, green_paint streetname@folsom_st, folsom_st class@class_iv, class_iv
 
 ##### Upload with a Property Tag
 
-```
-here xyz upload -f file.geojson -p treatment
-```
+    here xyz upload -f file.geojson -p treatment
+
 Uploads data and adds the value of the selected featyre property as tag. These tags can be used to filter data when querying the HERE XYZ API.
 
 ###### Response
 
-```
-treatment@green_paint, treatment@sharrows, treatment@hit_post
-```
+    treatment@green_paint, treatment@sharrows, treatment@hit_post
 
 #### Show contents of a Space
 
-```
-here xyz show YOUR_SPACE_ID
-```
+    here xyz show YOUR_SPACE_ID
 
 Show the objects of a Space in table.
 
@@ -223,21 +201,17 @@ Show the objects of a Space in table.
 
 `-p, --prop <prop>     ` property fields to include in table, can be used multiple times
 
-`-w --web [web]        ` display xyz on http://geojson.tools
+`-w --web [web]        ` display xyz on [http://geojson.tools](http://geojson.tools)
 
 #### Delete a Space
 
-```
-here xyz delete YOUR_SPACE_ID
-```
+    here xyz delete YOUR_SPACE_ID
 
 Delete a Space you have access to.
 
 #### Clear a Space
 
-```
-here xyz clear YOUR_SPACE_ID
-```
+    here xyz clear YOUR_SPACE_ID
 
 Clear data from your Space
 
@@ -258,15 +232,11 @@ The system attempts to autodetect the latitude and longitude field name from the
 
 ##### Transform csv to geojson
 
-```
-here transform csv2geo filename.csv
-```
+    here transform csv2geo filename.csv
 
 ##### Transform a shapefile to geojson
 
-```
-here transform shp2geo filename.shp
-```
+    here transform shp2geo filename.shp
 
 ##### Options
 
@@ -276,113 +246,110 @@ here transform shp2geo filename.shp
 
 #### List all tokens
 
-```
-here xyz token
-```
+    here xyz token
 
 Lists all the xyz token you use
 
-```
-id type lat description
---------------- --------- ---------- ------------------------------------------------------------------------------
-YOUR_TOKEN_NR_1 PERMANENT 1534451767 xyz-hub=readFeatures,createFeatures,updateFeatures,deleteFeatures,manageSpaces
-YOUR_TOKEN_NR_2 PERMANENT 1534516620 xyz-hub=readFeatures
-```
+    id type lat description
+    --------------- --------- ---------- ------------------------------------------------------------------------------
+    YOUR_TOKEN_NR_1 PERMANENT 1534451767 xyz-hub=readFeatures,createFeatures,updateFeatures,deleteFeatures,manageSpaces
+    YOUR_TOKEN_NR_2 PERMANENT 1534516620 xyz-hub=readFeatures
 
 #### Learn more about your spaces
 
 ##### Get a list of tags used in a space
 
-```
-here xyz analyze spaceID
-```
+    here xyz analyze spaceID
 
 ###### Response
 
-```
-here xyz describe spaceID
-Operation may take a while. Please wait ......
-==========================================================
-                     Summary for Space zcispwpB
-==========================================================
-Total 891 features
-GeometryType  Count
-------------  -----
-Point         891  
+    here xyz describe spaceID
+    Operation may take a while. Please wait ......
+    ==========================================================
+                         Summary for Space zcispwpB
+    ==========================================================
+    Total 891 features
+    GeometryType  Count
+    ------------  -----
+    Point         891  
 
-Total unique tag Count : 19
-Unique tag list  :["small","type@small","ne_10m_airports","mid","type@mid","mid_and_military","type@mid_and_military","major_and_military","type@major_and_military","military_mid","type@military_mid","military","type@military","major","type@major","military_major","type@military_major","spaceport","type@spaceport"]
-TagName                  Count
------------------------  -----
-ne_10m_airports          891  
-mid                      475  
-type@mid                 475  
-type@major               367  
-major                    367  
-type@mid_and_military    14   
-major_and_military       14   
-type@major_and_military  14   
-mid_and_military         14   
-type@military_mid        10   
-military_mid             10   
-type@military_major      4    
-military_major           4    
-spaceport                3    
-type@spaceport           3    
-type@military            2    
-military                 2    
-type@small               2    
-small                    2    
-```
-
+    Total unique tag Count : 19
+    Unique tag list  :["small","type@small","ne_10m_airports","mid","type@mid","mid_and_military","type@mid_and_military","major_and_military","type@major_and_military","military_mid","type@military_mid","military","type@military","major","type@major","military_major","type@military_major","spaceport","type@spaceport"]
+    TagName                  Count
+    -----------------------  -----
+    ne_10m_airports          891  
+    mid                      475  
+    type@mid                 475  
+    type@major               367  
+    major                    367  
+    type@mid_and_military    14   
+    major_and_military       14   
+    type@major_and_military  14   
+    mid_and_military         14   
+    type@military_mid        10   
+    military_mid             10   
+    type@military_major      4    
+    military_major           4    
+    spaceport                3    
+    type@spaceport           3    
+    type@military            2    
+    military                 2    
+    type@small               2    
+    small                    2    
 
 !!! warning "`describe` only returns the first 500,000 features in a space"
 
     In order to avoid Node.js memory errors, only the first 500,000 features are described.
 
-
 ##### Get a count of values of a property in a space
 
-```
-here xyz analyze spaceID
-```
+    here xyz analyze spaceID
 
 ###### Response
 
 Use the arrow keys and select a property by pressing the space bar:
 
-```
-here xyz analyze zcispwpB
-Operation may take a while. Please wait ......
-? Select the properties to analyze 
- ◯ 1 : name : Sahnewal , Solapur , Birsa Munda
-❯◉ 2 : type : small , mid , mid
- ◯ 3 : abbrev : LUH , SSE , IXR
- ◯ 4 : gps_code : VILD , VASL , VERC
- ◯ 5 : location : terminal , terminal , terminal
- ◯ 6 : iata_code : LUH , SSE , IXR
- ◯ 7 : natlscale : 8 , 8 , 8
-```
+    here xyz analyze zcispwpB
+    Operation may take a while. Please wait ......
+    ? Select the properties to analyze
+     ◯ 1 : name : Sahnewal , Solapur , Birsa Munda
+    ❯◉ 2 : type : small , mid , mid
+     ◯ 3 : abbrev : LUH , SSE , IXR
+     ◯ 4 : gps_code : VILD , VASL , VERC
+     ◯ 5 : location : terminal , terminal , terminal
+     ◯ 6 : iata_code : LUH , SSE , IXR
+     ◯ 7 : natlscale : 8 , 8 , 8
 
 In this case, the CLI will count and sort the values of the `type` property.
 
-```
-PropertyName  Value               Count
-------------  ------------------  -----
-type          mid                 475  
-type          major               367  
-type          mid and military    14   
-type          major and military  14   
-type          military mid        10   
-type          military major      4    
-type          spaceport           3    
-type          small               2    
-type          military            2    
+    PropertyName  Value               Count
+    ------------  ------------------  -----
+    type          mid                 475  
+    type          major               367  
+    type          mid and military    14
+    type          major and military  14
+    type          military mid        10
+    type          military major      4
+    type          spaceport           3
+    type          small               2
+    type          military            2
 
-Total unique property values in space zcispwpB : 
+    Total unique property values in space zcispwpB :
 
-PropertyName  Count
-------------  -----
-type          9    
-```
+    PropertyName  Count
+    ------------  -----
+    type          9
 
+#### Update or Upload Schema
+
+Use
+
+    here xyz config YOUR_SPACE_ID -s <updated schema definition>
+
+to update or upload the schema to an existing space
+
+#### Delete Schema
+
+    here xyz config YOUR_SPACE_ID -s
+
+Deletes the schema from the space
