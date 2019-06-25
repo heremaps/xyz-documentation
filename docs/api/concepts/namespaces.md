@@ -76,8 +76,8 @@ with the following body
 
 When you upload a feature to XYZ Hub, we automatically add a property *@ns:com:here:xyz* to it. The following information is recorded in this property:
 
-+ *createdAt* - date and time the feature was created in miliseconds since 01.01.1970
-+ *updatedAt* - date and time the feature was updated in miliseconds since 01.01.1970
++ *createdAt* - date and time the feature was created in milliseconds since 01.01.1970
++ *updatedAt* - date and time the feature was updated in milliseconds since 01.01.1970
 + *space* - random unique space ID, created at space creation, a string
 + *tags* - the tags you added to the space, an array of strings
 

@@ -42,8 +42,8 @@ This one's all about the improved user experience! We've also released fixes for
 * Other minor UI improvements.
 
 🐜 **FIXED** 🐜
-* Studo account dashboard will now show accurate usage converted into percentage. Note: the usage isn't tracked in real-time, so your numbers won't change immediately as you are working with data in Studio.
-* You will now experience appropriate messages for your usage stastitics. We have taken care of pay-as-you-grow users as well.
+* Studio account dashboard will now show accurate usage converted into percentage. Note: the usage isn't tracked in real-time, so your numbers won't change immediately as you are working with data in Studio.
+* You will now experience appropriate messages for your usage statistics. We have taken care of pay-as-you-grow users as well.
 * Other minor bug fixes.
 
 🔮 **COMING SOON** 🔮
@@ -191,7 +191,7 @@ The XYZ Studio team is back with some new features that will help you tell even 
 At long last, legends! You can now add a legend to your published project, which will show the symbol and name for each style group on your map.  Preview your legend in Publish Settings, and if you like what you see, you can add it right then and there to your project. We hope you’re as excited about this as we are.
 
 _But wait, there’s more_: In Publish Settings, you can also choose to add your project’s title and description to the published version. You can now easily turn off cards completely for your published project. If the Cards option is not selected in Publish Settings, feature information cards will not be shown at all in your published project. If you select the Cards option, they will show on click, with an option to view on hover, in your published project.
-You probably didn’t need that explanation of how checkboxes work.
+You probably did not need that explanation of how checkboxes work.
 
 :hammer: **IMPROVED** :wrench:
 

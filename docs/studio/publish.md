@@ -38,5 +38,5 @@ share it with people directly or you can link to it from somewhere like blog or 
 
 You can also copy the **EMBED** code and use it directly in the code of your website or blog.
 It's a bit of HTML that will show your map directly on the page. Make sure that your blog accepts
-raw HTML and doesn't convert it to text. The map will appear inline where you put that snippet
+raw HTML and does not convert it to text. The map will appear inline where you put that snippet
 of code on your page.

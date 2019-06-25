@@ -2,7 +2,7 @@
 
 GeoJSON is an open standardized format for geodata based on the Javascript Object Notation (JSON) used to encode geographic data structures. This section is based on [RFC 7946](https://tools.ietf.org/html/rfc7946>).
 
-GeoJSON is a textual representation of geographical data and its nonspatial attributes.
+GeoJSON is a textual representation of geographical data and its non-spatial attributes.
 A GeoJSON document contains one object with can be a *Feature*, a *FeatureCollection* or a *Geometry*. The object has to have a property *type* which is one of the following:
 
 ## Point

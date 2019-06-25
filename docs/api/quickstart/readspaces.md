@@ -17,7 +17,7 @@ GET /spaces
     {
         "id": "x-demospace",
         "title": "My Demo Space",
-        "description": "Description as markdown",
+        "description": "Description as markdown"
     }
 ]
 ```
