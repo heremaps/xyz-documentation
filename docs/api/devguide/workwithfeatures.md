@@ -377,6 +377,30 @@ A PATCH request needs something like the following body
 }
 ```
 
+## Validation Errors
+
+If you are using the validation feature, you sometimes will get an error message when uploading or modifying features, such as this one:
+
+```JSON
+{
+  "type": "FeatureCollection",
+  ...
+  "features": [],
+  "failed": [
+    {
+      "id": null,
+      "position": 0,
+      "message": "Feature on position 0 has JSON schema validations errors/warnings.\n[[1,151][/properties] The object must have a property whose name is \"city\"., [1,151][/properties] The object must have a property whose name is \"employees\"., [1,151][/properties] The object must have a property whose name is \"name\"., [1,151][/properties] The object must have a property whose name is \"country\".]"
+    }
+  ]
+}
+```
+
+The *failed* property contains all the features that schema validation rejected.  
+The *id* is the id you sent. If you did not send one, the id will be null as in the example.  
+*Position* is the position (zero-based) in the uploaded feature collection.  
+The *message* contains the schema validation errors with a detailed description of what does not confirm to your schema.
+
 ## Searching a Space for Features
 
 There are two ways of searching a space. /search is one of them, the other is [/iterate](#iterating-features-from-specific-spaces). This does not order the results and it does not enable you to continue the search.
