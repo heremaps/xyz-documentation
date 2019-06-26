@@ -20,7 +20,7 @@ the param *schema*:
         }
     ]
 }
-``` 
+```
 
 !!! Note "If you use an URL please make sure that the URL is public accessible."
 
@@ -47,6 +47,8 @@ POST /spaces
 }
 ```
 
+!!! Warning "The $id properties of the schema must not include whitespace characters"
+
 ## Response
 
 ```JSON
@@ -62,7 +64,7 @@ POST /spaces
                  "schemaUrl": "<Location of schema in the XYZ managed S3 bucket>"
              }
         }
-    
+
     ],
     ...
 }
@@ -234,7 +236,7 @@ PATCH /spaces/{spaceId}
                  "schemaUrl": "<Location of updated schema in the XYZ managed S3 bucket>"
              }
         }
-    
+
     ],
     ...
 }
@@ -281,7 +283,7 @@ PATCH /spaces/{spaceId}
             "params": {
              }
         }
-    
+
     ],
     ...
 }
