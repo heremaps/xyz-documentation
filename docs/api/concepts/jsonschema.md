@@ -77,6 +77,8 @@ It is best practice to include a unique identifier for each schema
 }
 ```
 
+!!! Warning "The $id properties of the schema must not include whitespace characters"
+
 ## Primitive Types
 
 A JSON document to which a schema is applied is known as an 'instance'. An instance has one of six primitive types and a range of possible values:
