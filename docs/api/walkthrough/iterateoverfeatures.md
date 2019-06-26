@@ -7,7 +7,7 @@ Iterating over features is different from search in two ways:
 1. The results are ordered, no features are returned twice.
 2. Searches can be continued over several requests.
 
-Sometimes your search will have a lot of features as a result. But the limit you explicitly set or the default limit will only return some of them. In this case, a root attribute **handle** is set in the response. The search can then be continued with the next feature in line by adding the value of the **handle** response attribbute as a **handle** query parameter to the request.
+Sometimes your search will have a lot of features as a result. But the limit you explicitly set or the default limit will only return some of them. In this case, a root attribute **handle** is set in the response. The search can then be continued with the next feature in line by adding the value of the **handle** response attribute as a **handle** query parameter to the request.
 
 ## Request
 

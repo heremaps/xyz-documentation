@@ -16,4 +16,4 @@ access_token=<token>
 
 To obtain the credentials for an application, please visit <http://developer.here.com/plans> to register with HERE.
 
-You can read more about tokens, where to get and how to use them on the [Generate tokens](/api/getting-token.md) page.
+You can read more about tokens, where to get and how to use them on the [Generate tokens](/api/getting-token) page.

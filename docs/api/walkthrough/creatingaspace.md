@@ -26,6 +26,6 @@ POST /spaces
     "id": "x-demospace",
     "owner":"{appId}",
     "title": "My Demo Space",
-    "description": "Description as markdown",
+    "description": "Description as markdown"
 }
 ```

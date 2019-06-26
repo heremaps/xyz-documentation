@@ -86,7 +86,7 @@ put in quotes, like this: `"xyz9876"`).
 You will see the result of the example or your experiment in the right hand panel.
 The output is fully interactive.
 
-If you have coded yourself into a corner and the map doesn't work anymore as expected
+If you have coded yourself into a corner and the map does not work anymore as expected
 you can always **Reset** the sample back to it's original state where it should work.
 
 !!! hint "Also look into your browsers **Developer Tools** for messages"

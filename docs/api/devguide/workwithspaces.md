@@ -62,7 +62,7 @@ GET /spaces
 ### Response
 
 ```JSON
-{
+[
     {
         "id": "x-demospace",
         "title": "My Demo Space",
@@ -73,7 +73,7 @@ GET /spaces
         "title": "A public space",
         "description": "All the old oaks in Berlin" 
     }
-}
+]
 ```
 
 ## Updating a Space

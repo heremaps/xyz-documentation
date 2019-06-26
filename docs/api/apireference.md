@@ -10,4 +10,4 @@
 
 ## Other Useful Links
 
-You will find other useful links on the [Useful Links page](/api/links.md)
+You will find other useful links on the [Useful Links page](/api/links)
