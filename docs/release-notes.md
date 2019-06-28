@@ -1,5 +1,29 @@
 # Release notes for XYZ
 
+### Studio and Viewer Release 1.4
+
+New Feature: try out a new map renderer! Tangram is now available for published XYZ Studio maps.
+
+**TL;DR:**
+• Tangram map renderer.
+• Re-ordering of geometries.
+
+✨ **NEW** ✨
+• Along with the minimalist HERE map renderer, we have have new Tangram map renderer.
+• Tangram viewer provides new details like admin and street labels, as well as textures to the basemap.
+• You can now reorder your geometries.
+• Added two new basemap styles.
+
+🔨 **IMPROVED** 🔧
+• UX/UI improvements.
+• Under the hood, performance improvements.
+
+🐜 **FIXED** 🐜
+• Fixed an issue of district not being shown in cards and style groups for Microsoft building footprint data.
+• Other minor bug fixes.
+
+---
+
 ### Studio and Viewer release 1.1.1
 
 The XYZ Studio is all set to get you hooked on to the public datasets staring with Microsoft building footprint data.
@@ -28,6 +52,7 @@ The XYZ Studio is all set to get you hooked on to the public datasets staring wi
 * Fixed an issue of multiple plans get overplayed in footer of studio account dashboard.
 * Other minor bug fixes.
 
+---
 
 ### Studio Release 1.0.2
 
