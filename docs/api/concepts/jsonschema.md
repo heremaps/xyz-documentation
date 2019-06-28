@@ -6,20 +6,20 @@ JSON Schema provides vocabulary to define application-specific JSON documents. T
 
 The most basic schema is  
 
-```JSON
+```json5
 { }
 ```
 
 an empty JSON Object or (since draft 6 of the specification)
 
-```JSON
+```json5
 true
 ```
 
 effectively accepting any valid JSON.
 To reject everything with setting
 
-```JSON
+```json5
 false
 ```
 
@@ -29,13 +29,13 @@ as the schema.
 
 It is recommended to declare that a JSON fragment is a JSON Schema by using the **$schema** keyword in the root of the schema.
 
-```JSON
+```json5
 { "$schema": "http://json-schema.org/schema#" }
 ```
 
 If your schema was written against a specific version, you should include the draft name in the path, for example:
 
-```JSON
+```json5
 { "$schema": "http://json-schema.org/draft-04/schema#" }
 ```
 
@@ -43,7 +43,7 @@ If your schema was written against a specific version, you should include the dr
 
 It is best practice to include a unique identifier for each schema
 
-```JSON
+```json5
 { "$id": "http://yourdomain.com/schemas/myschema.json" }
 ```
 
@@ -51,7 +51,7 @@ It is best practice to include a unique identifier for each schema
 
 **$id** can also be used to reference a subschema without using JSON Pointer.
 
-```JSON
+```json5
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
 
@@ -100,7 +100,7 @@ A JSON document to which a schema is applied is known as an 'instance'. An insta
 
 ## Example JSON Schema for GeoJSON
 
-```JSON
+```json5
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
