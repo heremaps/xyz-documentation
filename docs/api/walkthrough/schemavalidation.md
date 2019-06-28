@@ -7,7 +7,7 @@ definition. Please add a processor with the ID *schema-validator* and put
 either a URL to a valid JSON schema or the complete schema as JSON string into
 the param *schema*:
 
-```JSON
+```json5
 {
     "title": "My Space with JSON Schema Validation",
     "description": "Description as markdown",
@@ -32,7 +32,7 @@ the param *schema*:
 POST /spaces
 ```
 
-```JSON
+```json5
 {
     "title": "My Space with JSON Schema Validation",
     "description": "Make sure that all features contain a field 'geometry' and a property 'name'.",
@@ -51,7 +51,7 @@ POST /spaces
 
 ## Response
 
-```JSON
+```json5
 {
     "id": "x-demospace",
     "owner":"{appId}",
@@ -65,8 +65,8 @@ POST /spaces
              }
         }
 
-    ],
-    ...
+    ]
+    //,...
 }
 ```
 
@@ -93,7 +93,7 @@ with the corresponding body:
 
 ### Request body
 
-```JSON
+```json5
 {
     "type": "FeatureCollection",
     "features": [
@@ -137,7 +137,7 @@ with the corresponding body:
 
 ### Response
 
-```JSON
+```json5
 {
     "type": "FeatureCollection",
     "inserted": [
@@ -206,7 +206,7 @@ new schema JSON string or URL.
 PATCH /spaces/{spaceId}
 ```
 
-```JSON
+```json5
 {
     "title": "My Space with JSON Schema Validation",
     "description": "Make sure that all features contain a field 'geometry' and a property 'name'.",
@@ -223,7 +223,7 @@ PATCH /spaces/{spaceId}
 
 ## Response
 
-```JSON
+```json5
 {
     "id": "x-demospace",
     "owner":"{appId}",
@@ -237,15 +237,17 @@ PATCH /spaces/{spaceId}
              }
         }
 
-    ],
-    ...
+    ]
+    //,...
 }
 ```
 
 ## Disabling Schema Validation
 
 To disable the Schema Validation just update the space definition but not send
-a *schema* parameter.
+the *schema-validator* processor definition. Please note that you have to
+include **all other** processor definitions if there are multiple; otherwise
+you will disable all processors.
 
 ## Request
 
@@ -255,36 +257,23 @@ a *schema* parameter.
 PATCH /spaces/{spaceId}
 ```
 
-```JSON
+```json5
 {
     "title": "My Space with JSON Schema Validation",
     "description": "Make sure that all features contain a field 'geometry' and a property 'name'.",
-    "processors": [
-        {
-            "id": "schema-validator",
-            "params": {
-            }
-        }
-    ]
+    "processors": []
 }
 ```
 
 ## Response
 
-```JSON
+```json5
 {
     "id": "x-demospace",
     "owner":"{appId}",
     "title": "My Space with JSON Schema Validation",
     "description": "Make sure that all features contain a field 'geometry' and a property 'name'.",
-    "processors": [
-        {
-            "id": "schema-validator",
-            "params": {
-             }
-        }
-
-    ],
-    ...
+    "processors": [],
+    //,...
 }
 ```
