@@ -5,22 +5,26 @@
 New Feature: try out a new map renderer! Tangram is now available for published XYZ Studio maps.
 
 **TL;DR:**
-• Tangram map renderer.
-• Re-ordering of geometries.
+
+* Tangram map renderer.
+* Re-ordering of geometries.
 
 ✨ **NEW** ✨
-• Along with the minimalist HERE map renderer, we have have new Tangram map renderer.
-• Tangram viewer provides new details like admin and street labels, as well as textures to the basemap.
-• You can now reorder your geometries.
-• Added two new basemap styles.
+
+* Along with the minimalist HERE map renderer, we have have new Tangram map renderer.
+* Tangram viewer provides new details like admin and street labels, as well as textures to the basemap.
+* You can now reorder your geometries.
+* Added two new basemap styles.
 
 🔨 **IMPROVED** 🔧
-• UX/UI improvements.
-• Under the hood, performance improvements.
+
+* UX/UI improvements.
+* Under the hood, performance improvements.
 
 🐜 **FIXED** 🐜
-• Fixed an issue of district not being shown in cards and style groups for Microsoft building footprint data.
-• Other minor bug fixes.
+
+* Fixed an issue of district not being shown in cards and style groups for Microsoft building footprint data.
+* Other minor bug fixes.
 
 ---
 
