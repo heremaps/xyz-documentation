@@ -4,8 +4,8 @@
 
 ## Adding data
 
-There are basically two ways of adding features to your space. And their only difference is the way, the existing data in your space is handled:
-Use *POST* and any pre-existing date is retained; use *PUT* and the only data that is left in your space is the one you just uploaded with the *PUT* request.
+There are basically two ways of adding features to your space. And their only difference is the way the existing data in your space is handled:
+Use *POST* and any pre-existing data is retained; use *PUT* and the only data that is left in your space is the one you just uploaded with the *PUT* request.
 
 There is a convenience request for modifying features, but that is a subject for another example.
 
@@ -211,7 +211,7 @@ DELETE /spaces/{spaceId}/features/id={featureId1},{featureId2}
 HTTP/1.1 204 No Content
 ```
 
-If you want to delete any tagged the same, you can also do this like so:
+If you want to delete any features tagged the same, you can also do this like so:
 
 ### Request
 
