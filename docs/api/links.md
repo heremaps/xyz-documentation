@@ -24,9 +24,9 @@ Here is a list of links for working with HERE XYZ
 
 [`https://xyz.api.here.com/maps/`](https://xyz.api.here.com/maps/)
 
-### Maps UI Documentation
+### Maps UI JSDoc Documentation
 
-[`https://xyz.api.here.com/maps/latest/documentation`](https://xyz.api.here.com/maps/latest/documentation)
+[`https://xyz.api.here.com/maps/latest/documentation/here.xyz.maps.html`](https://xyz.api.here.com/maps/latest/documentation/here.xyz.maps.html)
 
 ### JavaScript Maps UI Components
 Common [`https://xyz.api.here.com/maps/latest/xyz-maps-common.min.js`](https://xyz.api.here.com/maps/latest/xyz-maps-common.min.js)
