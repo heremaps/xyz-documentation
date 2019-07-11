@@ -17,7 +17,7 @@ var mySpaceProvider = new here.xyz.maps.providers.SpaceProvider ({
   // Zoom level at which tiles are cached
   level: 14,
 
-  // Space name
+  // Space ID
   space: 'playground-link',
 
   // User credential of the provider
