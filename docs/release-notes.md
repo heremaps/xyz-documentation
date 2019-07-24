@@ -1,5 +1,70 @@
 # Release notes for XYZ
 
+
+### XYZ Pro Features Beta
+
+This rather significant release provides access to exciting new features in the API:
+
+🔎🔎🔎 **Property Search** 🔍🔍🔍
+
+Property Search allows users to filter data by requesting features from the XYZ API based on the values of their properties. Only need buildings taller that 100 feet, or just addresses in one county? The XYZ Hub will automatically track and index these properties as you upload them, making it easy and fast to download just what you need.
+
+
+You can access property search with -s and operators -- `here xyz show spaceID -s "p.property_name>value"`
+
+
+Note that in a url, the arguments are `=, !=, =gt=, =gte=, =lt=, =lte=`.
+
+
+Properties are automatically indexed depending on their count and value.
+
+
+✂️✂️✂️ **Property Filter** ✂️✂️✂️
+
+We've all been there -- you have a lot of properties in your features. Too many, probably. If only you could somehow... filter them, and only return what you need with your geometry.
+
+
+We're here for you with `-p` -- even if you have 100 properties, `here xyz show -p p.property1,p.property2` will just return a feature with a geometry and those properties you carefully select.
+
+
+❇️❇️❇️ **Virtual Spaces** ❇️❇️❇️
+
+Virtual Spaces give users access to multiple spaces with one ID. Group lets you bundle your spaces together, and changes get written back to their original spaces. Associate lets you make your own personal edits to a shared space or one with public data, merging the properties of objects with the same feature ID.
+
+
+`here xyz virtualize -a|-g space1,space2`
+
+
+📐📐📐 **Schema Validation** 📏📏📏
+
+Everyone needs validation, and so does your data. Upload a JSON Schema file to describe your data formats and ensure quality data in your XYZ Spaces.
+
+
+`here xyz create -s schema.json`
+
+
+⬢⬡⬢ **Hexbins** ⬢⬡⬢
+
+Hexbins are a data simplification method that makes it feasible to visualize large datasets at low zoom levels (continent, country, state/province). A series of hexagon grids are created and the points that fall inside each are counted and written to a new space. These hexagons or their centroids can be quickly displayed in place of the raw data.
+
+
+Learn more via `here xyz hexbin -h`
+
+
+Note: reading from and writing to another user's space, and reading via bbox, are works in progress.
+
+
+🔧🔧🔧 **Space Configuration** 🔧🔧🔧
+
+
+Behold the new here xyz `config` command which not only lets you get data and statistics about your space, but edit and make changes to space metadata.
+
+`here xyz config spaceID`
+
+`here xyz config spaceID --stats`
+
+---
+
 ### Studio and Viewer Release 1.4
 
 New Feature: try out a new map renderer! Tangram is now available for published XYZ Studio maps.
