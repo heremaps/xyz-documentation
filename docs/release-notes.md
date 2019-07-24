@@ -1,7 +1,8 @@
 # Release notes for XYZ
 
+---
 
-### XYZ Pro Features Beta
+### XYZ Pro Features Beta Release 1.0.1
 
 This rather significant release provides access to exciting new features in the API:
 
