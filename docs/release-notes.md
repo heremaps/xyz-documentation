@@ -1,6 +1,5 @@
 # Release notes for XYZ
 
----
 
 ### XYZ Pro Features Beta Release 1.0.1
 
