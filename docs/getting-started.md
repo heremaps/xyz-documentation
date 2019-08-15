@@ -49,4 +49,4 @@ Once you've received an AppID and App Code for XYZ, you can generate a token by 
 
 ## Get started with XYZ
 
-Now that your credentials have been generated with XYZ, you're good to go! Learn more about XYZ through [tutorials](https://developer.here.com/tutorials?category=HERE%2BXYZ), [the CLI](tools/index.md), or [API documentation](api/index.md)
+Now that your credentials have been generated with XYZ, you're good to go! Learn more about XYZ through [tutorials](https://developer.here.com/tutorials?category=HERE%2BXYZ), [the CLI](cli/index.md), or [API documentation](api/index.md)
