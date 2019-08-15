@@ -45,8 +45,8 @@ Once you've received an AppID and App Code for XYZ, you can generate a token by 
 
 [`https://xyz.api.here.com/token-ui/`](https://xyz.api.here.com/token-ui/)
 
-(You can learn more about [Tokens here](/api/getting-token)).
+(You can learn more about [Tokens here](/api/getting-token.md)).
 
 ## Get started with XYZ
 
-Now that your credentials have been generated with XYZ, you're good to go! Learn more about XYZ through [tutorials](https://developer.here.com/tutorials?category=HERE%2BXYZ), [the CLI](/tools/overview), or [API documentation](/api/overview)
+Now that your credentials have been generated with XYZ, you're good to go! Learn more about XYZ through [tutorials](https://developer.here.com/tutorials?category=HERE%2BXYZ), [the CLI](/tools/overview.md), or [API documentation](/api/overview.md)
