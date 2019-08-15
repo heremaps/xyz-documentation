@@ -37,3 +37,16 @@ A couple of seconds after you selected the **Generate App ID and App Code** butt
 in the dialog. You can always get back to this, but now it's good time to make a note of both.
 
 [![Developer Overview](assets/images/start-get-appid.png)](assets/images/start-get-appid.png)
+
+
+## Generating Tokens
+
+Once you've received an AppID and App Code for XYZ, you can generate a token by going to the **XYZ Hub Token Generator** site:
+
+[`https://xyz.api.here.com/token-ui/`](https://xyz.api.here.com/token-ui/)
+
+(You can learn more about [Tokens here](/api/getting-token)).
+
+## Get started with XYZ
+
+Now that your credentials have been generated with XYZ, you're good to go! Learn more about XYZ through [tutorials](https://developer.here.com/tutorials?category=HERE%2BXYZ), [the CLI](/tools/overview), or [API documentation](/api/overview)
