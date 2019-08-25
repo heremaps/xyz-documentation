@@ -4,11 +4,13 @@ The `hexbin` command in the HERE CLI lets you quickly create hexbins and their c
 
 ## Getting started
 
-If you don't already have a set of points in an XYZ space.
+If you don't already have a set of points in an XYZ space, you can upload them using the CLI.
 
 	here xyz upload -f your.geojson
 	
-(You can also use a CSV or Shapefiles.) If you don't have data handy, you can use this CSV of [bicycle parking in San Francisco](https://data.sfgov.org/Transportation/Bicycle-Parking/hn4j-6fx5). 
+(You can also use a CSV with point coordinates or shapefiles.) 
+
+If you don't have data handy, you can use this CSV of [bicycle parking in San Francisco](https://data.sfgov.org/Transportation/Bicycle-Parking/hn4j-6fx5). 
 
 	here xyz upload -f "https://data.sfgov.org/api/views/hn4j-6fx5/rows.csv"
 	
