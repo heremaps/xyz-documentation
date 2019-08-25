@@ -71,15 +71,22 @@ For convenience, here is a link to that data:
 
 http://geojson.tools/index.html?url=https://xyz.api.here.com/hub/spaces/ZGAzaLaA/search?limit=5000&clientId=cli&tags=zoom11_hexbin&access_token=APwC9OKv8ww_zMGWqPTSQdg
 
+![xyz-hexbin-geojson-tools](https://github.com/heremaps/xyz-documentation/blob/master/docs/assets/images/xyz-hexbin-geojson-tools.png)
+
 You can also open the hexbin space in XYZ Space Invader and select zoom levels from the tag list.
 
 	here xyz show spaceID -v 
 	
-If you do not choose a tage with `-t`, you can select one on the right pane.
+In XYZ Space Invader, you can select properties and choose data-driven color palettes, and change the basemaps to suit the data.
+	
+If you do not choose a tag with `-t` in the CLI, you can select a zoom level using the tags in the right pane.
 
-In XYZ Space Invader, you can select properties and choose data-driven color palettes, and change the basemaps to suit the data. Click 
+
+![xyz-hexbin-space-invader](https://github.com/heremaps/xyz-documentation/blob/master/docs/assets/images/xyz-hexbin-space-invader.png)
 
 https://s3.amazonaws.com/xyz-demo/scenes/xyz_tangram/index.html?space=ZGAzaLaA&token=APwC9OKv8ww_zMGWqPTSQdg&basemap=xyz-pixel&buildings=1&label=undefined&colors=range&points=2&lines=0&outlines=0&highlight=0&places=1&roads=1&water=0&tags=zoom12_centroid&property=count&palette=viridis&paletteFlip=false&sort=values&hideOutliers=false#12.858333333333318/37.7491/-122.4451
+
+Click for more examples on how to use [XYZ Space Invader](https://github.com/heremaps/xyz-documentation/blob/master/docs/space-invader/tutorial.md).
 
 ## Advanced options
 
