@@ -2,7 +2,7 @@
 
 The `hexbin` command in the HERE CLI lets you quickly create hexbins and their centroids from point datasets in your HERE XYZ account. Hexbins can be useful for data analysis, and can also allow you to render datasets that are too large to effectively view at low zoom levels.
 
-### Getting started
+## Getting started
 
 If you don't already have a set of points in an XYZ space.
 
