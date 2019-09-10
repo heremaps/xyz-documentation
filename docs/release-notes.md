@@ -4,14 +4,11 @@
 
 Added
 - A new optional parameter `includeStorageId` for the GET /spaces query could to include the ids of the storage connectors in the list of space definitions.
-- The space definitions, include two new properties (accessible by internal clients)
-  - `contentUpdatedAt`: indicates the last time the content of a space was modified
-  - `volatility`: a value between 0 and 1 to describe how volatile is the content of a space
 - The connector protocol is extended to support feature clustering.
 
 Changed
 - The values createdAt and updatedAt of the space definition are now public and visible in single space responses and space list responses.
-- A new error response code `513 Response Payload Too Large` is sent to the clients for responses, which are too large for AWS API Gateway.
+- A new error response code `513 Response Payload Too Large` is sent to the clients for responses which are too large for AWS API Gateway.
 - The URI length limit for requests to the API is increased from 4K to 10K.
 
 Fixed
