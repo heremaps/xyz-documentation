@@ -2,9 +2,6 @@
 
 ### XYZ Hub - 2019.37.01 / 2019-09-09
 
-Added
-- A new optional parameter `includeStorageId` for the GET /spaces query could to include the ids of the storage connectors in the list of space definitions.
-- The connector protocol is extended to support feature clustering.
 
 Changed
 - The values createdAt and updatedAt of the space definition are now public and visible in single space responses and space list responses.
@@ -13,7 +10,6 @@ Changed
 
 Fixed
 - Resolve an issue that the space is not stored, when a preprocessor returns a space definition without a modification.
-- Storing a space with an empty list of listeners no longer results in an error.
 
 
 ### XYZ Pro Features Beta Release 1.0.1
