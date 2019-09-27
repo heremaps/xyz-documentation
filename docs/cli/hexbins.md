@@ -1,6 +1,6 @@
 ## Creating hexbins with the HERE CLI
 
-The `hexbin` command in the HERE CLI lets you quickly create hexbins and their centroids from point datasets in your HERE XYZ account. Hexbins can be useful for data analysis, and can also allow you to render datasets that are too large to effectively view at low zoom levels.
+The `hexbin` command in the HERE CLI lets you quickly create hexbins and their centroids from large, dense point datasets in your XYZ spaces. Hexbins can be useful for data analysis, and can also allow you to render datasets that are too large to effectively view at low zoom levels.
 
 ## Getting started
 
@@ -45,6 +45,7 @@ For reference, here's a rough guide of zoom levels and admin hierarchies:
 
 XYZ Hexbins will generate a hexagonal grid for each zoom level (or width) that you selected. It will then count the points that fall within each hexagon. It also tracks the maximum count seen in that grid, and after the pass is completed, it writes that value to each hexbin. An "occupancy" rate is then calculated for each hexbin relative to the rest of that grid, and a scaled `hsla` color value is written to the feature for display convenience (blue is low, red is high).
 
+
 ### Using tags with hexbin data
 
 The CLI also creates centroids for each hexbin. This is useful for general display and for labels. You can use XYZ tags to pull these out separately.
@@ -63,7 +64,7 @@ these tags can be used to pull out the hexbins and centroids for each zoom level
 	zoom10_centroid
 	...
 
-After you generate the hexbins in an XYZ space, you can view them with any GeoJSON viewer. If you want to view just the zoom 11 hexbins, you can use the `-t` option with view:
+After you generate the hexbins from an XYZ space, you can view them with any GeoJSON viewer. If you want to view just the zoom 11 hexbins, you can use the `-t` option with view:
 
 	here xyz show spaceID -w -t zoom11_hexbin
 	
@@ -72,6 +73,41 @@ For convenience, here is a link to that data:
 http://geojson.tools/index.html?url=https://xyz.api.here.com/hub/spaces/ZGAzaLaA/search?limit=5000&clientId=cli&tags=zoom11_hexbin&access_token=APwC9OKv8ww_zMGWqPTSQdg
 
 ![xyz-hexbin-geojson-tools](https://github.com/heremaps/xyz-documentation/blob/master/docs/assets/images/xyz-hexbin-geojson-tools.png)
+
+### Data contained in XYZ Hexbins
+
+Hexbin features contain various values that can help with analysis and visualization:
+- `count`: the number of points in a hexbin
+- `maxCount`: the largest number of points in any hexbin across that particular zoom level or cell width
+- `occupancy`: `count/maxCount`, how "full" that hexbin is compared to other hexbins across that particular zoom level or cell width
+- `color`: an `hsla` color value that correlates to that hexbin's relative occupancy (red = "full", green = "average", blue = "empty
+- `centroid`: the centroid of the hexbin (useful for label placement -- the centroid is also written as a separate feature)
+
+```
+      "properties": {
+        "color": "hsla(0, 100%, 50%,0.51)",
+        "count": 468,
+        "maxCount": 468,
+        "occupancy": 1,
+      },
+      ...
+      "properties": {
+        "color": "hsla(81, 100%, 50%,0.51)",
+        "count": 279,
+        "maxCount": 468,
+        "occupancy": 0.5961538461538461
+      },
+      ...
+      "properties": {
+        "color": "hsla(197, 100%, 50%,0.51)",
+        "count": 6,
+        "maxCount": 468,
+        "occupancy": 0.01282051282051282...
+      }
+```
+
+
+
 
 You can also open the hexbin space in XYZ Space Invader and select zoom levels from the tag list.
 
