@@ -138,9 +138,45 @@ Here's an example [showing street types in San Francisco](https://s3.amazonaws.c
 
 ![xyz-hexbin-space-invader](../assets/images/hexbin_subgroup.png)
 
+And [here is a sample of a subcount object](http://geojson.tools/index.html?url=https://xyz.api.here.com/hub/spaces/qAtS3e8G/search?limit=5000&clientId=cli&tags=zoom10_centroid&access_token=AFbjoHrBlTB2K5_gqvcP_S8):
+
+```
+      "properties": {
+        "count": 468,
+        "maxCount": 468,
+        "subcount": {
+          "ST": {
+            "color": "hsla(0, 100%, 50%,0.51)",
+            "count": 324,
+            "maxCount": 324,
+            "occupancy": 1
+          },
+          "ALY": {
+            "color": "hsla(0, 100%, 50%,0.51)",
+            "count": 16,
+            "maxCount": 16,
+            "occupancy": 1
+          },
+          "AVE": {
+            "color": "hsla(107, 100%, 50%,0.51)",
+            "count": 57,
+            "maxCount": 122,
+            "occupancy": 0.4672131147540984
+          },
+```
+
 ### Sum and average
 
 If a point feature has a quantitative property, you can use -a to add it up and calculate an average. These values, along with `maxSum` is recorded in a `sum` object within each hexbin.
+
+```
+        "sum": {
+          "sum": 4071,
+          "maxSum": 5117,
+          "average": 8.698717948717949,
+          "property_name": "incidents"
+        }
+```
 
 XYZ Space Invader can compare and color these values across the hexbin grid. [Here we see the summed values of Minneapolis property values](https://s3.amazonaws.com/xyz-demo/scenes/xyz_tangram/index.html?space=ZL228Jrk&token=AFbjoHrBlTB2K5_gqvcP_S8&basemap=xyz-pixel-dark&buildings=1&label=undefined&colors=range&points=0&lines=0&outlines=0&highlight=0&places=1&roads=1&water=0&tags=zoom13_centroid&property=sum&palette=colorBrewerYlOrRd&paletteFlip=true&rangeFilter=4&sort=values&hideOutliers=false#12.370833333333346/44.9662/-93.2612).
 
