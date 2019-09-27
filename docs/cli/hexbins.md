@@ -136,8 +136,7 @@ This would count the unique values of the PLACEMENT property in each feature, tr
 
 Here's an example [showing street types in San Francisco](https://s3.amazonaws.com/xyz-demo/scenes/xyz_tangram/index.html?space=qAtS3e8G&token=AFbjoHrBlTB2K5_gqvcP_S8&basemap=xyz-pixel-dark&buildings=1&label=undefined&colors=range&points=2&lines=0&outlines=1&highlight=0&places=1&roads=1&water=0&tags=zoom12_hexbin&property=subcount.AVE.count&palette=colorBrewerYlGnBu&paletteFlip=true&rangeFilter=0&sort=values&hideOutliers=true#13.166666666666664/37.7568/-122.4384), where street type was chosen as a subgroup. `subcount.AVE` can be used to see where Avenue is the most common street type. You can click on `subcount.ST.count` to see the streets of San Francisco.
 
-![xyz-hexbin-space-invader](../assets/images/hexbin-subgroup.png)
-
+![xyz-hexbin-space-invader](../assets/images/hexbin_subgroup.png)
 
 ### Sum and average
 
@@ -145,7 +144,7 @@ If a point feature has a quantitative property, you can use -a to add it up and 
 
 XYZ Space Invader can compare and color these values across the hexbin grid. [Here we see the summed values of Minneapolis property values](https://s3.amazonaws.com/xyz-demo/scenes/xyz_tangram/index.html?space=ZL228Jrk&token=AFbjoHrBlTB2K5_gqvcP_S8&basemap=xyz-pixel-dark&buildings=1&label=undefined&colors=range&points=0&lines=0&outlines=0&highlight=0&places=1&roads=1&water=0&tags=zoom13_centroid&property=sum&palette=colorBrewerYlOrRd&paletteFlip=true&rangeFilter=4&sort=values&hideOutliers=false#12.370833333333346/44.9662/-93.2612).
 
-![minneapolis](../assets/images/hexbin-subgroup.png)
+![minneapolis](https://github.com/heremaps/xyz-documentation/blob/master/docs/assets/images/hexbin_sum.png)
 
 
 
