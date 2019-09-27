@@ -415,10 +415,10 @@ You can learn more about hexbins and how to display them [in this tutorial](.../
 ##### Data contained in XYZ Hexbins
 
 Hexbin features contain various values that can help with analysis and visualization:
-- `count`: the number of points in a hexbin
-- `maxCount`: the largest number of points in any hexbin
-- `occupancy`: `count/maxCount`, how "full" that hexbin is compared to other hexbins
-- `color`: an HSLA color range that correlates to relative occupancy (red = "full", green = "average", blue = "empty
+- `count`: the number of points in a hexbin 
+- `maxCount`: the largest number of points in any hexbin across that particular zoom level or cell width
+- `occupancy`: `count/maxCount`, how "full" that hexbin is compared to other across that particular zoom level or cell width
+- `color`: an `hsla` color range that correlates to relative occupancy (red = "full", green = "average", blue = "empty
 - `centroid`: the centroid of the hexbin (useful for label placement -- the centroid is also written as a separate feature)
 
 ```
