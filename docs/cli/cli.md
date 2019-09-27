@@ -149,20 +149,15 @@ you can specify the name of that column with `-p`.
     here xyz upload -f /Users/xyz/data.csv -p points
 
 
-##### Upload and stream large csv and geojson files
+##### Upload and stream large CSV and GeoJSON files
 
-You can upload large geojson and csv files to your XYZ space by using `-s` -- this will stream the file and avoid Node memory errors.
-
-    here xyz upload YOUR_SPACE_ID -f /Users/xyz/big_data.csv -s
-
+You can upload CSV and GeoJSON files to your XYZ space by using `-s` -- this will stream the file and avoid Node memory errors, and will be considerably faster than the standard upload method.
 
     here xyz upload YOUR_SPACE_ID -f /Users/xyz/big_data.csv -s
 
-!!! warning "-a is not available with -s, use -p instead"
-
-    When a file is streamed with `-s` it is not loaded into memory and -a is not available to preview and assign tags. You can specify tag using `-p`.
+!!! warning When a file is streamed with `-s` it is not loaded into memory and -a is not available to preview and assign tags. You can specify tag using `-p`.
     
-_Note: HERE XYZ is a database. Databases trade off storage space for speed, and your data will always take up more space in XYZ (or any database) than it does in a static file. When a file is uploaded into an XYZ Space, features, their properties, and the geometries are broken out into multiple tables, indexed and tagged. All of this lets you query your geospatial data on demand, and access it dynamically as vector tiles. HERE XYZ users are charged for database storage used at the rate of $3 per month per 5GB. You can check the size of your XYZ Spaces in your account dashboard or the CLI._
+!!! note HERE XYZ is a database. Databases trade off storage space for speed, and your data will always take up more space in XYZ than it does in a static file. When a file is uploaded into an XYZ Space, features, their properties, and the geometries are broken out into multiple tables, indexed and tagged. All of this lets you query your geospatial data on demand, and access it dynamically as vector tiles. HERE XYZ users are charged for database storage used at the rate of $3 per month per 5GB. You can check the size of your XYZ Spaces in your account dashboard or the CLI.
 
 ##### Upload a shapefile
 
@@ -234,13 +229,13 @@ Uploads data and adds the value of the selected feature property as tag. These t
 treatment@green_paint, treatment@sharrows, treatment@hit_post
 ```
 
-#### Show contents of a Space
+#### Show contents of a space
 
 ```
 here xyz show YOUR_SPACE_ID
 ```
 
-Show the objects of a Space in table.
+Show the objects of a space in table, filter by tags or property values, or open the space in other tools.
 
 ##### Options
 
@@ -248,15 +243,53 @@ Show the objects of a Space in table.
 
 `-h, --handle <handle> ` The handle to continue the iteration
 
-`-t, --tags <tags>     ` Tags to filter on
+`-t, --tags <tags>     ` Filter by tags
 
 `-r, --raw             ` show raw GeoJSON content instead of table
+
+`-s, --search <propfilter> ` search feature properties 
 
 `-p, --prop <prop>     ` property fields to include in table, can be used multiple times
 
 `-w --web         ` display xyz on [http://geojson.tools](http://geojson.tools)
 
 `-v --vector  ` inspect and anayze XYZ spaces using Tangram / [XYZ Space Invader](../space-invader.md)
+
+##### Filter by Tags
+
+Using `show` on a large space will generate a long table. You can see the raw GeoJSON of the first 5000 features using `-r`.
+
+If your space contains a few hundred or a few thousand features, you can open the space in geojson.tools, a data preview tool, using `show -w`. Larger spaces can be previewed in [XYZ Space Invader](../space-invader.md), a Tangram-based tool from XYZ Labs.
+
+You can filter tags from XYZ using tags with `-t`:
+
+`here xyz show spaceID -t my_tag` (records with `my_tag` will be printed in the console)
+`here xyz show spaceID -w -t my_tag` (records with `my_tag` will be opened in geojson.tools)
+`here xyz show spaceID -v -t my_tag` (records with `my_tag` will be opened in XYZ Space Invader)
+
+##### Property Search 
+
+If a property has been indexed by XYZ, you can filter them with `-s` or `--search`. The property name must be prefixed by `p.`:
+
+    here xyz show spaceID -s "p.property_name>value"
+    here xyz show spaceID -s "p.name=John,Tom+p.age<50+p.phone='9999999'+p.zipcode=123456" -w
+    
+- Operators include `>,<,<=,>=,=,!=`
+- Search expressions must be enclosed in double quotes, e.g. `"p.property_name>value"`
+- Use comma separated values to search multiple values of a property, e.g. `OR`. Use `+` for `AND`.
+- Use single quotes to signify a string value, e.g. `"p.property_name>value='100'"` vs `"p.property_name>value=100"`
+- To access feature ID, timestamps, or tags, prefix them with `f.`, e.g. `f.id, f.updatedAt, f.tags f.createdAt`
+- When accessing Property Search via the API, the URL-safe arguments are `=`, `!=`, `=gt=`, `=gte=`, `=lt=`, `=lte=`.
+
+!!! note Property Search is available in spaces with fewer than 15,000 features by default. For spaces larger than 15,000 spaces, a limited number of features will be indexed. To access more, you'll need an XYZ Pro license. 
+
+##### Property Filters
+
+You can use `show -p` to filter the properties that get returned by the API. This is useful when your features have a large number of properties, and you only need to return some of them along with with the geometry.
+
+    here xyz show -p p.property1,p.property2 -w
+    
+!!! note Property Filters are an XYZ Pro feature.
 
 #### Delete a Space
 
@@ -272,7 +305,7 @@ Delete a Space you have access to.
 here xyz clear YOUR_SPACE_ID
 ```
 
-Clear data from your Space
+Clear data from your space. You clear the entire space, or clear by tag or feature ID.
 
 ##### Options
 
@@ -353,7 +386,7 @@ You can disable sharing by passing a `false` parameter:
 
 A schema validation json file can be configured for a space. The schema definition can be in the form of a web address or a local schema json file. Features that do not match this schema will not be uploaded. 
 
-!!! This is an XYZ Pro feature that requires a license. [Learn more about XYZ Pro features here](../xyz_pro.md).
+!!! note This is an XYZ Pro feature that requires a license. [Learn more about XYZ Pro features here](../xyz_pro.md).
 
 ```
 here xyz config YOUR_SPACE_ID -s schema_definition.json
@@ -363,4 +396,116 @@ To delete a schema from a space:
 ```
 here xyz config YOUR_SPACE_ID -s
 ```
+
+
+#### Hexbins
+
+Hexbins are a data simplification method that makes it feasible to visualize large datasets of point features at low zoom levels (continent, country, state/province). A series of hexagon grids are created and the points that fall inside each are counted and written to a new space, and statistics are calculated across the hexbin grid. 
+
+These hexagons (or their centroids) and their statistics can be quickly displayed in place of the raw data that might overwhelm a renderer. Default colors indicating relative "occupancy" are generated for convenience of display.
+
+`here xyz hexbin spaceID -z 5-10` create hexbins appropriate for zoom levels 5 through 10
+`here xyz hexbin spaceID -z 8,10,12` create hexbins appropriate for zoom 8,10,12
+`here xyz hexbin spaceID -c 100,1000,100000` create hexbins that are 100 meters, 1kmm and 10km wide
+
+Hexbins are tagged by zoom level and width and type, makeing it easy to extract one set from the hexbin space for display and comparison.
+
+##### Data contained in XYZ Hexbins
+
+Hexbin features contain various values that can help with analysis and visualization:
+- `count`: the number of points in a hexbin
+- `maxCount`: the largest number of points in any hexbin
+- `occupancy`: `count/maxCount`, how "full" that hexbin is compared to other hexbins
+- `color`: an HSLA color range that correlates to relative occupancy (red = "full", green = "average", blue = "empty
+- `centroid`: the centroid of the hexbin (useful for label placement -- the centroid is also written as a separate feature)
+
+```
+      "properties": {
+        "color": "hsla(0, 100%, 50%,0.51)",
+        "count": 468,
+        "maxCount": 468,
+        "occupancy": 1,
+      },
+      ...
+      "properties": {
+        "color": "hsla(81, 100%, 50%,0.51)",
+        "count": 279,
+        "maxCount": 468,
+        "occupancy": 0.5961538461538461
+      },
+      ...
+      "properties": {
+        "color": "hsla(197, 100%, 50%,0.51)",
+        "count": 6,
+        "maxCount": 468,
+        "occupancy": 0.01282051282051282...
+      }
+```
+
+##### Hexbin sum and average
+
+If a property is qualitative (property values, income, population), XYZ Hexbins can sum that up, compare the totals, and calculate an average.
+
+```
+        "sum": {
+          "sum": 4071,
+          "maxSum": 5117,
+          "average": 8.698717948717949,
+          "property_name": "value"
+        }
+```
+        
+##### Hexbin subcounts
+You can also specify a `subcount` within each hexbin based upon the count of the values of particular property.
+
+    `here xyz hexbin spaceID -z 8-12 -p business_type`
+    
+This would create a `subcount` object in each hexbin, which would contain the relative count of that property value across the hexbin grid.
+
+```
+        "count": 48,
+        "maxcount": 400,
+        "subcount": {
+          "bar": {
+            "color": "hsla(181, 100%, 50%,0.51)",
+            "count": 3,
+            "maxCount": 32,
+            "occupancy": 0.09375
+          },
+          "grocery_store": {
+            "color": "hsla(158, 100%, 50%,0.51)",
+            "count": 5,
+            "maxCount": 24,
+            "occupancy": 0.20833333333333334
+          },
+          "restaurant": {
+            "color": "hsla(0, 100%, 50%,0.51)",
+            "count": 20,
+            "maxCount": 40,
+            "occupancy": 1
+          }...
+```
+
+##### Options
+
+`  -c, --cellsize <cellsize>     ` size of hexgrid cells in meters, comma-separate multiple values
+`  -i, --ids                     ` add IDs of features counted within the hexbin as an array inside the property of the hexbin created
+`  -p, --groupBy <groupBy>       ` name of the feature property by which hexbin counts will be further grouped. subcounts for unique values will be available as objects in the feature
+`  -a, --aggregate <aggregate>   ` name of the feature property used for aggregating sum value of all the features inside hexbin. A sum object will be created, with relative and max sum, and average.
+
+`  -r, --readToken <readToken>   ` token of another user's source space, from which points will be read
+`  -w, --writeToken <writeToken> ` token of another user's target space to which hexbins will be written
+`  -t, --tags <tags>             ` only make hexbins for features in the source space that match the specific tag(s), comma-separate multiple values
+`  -b, --bbox <bbox>             ` only create hexbins for records inside a specified bounding box - minLon,minLat,maxLon,maxLat
+`  -l, --latitude <latitude>     ` latitude which will be used for converting cellSize from meters to degrees
+`  -z, --zoomLevels <zoomLevels> ` create hexbins optimized for zoom levels -- comma separate multiple values, (-z 8,10,12) or dash for continuous range (-z 10-15)
+`  -h, --help                    ` output usage information
+
+You can create hexbins either by width in meters, or use preset widths appropriate to the zoom level.
+
+#### Virtual Spaces
+
+Virtual Spaces give users access to multiple spaces with one ID. Group lets you bundle your spaces together, and changes get written back to their original spaces. Associate lets you make your own personal edits to a shared space or one with public data, merging the properties of objects with the same feature ID.
+
+    here xyz virtualize -a|-g space1,space2
 
