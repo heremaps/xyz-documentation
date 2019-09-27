@@ -132,7 +132,22 @@ Values of properties of a feature can also be counted with `here xyx hexbin -p p
 
 	here xyz hexbin spaceID -p PLACEMENT
 	
-This would count the unique values of the PLACEMENT property in each feature, track the maximum, and generate an occupancy value to be used in data visualization.
+This would count the unique values of the PLACEMENT property in each feature, track the maximum, and generate an occupancy value to be used in data visualization. XYZ Space Invader can use that value to dynamically generate a color based on that hexbin's subgroup value compared to other hexbin's subgroup values.
+
+Here's an example [showing street types in San Francisco](https://s3.amazonaws.com/xyz-demo/scenes/xyz_tangram/index.html?space=qAtS3e8G&token=AFbjoHrBlTB2K5_gqvcP_S8&basemap=xyz-pixel-dark&buildings=1&label=undefined&colors=range&points=2&lines=0&outlines=1&highlight=0&places=1&roads=1&water=0&tags=zoom12_hexbin&property=subcount.AVE.count&palette=colorBrewerYlGnBu&paletteFlip=true&rangeFilter=0&sort=values&hideOutliers=true#13.166666666666664/37.7568/-122.4384), where street type was chosen as a subgroup. `subcount.AVE` can be used to see where Avenue is the most common street type. You can click on `subcount.ST.count` to see the streets of San Francisco.
+
+![xyz-hexbin-space-invader](https://github.com/heremaps/xyz-documentation/blob/master/docs/assets/images/hexbin-subgroup.png)
+
+
+### Sum and average
+
+If a point feature has a quantitative property, you can use -a to add it up and calculate an average. These values, along with `maxSum` is recorded in a `sum` object within each hexbin.
+
+XYZ Space Invader can compare and color these values across the hexbin grid. [Here we see the number of parking spots per San Francisco street added up](https://s3.amazonaws.com/xyz-demo/scenes/xyz_tangram/index.html?space=qAtS3e8G&token=AFbjoHrBlTB2K5_gqvcP_S8&basemap=xyz-pixel-dark&buildings=1&label=undefined&colors=range&points=3&lines=0&outlines=0&highlight=0&places=1&roads=1&water=0&tags=zoom12_centroid&property=count&palette=colorBrewerYlOrRd&paletteFlip=true&rangeFilter=0&sort=values&hideOutliers=true#12.641666666666667/37.7495/-122.4324).
+
+![xyz-hexbin-space-invader](https://github.com/heremaps/xyz-documentation/blob/master/docs/assets/images/hexbin-subgroup.png)
+
+
 
 ### Updates
 
