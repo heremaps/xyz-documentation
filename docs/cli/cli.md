@@ -29,7 +29,7 @@ here --help
 
 ### configure
 
-As explained earlier, HERE CLI needs to know you to interact with your Spaces. You can use
+As explained earlier, HERE CLI needs to know you to interact with your XYZ Spaces. You can use
 
 ```
 here configure account
@@ -70,13 +70,12 @@ When you create a new Space, the SpaceID will be generated automatically.
 
 `-d <desc>` description for space
 
-`-s <schema definition>` schema for space with schema validation
+!!! tip When you have many spaces, you will be glad you added meaningful titles and descriptions.
 
-When you have many spaces, you will be glad you added meaningful titles and descriptions.
-The schema definition can be in the form of a web address or a schema json.
+`-s <schema definition>` Applies a schema validation json file to space. The schema definition can be in the form of a web address or a local schema json file. Features that do not match this schema will not be uploaded. 
 
-!!! note "Schema validation is not transactional (yet)"
-    The schema validation will be non transactional (Transaction = FALSE) i.e. upload all the objects which passes schema definition and display the list of objects rejected.
+!!! This is an XYZ Pro feature that requires a license. [Learn more about XYZ Pro features here](../xyz_pro.md).
+
 
 #### Upload/Update data to a Space
 
@@ -92,6 +91,8 @@ The schema definition can be in the form of a web address or a schema json.
 
 `-y, --lat [lat]`     latitude field name, if not well known
 
+`-z, --point [poiunt]` points field name, e.g. `(lat,lon)`
+
 `-p, --ptag [ptag]`    property name(s) whose values will to be used to generate tags
 
 `-i, --id [id]`        property name(s) to be used as the feature ID
@@ -106,21 +107,25 @@ The schema definition can be in the form of a web address or a schema json.
 
 `-h, --help`           output usage information
 
-##### Upload geojson
 
-```
-here xyz upload YOUR_SPACE_ID -f /Users/xyz/data.geojson
-```
 
-Upload geojson data to a Space with name YOUR_SPACE_ID
 
-##### Upload csv
+##### Upload GeoJSON
 
-```
-here xyz upload YOUR_SPACE_ID -f /Users/xyz/data.csv
-```
+Upload a GeoJSON file to a new space.
 
-Upload csv data to a Space with name YOUR_SPACE_ID.
+    here xyz upload -f /Users/xyz/data.geojson
+
+Upload a GeoJSON file to an existing space.
+
+    here xyz upload SPACE_ID -f /Users/xyz/data.geojson
+
+
+##### Upload a CSV file
+
+
+    here xyz upload -f /Users/xyz/data.csv
+
 
 XYZ will attempt to choose the columns containing the latitude and longitude fields based on well known names including:
 
@@ -128,6 +133,21 @@ XYZ will attempt to choose the columns containing the latitude and longitude fie
     x, xcoord, xcoordinate, coordx, coordinatex, longitude, lon, lng, long, longitud
 
 If your csv uses different names, you can specify the latitude field with `-y` and longitude with `-x`.
+
+    here xyz upload -f /Users/xyz/data.csv -x the_lon -y the_lat
+
+If the csv combines coordinates into a single field,
+    
+    37.7,-122.2
+    
+or
+
+    (37.7,-122.2)
+
+you can specify the name of that column with `-p`.
+
+    here xyz upload -f /Users/xyz/data.csv -p points
+
 
 ##### Upload and stream large csv and geojson files
 
@@ -141,14 +161,16 @@ You can upload large geojson and csv files to your XYZ space by using `-s` -- th
 !!! warning "-a is not available with -s, use -p instead"
 
     When a file is streamed with `-s` it is not loaded into memory and -a is not available to preview and assign tags. You can specify tag using `-p`.
+    
+_Note: HERE XYZ is a database. Databases trade off storage space for speed, and your data will always take up more space in XYZ (or any database) than it does in a static file. When a file is uploaded into an XYZ Space, features, their properties, and the geometries are broken out into multiple tables, indexed and tagged. All of this lets you query your geospatial data on demand, and access it dynamically as vector tiles. HERE XYZ users are charged for database storage used at the rate of $3 per month per 5GB. You can check the size of your XYZ Spaces in your account dashboard or the CLI._
 
 ##### Upload a shapefile
 
 ```
-here xyz upload YOUR_SPACE_ID -f /Users/dhatb/data.shp
+here xyz upload -f /Users/dhatb/data.shp
 ```
 
-Upload shapefile data to a Space with name YOUR_SPACE_ID.
+Upload shapefile data to a Space.
 
 More tips in the [Working with Shapefiles](../shapefiles) tutorial.
 
@@ -161,15 +183,19 @@ More tips in the [Working with Shapefiles](../shapefiles) tutorial.
 ##### Upload with a unique ID
 
 ```
-here xyz upload YOUR_SPACE_ID -f /Users/dhatb/data.csv -i unique_id
+here xyz upload -f /Users/dhatb/data.csv -i unique_id
 ```
 
-Upload data to a Space named YOUR_SPACE_ID with a unique ID of unique_id. This should be used if your data has truly unique identifiers. Note that many GIS systems will assign incrementing integers that conflict across files.
+Upload data to a space with a unique ID of unique_id. This should be used if your data has truly unique identifiers. Note that many GIS systems will assign incrementing integers that conflict across files.
 
 ##### Upload and assign tags
 
+Tags are special propertiess that can be added to a feature that makes it easy to query them from the XYZ API using the `&tags=` parameter.
+
+!!! note XYZ Tags should be used selectively, ideally using **Rule-Based Tags**. Tags are not meant to be a replacement for  **Property Search** as you'll be duplicating existing data in a record.
+
 ```
-here xyz upload YOUR_SPACE_ID -f file.geojson -a
+here xyz upload -f file.geojson -a
 ```
 
 Uploads data and allows users to select tags from a list of feature keynames, with a preview of the first few values. These tags can be used to filter data when querying the HERE XYZ API.
@@ -228,7 +254,9 @@ Show the objects of a Space in table.
 
 `-p, --prop <prop>     ` property fields to include in table, can be used multiple times
 
-`-w --web [web]        ` display xyz on [http://geojson.tools](http://geojson.tools)
+`-w --web         ` display xyz on [http://geojson.tools](http://geojson.tools)
+
+`-v --vector  ` inspect and anayze XYZ spaces using Tangram / [XYZ Space Invader](../space-invader.md)
 
 #### Delete a Space
 
@@ -254,30 +282,7 @@ Clear data from your Space
 
 `-h --help` output usage information
 
-#### Transform files
 
-The system attempts to autodetect the latitude and longitude field name from these matched field names:
-
-* longitude -> "x", "xcoordinate", "coordx", "coordinatex", "longitude", "lon"
-* latitude -> "y", "ycoord", "ycoordinate", "coordy", "coordinatey", "latitude", "lat"
-
-##### Transform csv to geojson
-
-```
-here transform csv2geo filename.csv
-```
-
-##### Transform a shapefile to geojson
-
-```
-here transform shp2geo filename.shp
-```
-
-##### Options
-
-`-x, --lon [lon]` longitude field name
-
-`-y, --lat [lat]` latitude field name
 
 #### List all tokens
 
@@ -294,116 +299,68 @@ YOUR_TOKEN_NR_1 PERMANENT 1534451767 xyz-hub=readFeatures,createFeatures,updateF
 YOUR_TOKEN_NR_2 PERMANENT 1534516620 xyz-hub=readFeatures
 ```
 
-#### Learn more about your spaces
+#### Get more information about your spaces 
 
-##### Get a list of tags used in a space
+You can use the `config` command to get and update information about your spaces.
 
-```
-here xyz analyze spaceID
-```
+##### Options
 
-###### Response
+`  --shared <flag>            ` set your space as shared / public (default is false)
+`  -s,--schema [schemadef]    ` set schema definition (local filepath / http link) for your space, all future data for this space will be validated for the schema
+`  -t,--title [title]         ` set title for the space
+`  -d,--message [message]     ` set description for the space
+`  -c,--copyright [copyright] ` set copyright text for the space
+`  --stats                    ` see detailed space statistics
+`  -r, --raw                  ` show raw output
+`  -h, --help                 ` output usage information
 
-```
-here xyz describe spaceID
-Operation may take a while. Please wait ......
-==========================================================
-                     Summary for Space zcispwpB
-==========================================================
-Total 891 features
-GeometryType  Count
-------------  -----
-Point         891
+##### Get information about a space
 
-Total unique tag Count : 19
-Unique tag list  :["small","type@small","ne_10m_airports","mid","type@mid","mid_and_military","type@mid_and_military","major_and_military","type@major_and_military","military_mid","type@military_mid","military","type@military","major","type@major","military_major","type@military_major","spaceport","type@spaceport"]
-TagName                  Count
------------------------  -----
-ne_10m_airports          891
-mid                      475
-type@mid                 475
-type@major               367
-major                    367
-type@mid_and_military    14
-major_and_military       14
-type@major_and_military  14
-mid_and_military         14
-type@military_mid        10
-military_mid             10
-type@military_major      4
-military_major           4
-spaceport                3
-type@spaceport           3
-type@military            2
-military                 2
-type@small               2
-small                    2
-```
+    here xyz config SPACE_ID
+    
+This will print a table with the title, desciption, and other high-level information about the space.
+
+You can see the raw `json` response from the `/statistics` endpoing using `-r`:
+
+        here xyz config SPACE_ID -r
+
+##### Get a list of tags and properties used in a space
+
+You can get more details about a space by using the `--stats` option. This will return the number of features, the size of the space, the bbox, geometry types, names and counts of tags, as well as the names of properties (and if they can be accessed via Property Search).
+
+    here xyz config SPACE_ID --stats
+
+!!! Tip Use `here xyz analyze` to get a count and list of values of a property in a space. This is best suited for qualitative values. Only the first 500,000 features in a space will be analyzed.
+
+##### Update the title and description of a space
+
+To update the title and/or description of a space:
+
+    here xyz config -t "A meaningful title for a space" -d "additional details about this space that future you will appreciate 6 months from now"
+
+##### Share a space
+
+You can share a space with other users using the `--shared` option. If they have an XYZ account, they will be able to read from that space using their own tokens (and any data transfer will be charged to their XYZ account).
+
+    here xyz config spaceID --shared true
+    
+You can disable sharing by passing a `false` parameter:
+
+    here xyz config spaceID --shared false
 
 
-!!! warning "`describe` only returns the first 500,000 features in a space"
+##### Update, upload, or delete a schema definition
 
-    In order to avoid Node.js memory errors, only the first 500,000 features are described.
+A schema validation json file can be configured for a space. The schema definition can be in the form of a web address or a local schema json file. Features that do not match this schema will not be uploaded. 
 
-##### Get a count of values of a property in a space
-
-```
-here xyz analyze spaceID
-```
-
-###### Response
-
-Use the arrow keys and select a property by pressing the space bar:
+!!! This is an XYZ Pro feature that requires a license. [Learn more about XYZ Pro features here](../xyz_pro.md).
 
 ```
-here xyz analyze zcispwpB
-Operation may take a while. Please wait ......
-? Select the properties to analyze
- ◯ 1 : name : Sahnewal , Solapur , Birsa Munda
-❯◉ 2 : type : small , mid , mid
- ◯ 3 : abbrev : LUH , SSE , IXR
- ◯ 4 : gps_code : VILD , VASL , VERC
- ◯ 5 : location : terminal , terminal , terminal
- ◯ 6 : iata_code : LUH , SSE , IXR
- ◯ 7 : natlscale : 8 , 8 , 8
+here xyz config YOUR_SPACE_ID -s schema_definition.json
 ```
-
-In this case, the CLI will count and sort the values of the `type` property.
-
-```
-PropertyName  Value               Count
-------------  ------------------  -----
-type          mid                 475
-type          major               367
-type          mid and military    14
-type          major and military  14
-type          military mid        10
-type          military major      4
-type          spaceport           3
-type          small               2
-type          military            2
-
-Total unique property values in space zcispwpB :
-
-PropertyName  Count
-------------  -----
-type          9
-```
-
-#### Update or Upload Schema
-
-Use
-
-```
-here xyz config YOUR_SPACE_ID -s <updated schema definition>
-```
-
-to update or upload the schema to an existing space
-
-#### Delete Schema
+To delete a schema from a space:
 
 ```
 here xyz config YOUR_SPACE_ID -s
 ```
 
-Deletes the schema from the space
