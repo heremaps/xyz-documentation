@@ -400,7 +400,7 @@ here xyz config YOUR_SPACE_ID -s
 
 #### Hexbins
 
-Hexbins are a data simplification method that makes it feasible to visualize large datasets of point features at low zoom levels (continent, country, state/province). A series of hexagon grids are created and the points that fall inside each are counted and written to a new space, and statistics are calculated across the hexbin grid. 
+Hexbins are a data simplification method that makes it easier to visualize large datasets of point features at low zoom levels (continent, country, state/province). A series of hexagon grids are created and the points that fall inside each are counted and written to a new space, and statistics are calculated across the hexbin grid. 
 
 These hexagons (or their centroids) and their statistics can be quickly displayed in place of the raw data that might overwhelm a renderer. Default colors indicating relative "occupancy" are generated for convenience of display.
 
@@ -409,6 +409,8 @@ These hexagons (or their centroids) and their statistics can be quickly displaye
 `here xyz hexbin spaceID -c 100,1000,100000` create hexbins that are 100 meters, 1kmm and 10km wide
 
 Hexbins are tagged by zoom level and width and type, makeing it easy to extract one set from the hexbin space for display and comparison.
+
+You can learn more about hexbins and how to display them [in this tutorial](.../hexbins.md).
 
 ##### Data contained in XYZ Hexbins
 
@@ -444,14 +446,16 @@ Hexbin features contain various values that can help with analysis and visualiza
 
 ##### Hexbin sum and average
 
-If a property is qualitative (property values, income, population), XYZ Hexbins can sum that up, compare the totals, and calculate an average.
+If a property is qualitative (property values, income, population), in addition to counting points, XYZ Hexbins can add up the value of the properties in each hexbin as well as calculate the average.
+
+    here xyz hexbin spaceID -z 10 -a incidents
 
 ```
         "sum": {
           "sum": 4071,
           "maxSum": 5117,
           "average": 8.698717948717949,
-          "property_name": "value"
+          "property_name": "incidents"
         }
 ```
         
