@@ -8,7 +8,7 @@ To interact with the HERE XYZ Hub API directly from your application you just ne
 ## Authentication
 
 For everything you want to do via the API, you need to use a token as described in the
-[Generate Token Section](/api/getting-token).
+[Generate Token Section](getting-token.md).
 
 [![API](../assets/images/api-auth.png)](../assets/images/api-auth.png)
 
