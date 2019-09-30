@@ -493,16 +493,25 @@ This would create a `subcount` object in each hexbin, which would contain the re
 ##### Options
 
 `  -c, --cellsize <cellsize>     ` size of hexgrid cells in meters, comma-separate multiple values
+
 `  -i, --ids                     ` add IDs of features counted within the hexbin as an array inside the property of the hexbin created
+
 `  -p, --groupBy <groupBy>       ` name of the feature property by which hexbin counts will be further grouped. subcounts for unique values will be available as objects in the feature
+
 `  -a, --aggregate <aggregate>   ` name of the feature property used for aggregating sum value of all the features inside hexbin. A sum object will be created, with relative and max sum, and average.
 
 `  -r, --readToken <readToken>   ` token of another user's source space, from which points will be read
+
 `  -w, --writeToken <writeToken> ` token of another user's target space to which hexbins will be written
+
 `  -t, --tags <tags>             ` only make hexbins for features in the source space that match the specific tag(s), comma-separate multiple values
+
 `  -b, --bbox <bbox>             ` only create hexbins for records inside a specified bounding box - minLon,minLat,maxLon,maxLat
+
 `  -l, --latitude <latitude>     ` latitude which will be used for converting cellSize from meters to degrees
+
 `  -z, --zoomLevels <zoomLevels> ` create hexbins optimized for zoom levels -- comma separate multiple values, (-z 8,10,12) or dash for continuous range (-z 10-15)
+
 `  -h, --help                    ` output usage information
 
 You can create hexbins either by width in meters, or use preset widths appropriate to the zoom level.
