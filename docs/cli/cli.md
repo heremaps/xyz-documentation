@@ -404,11 +404,13 @@ Hexbins are a data simplification method that makes it easier to visualize large
 
 These hexagons (or their centroids) and their statistics can be quickly displayed in place of the raw data that might overwhelm a renderer. Default colors indicating relative "occupancy" are generated for convenience of display.
 
-`here xyz hexbin spaceID -z 5-10` create hexbins appropriate for zoom levels 5 through 10
-`here xyz hexbin spaceID -z 8,10,12` create hexbins appropriate for zoom 8,10,12
-`here xyz hexbin spaceID -c 100,1000,100000` create hexbins that are 100 meters, 1kmm and 10km wide
+    `here xyz hexbin spaceID -z 5-10` create hexbins appropriate for zoom levels 5 through 10
 
-Hexbins are tagged by zoom level and width and type, makeing it easy to extract one set from the hexbin space for display and comparison.
+    `here xyz hexbin spaceID -z 8,10,12` create hexbins appropriate for zoom 8,10,12
+
+    `here xyz hexbin spaceID -c 100,1000,100000` create hexbins that are 100 meters, 1kmm and 10km wide
+
+Hexbins are tagged by zoom level and width and type, making it easy to extract one set from the hexbin space for display and comparison.
 
 You can learn more about hexbins and how to display them [in this tutorial](.../hexbins.md).
 
