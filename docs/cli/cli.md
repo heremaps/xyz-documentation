@@ -64,6 +64,8 @@ here xyz create -t "sample test xyz" -d "sample creation"
 
 When you create a new Space, the SpaceID will be generated automatically.
 
+!!! tip the `upload` command can automatically generate a space ID for you
+
 ##### Options
 
 `-t <title>` title for space
@@ -74,7 +76,7 @@ When you create a new Space, the SpaceID will be generated automatically.
 
 `-s <schema definition>` Applies a schema validation json file to space. The schema definition can be in the form of a web address or a local schema json file. Features that do not match this schema will not be uploaded. 
 
-!!! This is an XYZ Pro feature that requires a license. [Learn more about XYZ Pro features here](../xyz_pro.md).
+!!! note This is an XYZ Pro feature that requires a license. [Learn more about XYZ Pro features here](../xyz_pro.md).
 
 
 #### Upload/Update data to a Space
@@ -112,7 +114,7 @@ When you create a new Space, the SpaceID will be generated automatically.
 
 ##### Upload GeoJSON
 
-Upload a GeoJSON file to a new space.
+Upload a GeoJSON file to a new space. XYZ will automatically generate a space ID and display it for you.
 
     here xyz upload -f /Users/xyz/data.geojson
 
@@ -136,7 +138,7 @@ If your csv uses different names, you can specify the latitude field with `-y` a
 
     here xyz upload -f /Users/xyz/data.csv -x the_lon -y the_lat
 
-If the csv combines coordinates into a single field,
+If the csv combines coordinates into a single field, such as
     
     37.7,-122.2
     
@@ -148,10 +150,14 @@ you can specify the name of that column with `-p`.
 
     here xyz upload -f /Users/xyz/data.csv -p points
 
+Rows that have `0,0` or `null` values in the designated latitude and longitude columns will be tagged with `null_island`. They will not be displayed on the map, but you can access them via the API (or in geojson.tools) by appending `&tags=null_island` so you can inspect and repair the records.
+
+If the lat/lon columns contain letters or other invalid characters, the features are tagged with `invalid`.
+
 
 ##### Upload and stream large CSV and GeoJSON files
 
-You can upload CSV and GeoJSON files to your XYZ space by using `-s` -- this will stream the file and avoid Node memory errors, and will be considerably faster than the standard upload method.
+You can also upload CSV and GeoJSON files to your XYZ space by using `-s` -- this will stream the file and avoid Node memory errors, and will be considerably faster than the standard upload method.
 
     here xyz upload YOUR_SPACE_ID -f /Users/xyz/big_data.csv -s
 
@@ -178,45 +184,35 @@ More tips in the [Working with Shapefiles](../shapefiles) tutorial.
 ##### Upload with a unique ID
 
 ```
-here xyz upload -f /Users/dhatb/data.csv -i unique_id
+here xyz upload -f data.csv -i unique_id
 ```
 
-Upload data to a space with a unique ID of unique_id. This should be used if your data has truly unique identifiers. Note that many GIS systems will assign incrementing integers that conflict across files.
+Upload data to an XYZ space with a feature ID based on the feature's property `unique_id`. 
 
-##### Upload and assign tags
+This feature should be used if your data has well-known and truly unique identifiers that you want to preserve. The XYZ API can [query individual features by feature ID](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/getFeatures), so this can be a valuable method of accessing and updating data.
 
-Tags are special propertiess that can be added to a feature that makes it easy to query them from the XYZ API using the `&tags=` parameter.
+By default, the CLI will generate a random but unique feature ID during upload. 
 
-!!! note XYZ Tags should be used selectively, ideally using **Rule-Based Tags**. Tags are not meant to be a replacement for  **Property Search** as you'll be duplicating existing data in a record.
+!!! note Unique IDs are important for XYZ Pro features such as [Virtual Spaces](#virtual-spaces).
+
+!!! warning Many GIS systems will simply assign incrementing integers to feature IDs to every file. These will conflict across files.
+
+##### Upload and assign tags 
+
+Tags are special properties that can be added to a feature that makes it easy to query them from the XYZ API using the `&tags=` parameter.
+
+!!! note XYZ Tags should be used selectively, ideally using [Rule-Based Tags]()
+. Tags are not meant to be a replacement for  [Property Search](#property-search) as you will be duplicating existing data in a record.
+
+###### Assign tags interactively
 
 ```
 here xyz upload -f file.geojson -a
 ```
 
-Uploads data and allows users to select tags from a list of feature keynames, with a preview of the first few values. These tags can be used to filter data when querying the HERE XYZ API.
+Uploads data and allows users to select tags from a list of feature keynames, with a preview of the first few values. 
 
-###### Response
-
-Use the up and down arrows to navigate, and the space bar to select values:
-
-```
-1: year: 1996, 2005, 2015
-2: buffered: NO, YES, YES
-3: treatment: GREEN PAINT, SHARROWS, HIT POSTS
-4: globalid: c74ea99ef, 2d88ec21, 8e2ecaa2
-5: streetname: FOLSOM ST, 19th AVE, VALENCIA ST
-6: class: CLASS III, CLASS I, CLASS IV
-7: length: 263.2, 120.9, 708.4
-```
-Press return to select these values.
-
-###### Response
-
-```
-year@1996, 1996, treatment@green_paint, green_paint streetname@folsom_st, folsom_st class@class_iv, class_iv
-```
-
-##### Upload with a Property Tag
+##### Assign tags using property names
 
 ```
 here xyz upload -f file.geojson -p treatment
@@ -257,9 +253,11 @@ Show the objects of a space in table, filter by tags or property values, or open
 
 ##### Filter by Tags
 
-Using `show` on a large space will generate a long table. You can see the raw GeoJSON of the first 5000 features using `-r`.
+Using `show` on a large space will generate a long table. You can see the raw GeoJSON of the first 5000 features using `-r`. This can also be very long. You may want to direct this output to a file.
 
-If your space contains a few hundred or a few thousand features, you can open the space in geojson.tools, a data preview tool, using `show -w`. Larger spaces can be previewed in [XYZ Space Invader](../space-invader.md), a Tangram-based tool from XYZ Labs.
+    here xyz show spaceID -r > my.geojson
+
+If your space contains a few hundred to a few thousand features, you can open the space in geojson.tools, a data preview tool, using `show -w`. Larger spaces can be previewed in [XYZ Space Invader](../space-invader.md), a Tangram-based tool from XYZ Labs, using `show -v`.
 
 You can filter tags from XYZ using tags with `-t`:
 
@@ -274,7 +272,7 @@ If a property has been indexed by XYZ, you can filter them with `-s` or `--searc
     here xyz show spaceID -s "p.property_name>value"
     here xyz show spaceID -s "p.name=John,Tom+p.age<50+p.phone='9999999'+p.zipcode=123456" -w
     
-- Operators include `>,<,<=,>=,=,!=`
+- Operators include `=,!=,>,>=,<,<=`
 - Search expressions must be enclosed in double quotes, e.g. `"p.property_name>value"`
 - Use comma separated values to search multiple values of a property, e.g. `OR`. Use `+` for `AND`.
 - Use single quotes to signify a string value, e.g. `"p.property_name>value='100'"` vs `"p.property_name>value=100"`
