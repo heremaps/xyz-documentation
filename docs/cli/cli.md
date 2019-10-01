@@ -400,17 +400,17 @@ here xyz config YOUR_SPACE_ID -s
 
 #### Hexbins
 
-Hexbins are a data simplification method that makes it easier to visualize large datasets of point features at low zoom levels (continent, country, state/province). A series of hexagon grids are created and the points that fall inside each are counted and written to a new space, and statistics are calculated across the hexbin grid. 
+Hexbins are a data simplification method that makes it easier to visualize large datasets of point features at low zoom levels (continent, country, state/province). A series of hexagon grids are created and the points that fall inside each are counted and written to a new XYZ space, and statistics are calculated across the hexbin grid. 
 
 These hexagons (or their centroids) and their statistics can be quickly displayed in place of the raw data that might overwhelm a renderer. Default colors indicating relative "occupancy" are generated for convenience of display.
 
-    `here xyz hexbin spaceID -z 5-10` create hexbins appropriate for zoom levels 5 through 10
+ `here xyz hexbin spaceID -z 5-10` create hexbins appropriate for zoom levels 5 through 10
 
-    `here xyz hexbin spaceID -z 8,10,12` create hexbins appropriate for zoom 8,10,12
+ `here xyz hexbin spaceID -z 8,10,12` create hexbins appropriate for zoom 8,10,12
 
-    `here xyz hexbin spaceID -c 100,1000,100000` create hexbins that are 100 meters, 1kmm and 10km wide
+ `here xyz hexbin spaceID -c 100,1000,100000` create hexbins that are 100 meters, 1km and 10km wide
 
-Hexbins are tagged by zoom level and width and type, making it easy to extract one set from the hexbin space for display and comparison.
+Hexbins are tagged by zoom level, width, and type, making it easy to extract one set from the hexbin space for display and comparison.
 
 You can learn more about hexbins and how to display them [in this tutorial](.../hexbins.md).
 
@@ -522,5 +522,20 @@ You can create hexbins either by width in meters, or use preset widths appropria
 
 Virtual Spaces give users access to multiple spaces with one ID. Group lets you bundle your spaces together, and changes get written back to their original spaces. Associate lets you make your own personal edits to a shared space or one with public data, merging the properties of objects with the same feature ID.
 
-    here xyz virtualize -a|-g space1,space2
+    here xyz virtualize|vs -a|-g space1,space2
+    
+    
+##### Group
+
+    here xyz virtualize -g space1,space2,...
+    
+`group` takes multiple XYZ spaces and presents them via a single XYZ space ID. Duplicates can occur. Any updates will be made to the original spaces.
+
+##### Associate
+
+    here xyz vs -a space1,space2
+    
+`associate` takes features from `space1` and merges their properties into features with the same feature id in `space2`.
+
+One way of using `virtualize` is to upload CSVs of census data with unique geoID, and merge the statistics on the fly into census geometries where the geoID is the unique ID.
 
