@@ -1,0 +1,609 @@
+import:
+    # - https://s3.amazonaws.com/xyz-demo/scenes/simple_dark_grey.yaml
+    - https://www.nextzen.org/carto/refill-style/refill-style.zip
+    - https://www.nextzen.org/carto/refill-style/themes/color-gray-gold.zip
+    # - https://www.nextzen.org/carto/refill-style/themes/color-inverted.zip    
+    - https://s3.amazonaws.com/xyz-demo/data/demo.yaml
+    # - https://www.nextzen.org/carto/refill-style/11/themes/label-4.zip
+    # - https://www.nextzen.org/carto/refill-style/themes/terrain-shading.zip
+    # - https://www.nextzen.org/carto/refill-style/11/themes/terrain-shading-dark.zip
+
+cameras:
+    camera1:
+        type: perspective
+        # axis: [1, 0.7]
+
+lights:
+    light1:
+        visible: true
+        type: directional
+        direction: [0, 1, -.5]
+        diffuse: .4
+        ambient: 1
+
+
+sources:
+    _xyzspace:
+        # url: https://xyz.api.here.com/hub/spaces/uEkuuLXY/tile/quadkey/0302222
+        url: https://xyz.api.here.com/hub/spaces/maP1Z7fj/tile/web/{z}_{x}_{y}
+        type: GeoJSON
+        # max_zoom: 13
+        url_params: 
+            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            clip: true
+    _tracks:
+        url: https://xyz.api.here.com/hub/spaces/qCRDnZbf/tile/web/{z}_{x}_{y}
+        type: GeoJSON
+        # max_zoom: 13
+        url_params: 
+            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            # clip: true 
+    _z2:
+        url: https://xyz.api.here.com/hub/spaces/uFjNTqGV/tile/web/{z}_{x}_{y}
+        type: GeoJSON
+        # max_zoom: 13
+        url_params: 
+            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            tags: zoom2_centroid
+            clip: true             
+    _z3:
+        url: https://xyz.api.here.com/hub/spaces/uFjNTqGV/tile/web/{z}_{x}_{y}
+        type: GeoJSON
+        # max_zoom: 13
+        url_params: 
+            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            tags: zoom3_centroid
+            clip: true 
+
+    _z4:
+        url: https://xyz.api.here.com/hub/spaces/uFjNTqGV/tile/web/{z}_{x}_{y}
+        type: GeoJSON
+        # max_zoom: 13
+        url_params: 
+            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            tags: zoom4_centroid
+            clip: true 
+
+    _z5:
+        url: https://xyz.api.here.com/hub/spaces/uFjNTqGV/tile/web/{z}_{x}_{y}
+        type: GeoJSON
+        # max_zoom: 13
+        url_params: 
+            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            tags: zoom5_centroid
+            clip: true 
+
+    _z5_hexbin:
+        url: https://xyz.api.here.com/hub/spaces/uFjNTqGV/tile/web/{z}_{x}_{y}
+        type: GeoJSON
+        # max_zoom: 13
+        url_params: 
+            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            tags: zoom5_hexbin
+            clip: true 
+
+    _z6:
+        url: https://xyz.api.here.com/hub/spaces/uFjNTqGV/tile/web/{z}_{x}_{y}
+        type: GeoJSON
+        # max_zoom: 13
+        url_params: 
+            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            tags: zoom6_centroid
+            clip: true 
+
+    _z6_hexbin:
+        url: https://xyz.api.here.com/hub/spaces/uFjNTqGV/tile/web/{z}_{x}_{y}
+        type: GeoJSON
+        # max_zoom: 13
+        url_params: 
+            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            tags: zoom6_hexbin
+            clip: true 
+
+    _z7_hexbin:
+        url: https://xyz.api.here.com/hub/spaces/uFjNTqGV/tile/web/{z}_{x}_{y}
+        type: GeoJSON
+        # max_zoom: 13
+        url_params: 
+            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            tags: zoom7_hexbin
+            clip: true 
+
+styles:
+    _points:
+        base: points
+        blend: overlay
+        blend_order: 10
+    _text:
+        base: text
+        blend: overlay
+        blend_order: 1
+    _lines:
+        base: lines
+        blend: overlay
+        blend_order: 1
+    _lines_low:
+        base: lines
+        blend: inlay
+        blend_order: 2
+    _polygons_inlay:
+        base: polygons
+        blend: inlay
+        blend_order: 1
+    _polygons_overlay:
+        base: polygons
+        blend: overlay
+        blend_order: 0
+        
+layers:
+    buildings:
+        enabled: false
+
+    _tornado_dots:
+        # enabled: false
+        filter:
+            all:
+                # - $geometry: point
+                - $zoom: { min: 7 }
+        data: {source: _xyzspace}
+        draw:
+            points:
+                blend_order: -10
+                collide: false
+                color: |
+                    function(){
+                        if (feature.mag == 5){
+                            // return 'red'
+                            return [1,0,0,0.7]
+                            }
+                        if (feature.mag == 4){
+                            return [1,.5,0,0.7]
+                            }
+                        if (feature.mag == 3){
+                            return [1,1,0,0.7]
+                            }
+                        if (feature.mag == 2){
+                            return [.5,1,0,0.5]
+                            }
+                        if (feature.mag == 1){
+                            return [0,1,0,0.2]
+                            }
+                        if (feature.mag == 0){
+                            return [0,0,1,0.1]
+                            }
+                        }
+                # color: [1,0,0,0.5]
+                size: [[8,5px],[10,12px]]
+                # size: |
+                #     function(){
+                #         var mag = feature.mag +100
+                #     }
+                size: |
+                    function(){
+                        var mag = 1
+                        if (feature.mag){
+                            mag = feature.mag
+                            console.log(mag)
+                            }
+                        // return mag + 100
+                        mag = mag * 2 + 2
+                        if ($zoom > 11){mag = 16}
+                        return mag 
+                        // var zoom = $zoom.
+                        // var size = zoom/2 + mag
+                        // console.log(mag,zoom,size)
+                        // return size
+                    }
+
+                outline:
+                    # color: [0,0,0,.25]
+                    color: [1,1,1,.25]
+                    width: 1px
+            label:
+                draw:
+                    text:
+                        font:
+                            fill: yellow
+                            size: 12px
+                            # stroke:
+                            #     color: white
+                            #     width: 2px
+    _tornado_lines:
+        filter:
+            all:
+                # - $geometry: lines
+                # - mag: {min: 3}
+                - $zoom: { min: 7 }
+        # enabled: false
+        data: {source: _tracks}
+        # filter: {kind: point}
+        draw:
+            lines:
+                color: |
+                    function(){
+                        if ((feature.mag == 5) && ($zoom > 7)){
+                            // return 'red'
+                            return [1,0,0,0.7]
+                            }
+                        if ((feature.mag == 4) && ($zoom > 7)){
+                            return [1,.5,0,0.7]
+                            }
+                        if ((feature.mag == 3) && ($zoom > 8)){
+                            return [1,1,0,0.7]
+                            }
+                        if ((feature.mag == 2) && ($zoom > 9)){
+                            return [.5,1,0,0.4]
+                            }
+                        if ((feature.mag == 1) && ($zoom > 10)){
+                            return [0,1,0,0.2]
+                            }
+                       if ((feature.mag == 0) && ($zoom > 11)){
+                            return [0,.4,.75]
+                            }
+                        }
+                # color: red
+                # width: 4px
+                width: [[5,1px],[10,2px]]
+                outline:
+                    # color: [0,0,0,0.5]
+                    color: [1,1,1,0.25]
+
+                    width: .075px
+                order: 2000
+                # size: 5px
+                # size: |
+                #     function(){
+                #         return 30 - (feature.scalerank * 4)
+                #         }
+            text:
+                # text_source: yr
+                text_source: |
+                    function(){
+                        if ((feature.mag == 5) && ($zoom > 7)){
+                            // return 'red'
+                            return feature.yr + ' (' + feature.fat + '/' + feature.inj + ')'
+                            }
+                        if ((feature.mag == 4) && ($zoom > 7)){
+                            return feature.yr + ' (' + feature.fat + '/' + feature.inj + ')'
+                            }
+                        if ((feature.mag == 3) && ($zoom > 8)){
+                            return feature.yr + ' (' + feature.fat + '/' + feature.inj + ')'
+                            }
+                        if ((feature.mag == 2) && ($zoom > 9)){
+                            return feature.yr + ' (' + feature.fat + '/' + feature.inj + ')'
+                            }
+                        if ((feature.mag == 1) && ($zoom > 10)){
+                            return feature.yr + ' (' + feature.fat + '/' + feature.inj + ')'
+                            }
+                       if ((feature.mag == 0) && ($zoom > 11)){
+                            return feature.yr + ' (' + feature.fat + '/' + feature.inj + ')'
+                            }
+                        }
+                collide: false
+                font:
+                    fill: |
+                        function(){
+                            if (feature.mag == 5){
+                                // return 'red'
+                                return [1,.25,0]
+                                }
+                            if (feature.mag == 4){
+                                return [1,.5,0]
+                                }
+                            if ((feature.mag == 3) && ($zoom > 8)){
+                                return [1,1,0,.75]
+                                }
+                            if ((feature.mag == 2) && ($zoom > 9)){
+                                return [.5,1,0]
+                                }
+                            if ((feature.mag == 1) && ($zoom > 10)){
+                                return [0,1,0]
+                                }
+                           if ((feature.mag == 0) && ($zoom > 10)){
+                                return [0,.7,1]
+                                }
+                            }
+                    # fill: black
+                    size: 10px      
+                    stroke:
+                        color: black
+                        width: 3px
+        
+
+            
+    _xyz_polygons:
+        enabled: false
+        data: {source: _xyzspace}
+        # filter: {elevation: 100}
+        _outlines:
+            # enabled: false
+            # extrude: |
+            #     function () { return feature.count * 2000 }
+            # enabled: false
+            draw:
+                _lines:
+                    # collide: false
+                    color: [1,1,1,0.5]
+                    width: .5px
+                    order: 2000
+        draw:
+            # polygons:
+            _polygons_inlay:
+                # collide: false
+                # color:  [1,0,1,0.3]
+                color: |
+                    function(){
+                        var hue = 100 - feature.count*2
+                        // return 'hsla(' + hue + '100%, 50%, 0.51)'
+                        return 'hsla(' + hue + ', 100%, 50%, 0.51)'
+                        }
+                order: 300
+                # extrude: true
+            text:
+                text_source: count
+                font:
+                    fill: grey
+                    size: 12px
+
+    _c100_extrude:
+        enabled: false
+        data: {source: _c100}
+        filter: { $zoom: { min: 15, max: 17 }}
+
+        _outlines:
+            enabled: false
+            extrude: function() { return feature.count * 20}
+            draw:
+                _lines:
+                    # collide: false
+                    color: [1,1,1]
+                    width: .5px
+                    order: 2000
+        draw:
+            # polygons:
+            _polygons_inlay:
+                # collide: false
+                # color:  [1,0,1,0.3]
+                color: |
+                    function(){
+                        var hue = 200 - feature.count*2
+                        // return 'hsla(' + hue + '100%, 50%, 0.51)'
+                        return 'hsla(' + hue + ', 100%, 50%, 0.51)'
+                        }
+                order: 1004
+                extrude: function() {return (feature.count * 40)}
+            text:
+                text_source: count
+                font:
+                    fill: grey
+                    size: 12px
+
+    _z2_centroid:
+        filter: { $zoom: { max: 3 } }
+        # enabled: false
+        data: {source: _z2}
+        draw:
+            points:
+                # blend_order: 10
+                color: |
+                    function(){
+                        var color
+                        if (feature.color){
+                            color = feature.color
+                            color = color.replace(/0.51/,".9")
+                            }
+                        else{color = [1,0,0,0.75]}
+                        return color
+                        }
+                size: 9px
+                collide: false
+    _z3_centroid:
+        filter: { $zoom: { min: 3, max: 4 } }
+        # enabled: false
+        data: {source: _z3}
+        draw:
+            points:
+                # blend_order: 10
+                color: |
+                    function(){
+                        var color
+                        if (feature.color){
+                            color = feature.color
+                            color = color.replace(/0.51/,".9")
+                            }
+                        else{color = [1,0,0,0.75]}
+                        return color
+                        }
+                size: 9px
+                collide: false
+    _z4_centroid:
+        filter: { $zoom: { min: 4, max: 5 } }
+        # enabled: false
+        data: {source: _z4}
+        draw:
+            points:
+                # blend_order: 10
+                color: |
+                    function(){
+                        var color
+                        if (feature.color){
+                            color = feature.color
+                            color = color.replace(/0.51/,".8")
+                            }
+                        else{color = [1,0,0,0.75]}
+                        return color
+                        }
+                size: 10px
+                collide: false
+    _z5_centroid:
+        filter: { $zoom: { min: 5, max: 6 } }
+        # enabled: false
+        data: {source: _z5}
+        draw:
+            points:
+                blend_order: -1
+                color: |
+                    function(){
+                        var color
+                        if (feature.color){
+                            color = feature.color
+                            color = color.replace(/0.51/,".8")
+                            }
+                        else{color = [1,0,0,0.75]}
+                        return color
+                        }
+                size: 10px
+                collide: false
+    _z6_centroid:
+        filter: { $zoom: { min: 6, max: 7 } }
+        enabled: false
+        data: {source: _z6}
+        draw:
+            points:
+                blend_order: 10
+                color: |
+                    function(){
+                        var color
+                        if (feature.color){
+                            color = feature.color
+                            }
+                        else{color = [1,0,0,0.75]}
+                        return color
+                        }
+                size: 10px
+                collide: false
+    _z5_hexbin:
+        # enabled: false
+        data: {source: _z5_hexbin}
+        filter: { $zoom: { min: 6, max: 7 }}
+
+        _outlines:
+            # enabled: false
+            # extrude: function() { return feature.count * 20}
+            draw:
+                lines:
+                    # collide: false
+                    color: [1,1,1,.5]
+                    width: .5px
+                    order: 100
+        draw:
+            # polygons:
+            _polygons_overlay:
+                # collide: false
+                # color:  [1,0,1,0.3]
+                color: |
+                    function(){
+                        var color
+                        if (feature.color){
+                            color = feature.color
+                            }
+                        else{color = [1,0,0,0.75]}
+                        return color
+                        }
+                order: 99
+    _z6_hexbin:
+        enabled: false
+        data: {source: _z6_hexbin}
+        filter: { $zoom: { min: 6, max: 7 }}
+
+        _outlines:
+            # enabled: false
+            # extrude: function() { return feature.count * 20}
+            draw:
+                _lines:
+                    # collide: false
+                    color: [1,1,1]
+                    width: .5px
+                    order: -1
+        draw:
+            # polygons:
+            _polygons_inlay:
+                # collide: false
+                # color:  [1,0,1,0.3]
+                color: |
+                    function(){
+                        var color
+                        if (feature.color){
+                            color = feature.color
+                            }
+                        else{color = [1,0,0,0.75]}
+                        return color
+                        }
+                order: 1
+                # extrude: function() {return feature.count * 50}         
+            # text:
+            #     text_source: count
+            #     font:
+            #         fill: grey
+            #         size: 12px
+    _z7_hexbin:
+        enabled: false
+        data: {source: _z7_hexbin}
+        # filter: { $zoom: { min: 7, max:  }}
+
+        _outlines:
+            # enabled: false
+            # extrude: function() { return feature.count * 20}
+            draw:
+                _lines:
+                    # collide: false
+                    color: [1,1,1]
+                    width: .5px
+                    order: 2000
+        draw:
+            # polygons:
+            _polygons_inlay:
+                # collide: false
+                # color:  [1,0,1,0.3]
+                color: |
+                    function(){
+                        var color
+                        if (feature.color){
+                            color = feature.color
+                            }
+                        else{color = [1,0,0,0.75]}
+                        return color
+                        }
+                order: 1004
+                # extrude: function() {return feature.count * 50}         
+            text:
+                collide: false
+                text_source: count
+                font:
+                    fill: white
+                    size: 12px
+    _z8_hexbin:
+        enabled: false
+        data: {source: _z7_hexbin}
+        filter: { $zoom: { min: 8, max: 9 }}
+
+        _outlines:
+            # enabled: false
+            # extrude: function() { return feature.count * 20}
+            draw:
+                _lines:
+                    # collide: false
+                    color: [1,1,1]
+                    width: .5px
+                    order: 2000
+        draw:
+            # polygons:
+            _polygons_inlay:
+                # collide: false
+                # color:  [1,0,1,0.3]
+                color: |
+                    function(){
+                        var color
+                        if (feature.color){
+                            color = feature.color
+                            }
+                        else{color = [1,0,0,0.75]}
+                        return color
+                        }
+                order: 1004
+                # extrude: function() {return feature.count * 50}         
+            text:
+                text_source: count
+                font:
+                    fill: grey
+                    size: 10px

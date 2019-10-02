@@ -1,0 +1,557 @@
+# Author @patriciogv - 2015
+
+import:
+    - https://tangrams.github.io/blocks/functions/aastep.yaml
+    - https://tangrams.github.io/blocks/functions/pulse.yaml
+    - https://tangrams.github.io/blocks/patterns/stripes.yaml
+    - https://tangrams.github.io/blocks/patterns/dots.yaml
+    - https://tangrams.github.io/blocks/space/screen.yaml
+
+global:
+    access_token: AS5fV38SlsAWy5busf3eizY #ALqnbtEI8h0VONQwJgBcn3Y
+    order: function () { return feature.sort_key; }
+    basemap: false
+    
+scene:
+    background:
+        color: black
+
+sources:
+    mapzen: #xyz-osm
+        type: MVT
+        url: https://xyz.api.here.com/tiles/osmbase/512/all/{z}/{x}/{y}.mvt
+        url_params:
+            access_token: global.access_token
+        max_zoom: 16
+    _xyzspace:
+        url: https://xyz.api.here.com/hub/spaces/MxDUEBlV/tile/web/{z}_{x}_{y}
+        type: GeoJSON
+        url_params:
+            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            selection: p.SUBDI1NAME
+            tags: track
+            # limit: 50000 #
+            clip: true
+    _wof:
+        url: https://xyz.api.here.com/hub/spaces/LdmvFlzZ/tile/web/{z}_{x}_{y}
+        type: GeoJSON
+        url_params:
+            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            # selection: p.SUBDI1NAME
+            tags: us-ca,us-or,us-wa,ca-bc,ca-yt
+            # limit: 50000 #
+            clip: true
+    _tornado_hexbins:
+        url: https://xyz.api.here.com/hub/spaces/uFjNTqGV/tile/web/{z}_{x}_{y}
+        type: GeoJSON
+        url_params:
+            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            # selection: p.SUBDI1NAME
+            tags: zoom4_hexbin
+            # limit: 50000 #
+            clip: true
+    _tornado_centroids:
+        url: https://xyz.api.here.com/hub/spaces/uFjNTqGV/tile/web/{z}_{x}_{y}
+        type: GeoJSON
+        url_params:
+            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            # selection: p.SUBDI1NAME
+            tags: zoom4_centroid
+            # limit: 50000 #
+            clip: true
+    _z2:
+        url: https://xyz.api.here.com/hub/spaces/uFjNTqGV/tile/web/{z}_{x}_{y}
+        type: GeoJSON
+        # max_zoom: 13
+        url_params: 
+            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            tags: zoom2_centroid
+            clip: true             
+    _z3:
+        url: https://xyz.api.here.com/hub/spaces/uFjNTqGV/tile/web/{z}_{x}_{y}
+        type: GeoJSON
+        # max_zoom: 13
+        url_params: 
+            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            tags: zoom3_centroid
+            clip: true 
+
+    _z4:
+        url: https://xyz.api.here.com/hub/spaces/uFjNTqGV/tile/web/{z}_{x}_{y}
+        type: GeoJSON
+        # max_zoom: 13
+        url_params: 
+            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            tags: zoom4_centroid
+            clip: true 
+
+    _z5:
+        url: https://xyz.api.here.com/hub/spaces/uFjNTqGV/tile/web/{z}_{x}_{y}
+        type: GeoJSON
+        # max_zoom: 13
+        url_params: 
+            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            tags: zoom5_centroid
+            clip: true 
+            
+# scene:
+#     background:
+#         color: white
+
+# cameras:
+#     cam:
+#         type: flat
+
+                    
+layers:
+
+    _xyz_dots:
+        filter: {$geometry: point}
+        enabled: false
+        data: {source: _tornado_centroids}
+        draw:
+            alberspoints:
+                order: 99
+                interactive: true
+                collide: false
+                color: |
+                    function(){
+                        var color = [1,1,0,0.75]
+                        if (feature.color){
+                            color = feature.color
+                            color = color.replace(/0.51/,".9")
+                            }
+                        return color
+                    }
+                size: [[3,6px],[8,16px]]
+                # size: 12px
+                outline:
+                    color: [0,0,0,0.25]
+                    width: 1px
+                # text:
+                #     text_source: global.prop
+                #     optional: true
+                #     font:
+                #         fill: yellow
+                #         size: 12px
+                #         stroke:
+                #             color: black
+                #             width: 2px
+
+    _z2:
+        filter: { $zoom: { max: 3 } }
+        # filter: {$geometry: point}
+        # enabled: false
+        data: {source: _z2}
+        draw:
+            alberspoints:
+                order: 99
+                interactive: true
+                collide: false
+                color: |
+                    function(){
+                        var color = [1,1,0,0.75]
+                        if (feature.color){
+                            color = feature.color
+                            color = color.replace(/0.51/,".9")
+                            }
+                        return color
+                    }
+                size: [[3,6px],[8,16px]]
+                # size: 12px
+                outline:
+                    color: [0,0,0,0.25]
+                    width: 1px
+    _z3:
+        filter: { $zoom: { min: 3, max: 4 } }
+        # filter: {$geometry: point}
+        # enabled: false
+        data: {source: _z3}
+        draw:
+            alberspoints:
+                order: 99
+                interactive: true
+                collide: false
+                color: |
+                    function(){
+                        var color = [1,1,0,0.75]
+                        if (feature.color){
+                            color = feature.color
+                            color = color.replace(/0.51/,".9")
+                            }
+                        return color
+                    }
+                size: [[3,6px],[8,16px]]
+                # size: 12px
+                outline:
+                    color: [0,0,0,0.25]
+                    width: 1px
+    _z4:
+        filter: { $zoom: { min: 4, max: 5 } }
+        # filter: {$geometry: point}
+        # enabled: false
+        data: {source: _z4}
+        draw:
+            alberspoints:
+                order: 99
+                interactive: true
+                collide: false
+                color: |
+                    function(){
+                        var color = [1,1,0,0.75]
+                        if (feature.color){
+                            color = feature.color
+                            color = color.replace(/0.51/,".9")
+                            }
+                        return color
+                    }
+                size: [[3,6px],[8,16px]]
+                # size: 12px
+                outline:
+                    color: [0,0,0,0.25]
+                    width: 1px
+    _z5:
+        filter: { $zoom: { min: 5, max: 7 } }
+        # filter: {$geometry: point}
+        # enabled: false
+        data: {source: _z5}
+        draw:
+            alberspoints:
+                order: 99
+                interactive: true
+                collide: false
+                color: |
+                    function(){
+                        var color = [1,1,0,0.75]
+                        if (feature.color){
+                            color = feature.color
+                            color = color.replace(/0.51/,".9")
+                            }
+                        return color
+                    }
+                size: 8px #[[3,6px],[8,16px]]
+                # size: 12px
+                outline:
+                    color: [0,0,0,0.25]
+                    width: 1px
+    _xyz_lines:
+        filter: {$geometry: line}
+        # enabled: false
+        data: {source: _wof}
+        # filter: {kind: point}
+        draw:
+            alberslines:
+                interactive: true
+                # collide: false
+                color: |
+                    function(){
+                        var color
+                        if (feature.color){
+                            color = feature.color
+                            }
+                        else{color = [1,0,0,0.75]}
+                        return color
+                        }
+                outline:
+                    color: [0,0,0,0.25]
+                    width: [[5,.5px],[15,1px]]
+                width: [[5,2px],[15,3px]]
+                order: 2000
+            # alberstext:
+            #     text_source: SUBDI1NAME #global.prop
+            #     optional: true
+            #     font:
+            #         fill: yellow
+            #         size: 12px
+            #         stroke:
+            #             color: black
+            #             width: 2px
+
+    _xyz_polygons:
+        filter: {$geometry: polygon}
+        enabled: false
+        data: {source: _tornado_hexbins}
+        alberslines:
+            enabled: false
+            draw:
+                alberslines:
+                    # collide: false
+                    color: [0,1,1,0.35]
+                    width: 1px
+                    order: 2000
+        _polygons:
+            # enabled: false
+            draw:
+                albers:
+                # _polygons_inlay:
+                    interactive: true
+                    # collide: false
+                    color: |
+                        function(){
+                            var color
+                            if (feature.color){
+                                color = feature.color
+                                }
+                            else{color = [1,0,1,0.3]}
+                            return color
+                            }
+                    # color:  [1,0,1,0.3]
+                    # color: global.color_hash
+                    width: 2px
+                    order: 300
+                    text:
+                        text_source: global.prop
+                        optional: true
+                        font:
+                            fill: yellow
+                            size: 12px
+                            stroke:
+                                color: black
+                                width: 2px
+
+    
+    water:
+        enabled: global.basemap
+        data: { source: mapzen }
+        draw: 
+            alberslines:
+                order: global.order
+                color: white
+                cap: round
+                width: .5px                
+            # waves:
+            #     order: 20
+            #     cap: round
+            #     width: 8px
+            #     color: [0.824, 0.812, 0.804]
+            #     width: 5px
+            # alberspoints:
+            #     buffer: 8px;
+            #     font:
+            #         typeface: Italic 14px Times
+            #         fill: black
+            #         stroke: { color: white , width: 5 }
+        lakes:
+            filter: { kind: [lake, riverbank, dock, water, basin, reservoir, playa, canal, dam, ditch, drain, river, stream]}
+            draw: 
+                alberslines:
+                    order: global.order
+                    color: white
+                    cap: round
+                    width: .5px
+    earth:
+        # enabled: global.basemap
+        data: { source: mapzen }
+        draw:
+            border:
+                order: 21
+                color: white
+                cap: round
+                width: .5px
+    # landuse:
+    #     data: { source: mapzen }
+    #     draw:
+    #         dots:
+    #             order: 1
+    #             color: [0,0,0,0.15]
+    buildings:
+        enabled: global.basemap
+        data: { source: mapzen }
+        draw:
+            b_border:
+                order: global.order
+                color: [[10,[1,1,1]],[15,[1,1,1]],[18,[0.306, 0.306, 0.306]]]
+                width: [[10, 1], [12, 1px],[14, 1px], [16, 2px], [17, 3px], [18, 5px]]
+    roads:
+        enabled: global.basemap
+        data: { source: mapzen }
+        filter: { not: { kind: [rail, ferry] } }
+        draw:
+            alberslines:
+                order: 100
+                color: black
+                width: [[5, .25px],[15, .5px],[85, 10]]
+                # outlines:
+                #     # style: alberslines
+                #     # order: 99
+                #     color: green
+                #     width: [[5, 2.px],[15, 4px],[85, 60]]
+        # labels:
+        #     filter: {kind: [major_road,highway]}
+        #     draw:
+        #         alberstext:
+        #             # text_source: SUBDI1NAME #global.prop
+        #             optional: true
+        #             font:
+        #                 fill: grey
+        #                 size: 12px
+        #                 stroke:
+        #                     color: white
+        #                     width: 2px
+    
+    boundaries:
+        data: { source: mapzen }
+        draw:
+            alberslines:
+                order: 10
+                color: white
+                width: .3px
+                # outlines:
+                #     # style: alberslines
+                #     # order: 9
+                #     color: white
+                #     width: 3px
+    places:
+        enabled: global.basemap
+        data: { source: mapzen }
+        # filter: { kind: country }
+        draw:
+            alberstext:
+                order: 200
+                buffer: 8px
+                font:
+                    # typeface: Italic 14px Times
+                    fill: black
+                    stroke: 
+                        color: white
+                        width: 5 
+styles:
+    _points:
+        base: points
+        blend: overlay
+        blend_order: 0
+    _text:
+        base: text
+        blend: overlay
+        blend_order: 11
+    _lines:
+        base: lines
+        blend: overlay
+        blend_order: 0
+    _lines_low:
+        base: lines
+        blend: inlay
+        blend_order: 2
+    _polygons_inlay:
+        base: polygons
+        blend: inlay
+        blend_order: 0
+    _polygons_overlay:
+        base: polygons
+        blend: overlay
+        blend_order: 1
+
+
+    albers:
+        base: polygons
+        blend: inlay
+        animated: true
+        shaders:
+            defines:
+                EARTH_RADIUS: 6378137.0
+                PI: 3.14159265358979323846
+                HALF_PI: 1.570796327
+                QUARTER_PI: .785398163
+                deg2rad(d): (d)*PI/180.0
+                rad2deg(d): (d)*180.0/PI
+            blocks:
+                global: |
+                    // http://wiki.openstreetmap.org/wiki/Mercator
+                    float y2lat_m (float y) { return rad2deg(2.0*atan(exp((y/EARTH_RADIUS)))-HALF_PI); }
+                    float x2lon_m (float x) { return rad2deg(x/EARTH_RADIUS); }
+
+                    float lat2y_m (float lat) { return EARTH_RADIUS*log(tan(QUARTER_PI+ deg2rad(lat)/2.0)); }
+                    float lon2x_m (float lon) { return deg2rad(lon)*EARTH_RADIUS; }
+                    
+                    // convert from lat/long to albers -- from https://gist.github.com/RandomEtc/476238
+                    vec2 albers(float lat, float lng, float lat0, float lng0, float phi1, float phi2) {
+                        float n = 0.5 * (sin(phi1) + sin(phi2));
+                        float c = cos(phi1);
+                        float C = c*c + 2.*n*sin(phi1);
+                        float p0 = sqrt(C - 2.*n*sin(lat0)) / n;
+                        float theta = n * (lng * PI/180. - lng0);
+                        float p = sqrt(C - 2.*n*sin(lat* PI/180.)) / n;
+
+                        float x = p * sin(theta);
+                        float y = p0 - p * cos(theta);
+
+                        return vec2(x,y);
+                    }
+                position: |
+                    // mercator position of the current vertex, u_map_position = center of screen,
+                    // position.xy = vertex screen position in meters from the center of the screen
+                    vec2 mercator = u_map_position.xy + position.xy;
+                    float lat = y2lat_m(mercator.y);
+                    float lon = x2lon_m(mercator.x);
+
+                    // Latitude_Of_Origin
+                    float centerlat = deg2rad(y2lat_m(u_map_position.y));
+                    // Central_Meridian
+                    float centerlon = deg2rad(x2lon_m(u_map_position.x));
+
+                    // Standard_Parallel_1
+                    float phi1 = deg2rad(y2lat_m(u_map_position.y) + 10.);
+                    // Standard_Parallel_2
+                    float phi2 = deg2rad(y2lat_m(u_map_position.y) - 10.);
+
+                    position.xy = albers(lat, lon, centerlat, centerlon, phi1, phi2)*EARTH_RADIUS;
+
+    alberslines:
+        base: lines
+        blend: inlay
+        mix: albers
+    alberspoints:
+        base: points
+        mix: albers
+    alberstext:
+        base: text
+        mix: albers
+    pallete:
+        shaders:
+            blocks: 
+                global: |
+                    // Common Values 
+                    //================================
+                    float radio = 0.05;
+                    vec2 size = vec2(1.,.6);
+                    vec3 background = vec3(1.);
+                    vec3 midle = vec3(0.824, 0.812, 0.804);
+                    vec3 foreground = vec3(0.275,0.298,0.251);
+    border:
+        base: lines
+        mix: [functions-pulse, functions-aastep, pallete, alberslines]
+        texcoords: true
+        shaders:
+            blocks: 
+                color: |
+                    vec2 st = v_texcoord.xy;
+                    float pattern = aastep(.5,pulse(st.x,.7,.1)+pulse(st.x,.35,.25));
+                    color.rgb = mix(background,color.rgb,pattern);
+    b_border:
+        base: lines
+        mix: [functions-pulse, functions-aastep, pallete, alberslines]
+        texcoords: true
+        shaders:
+            blocks: 
+                color: |
+                    vec2 st = v_texcoord.xy;
+                    float pattern = aastep(.5,pulse(st.x,.5,.2));
+                    color.rgb = mix(background,color.rgb,pattern);
+                    
+    waves:
+        base: polygons
+        mix: [space-screen, pallete, patterns-stripes, albers]
+        shaders: 
+            blocks: 
+                color: |
+                    vec2 pos = getScreenNonStretchCoords();
+                    pos.y += sin(pos.x*30.)*.01;
+                    color.rgb = mix(color.rgb,background,stripes(pos*200.,.4));
+    hatch:
+        base: polygons
+        mix: [functions-aastep, pallete, patterns-stripes, space-screen, albers]
+        shaders: 
+            blocks: 
+                color: |
+                    vec2 st = getScreenNonStretchCoords();
+                    color.rgb = mix(color.rgb,background,diagonalStripes(st*300.));
