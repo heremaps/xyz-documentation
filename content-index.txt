@@ -27,6 +27,7 @@
         - Working with Features: api/devguide/workwithfeatures.md
         - Tagging: api/devguide/tagging.md
         - Accessing Features: api/devguide/accessingfeatures.md
+        - Using Clustering: api/devguide/usingclustering.md
     - API Reference: api/apireference.md
     - Useful Links: api/links.md
   - XYZ Maps JS:
