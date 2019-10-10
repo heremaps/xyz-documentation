@@ -1,7 +1,31 @@
 # Release notes for XYZ
 
-### XYZ Hub - 2019.37.01 / 2019-09-09
+### Studio and Viewer Release 1.5
 
+New Feature: Exciting User Onboarding! Signups and Login is more fun now. Check it out!
+
+✨ **NEW** ✨
+
+• New user onboarding.
+• Styling of maps with the color property in your dataset.
+• Don't worry If a color property does not exist, we have selected best colors to style your map and make it visually more appealing.
+
+
+🔨 **IMPROVED** 🔧
+
+• UX/UI improvements.
+• Under the hood, performance improvements.
+
+
+🐜 **FIXED** 🐜
+
+• Fixed an issue of side panel UI distortion while using color palette.
+• Fixed an issue of NaN being displayed in Account Dashboard.
+• Other minor bug fixes.
+
+---
+
+### XYZ Hub - 2019.37.01 / 2019-09-09
 
 Changed
 - The values createdAt and updatedAt of the space definition are now public and visible in single space responses and space list responses.
@@ -11,6 +35,7 @@ Changed
 Fixed
 - Resolve an issue that the space is not stored, when a preprocessor returns a space definition without a modification.
 
+---
 
 ### XYZ Pro Features Beta Release 1.0.1
 
