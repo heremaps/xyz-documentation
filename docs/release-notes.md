@@ -6,22 +6,22 @@ New Feature: Exciting User Onboarding! Signups and Login is more fun now. Check 
 
 ✨ **NEW** ✨
 
-• New user onboarding.
-• Styling of maps with the color property in your dataset.
-• Don't worry If a color property does not exist, we have selected best colors to style your map and make it visually more appealing.
+* New user onboarding.
+* Styling of maps with the color property in your dataset.
+* Don't worry If a color property does not exist, we have selected best colors to style your map and make it visually more appealing.
 
 
 🔨 **IMPROVED** 🔧
 
-• UX/UI improvements.
-• Under the hood, performance improvements.
+* UX/UI improvements.
+* Under the hood, performance improvements.
 
 
 🐜 **FIXED** 🐜
 
-• Fixed an issue of side panel UI distortion while using color palette.
-• Fixed an issue of NaN being displayed in Account Dashboard.
-• Other minor bug fixes.
+* Fixed an issue of side panel UI distortion while using color palette.
+* Fixed an issue of NaN being displayed in Account Dashboard.
+* Other minor bug fixes.
 
 ---
 
