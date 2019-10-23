@@ -1,0 +1,174 @@
+# Copyright (c) 2016-2018 Martin Donath <martin.donath@squidfunk.com>
+
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to
+# deal in the Software without restriction, including without limitation the
+# rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+# sell copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+# IN THE SOFTWARE.
+
+# Project information
+site_name: HERE XYZ - Beta
+site_description: Make great maps easier
+site_author: The HERE XYZ Team
+
+# Repository
+repo_name: heremaps/xyz-docs-site
+repo_url: https://github.com/heremaps/xyz-docs-site
+#edit_uri:
+
+# Copyright
+copyright: 'Copyright &copy; 2018 HERE Europe B.V.'
+
+# Configuration
+theme:
+  name: 'material'
+  custom_dir: ../material
+
+  # 404 page
+  static_templates:
+    - 404.html
+
+  # Don't include MkDocs' JavaScript
+  include_search_page: true
+  search_index_only: true
+
+  # Default values, taken from mkdocs_theme.yml
+  language: en
+  feature:
+    tabs: true
+  palette:
+    primary: here
+    accent: here
+  font:
+    text: Fira Sans
+    code: Fira Mono
+  favicon: assets/images/favicon.ico
+  logo: assets/images/logo.svg
+
+# Customization
+extra:
+  social:
+    - type: globe
+      link: http://www.here.com/
+    - type: github-alt
+      link: https://github.com/heremaps
+    - type: slack
+      link: https://here-xyz.slack.com
+
+# Page tree
+nav:
+  - Introduction: index.md
+  - Getting Started: getting-started.md
+  - XYZ Studio:
+    - Quick Tour: studio/index.md
+    - Publish a map: studio/publish.md
+  - XYZ Hub API:
+    - Overview: api/index.md
+    - Manage Tokens: api/getting-token.md
+    - Quick Start:
+      - Acquiring Credentials: api/quickstart/acquiringcredentials.md
+      - Read Spaces: api/quickstart/readspaces.md
+      - Create a Space: api/quickstart/createspace.md
+      - Write to a Space: api/quickstart/writetospace.md
+      - Using Activity Log: api/quickstart/activitylog.md
+    - Concepts:
+      - GeoJSON Basics: api/concepts/geojsonbasics.md
+      - Namespaces: api/concepts/namespaces.md
+      - Tags and Tagging: api/concepts/tags.md
+      - Tiles: api/concepts/tiles.md
+      - JSON Schema: api/concepts/jsonschema.md
+    - Walkthrough:
+      - Creating a Space: api/walkthrough/creatingaspace.md
+      - Adding and Deleting Features: api/walkthrough/addinganddeleting.md
+      - Search by Bounding Box: api/walkthrough/searchbyboundingbox.md
+      - Search by Tags: api/walkthrough/searchbytags.md
+      - Iterate over Features: api/walkthrough/iterateoverfeatures.md
+      - Use Schema Validation: api/walkthrough/schemavalidation.md
+    - Developer Guide:
+        - Working with Spaces: api/devguide/workwithspaces.md
+        - Working with Features: api/devguide/workwithfeatures.md
+        - Tagging: api/devguide/tagging.md
+        - Accessing Features: api/devguide/accessingfeatures.md
+        - Working with Activity Log: api/devguide/activitylogguide.md
+        - Common Errors: api/devguide/commonerrors.md
+    - API Reference: api/apireference.md
+    - Useful Links: api/links.md
+  - XYZ Maps JS:
+    - Overview: ui/index.md
+    - Getting started: ui/gettingstarted.md
+    - Display your space: ui/yourxyzspace.md
+    - Style your data: ui/styleyourdata.md
+    - Add interactivity: ui/tapfeature.md
+  - GeoJSON Tool:
+    - Overview: viewer-tool/index.md
+    - GeoJSON Basics: viewer-tool/geojsonbasics.md
+    - Advanced Features: viewer-tool/advanced.md
+  - HERE CLI:
+    - Overview: cli/index.md
+    - Commands: cli/cli.md
+
+# Extensions
+markdown_extensions:
+  - markdown.extensions.admonition
+  - markdown.extensions.codehilite:
+      guess_lang: false
+  - markdown.extensions.def_list
+  - markdown.extensions.footnotes
+  - markdown.extensions.meta
+  - markdown.extensions.toc:
+      permalink: true
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# Page tree
+#pages:
+#  - Material: index.md
+#  - Getting started: getting-started.md
+#  - Extensions:
+#    - Admonition: extensions/admonition.md
+#    - CodeHilite: extensions/codehilite.md
+#    - Footnotes: extensions/footnotes.md
+#    - Metadata: extensions/metadata.md
+#    - Permalinks: extensions/permalinks.md
+#    - PyMdown: extensions/pymdown.md
+#  - Specimen: specimen.md
+#  - Customization: customization.md
+#  - Release notes: release-notes.md
+#  - Author's notes: authors-notes.md
+#  - Contributing: contributing.md
+#  - License: license.md
+#
+## Google Analytics
+#google_analytics:
+#  - !!python/object/apply:os.getenv ["GOOGLE_ANALYTICS_KEY"]
+#  - auto
+#
+
+google_analytics: ['UA-119781446-1', 'techpreview.xyz']
