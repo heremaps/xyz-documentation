@@ -8,10 +8,10 @@ You can get features from Spaces using a bounding box.
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read_Features)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/getFeaturesByBBox)*
 
 ```HTTP
-GET /spaces/{spaceId}/bbox
+GET /spaces/{spaceId}/bbox?west={westLongitude}&north={northLatitude}&east={eastLongitude}&south={southLatitude}
 ```
 
 ### Response
@@ -62,10 +62,10 @@ You can get features from Spaces using a tileID.
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read_Features)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/getFeaturesByTile)*
 
 ```HTTP
-GET /spaces/{spaceId}/tile/{type}/{tileId}{ext}
+GET /spaces/{spaceId}/tile/{type}/{tileId}
 ```
 
 ### Response
@@ -116,7 +116,7 @@ The request allows iterating through the features in Spaces. The features in the
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read_Features)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/iterateFeatures)*
 
 ```HTTP
 GET /spaces/{spaceId}/iterate
