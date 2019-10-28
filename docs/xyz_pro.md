@@ -6,17 +6,17 @@ Property Search indexes data in your XYZ spaces and lets you use the API to sear
 
 This is currently available in the CLI and the API.
 
-More details are available in the [CLI documentation](../cli/cli.md#property-search) and the [Swagger API `/search` endpoint](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/searchForFeatures).
+More details are available in the [CLI documentation](../cli/cli#property-search) and the [Swagger API `/search` endpoint](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/searchForFeatures).
 
 ## Virtual Spaces
 
 Virtual Spaces let you group or associate geospatial features in multiple spaces and present them as a single space.
 
-`group' acts as an alias, presenting multiple XYZspaces via a single space ID.
+`group` acts as an alias, presenting multiple XYZspaces via a single space ID.
 
 `associate` merges feature properties from one XYZ space into features in a second space based on feature ID matches. This allows you to import statistical data and merge it with pre-existing polygons on the fly.
 
-This is currently available in the CLI and API. More details are available in the [CLI documentation](../cli/cli.md#virtual-spaces)
+This is currently available in the CLI and API. More details are available in the [CLI documentation](../cli/cli#virtual-spaces)
 
 
 ## Hexbins
@@ -27,11 +27,11 @@ These hexagons, their centroids, and their statistics can be quickly displayed i
 
 Hexbins are tagged by zoom level and width and type, makeing it easy to extract one set from the hexbin space for display and comparison.
 
-You can learn more about hexbins and how to display them in this tutorial, the [CLI documentation](../cli/cli.md#hexbins)
+You can learn more about hexbins and how to display them [in this tutorial](../hexbins) and the [CLI documentation](../cli/cli#hexbins)
 
 ## Rule Based Tags
 
-Create tags using conditional rules based on the values of properties in features. This makes it easy to view and extract data from your XYZ sapce.
+Create tags using conditional rules based on the values of properties in features. This makes it easy to view and extract data from your XYZ space.
 
 ## Schema Validation
 
@@ -40,6 +40,8 @@ Apply a schema validation json file to space
 The schema definition can be in the form of a web address or a local schema json file.
 
 !!! note "Schema validation is not transactional (yet)"
-    The schema validation will be non transactional (Transaction = FALSE) i.e. upload all the objects which passes schema definition and display the list of objects rejected.
+    The schema validation will be non-transactional (`Transaction = FALSE`) and will upload all the objects which pass schema definition and display the list of objects rejected.
 
 ## Change Log
+
+
