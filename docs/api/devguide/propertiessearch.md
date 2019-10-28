@@ -7,11 +7,11 @@ your space.
 ## Check which properties are searchable
 
 Not all Feature properties are necessarily searchable. So before using the property search it
-makes sense to check which of the properties in your space can be searched on.
+makes sense to check which of the properties in your space can be searched.
 
 *NOTE: XYZ has a space-specific algorithm to automatically decide which of the space's properties
 are searchable. In case you desire other properties to be searchable please have a look into
-the guide about ["Adjust searchable properties"](searchableproperties.md).*
+the guide at ["Adjust searchable properties"](searchableproperties.md).*
 
 To check which of the properties in your space a search can be performed on, please have a look
 into the space's statistics.
@@ -55,12 +55,13 @@ GET /spaces/{spaceId}/statistics
         "value": [
             {
                 "key": "Route",
-                "count": 29208
+                "count": 29208,
+                "searchable": false
             },
             {
                 "key": "Route Type",
                 "count": 29208,
-                "searchable": false
+                "searchable": true
             }
         ],
         "estimated": true,
