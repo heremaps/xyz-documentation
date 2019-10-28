@@ -76,7 +76,7 @@ When you create a new Space, the SpaceID will be generated automatically.
 
 `-s <schema definition>` Applies a schema validation json file to space. The schema definition can be in the form of a web address or a local schema json file. Features that do not match this schema will not be uploaded. 
 
-!!! note This is an XYZ Pro feature that requires a license. [Learn more about XYZ Pro features here](../xyz_pro.md).
+!!! note This is an XYZ Pro feature that requires a license. [Learn more about XYZ Pro features here](../xyz_pro).
 
 
 #### Upload/Update data to a Space
@@ -249,7 +249,7 @@ Show the objects of a space in table, filter by tags or property values, or open
 
 `-w --web         ` display xyz on [http://geojson.tools](http://geojson.tools)
 
-`-v --vector  ` inspect and anayze XYZ spaces using Tangram / [XYZ Space Invader](../space-invader.md)
+`-v --vector  ` inspect and anayze XYZ spaces using Tangram / [XYZ Space Invader](../space-invader)
 
 ##### Filter by Tags
 
@@ -257,7 +257,7 @@ Using `show` on a large space will generate a long table. You can see the raw Ge
 
     here xyz show spaceID -r > my.geojson
 
-If your space contains a few hundred to a few thousand features, you can open the space in geojson.tools, a data preview tool, using `show -w`. Larger spaces can be previewed in [XYZ Space Invader](../space-invader.md), a Tangram-based tool from XYZ Labs, using `show -v`.
+If your space contains a few hundred to a few thousand features, you can open the space in geojson.tools, a data preview tool, using `show -w`. Larger spaces can be previewed in [XYZ Space Invader](../space-invader), a Tangram-based tool from XYZ Labs, using `show -v`.
 
 You can filter tags from XYZ using tags with `-t`:
 
@@ -384,7 +384,7 @@ You can disable sharing by passing a `false` parameter:
 
 A schema validation json file can be configured for a space. The schema definition can be in the form of a web address or a local schema json file. Features that do not match this schema will not be uploaded. 
 
-!!! note This is an XYZ Pro feature that requires a license. [Learn more about XYZ Pro features here](../xyz_pro.md).
+!!! note This is an XYZ Pro feature that requires a license. [Learn more about XYZ Pro features here](../xyz_pro).
 
 ```
 here xyz config YOUR_SPACE_ID -s schema_definition.json
@@ -410,7 +410,7 @@ These hexagons (or their centroids) and their statistics can be quickly displaye
 
 Hexbins are tagged by zoom level, width, and type, making it easy to extract one set from the hexbin space for display and comparison.
 
-You can learn more about hexbins and how to display them [in this tutorial](.../hexbins.md).
+You can learn more about hexbins and how to display them [in this tutorial](.../hexbins).
 
 ##### Data contained in XYZ Hexbins
 
