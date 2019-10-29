@@ -1,5 +1,5 @@
 ## Space configuration
-***
+!!! Note "Your account needs access to the XYZ Pro Services."
 
 This connector provides the user with the possibility to track changes to his space. By activating this feature, every modification of features (insert/update/delete by the **ModifyFeaturesEvent**) is tracked and stored in a separate space.
 
