@@ -1,8 +1,9 @@
 # Adjust searchable feature-properties
 
+!!! Note "Your account needs access to the XYZ Pro Services."
+
 This section describes how to use the extended capability of enabling property-search for
-user-specified properties of your GeoJSON features inside a space. This API capability is available
-to users having the XYZ PRO usage-plan.
+user-specified properties of your GeoJSON features inside a space. 
 
 It is recommended that you read the ["properties-search"](propertiessearch.md) guide before going on
 with this more specific guide.
