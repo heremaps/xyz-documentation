@@ -1,5 +1,7 @@
 # Use Activity-Log
 
+!!! Note "Your account needs access to the XYZ Pro Services."
+
 1. Create a new space with the activity-log listener:
 
     ```HTTP
