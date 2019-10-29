@@ -279,7 +279,8 @@ If a property has been indexed by XYZ, you can filter them with `-s` or `--searc
 - To access feature ID, timestamps, or tags, prefix them with `f.`, e.g. `f.id, f.updatedAt, f.tags f.createdAt`
 - When accessing Property Search via the API, the URL-safe arguments are `=`, `!=`, `=gt=`, `=gte=`, `=lt=`, `=lte=`.
 
-!!! note Property Search is available in spaces with fewer than 15,000 features by default. For spaces larger than 15,000 spaces, a limited number of features will be indexed. To access more, you'll need an XYZ Pro license. 
+!!! note Property Search is available in spaces with fewer than 15,000 features by default. For spaces larger than 15,000 features, a limited number will be indexed. To access more, you'll need an XYZ Pro license, [learn more about XYZ Pro features here](../xyz_pro). 
+
 
 ##### Property Filters
 
@@ -287,7 +288,7 @@ You can use `show -p` to filter the properties that get returned by the API. Thi
 
     here xyz show -p p.property1,p.property2 -w
     
-!!! note Property Filters are an XYZ Pro feature.
+!!! Note "Your account needs access to the XYZ Pro Services." [Learn more about XYZ Pro features here](../xyz_pro).
 
 #### Delete a Space
 
@@ -331,6 +332,8 @@ YOUR_TOKEN_NR_2 PERMANENT 1534516620 xyz-hub=readFeatures
 ```
 
 #### Get more information about your spaces 
+
+!!! Note "Your account needs access to the XYZ Pro Services." [Learn more about XYZ Pro features here](../xyz_pro).
 
 You can use the `config` command to get and update information about your spaces.
 
@@ -382,9 +385,10 @@ You can disable sharing by passing a `false` parameter:
 
 ##### Update, upload, or delete a schema definition
 
+!!! Note "Your account needs access to the XYZ Pro Services." [Learn more about XYZ Pro features here](../xyz_pro).
+
 A schema validation json file can be configured for a space. The schema definition can be in the form of a web address or a local schema json file. Features that do not match this schema will not be uploaded. 
 
-!!! note This is an XYZ Pro feature that requires a license. [Learn more about XYZ Pro features here](../xyz_pro).
 
 ```
 here xyz config YOUR_SPACE_ID -s schema_definition.json
@@ -397,6 +401,8 @@ here xyz config YOUR_SPACE_ID -s
 
 
 #### Hexbins
+
+!!! Note "Your account needs access to the XYZ Pro Services." [Learn more about XYZ Pro features here](../xyz_pro).
 
 Hexbins are a data simplification method that makes it easier to visualize large datasets of point features at low zoom levels (continent, country, state/province). A series of hexagon grids are created and the points that fall inside each are counted and written to a new XYZ space, and statistics are calculated across the hexbin grid. 
 
