@@ -7,7 +7,7 @@ Exciting way to Filter your Properties! Add Data is more fun now.
 
 ✨ **NEW** ✨
 
-*Property Search and Filters
+* Property Search and Filters
 
 🔨 **IMPROVED** 🔧
 
