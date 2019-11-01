@@ -4,17 +4,18 @@
 ### Studio release 1.5.4
 
 Exciting way to Filter your Properties! Add Data is more fun now. 
-(Video) https://hmcs-my.sharepoint.com/:v:/g/personal/chirag_pandit_here_com/Ed2BBo3FtvBAmVnL3wcDcB8BxXdbm4I6lH_2EViqBWyT2Q?e=UIg5M6
 
-✨ NEW ✨
-• Property Search and Filters
+✨ **NEW** ✨
 
-🔨 IMPROVED 🔧
-• Add Data side panel redesign
+*Property Search and Filters
 
-🐜 FIXED 🐜
-• Error popups now redirect to the correct feedback page
-• Removed New Feature Notification for Tangram renderer, as it now an old feature!
+🔨 **IMPROVED** 🔧
+
+* Add Data side panel redesign
+
+🐜 **FIXED** 🐜
+
+* Error popups now redirect to the correct feedback page
 
 ---
 
