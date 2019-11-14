@@ -18,9 +18,20 @@ For more information on that topic see: https://eng.uber.com/h3/
 
 *Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/getFeaturesByTile)*
 
+
 ```HTTP
 GET /spaces/{spaceId}/tile/{type}/{tileId}?clustering=hexbin&clustering.resolution={aNumber}&clustering.property={aPropertyName}
 ```
+
+The following clustering related parameters can be passed and combined with the others ( e.g. tags,clip, feature filtering).
+
+|request parameter | value | | |
+|---|---|---|---|
+|clustering| string "hexbin" | | activates clustering |
+|clustering.resolution| integer [0..15] | optional | The H3 hexagon resolution |
+|clustering.property| string "{aPropertyName}" | optional | A property of the original features for which to calculate statistics |
+|clustering.pointmode | boolean [true\|false] | optional | returns the centroid of the hexagons as geojson-features geometry  |
+
 
 ### Response
 
@@ -30,110 +41,71 @@ GET /spaces/{spaceId}/tile/{type}/{tileId}?clustering=hexbin&clustering.resoluti
     "features": [
         {
             "type": "Feature",
-            "id": "881f1d4f4dfffff",
-            "properties": {
-                "kind": "H3",
-                "propertyStatistics": {
-                    "qty": 10,
-                    "min": 1.0,
-                    "max": 7.8,
-                    "avg": 4.2,
-                    "sum": 33.1
+            "properties": { 
+                "kind" : "H3",
+                "kind_detail" : "858b1303fffffff",
+                "resolution": 5,
+                "level": 7,
+                "aggregation": {
+                    "aPropertyName": {  // only if a clustering.property={aPropertyName} is specified. If not specified field "qty" is 
+                                        // written on this object-level (e.g. properties.aggregation.qty )
+                        "avg": 30.05000,
+                        "max": 44.1,
+                        "min": 16,
+                        "qty": 2,
+                        "sum": 60.1
+                    }
                 },
-                "centroid": [
-                    13.4100054,
-                    52.5800028
-                ]
+            "centroid": [ ... ], // only if clustering.pointmode = false|null
+            "hexagon": [ ... ]  // only if clustering.pointmode = true
             },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            13.404696,
-                            52.5829628
-                        ],
-                        [
-                            13.4024784,
-                            52.5787237
-                        ],
-                        [
-                            13.4077874,
-                            52.5757636
-                        ],
-                        [
-                            13.4153143,
-                            52.5770425
-                        ],
-                        [
-                            13.4175328,
-                            52.5812816
-                        ],
-                        [
-                            13.4122236,
-                            52.5842418
-                        ],
-                        [
-                            13.404696,
-                            52.5829628
-                        ]
-                    ]
-                ]
-            }
+            "geometry": {...},
         },
+        ......
+        ......
         {
             "type": "Feature",
-            "id": "881f1d4a81fffff",
-            "properties": {
-                "kind": "H3",
-                "propertyStatistics": {
-                    "qty": 2,
-                    "min": 3,
-                    "max": 6,
-                    "avg": 4.5,
-                    "sum": 9
-                },
-                "centroid": [
-                    13.3520171,
-                    52.5739963
-                ]
+            "properties": { 
+                "kind" : "H3",
+                 "kind_detail" : "881f1d4a81fffff",
+                    ....
             },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            13.3467067,
-                            52.5769538
-                        ],
-                        [
-                            13.3444934,
-                            52.5727137
-                        ],
-                        [
-                            13.3498035,
-                            52.5697562
-                        ],
-                        [
-                            13.357327,
-                            52.5710387
-                        ],
-                        [
-                            13.3595411,
-                            52.5752788
-                        ],
-                        [
-                            13.3542309,
-                            52.5782365
-                        ],
-                        [
-                            13.3467067,
-                            52.5769538
-                        ]
-                    ]
-                ]
-            }
+            "geometry": {...}
         }
     ]
 }
 ```
+
+### Miscellaneous
+#### Maximum Resolution for zoomlevel
+
+The parameter clusterning.resolution specifies the size of the hexagons wanted.
+( s. https://uber.github.io/h3/#/documentation/core-library/resolution-table )
+There is a maximum resolution per zoomlevel requested (s. table below). If the value of clusterning.resolution exeeds, then the "Max H3 Resolution" will be used.
+
+|Zoomlevel|Max H3 Resolution|
+|---|---|
+|0|2|
+|1|2|
+|2|2|
+|3|2|
+|4|3|
+|5|4|
+|6|4|
+|7|5|
+|8|6|
+|9|6|
+|10|7|
+|11|8|
+|12|9|
+|13|9|
+|14|10|
+|15|11|
+|16|11|
+|17|12|
+|18|13|
+|19|14|
+|20|14|
+|21|15|
+|22|15|
+
