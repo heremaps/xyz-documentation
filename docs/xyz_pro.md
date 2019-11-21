@@ -6,7 +6,7 @@ Property Search indexes data in your XYZ spaces and lets you use the API to sear
 
 This is currently available in the CLI and the API. Property Search is available for all spaces with less that 15,000 features. In order to use Property Search on more than 15,000 features, you'll need an XYZ Pro account.
 
-More details are available in the [CLI documentation](../cli/cli#property-search) and the [Swagger API `/search` endpoint](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/searchForFeatures).
+More details are available in the [CLI documentation](../docs/cli/cli.md#property-search) and the [Swagger API `/search` endpoint](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/searchForFeatures).
 
 ## Virtual Spaces
 
@@ -16,7 +16,7 @@ Virtual Spaces let you group or associate geospatial features in multiple spaces
 
 `associate` merges feature properties from one XYZ space into features in a second space based on feature ID matches. This allows you to import statistical data and merge it with pre-existing polygons on the fly.
 
-This is currently available in the CLI and API. More details are available in the [CLI documentation](../cli/cli#virtual-spaces)
+This is currently available in the CLI and API. More details are available in the [CLI documentation](../docs/cli/cli.md#virtual-spaces)
 
 
 ## Hexbins
@@ -27,7 +27,7 @@ These hexagons, their centroids, and their statistics can be quickly displayed i
 
 Hexbins are tagged by zoom level and width and type, makeing it easy to extract one set from the hexbin space for display and comparison.
 
-You can learn more about hexbins and how to display them [in this tutorial](../hexbins) and the [CLI documentation](../cli/cli#hexbins)
+You can learn more about hexbins and how to display them [in this tutorial](../hexbins) and the [CLI documentation](../docs/cli/cli.md#hexbins)
 
 ## Rule Based Tags
 
