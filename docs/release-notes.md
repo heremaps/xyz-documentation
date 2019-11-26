@@ -1,5 +1,24 @@
 # Release notes for XYZ
 
+# HERE XYZ Studio - release 1.5.6 (November 19, 2019)
+
+✨ NEW ✨
+• Rich media content support in Studio and Viewer. Now you can view video, image, sound files rendered within cards by providing the link.
+• New exciting color picker to select from wide ranges of colors.
+
+
+🔨 IMPROVED 🔧
+• Icon dropdown with image of icons.
+• Show zoom levels in Tangram.
+• Show and save property names as is uploaded by user.
+
+🐜 FIXED 🐜
+• Filter property bug fixes.
+• Handling of new-line break in tangram while applying style rule.
+• Performance Improvement fixes.
+• Other minor bug fixes.
+
+
 ### XYZ Hub - 2019.47.01 / 2019-11-20
 
 #### Added
