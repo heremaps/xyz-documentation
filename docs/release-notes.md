@@ -1,6 +1,6 @@
 # Release notes for XYZ
 
-# HERE XYZ Studio - release 1.5.6 (November 19, 2019)
+### HERE XYZ Studio - release 1.5.6 (November 19, 2019)
 
 ✨ NEW ✨
 • Rich media content support in Studio and Viewer. Now you can view video, image, sound files rendered within cards by providing the link.
