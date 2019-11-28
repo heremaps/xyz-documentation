@@ -70,7 +70,7 @@ nav:
               - Write to a Space: api/quickstart/writetospace.md
               - Using Activity Log: api/quickstart/activitylog.md
           - Concepts:
-              - GeoJSON Basics: d
+              - GeoJSON Basics: api/concepts/geojsonbasics.md
               - Namespaces: api/concepts/namespaces.md
               - Tags and Tagging: api/concepts/tags.md
               - Tiles: api/concepts/tiles.md
