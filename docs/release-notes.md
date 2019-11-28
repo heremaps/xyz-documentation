@@ -1,6 +1,6 @@
 # Release notes for XYZ
 
-# HERE XYZ Studio - release 1.5.6 (November 19, 2019)
+### HERE XYZ Studio - release 1.5.6 (November 19, 2019)
 
 ✨ NEW ✨
 • Rich media content support in Studio and Viewer. Now you can view video, image, sound files rendered within cards by providing the link.
@@ -18,6 +18,7 @@
 • Performance Improvement fixes.
 • Other minor bug fixes.
 
+---
 
 ### XYZ Hub - 2019.47.01 / 2019-11-20
 
@@ -27,6 +28,8 @@
 
 #### Changed
 - Update the format of the MVT response: nested properties are serialized as JSON.
+
+---
 
 ### XYZ Hub - 2019.44.03 / 2019-10-31
 
