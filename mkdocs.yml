@@ -70,7 +70,7 @@ nav:
               - Write to a Space: api/quickstart/writetospace.md
               - Using Activity Log: api/quickstart/activitylog.md
           - Concepts:
-              - GeoJSON Basics: api/concepts/geojsonbasics.md
+              - GeoJSON Basics: d
               - Namespaces: api/concepts/namespaces.md
               - Tags and Tagging: api/concepts/tags.md
               - Tiles: api/concepts/tiles.md
@@ -88,6 +88,7 @@ nav:
               - Tagging: api/devguide/tagging.md
               - Accessing Features: api/devguide/accessingfeatures.md
               - Search for Features: api/devguide/propertiessearch.md
+              - Spatial Search for Features: api/devguide/spatialsearch.md
               - Adjust searchable properties: api/devguide/searchableproperties.md
               - Using Clustering: api/devguide/usingclustering.md
               - Working with Activity Log: api/devguide/activitylogguide.md
