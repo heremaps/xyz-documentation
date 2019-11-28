@@ -18,6 +18,7 @@
 • Performance Improvement fixes.
 • Other minor bug fixes.
 
+---
 
 ### XYZ Hub - 2019.47.01 / 2019-11-20
 
@@ -27,6 +28,8 @@
 
 #### Changed
 - Update the format of the MVT response: nested properties are serialized as JSON.
+
+---
 
 ### XYZ Hub - 2019.44.03 / 2019-10-31
 
