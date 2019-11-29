@@ -1,5 +1,12 @@
 # Release notes for XYZ
 
+### HERE Studio - release 1.5.7 (November 28, 2019)
+
+✨ New ✨
+• Outstanding Map Experience! Upgraded to xyz-maps 0.10.0-next10. Check it out now!
+
+---
+
 ### HERE XYZ Studio - release 1.5.6 (November 19, 2019)
 
 ✨ NEW ✨
