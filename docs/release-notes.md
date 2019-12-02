@@ -1,5 +1,12 @@
 # Release notes for XYZ
 
+### XYZ Hub - 2019.48.01 / 2019-11-29
+
+#### Added
+- Advanced spatial requests by any geometry with or without proximity-radius
+
+---
+
 ### HERE Studio - release 1.5.7 (November 28, 2019)
 
 ✨ New ✨
@@ -30,8 +37,8 @@
 ### XYZ Hub - 2019.47.01 / 2019-11-20
 
 #### Added
-- Add option to return the centroid of the hexagons as a feature geometry, for the hexbin 
-    clustering mode.       
+- Add option to return the centroid of the hexagons as a feature geometry, for the hexbin
+    clustering mode.
 
 #### Changed
 - Update the format of the MVT response: nested properties are serialized as JSON.
