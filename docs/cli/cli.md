@@ -76,7 +76,7 @@ When you create a new Space, the SpaceID will be generated automatically.
 
 `-s <schema definition>` Applies a schema validation json file to space. The schema definition can be in the form of a web address or a local schema json file. Features that do not match this schema will not be uploaded. 
 
-!!! note This is an XYZ Pro feature that requires a license. [Learn more about XYZ Pro features here](../xyz_pro).
+!!! note This is an XYZ Pro feature that requires a license. [Learn more about XYZ Pro features here](../../xyz_pro).
 
 
 #### Upload/Update data to a Space
@@ -402,7 +402,7 @@ here xyz config YOUR_SPACE_ID -s
 
 #### Hexbins
 
-!!! Note "Your account needs access to the XYZ Pro Services." [Learn more about XYZ Pro features here](../xyz_pro).
+!!! Note "Your account needs access to the XYZ Pro Services." [Learn more about XYZ Pro features here](../../xyz_pro).
 
 Hexbins are a data simplification method that makes it easier to visualize large datasets of point features at low zoom levels (continent, country, state/province). A series of hexagon grids are created and the points that fall inside each are counted and written to a new XYZ space, and statistics are calculated across the hexbin grid. 
 
@@ -416,7 +416,7 @@ These hexagons (or their centroids) and their statistics can be quickly displaye
 
 Hexbins are tagged by zoom level, width, and type, making it easy to extract one set from the hexbin space for display and comparison.
 
-You can learn more about hexbins and how to display them [in this tutorial](.../hexbins).
+You can learn more about hexbins and how to display them [in this tutorial](../hexbins).
 
 ##### Data contained in XYZ Hexbins
 
