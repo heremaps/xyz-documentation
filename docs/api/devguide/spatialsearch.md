@@ -2,7 +2,7 @@
 
 This section describes how to search for specific features in your space which are intersecting with a provided geometry.
 
-## Possibilities to provide a geometry for a spatial search
+## Possibilities to Provide a Geometry for a Spatial Search
 
 A spatial search requires a Geometry as an input. One common use-case: find all Features which are 
 around 1000 meters from a given Position. Another one could be: find all Features which are 100 meters
@@ -21,13 +21,13 @@ types are allowed as input [Point, MultiPoint, LineString, MultiLineString, Poly
 
 The easiest way for providing a search Geometry is submitting it via a POST-Request.  
 
-### Referencing an existing Geometry for a spatial search
+### Referencing an existing Geometry for a Spatial Search
 
 Another way to provide a search Geometry is to read it from a existing Feature, which is stored in a XYZ-Space
-were you have access to. This is recommended if your search Geometry is a really complex one, or if you want to store
+that you have access to. This is recommended if your search Geometry is a really complex one, or if you want to store
 frequently used Geometries for spatial searches.
 
-### Extend spatial search
+### Extend Spatial Search
 
 You can combine the spatial search requests with defining:
 
@@ -36,7 +36,7 @@ You can combine the spatial search requests with defining:
 + *tag search* - add filter based on tags
 + *selection* - select properties which should exclusively get included in the response 
 
-## Using spatial GET-Requests
+## Using Spatial GET-Requests
 
 ### Request
 
@@ -95,7 +95,7 @@ GET /spaces/{spaceId}/spatial?refSpaceId={referencedSpace}&refFeatureId
 }
 ```
 
-## Using spatial POST-Request
+## Using Spatial POST-Request
 
 ### Request
 
