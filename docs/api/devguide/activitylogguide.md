@@ -1,19 +1,21 @@
 ## Space configuration
+
 !!! Note "Your account needs access to the XYZ Pro Services."
+
+***
 
 This connector provides the user with the possibility to track changes to his space. By activating this feature, every modification of features (insert/update/delete by the **ModifyFeaturesEvent**) is tracked and stored in a separate space.
 
-To activate it, just add the listener to your space.
+To activate it, just add the listener to your space:
 
 ``` javascript
 {
-  "id": "2yayumeK",
-  "title": "Test space to track changes",
+  "title": "Test space to track changes.",
   "listeners": [
     {
       "id": "activity-log",
       "params": {
-        "states": 5,            //(Optional) Keeps a maximum of x states per object (x > 0).
+        "states": 3,            //(Optional) Keeps a maximum of x states per object (x > 0).
         "storageMode": "DIFF_ONLY" | "FULL" | ("FEATURE_ONLY" or <none> -> default)
       }
     }
@@ -24,22 +26,23 @@ To activate it, just add the listener to your space.
 The storage mode decides how the features will be stored.
 
 * FEATURE_ONLY: Will store features with some history relative properties (defined below).
-* DIFF_ONLY: Will store features with a 'diff'.'ops' property in the XYZ namespace, containing the RFC-6902 diff to its previous object. The features after the HEAD will only contain the XYZ namespace properties.
-* FULL: Will store features with some history relative properties and a 'diff'.'ops' property in the XYZ namespace, containing the RFC-6902 diff to its previous object.
+* DIFF_ONLY: Will store features with a 'diff'.'ops' property in the XYZ Activity-Log namespace, containing the RFC-6902 diff to its previous object. The features after the HEAD will only contain the XYZ Activity-Log & XYZ namespace properties.
+* FULL: Will store features with some history relative properties and a 'diff'.'ops' property in the XYZ Activity-Log namespace, containing the RFC-6902 diff to its previous object.
 
-**IMPORTANT**: Since it is not possible to write changes for *<span style="color:red">DeleteFeaturesByTagEvent</span>*, this event type is completely forbidden and the support of this event in the current space is removed.
+**ATTENTION**: Applying the diff to the current feature will return the previous (older) feature. This means that adding a new property to a feature, will be shown as 'remove' & 'pathToNewProperty' in the diff of the current.
+
+**IMPORTANT**: Since it is technically not possible to write changes for *<span style="color:red">DeleteFeaturesByTagEvent</span>*, this event type is completely forbidden and the support of this event in the current space is removed.
 
 Within the ModifySpaceEvent, the listener prepares everything and modifies the space to log changes. It will create a new space where the features will be written to, register a new listener that will actually write the modifications and add a processor to prohibit the DeleteByTagEvents.  
 Since the ModifyFeatureEvent.response is picked up in a listener, the actual features to log are written asynchronously to the newly created space. As a result, the performance of the actual request is not decreased.
 
 A full space definition with this feature enabled looks like this:
 
-``` javascript
+``` JSON
 {
-  "id": "mySpaceId",
+  "id": "<yourSpaceId>",
   "title": "Test space to track changes.",
   "description": null,
-  "owner": "HERE-12345678-1234-1234-1234-f1c02cc19c37",
   "enableUUID": true,
   "listeners": [
     {
@@ -55,12 +58,14 @@ A full space definition with this feature enabled looks like this:
     {
       "id": "activity-log-writer",
       "params": {
-        "spaceId": "someAuditSpaceId",
+        "spaceId": "<someNewlyCreatedSpaceId>",
         "states": 5,
-        "storageMode": "DIFF_ONLY"
+        "storageMode": "DIFF_ONLY",
+        "spaceType": "MAIN"
       },
       "eventTypes": [
-        "ModifyFeaturesEvent.response"
+        "ModifyFeaturesEvent.response",
+        "ModifySpaceEvent.request"
       ]
     },
     ...
@@ -78,25 +83,29 @@ A full space definition with this feature enabled looks like this:
 ```
 
 ## Written features
+
 ***
 The features written to the new space are stored by uuid. So the space with this feature enabled needs to have **enableUUID** set to true.
 
 Additionally, the original feature element will be slightly modified:
 
-* The id of the feature, will be the **uuid** of the modified feature in the original space.
-* The original properties of **'@ns:com:here:xyz'** will be stored under '@ns:com:here:xyz'.**original**
-* The original id of the feature will be stored under '@ns:com:here:xyz'.**original**.**id** within the properties.
-* A new property will be added under '@ns:com:here:xyz'.**original**.**invalidAt** to indicate the time range, when this object was the HEAD (newest) history object.
-* If diff calculation is enabled, an array with differences in accord with RFC-6902 (JSON Patch) will be added under '@ns:com:here:xyz'.**diff**.**ops**.
-* The action of the operation (SAVE/UPDATE/DELETE) will be stored under '@ns:com:here:xyz'.**action**
+* The id of the feature will be the **uuid** of the modified feature in the original space.
+* The original properties of **'@ns:com:here:xyz'** will be stored under '@ns:com:here:xyz:log'.**original**
+* The original id of the feature will be stored under '@ns:com:here:xyz:log'.**id**
+* A new property will be added under '@ns:com:here:xyz:log'.**invalidatedAt** to indicate the time range, when this object was the HEAD (newest) history object.
+* If diff calculation is enabled, an array with differences in accord with RFC-6902 (JSON Patch) will be added under '@ns:com:here:xyz:log'.**diff**.**ops**
+
+    * **ATTENTION**: Applying the diff to the current feature, will return the previous (older) feature. This means that adding a new property to a feature, will be shown as 'remove' & 'pathToNewProperty' in the diff of the current.
+
+* The action of the operation (SAVE/UPDATE/DELETE) will be stored under '@ns:com:here:xyz:log'.**action**
 * Additional entries will be added to the tags, like:
-* Tracking tags defined by the user (userId, changeId, streamId) //TO BE DONE
+  * Tracking tags defined by the user (userId, changeId, streamId) //TO BE DONE
 
 After you added a new feature to a space, as follows:
 
 GET {space}/features/1 from original space:
 
-``` javascript
+``` JSON
 {
   "type": "FeatureCollection",
   "features": [
@@ -106,10 +115,10 @@ GET {space}/features/1 from original space:
       "properties": {
         "version": 0,
         "@ns:com:here:xyz": {
-          "uuid": "0e205bdd-7ed2-4971-87c9-000000000001",
-          "space": "LZQ2HELM",
-          "createdAt": 1563800857943,
-          "updatedAt": 1563800857943
+          "uuid": "00000000000000000000000000001",
+          "space": "mGGzwMoi",
+          "createdAt": 1563451570741,
+          "updatedAt": 1570799106542
         }
       },
       "geometry": {
@@ -124,74 +133,55 @@ GET {space}/features/1 from original space:
 }
 ```
 
-... will look like this in audit space:  
-(Modifications after creation: The property 'version' was updated, and then the complete feature was deleted.
-Depending on the storage mode, the features may or may not contain diffs, in this case DIFF_ONLY.)
+... will look like this in the new space:
 
-``` javascript
+Modifications after creation:
+
+* The property 'version' was updated
+* The property 'version' was updated and a new sub property was added
+* The complete feature was deleted.
+
+Depending on the storage mode, the features may or may not contain diffs, in this case FULL.)
+
+``` JSON
 {
   "type": "FeatureCollection",
   "features": [
     {
+      "id": "00000000000000000000000000002",
       "type": "Feature",
-      "id": "0e205bdd-7ed2-4971-87c9-000000000001",
-      "properties": {
-        "@ns:com:here:xyz": {
-          "tags": [],
-          "space": "EooLq6Z9",
-          "original": {
-            "id": "1",
-            "space": "LZQ2HELM",
-            "createdAt": 1563800857943,
-            "updatedAt": 1563800857943,
-            "invalidAt": 1563800879753
-          },
-          "action": "SAVE",
-          "createdAt": 1563800871858,
-          "updatedAt": 1563800885204
-        }
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          1,
-          0
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "0e205bdd-7ed2-4971-87c9-000000000002",
       "properties": {
         "version": 1,
         "@ns:com:here:xyz": {
           "tags": [],
-          "space": "EooLq6Z9",
-          "original": {
-            "id": "1",
-            "puuid": "0e205bdd-7ed2-4971-87c9-000000000001",
-            "space": "LZQ2HELM",
-            "createdAt": 1563800857943,
-            "updatedAt": 1563800879753,
-            "invalidatedAt": 1563800901213
-          },
+          "space": "<someNewlyCreatedSpaceId>",
+          "createdAt": 1570802212642,
+          "updatedAt": 1570802223425
+        },
+        "@ns:com:here:xyz:log": {
+          "id": "1",
           "diff": {
+            "add": 0,
             "ops": [
-               {
-                 "op": "replace",
-                 "path": "/properties/version",
-                 "value": 0
-               }
-             ],
-             "add": 0,
-             "remove": 0,
-             "replace": 1,
-             "move": 0,
-             "copy": 0
+              {
+                "op": "replace",
+                "path": "/properties/version",
+                "value": 0
+              }
+            ],
+            "copy": 0,
+            "move": 0,
+            "remove": 0,
+            "replace": 1
           },
           "action": "UPDATE",
-          "createdAt": 1563800882833,
-          "updatedAt": 1563800882833
+          "original": {
+            "puuid": "00000000000000000000000000001",
+            "space": "<yourSpaceId>",
+            "createdAt": 1563451570741,
+            "updatedAt": 1570802185382
+          },
+          "invalidatedAt": 1570802185392
         }
       },
       "geometry": {
@@ -203,25 +193,80 @@ Depending on the storage mode, the features may or may not contain diffs, in thi
       }
     },
     {
-      "id": "0e205bdd-7ed2-4971-87c9-000000000003",
+      "id": "00000000000000000000000000003",
       "type": "Feature",
       "properties": {
-        "@id": "1",
+        "version": 2,
+        "newSubObject": {
+          "foo":"bar"
+        },
         "@ns:com:here:xyz": {
           "tags": [],
-          "space": "EooLq6Z9",
-          "original": {
-            "updatedAt": 1563800901213,
-            "invalidatedAt": 9223372036854775807
+          "space": "<someNewlyCreatedSpaceId>",
+          "createdAt": 1570802221177,
+          "updatedAt": 1570802228766
+        },
+        "@ns:com:here:xyz:log": {
+          "id": "1",
+          "diff": {
+            "add": 0,
+            "ops": [
+              {
+                "op": "remove",
+                "path": "/properties/newSubObject"
+              },
+              {
+                "op": "replace",
+                "path": "/properties/version",
+                "value": 1
+              }
+            ],
+            "copy": 0,
+            "move": 0,
+            "remove": 1,
+            "replace": 1
           },
-          "action": "DELETE",
-          "createdAt": 1563800901213,
-          "updatedAt": 1563800901213
+          "action": "UPDATE",
+          "original": {
+            "puuid": "00000000000000000000000000002",
+            "space": "<yourSpaceId>",
+            "createdAt": 1563451570741,
+            "updatedAt": 1570802185392
+          },
+          "invalidatedAt": 1570802226452
         }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1,
+          0
+        ]
       }
+    },
+    {
+      "id": "00000000000000-new-random-uuid",
+      "type": "Feature",
+      "properties": {
+        "@ns:com:here:xyz": {
+          "tags": [],
+          "space": "<someNewlyCreatedSpaceId>",
+          "createdAt": 1570802226548,
+          "updatedAt": 1570802226548
+        },
+        "@ns:com:here:xyz:log": {
+          "id": "1",
+          "action": "DELETE",
+          "original": {
+            "updatedAt": 1570802226452
+          },
+          "invalidatedAt": 9223372036854776000
+        }
+      },
+      "geometry": null
     }
   ]
 }
 ```
 
-**Note:** Applying the diffs patch array to the same object, will result in the full previous object.
+**Note:** Applying the diffs patch array to the same object, will result in the previous object.

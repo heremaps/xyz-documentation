@@ -2,3 +2,5 @@
 .code
 site
 /*.iml
+.history
+.project
