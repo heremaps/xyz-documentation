@@ -1,5 +1,13 @@
 # Release notes for XYZ
 
+### XYZ Hub - 2019.49.07 / 2019-12-05
+
+#### Added
+- XYZ Hub will auto configure the cache profile for a space.
+- New property cacheTTL to manually set the cache time to leave or turn off the auto cache profile for a space.
+
+---
+
 ### XYZ Hub - 2019.48.01 / 2019-11-29
 
 #### Added
