@@ -11,15 +11,14 @@ To activate it, just add the listener to your space:
 ``` javascript
 {
   "title": "Test space to track changes.",
-  "listeners": [
-    {
-      "id": "activity-log",
+  "listeners": { 
+    "activity-log": [{
       "params": {
         "states": 3,            //(Optional) Keeps a maximum of x states per object (x > 0).
         "storageMode": "DIFF_ONLY" | "FULL" | ("FEATURE_ONLY" or <none> -> default)
       }
-    }
-  ]
+    }]
+  }
 }
 ```
 
@@ -40,45 +39,40 @@ A full space definition with this feature enabled looks like this:
 
 ``` JSON
 {
-  "id": "<yourSpaceId>",
-  "title": "Test space to track changes.",
-  "description": null,
-  "enableUUID": true,
-  "listeners": [
-    {
-      "id": "activity-log",
-      "params": {
-        "states": 5,
-        "storageMode": "DIFF_ONLY"
-      },
-      "eventTypes": [
-        "ModifySpaceEvent.request"
-      ]
+    "id": "<yourSpaceId>",
+    "title": "Test space to track changes.",
+    "description": null,
+    
+    "enableUUID": true,
+    "listeners": {
+        "activity-log": [{
+            "params": {
+                "states": 5,
+                "storageMode": "DIFF_ONLY"
+            },
+            "eventTypes": [
+                "ModifySpaceEvent.request"
+            ]
+        }],
+        "activity-log-writer": [{
+            "params": {
+                "spaceId": "<someNewlyCreatedSpaceId>",
+                "states": 5,
+                "storageMode": "DIFF_ONLY",
+            "spaceType": "MAIN"},
+            "eventTypes": [
+                "ModifyFeaturesEvent.response",
+            "ModifySpaceEvent.request"]
+        }]
     },
-    {
-      "id": "activity-log-writer",
-      "params": {
-        "spaceId": "<someNewlyCreatedSpaceId>",
-        "states": 5,
-        "storageMode": "DIFF_ONLY",
-        "spaceType": "MAIN"
-      },
-      "eventTypes": [
-        "ModifyFeaturesEvent.response",
-        "ModifySpaceEvent.request"
-      ]
-    },
-    ...
-  ],
-  "processors": [
-    {
-      "id": "activity-log-writer",
-      "eventTypes": [
-        "DeleteFeaturesByTagEvent.request"
-      ]
-    },
-    ....
-  ]
+    "processors":{
+        "activity-log-writer": [{
+            "id": "activity-log-writer",
+            "eventTypes": [
+                "DeleteFeaturesByTagEvent.request"
+            ]
+        }]
+    }
 }
 ```
 
