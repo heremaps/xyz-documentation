@@ -106,8 +106,8 @@ nav:
           - Overview: cli/index.md
           - Commands: cli/cli.md
           - Shapefiles: cli/shapefiles.md
-          - XYZ Space Invader: cli/space-invader.md
           - Hexbins: cli/hexbins.md
+      - XYZ Space Invader: space-invader/index.md
       - GeoJSON Viewer:
           - Overview: viewer-tool/index.md
           - GeoJSON Basics: api/concepts/geojsonbasics.md
