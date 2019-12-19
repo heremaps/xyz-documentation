@@ -1,4 +1,4 @@
-HERE XYZ Hub APIs use project tokens that are tied to your `appId`&`appCode` or HERE Accounts SSO identity. Make sure to keep your `appId`&`appCode` safe and don't include them directly in any web pages as they are the key to generate new access tokens.
+HERE XYZ Hub APIs use project tokens that are tied to your Account or HERE Accounts SSO identity. Make sure to keep your credentials safe and don't include them directly in any web pages as they are the key to generate new access tokens.
 
 Usually you would use two tokens:
 
@@ -7,7 +7,7 @@ Usually you would use two tokens:
 
 ## Token Administration
 
-Log into the **XYZ Hub Token Generator** site with your `appId`&`appCode`:
+Log into the **XYZ Hub Token Generator** site with your `Email address` and `Password` or `HERE Accounts SSO identity`:
 
 [`https://xyz.api.here.com/token-ui/`](https://xyz.api.here.com/token-ui/)
 
