@@ -1,6 +1,8 @@
 # Acquiring Credentials
 
-All users of the HERE XYZ Hub must get authentication and authorization credentials. These credentials are assigned per application, and a bearer token is obtained by using the app_id and app_code issued by the HERE Developer Portal
+All users must use tokens to access the HERE XYZ Hub. 
+
+In order to generate tokens, first visit http://xyz.here.com/studio and sign up for an account. Once you have an account, you can sign into the [Token Manager](https://xyz.api.here.com/token-ui/) to generate and manage tokens.  
 
 The bearer token is provided as a value of the “Authorization” header parameter using the “Bearer” authentication scheme:
 
@@ -14,6 +16,4 @@ or alternatively, as a URI query parameter:
 access_token=<token>
 ```
 
-To obtain the credentials for an application, please visit <http://developer.here.com/plans> to register with HERE.
-
-You can read more about tokens, where to get and how to use them on the [Generate tokens](../getting-token.md) page.
+You can read more about how to use tokens on the [Generate tokens](../getting-token.md) page.
