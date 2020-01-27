@@ -1,8 +1,10 @@
 # Release notes for XYZ
 
+
+
 ### XYZ Hub - 2019.49.07 / 2019-12-05
 
-#### Added
+✨ **ADDED** ✨
 - XYZ Hub will auto configure the cache profile for a space.
 - New property cacheTTL to manually set the cache time to leave or turn off the auto cache profile for a space.
 
@@ -10,7 +12,7 @@
 
 ### XYZ Hub - 2019.48.01 / 2019-11-29
 
-#### Added
+✨ **ADDED** ✨
 - Advanced spatial requests by any geometry with or without proximity-radius
 
 ---
@@ -44,18 +46,18 @@
 
 ### XYZ Hub - 2019.47.01 / 2019-11-20
 
-#### Added
+✨ **ADDED** ✨
 - Add option to return the centroid of the hexagons as a feature geometry, for the hexbin
     clustering mode.
-
-#### Changed
+    
+🔨 **CHANGED** 🔧
 - Update the format of the MVT response: nested properties are serialized as JSON.
 
 ---
 
 ### XYZ Hub - 2019.44.03 / 2019-10-31
 
-#### Added
+✨ **ADDED** ✨
 - Add property contentUpdateAt indicating the last time the content of the space was updated.
 - Add property readOnly to indicate, if the space is accessible only for read operations.
     The service will respond with 405 Method Not Allowed, when writing features in the space,
@@ -63,12 +65,12 @@
 - Add an option to receive feature Ids by setting accept header to application/geo+json for delete 
     requests.
 
-#### Changed
+🔨 **CHANGED** 🔧
 - Update the ETag to a 128-bit hash value
 - The property "features" is now always included in FeatureCollection responses.
 - Move the global searchable field to the properties section of the statistics response.
 
-#### Fixed
+🐜 **FIXED** 🐜
 - Fix incorrect bounding box for some spaces in the statistics response.
 - Fix inconsistent status codes for delete requests.
 
@@ -94,7 +96,8 @@ Exciting way to Filter your Properties! Add Data is more fun now.
 
 ### XYZ Hub - 2019.41.01 / 2019-10-10 
 
-#### Added
+✨ **ADDED** ✨
+
 - Add possibility to configure, which properties are searchable in a space.
 - Add possibility to retrieve the features of a space clustered as hexbins.
 - Activate browser caching for space cacheTTL property larger than 0.
@@ -128,12 +131,12 @@ New Feature: Exciting User Onboarding! Signups and Login is more fun now. Check 
 
 ### XYZ Hub - 2019.37.01 / 2019-09-09
 
-#### Changed
+🔨 **CHANGED** 🔧
 - The values createdAt and updatedAt of the space definition are now public and visible in single space responses and space list responses.
 - A new error response code `513 Response Payload Too Large` is sent to the clients for responses which are too large for AWS API Gateway.
 - The URI length limit for requests to the API is increased from 4K to 10K.
 
-#### Fixed
+🐜 **FIXED** 🐜
 - Resolve an issue that the space is not stored, when a preprocessor returns a space definition without a modification.
 
 ---
