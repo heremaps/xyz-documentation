@@ -1,4 +1,14 @@
 # Release notes for XYZ
+### XYZ Hub - 1.2.0
+
+✨ **CHANGED** ✨
+- For all POST, PUT and PATCH requests to modify features: when a feature input does not contain any changes, compared to the latest version of the feature, an update operation will not be executed. If a feature was not changed, the existing version of the object is included in the response, but its ID is not in any of the lists with inserted or updated features.
+
+🔨 **FIXED** 🔧
+- Fixed that the createdAt value can be overwritten by the value in the input.
+
+---
+
 ### XYZ Hub - 1.1.0
 
 ✨ **ADDED** ✨
