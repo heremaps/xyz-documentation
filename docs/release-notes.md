@@ -1,4 +1,11 @@
 # Release notes for XYZ
+
+### XYZ Hub - 1.2.1
+**FIXED**
+- Fix an error when updating a feature, using the query parameters addTags or removeTags, and providing a body with a feature, which does not include tags.
+
+---
+
 ### XYZ Hub - 1.2.0
 
 ✨ **CHANGED** ✨
