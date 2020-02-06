@@ -1,6 +1,46 @@
 # Release notes for XYZ
+### XYZ Hub - 1.2.0
 
+✨ **CHANGED** ✨
+- For all POST, PUT and PATCH requests to modify features: when a feature input does not contain any changes, compared to the latest version of the feature, an update operation will not be executed. If a feature was not changed, the existing version of the object is included in the response, but its ID is not in any of the lists with inserted or updated features.
 
+🔨 **FIXED** 🔧
+- Fixed that the createdAt value can be overwritten by the value in the input.
+
+---
+
+### XYZ Hub - 1.1.0
+
+✨ **ADDED** ✨
+- HTTP connectors: Add new HTTP remote function client to allow communication with storage connectors over HTTP.
+- Add versioning in the connector event protocol
+
+🔨 **IMPROVED** 🔧
+- DynamoDB can be configured as a default storage for connectors and spaces
+- Add CORS support for static resources to allow loading of the OpenAPI specifications from OAS based applications hosted on a different domain.
+- Extend the list of error codes in the ErrorResponse event that the connector can send to XYZ Hub. New codes are CONFLICT, FORBIDDEN and TOO_MANY_REQUEST.
+- The default storage connector ID is now configurable.
+- Switch from SLF4J to Log4J
+- The execution trigger for statistic is move from the PSQL connector into the database.
+
+🐜 **FIXED** 🐜
+- Fix the response status code when the storage is set to null.
+- Connector is now re-initialized correctly in all cases when its config was changed.
+- Fix a potential blocking call to a ScheduledExecutorService.
+- Fix an error when updating a space without any changes. 
+- The space volatility was incorrectly calculated when the sliding window was zero.
+
+---
+
+### XYZ Hub - 1.0.1
+
+✨ **ADDED** ✨
+- Fix replacing feature with UUID
+
+🔨 **CHANGED** 🔧
+- Switch to semantic versioning 2.0.0. More information at https://semver.org/
+
+---
 
 ### XYZ Hub - 2019.49.07 / 2019-12-05
 
