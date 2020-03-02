@@ -117,7 +117,7 @@ nav:
   - Releases:
       - Release notes: release-notes.md
   - Tutorials:
-      - https://developer.here.com/tutorials?category=HERE%2BXYZ
+      - https://developer.here.com/tutorials?category=HERE%2BStudio%2Band%2BData%2BHub
 
 # Extensions
 markdown_extensions:
