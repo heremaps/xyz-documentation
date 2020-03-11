@@ -64,7 +64,8 @@ here xyz create -t "sample test xyz" -d "sample creation"
 
 When you create a new Space, the SpaceID will be generated automatically.
 
-!!! tip the `upload` command can automatically generate a space ID for you
+!!! tip 
+    the `upload` command can also automatically generate a new space ID for you
 
 ##### Options
 
@@ -72,11 +73,13 @@ When you create a new Space, the SpaceID will be generated automatically.
 
 `-d <desc>` description for space
 
-!!! tip When you have many spaces, you will be glad you added meaningful titles and descriptions.
+!!! tip 
+    When you have many spaces, you will be glad you added meaningful titles and descriptions.
 
 `-s <schema definition>` Applies a schema validation json file to space. The schema definition can be in the form of a web address or a local schema json file. Features that do not match this schema will not be uploaded. 
 
-!!! note This is an XYZ Pro feature that requires a license. [Learn more about XYZ Pro features here](../../xyz_pro).
+!!! note 
+    This is an XYZ Pro feature that requires a license. [Learn more about XYZ Pro features here](../../xyz_pro).
 
 
 #### Upload/Update data to a Space
@@ -122,6 +125,9 @@ Upload a GeoJSON file to an existing space.
 
     here xyz upload SPACE_ID -f /Users/xyz/data.geojson
 
+!!! tip "Use streaming"
+
+    Using streaming via the `-s` option will significantly reduce the time required to upload GeoJSON files. The default non-streaming mode is useful for troubleshooting.
 
 ##### Upload a CSV file
 
@@ -154,6 +160,10 @@ Rows that have `0,0` or `null` values in the designated latitude and longitude c
 
 If the lat/lon columns contain letters or other invalid characters, the features are tagged with `invalid`.
 
+!!! tip "Use streaming"
+
+        Using streaming via the `-s` option will significantly reduce the time required to upload CSV files of any size. Standard, non-streaming mode is useful for troubleshooting.
+
 
 ##### Upload and stream large CSV and GeoJSON files
 
@@ -161,15 +171,23 @@ You can also upload CSV and GeoJSON files to your XYZ space by using `-s` -- thi
 
     here xyz upload YOUR_SPACE_ID -f /Users/xyz/big_data.csv -s
 
-!!! warning When a file is streamed with `-s` it is not loaded into memory and -a is not available to preview and assign tags. You can specify tag using `-p`.
+!!! note 
+
+    When a file is streamed with `-s` it is not loaded into memory and -a is not available to preview and assign tags. You can specify tag using `-p`.
     
-!!! note HERE XYZ is a database. Databases trade off storage space for speed, and your data will always take up more space in XYZ than it does in a static file. When a file is uploaded into an XYZ Space, features, their properties, and the geometries are broken out into multiple tables, indexed and tagged. All of this lets you query your geospatial data on demand, and access it dynamically as vector tiles. HERE XYZ users are charged for database storage used at the rate of $3 per month per 5GB. You can check the size of your XYZ Spaces in your account dashboard or the CLI.
+!!! note 
+
+    HERE XYZ is a database. Databases trade off storage space for speed, and your data will always take up more space in XYZ than it does in a static file. When a file is uploaded into an XYZ Space, features, their properties, and the geometries are broken out into multiple tables, indexed and tagged. All of this lets you query your geospatial data on demand, and access it dynamically as vector tiles. You can check the size of your XYZ Spaces in your account dashboard or the CLI.
 
 ##### Upload a shapefile
 
 ```
 here xyz upload -f /Users/dhatb/data.shp
 ```
+
+!!! note
+
+    Shapefiles cannot be streamed with `-s`.
 
 Upload shapefile data to a Space.
 
@@ -191,11 +209,13 @@ Upload data to an XYZ space with a feature ID based on the feature's property `u
 
 This feature should be used if your data has well-known and truly unique identifiers that you want to preserve. The XYZ API can [query individual features by feature ID](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/getFeatures), so this can be a valuable method of accessing and updating data.
 
-By default, the CLI will generate a random but unique feature ID during upload. 
+By default, the CLI will generate a unique feature ID during upload based on a hash of the properties and geometry. 
 
-!!! note Unique IDs are important for XYZ Pro features such as [Virtual Spaces](#virtual-spaces).
+!!! note 
+    Unique IDs are important for XYZ Pro features such as [Virtual Spaces](#virtual-spaces).
 
-!!! warning Many GIS systems will simply assign incrementing integers to feature IDs to every file. These will conflict across files.
+!!! warning 
+    Many GIS systems will simply assign incrementing integers to feature IDs to every file. These will conflict across files.
 
 ##### Upload and assign tags 
 
