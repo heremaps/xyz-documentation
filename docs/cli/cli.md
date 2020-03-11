@@ -125,7 +125,7 @@ Upload a GeoJSON file to an existing space.
 
     here xyz upload SPACE_ID -f /Users/xyz/data.geojson
 
-!!! tip "Use streaming"
+!!! tip "Use streaming for faster upload"
 
     Using streaming via the `-s` option will significantly reduce the time required to upload GeoJSON files. The default non-streaming mode is useful for troubleshooting.
 
@@ -160,7 +160,7 @@ Rows that have `0,0` or `null` values in the designated latitude and longitude c
 
 If the lat/lon columns contain letters or other invalid characters, the features are tagged with `invalid`.
 
-!!! tip "Use streaming"
+!!! tip "Use streamingn for faster upload"
 
         Using streaming via the `-s` option will significantly reduce the time required to upload CSV files of any size. Standard, non-streaming mode is useful for troubleshooting.
 
@@ -173,7 +173,7 @@ You can also upload CSV and GeoJSON files to your XYZ space by using `-s` -- thi
 
 !!! note 
 
-    When a file is streamed with `-s` it is not loaded into memory and -a is not available to preview and assign tags. You can specify tag using `-p`.
+    When a file is streamed with `-s` it is not loaded into memory and -a is not available to preview and assign tags. You can specify tags using `-p`.
     
 !!! note 
 
@@ -215,7 +215,7 @@ By default, the CLI will generate a unique feature ID during upload based on a h
     Unique IDs are important for XYZ Pro features such as [Virtual Spaces](#virtual-spaces).
 
 !!! warning 
-    Many GIS systems will simply assign incrementing integers to feature IDs to every file. These will conflict across files.
+    Many GIS systems will simply assign incrementing integers as feature IDs to every file. These can conflict across files.
 
 ##### Upload and assign tags 
 
@@ -299,7 +299,8 @@ If a property has been indexed by XYZ, you can filter them with `-s` or `--searc
 - To access feature ID, timestamps, or tags, prefix them with `f.`, e.g. `f.id, f.updatedAt, f.tags f.createdAt`
 - When accessing Property Search via the API, the URL-safe arguments are `=`, `!=`, `=gt=`, `=gte=`, `=lt=`, `=lte=`.
 
-!!! note Property Search is available in spaces with fewer than 15,000 features by default. For spaces larger than 15,000 features, a limited number will be indexed. To access more, you'll need an XYZ Pro license, [learn more about XYZ Pro features here](../xyz_pro). 
+!!! note 
+    Property Search is available in spaces with fewer than 15,000 features by default. For spaces larger than 15,000 features, a limited number will be indexed. To access more, you'll need an XYZ Pro license, [learn more about XYZ Pro features here](../xyz_pro). 
 
 
 ##### Property Filters
@@ -384,7 +385,8 @@ You can get more details about a space by using the `--stats` option. This will 
 
     here xyz config SPACE_ID --stats
 
-!!! Tip Use `here xyz analyze` to get a count and list of values of a property in a space. This is best suited for qualitative values. Only the first 500,000 features in a space will be analyzed.
+!!! Tip 
+    Use `here xyz analyze` to get a count and list of values of a property in a space. This is best suited for qualitative values. Only the first 500,000 features in a space will be analyzed.
 
 ##### Update the title and description of a space
 
