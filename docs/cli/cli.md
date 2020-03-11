@@ -108,7 +108,7 @@ When you create a new Space, the SpaceID will be generated automatically.
 
 `-o, --override`       allow duplicate features to be uploaded even if they share the same feature id
 
-`-s, --stream`        stream large geojson and csv files (> 200 MB) (-a unavailable with streaming, use -p)
+`-s, --stream`        speed up CSV and GeoJSON uploads. required to stream large geojson and csv files (> 200 MB) (`-a` unavailable with streaming, use `-p`)
 
 `-h, --help`           output usage information
 
@@ -127,7 +127,7 @@ Upload a GeoJSON file to an existing space.
 
 !!! tip "Use streaming for faster upload"
 
-    Using streaming via the `-s` option will significantly reduce the time required to upload GeoJSON files. The default non-streaming mode is useful for troubleshooting.
+    Using streaming via the `upload -s` option will significantly reduce the time required to upload GeoJSON files. The default non-streaming mode is useful for troubleshooting.
 
 ##### Upload a CSV file
 
@@ -162,12 +162,12 @@ If the lat/lon columns contain letters or other invalid characters, the features
 
 !!! tip "Use streamingn for faster upload"
 
-        Using streaming via the `-s` option will significantly reduce the time required to upload CSV files of any size. Standard, non-streaming mode is useful for troubleshooting.
+        Using streaming via the `upload -s` option will significantly reduce the time required to upload CSV files of any size. Standard, non-streaming mode is useful for troubleshooting.
 
 
 ##### Upload and stream large CSV and GeoJSON files
 
-You can also upload CSV and GeoJSON files to your XYZ space by using `-s` -- this will stream the file and avoid Node memory errors, and will be considerably faster than the standard upload method.
+To upload very large CSV and GeoJSON files to your XYZ space, use `-s` -- this will stream the file and avoid Node.js memory errors, and will be considerably faster than the standard upload method.
 
     here xyz upload YOUR_SPACE_ID -f /Users/xyz/big_data.csv -s
 
