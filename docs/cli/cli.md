@@ -125,7 +125,7 @@ Upload a GeoJSON file to an existing space.
 
     here xyz upload SPACE_ID -f /Users/xyz/data.geojson
 
-!!! tip "Use streaming for faster upload"
+!!! tip "Use streaming for faster uploads"
 
     Using streaming via the `upload -s` option will significantly reduce the time required to upload GeoJSON files. The default non-streaming mode is useful for troubleshooting.
 
@@ -160,14 +160,25 @@ Rows that have `0,0` or `null` values in the designated latitude and longitude c
 
 If the lat/lon columns contain letters or other invalid characters, the features are tagged with `invalid`.
 
-!!! tip "Use streamingn for faster upload"
+!!! tip "Use streaming for faster uploads"
 
         Using streaming via the `upload -s` option will significantly reduce the time required to upload CSV files of any size. Standard, non-streaming mode is useful for troubleshooting.
+        
+##### Chunking
 
+You can adjust the "chunk" size when streaming an upload. This controls the number of features that the CLI sends to the API at a time. The default chunk size is 200 features.
+
+###### Large features
+
+You may see upload errors from the CLI if your features are large, complex geometries. By decreasing the chunk size, you may still be able to upload these large features. Try `-c 100`, or even `-c 10` or `-c 1`. If you continue to see errors you may need to [simplify the geometries](../shapefiles) before uploading them.
+
+###### Small features
+
+If your features are small, like you might see in a GeoJSON file containing points or a CSV, you will see faster uploads if you increase the chunk size. For example, `-c 1000` will enable the CLI to upload 1000 features at a time. If the features are very simple, `-c 10000` may also be approproate. As long as the chunk size is below the size of the API gateway, this will speed up your upload. The CLI will notify you if there is an upload error. 
 
 ##### Upload and stream large CSV and GeoJSON files
 
-To upload very large CSV and GeoJSON files to your XYZ space, use `-s` -- this will stream the file and avoid Node.js memory errors, and will be considerably faster than the standard upload method.
+To upload very large CSV and GeoJSON files to your XYZ space, will will need to use `-s` -- this will stream the file and avoid Node.js memory errors. (It will also be considerably faster than the standard upload method.)
 
     here xyz upload YOUR_SPACE_ID -f /Users/xyz/big_data.csv -s
 
