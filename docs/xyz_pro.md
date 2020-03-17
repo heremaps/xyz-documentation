@@ -35,7 +35,7 @@ Create tags using conditional rules based on the values of properties in feature
 
 ## Schema Validation
 
-Apply a schema validation JSON file to space to ensure that only valid data is uploaded to ab XYZ space.
+Apply a schema validation JSON file to space to ensure that only valid data is uploaded to an XYZ space.
 
 The schema definition can be in the form of a web address or a local schema JSON file.
 
