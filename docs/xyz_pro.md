@@ -12,7 +12,7 @@ More details are available in the [CLI documentation](../docs/cli/cli.md#propert
 
 Virtual Spaces let you group or associate geospatial features in multiple spaces and present them as a single space.
 
-`group` acts as an alias, presenting multiple XYZspaces via a single space ID.
+`group` acts as an alias, presenting multiple XYZ spaces via a single space ID.
 
 `associate` merges feature properties from one XYZ space into features in a second space based on feature ID matches. This allows you to import statistical data and merge it with pre-existing polygons on the fly.
 
