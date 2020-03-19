@@ -1,7 +1,19 @@
 # Release notes for XYZ
 
+### XYZ Hub - 1.3.0
+
+✨ **CHANGED** ✨
+- 4 flavours of the OpenAPI specification are now generated during the service start: stable, experimental, contract and full.
+- The connector protocol version is updated to version 0.2.0. All feature metadata values are set by Hub.
+- GeometryCollection is rejected as an input in Hub.
+
+🔨 **FIXED** 🔧
+- Fixed an issue with the initialization of connectors.
+
+---
+
 ### XYZ Hub - 1.2.1
-**FIXED**
+🔨 **FIXED** 🔧
 - Fix an error when updating a feature, using the query parameters addTags or removeTags, and providing a body with a feature, which does not include tags.
 
 ---
