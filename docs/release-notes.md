@@ -1,5 +1,49 @@
 # Release notes for XYZ
 
+### HERE CLI release 1.3.0
+
+Bugs have been tracked down and features have been hoisted up.
+
+🏃‍♀️🏃‍♂️👟 **Import GPX files** 🚴‍♀️🚴‍♂️🚲
+
+If you run or bike, you probably know what GPX traces are, and you'll be excited to know we can now import them into XYZ aka Data Hub! Just reference the file in `here xyz upload my.gpx` and we will convert it into delicious GeoJSON using @roberto-butti's sweet code. Thanks for the PR, Roberto!
+
+🔎🗺🔍 **Spatial Search** 🔎🌏🔍
+
+You can now select a set features within a radius around a point, using `--spatial` in the show command:
+
+`here xyz show spaceID --spatial --center "37.74,-122.43" --radius=100 -w`
+
+And as if that were not exciting enough, you can also select features from one space that fall within a polygon from another space! Imagine you had a space that had postal codes as the feature ID:
+
+`here xyz show space_with_points --spatial --feature space_with_zip_codes,94104 -w`
+
+➕➕➕ **CSV Join** ➕➕➕
+
+Virtual Spaces are fun, but it's sometime laborious to get the data you need into XYZ, especially when it's a CSV table with data and IDs but no coordinates (think Census tables). But now you can use the new join command to dynamically associate a CSV to space with geometries with those same IDs!
+
+`here xyz join space_with_geometries -f table_with_ids.csv -k unique_id`
+
+This means you can pour the properties from many CSVs into the polygons of one existing space and access them through the new virtual space IDs.
+
+Note that uses the same CSV import options (delimiter, quotes, string-fields).
+
+You can also update a CSV space and the Virtual Space will dynamically update.
+
+🎉🎉🎉 **Other interesting enhancements** 🎉🎉🎉
+
+- Features are now written to XYZ spaces using `PATCH` instead of `POST`, meaning you can make more granular edits to your features.
+- It turns out point field columns are not always written as `(lat,lon)` but sometimes are `(lon,lat)` and we can now deal with that.
+- You can now add `--token` to most commands, and presuming you have the appropriate permissions, you can do things to/with your friends' spaces.
+- We are now using the d3-Delaunay library for Voronoi polygons.
+- We check for troublesome characters in tags that break URLs, like `&` and `+` and `,`
+- Users can now adjust the `cacheTTL` of a space using config `--cacheTTL`
+- We are deprecating `here xyz describe` since here xyz config `--stats` does a much better job.
+
+Thanks for watching, and let us know what you see in the issues!
+
+---
+
 ### XYZ Hub - 1.3.0
 
 ✨ **CHANGED** ✨
@@ -8,7 +52,7 @@
 - GeometryCollection is rejected as an input in Hub.
 
 🔨 **FIXED** 🔧
-- Fixed an issue with the initialization of connectors.
+- Fixed an issue with the initialization of connectors
 
 ---
 
@@ -27,6 +71,36 @@
 - Fixed that the createdAt value can be overwritten by the value in the input.
 
 ---
+
+### HERE CLI 1.2.0 release notes
+
+Lots of enhancements and bug fixes, including the integration of some GIS functions!
+
+🛠🔧🔨 **Command Line GIS** 🛠🔧🔨
+
+We've integrated some functions from turf.js so you can modify your features and spaces in a variety of interesting ways!
+
+〰 add length to lines
+🔳 add area to polygons
+🔘 generate centroids of polygons (and write them to either the same space, or a new space)
+🔼 generate tin (Triangulated Irregular Network,, aka Delauney triangles) from a space containing points
+⧎⧎ generate voronoi triangles from a space containing points
+
+Everyone has their favorite GIS function -- if yours isn't included, take a look at how we did it and make a pull request, or file an issue.
+
+🎁🎁🎁 **Read from / write to other users spaces** 🎁🎁🎁
+
+As we've noted before, sharing is caring. If you and your friends like to share read and write tokens, you can read and get info from and upload to each others' spaces using the --token option:
+
+`here xyz show spaceID --token
+here xyz upload spaceID -f your.geojson --token
+here xyz config spaceID --stats --token`
+
+✂️✂️✂️ **More feedback when clearing and deleting spaces** 💥💥💥
+
+When clearing or deleting spaces, we want to make it absolutely clear which space you're working on. Like us, you probably don't have all your space IDs memorized, so we though it would be a good idea to add information about the space, including the name, description, and feature count in the "are you sure" prompt.
+
+--- 
 
 ### XYZ Hub - 1.1.0
 
@@ -51,6 +125,16 @@
 
 ---
 
+### HERE CLI 1.1.1 Release
+
+🗝🗝🗝 This minor release contains enhancements involving tokens and authentication. 🔑🔑🔑
+
+- Added support for Location Services API Key authentication.
+- Added server side hexbin clustering capability to tokens generated when viewing space on web via CLI.
+- Support for changes in the Hub API.
+
+---
+
 ### XYZ Hub - 1.0.1
 
 ✨ **ADDED** ✨
@@ -58,6 +142,40 @@
 
 🔨 **CHANGED** 🔧
 - Switch to semantic versioning 2.0.0. More information at https://semver.org/
+
+---
+
+### HERE CLI 1.1.0 Release
+
+Lots of enhancements in version 1.1.0 of the HERE CLI aimed at making your life easier.
+
+⬆️⬆️⬆️Upload ⏫⏫⏫
+
+   - We now echo the space ID after an upload finishes, making it easier to find and copy
+   - Upload progress is less chatty, with percentage updated on the same line
+   - While uploading a CSV, if a row does not have any coordinates, we assign it a null geometry and tag it as `null_island` (meaning you can use tags to access and repair these records)
+   - Lots of streaming enhancement
+   - More reliable shapefile conversion and reprojection
+   - Custom delimiters were breaking streaming
+   - Property-based tags are now only written as `property@value`
+
+🕴🕴🕴 XYZ Pro 🕴🕴🕴
+
+   - Config is more useful and powerful
+   - The `tagrules` and `searchable` commands have been moved under `config`
+   - More useful titles and descriptions of Virtual Spaces
+
+⬢⬡⬢ Hexbins ⬢⬡⬢
+
+   - More reliable hexbinning of large spaces (>10 GB)
+   - You can now hexbin down to zoom 17-18 (useful for aggregating road / probe data)
+   - Better structuring of objects (property names are added to subcounts)
+   - Fixing issues when existing hexbin space belongs to another user, or if spaces are shared
+   - Better bbox support, especially with negative lats/lons
+
+🖋🖊🖌Other🖋🖊🖌
+
+   -  Nicer table formatting
 
 ---
 
@@ -153,6 +271,61 @@ Exciting way to Filter your Properties! Add Data is more fun now.
 
 ---
 
+### HERE Data Hub CLI release 1.0.2
+
+Do you like Shapefiles and CSVs? We've made it even easier to import them into your XYZ spaces using the HERE CLI. We also implemented Rule Based Tags and enhanced hexbins.
+
+Along with general bug fixes and improvements, we edited and improved the internal help and added nice formatting to tables.
+
+🛠🔧🔩 Import more Shapefiles 🛠🔧🔩
+
+Convert even more kinds of shapefiles! California State Plane? Tokyo / UTM zone 54N? We peek inside the `.prj` file and convert the CRS if it's not WGS84 (thanks PROJ!)
+
+🔤👉🔢 CSV import enhancements 🔤👉🔢
+
+    Latitudes and longitudes are vast, as are the names of their columns. If we don't recognize yours, we let you select them.
+    When importing a CSV, if something looks like a number, we save it as a number (unless you tell us it shouldn't be a number -- FIPS and ZIP codes starting with 0, rejoice!) And it's true that we save booleans properly.
+
+📋☑️📐 Rule Based Tags (XYZ Pro) 📋☑️📐
+
+We've introduced a new way to generate tags based on rules when you upload data to an XYZ space using the new `tagrule` command:
+
+`here xyz tagrules spaceID --add`
+
+You'll be asked to name a tag, and then enter a rule in the same p.propertyname syntax as Property Search:
+
+`node bin/here.js xyz tagrules SPACEID --add
+Starting to add a new synchronous rule to automatically tag features..
+? Enter a tag name you would like to assign :  fast
+Please enter condition(s) for the auto tagging your features with  `fast` e.g. "f.id == 123 || (p.country=='USA' & p.count<=100)"
+? condition :   p.velocity>25
+tagrules updated successfully!`
+
+You can view, edit, and add more rules for a space:
+
+`$ node bin/here.js xyz tagrules uZHFctY1 --view
+tag_name  mode  auto_tag_condition
+--------  ----  ------------------
+fast      sync  p.velocity>25`
+
+Note that these tags only get added to features when data is uploaded. Applying rules to data already in a space is under development.
+
+⬢⬡⬢ Hexbins ⬢⬡⬢
+
+*Sharing is caring*
+
+We've added more meaningful descriptions to the descriptions of XYZ hexbin spaces, including the ID of the source space. And since it's nice to share, we also made it possible to generate hexbins out of shared spaces or another user's space if you have a read token. You can also make a hexbin space in a friend's account if they give you a write token.
+
+*Quantity has a quality all its own*
+
+We thought it would be useful to let you add up the values of a property (presuming it's a quantitative value). Just specify the property you want to add up with -a:
+
+`here xyz hexbin SPACEID -a propertyname_that_is_quantitative`
+
+This will generate new properties in each hexbin and centroid called sum and maxSum in addition to the `count` and `maxCount`.
+
+---
+
 ### XYZ Hub - 2019.41.01 / 2019-10-10 
 
 ✨ **ADDED** ✨
@@ -185,6 +358,15 @@ New Feature: Exciting User Onboarding! Signups and Login is more fun now. Check 
 * Fixed an issue of side panel UI distortion while using color palette.
 * Fixed an issue of NaN being displayed in Account Dashboard.
 * Other minor bug fixes.
+
+---
+
+### CLI Pro Features Beta Release 1.0.1
+
+🔨 **IMPROVED** 🔧
+
+* Change in the XYZ Pro Beta Terms and Conditions URL.
+* Improvements and bug fixes for XYZ features.
 
 ---
 
