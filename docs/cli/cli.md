@@ -86,15 +86,15 @@ When you create a new Space, the SpaceID will be generated automatically.
 
 ##### Options
 
-`-f, --file <file>`    geojson file to upload
+`-f, --file <file>`    GeoJSON, GeoJSONL, CSV or Shapefile to upload
 
 `-c, --chunk [chunk]`  chunk size (adjusts the number of features uploaded at once)
 
 `-t, --tags [tags]`    tags for the xyz space (used to filter data from the API)
 
-`-x, --lon [lon]`      choose longitude field name, if not well known
+`-x, --lon [lon]`      choose longitude CSV field name, if not well known
 
-`-y, --lat [lat]`     latitude field name, if not well known
+`-y, --lat [lat]`     latitude CSV field name, if not well known
 
 `-z, --point [poiunt]` points field name, e.g. `(lat,lon)`
 
