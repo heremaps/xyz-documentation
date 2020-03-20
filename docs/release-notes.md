@@ -1,5 +1,7 @@
 # Release notes for XYZ
 
+---
+
 ### HERE CLI v 1.3.0
 
 Bugs have been tracked down and features have been hoisted up. We clarified lots of the inline documentation -- check it out with `-h`. And as for the new features:
