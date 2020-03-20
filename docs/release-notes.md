@@ -1,5 +1,55 @@
 # Release notes for XYZ
 
+### HERE CLI v 1.3.0
+
+Bugs have been tracked down and features have been hoisted up. We clarified lots of the inline documentation -- check it out with `-h`. And as for the new features:
+
+🔎🗺🔍 Spatial Search  🔎🌏🔍 
+
+You can now select a set features within a radius around a point, using `--spatial` in the `show` command:
+
+    here xyz show spaceID --spatial --center "37.74,-122.43" --radius=100 -w
+
+And as if that were not exciting enough, you can _also_ select features from one space that fall within a polygon from another space! Imagine you had a space that had postal codes as the feature ID:
+
+    here xyz show space_with_points --spatial --feature space_with_zip_codes,94104 -w
+
+
+➕➕➕ CSV Join  ➕➕➕
+
+Virtual Spaces are fun, but it's sometime laborious to get the data you need into XYZ, especially when it's a CSV table with data and IDs but no coordinates (think Census tables). But now you can use the new `join` command to dynamically associate a CSV to space with geometries with those same IDs!
+
+    here xyz join space_with_geometries -f table_with_ids.csv -k unique_id
+
+This means you can pour the properties from many CSVs into the polygons of one existing space and access them through the new virtual space IDs.
+
+Note that uses the same CSV import options (delimiter, quotes, string-fields).
+
+You can also update a CSV space and the Virtual Space will dynamically update.
+
+🏃‍♀️🏃‍♂️👟 Import GPX files  🚴‍♀️🚴‍♂️🚲
+
+If you run or bike, you probably know what GPX traces are, and you'll be excited to know we can now import them into XYZ aka Data Hub! Just reference the file in `here xyz upload my.gpx` and we will convert it into delicious GeoJSON using @roberto-butti's sweet code. Thanks for the [PR](https://github.com/heremaps/here-cli/pull/179), Roberto!
+
+
+🎉🎉🎉Other interesting enhancements 🎉🎉🎉
+
+- Features are now written to XYZ spaces using `PATCH` instead of `POST`, meaning you can make more granular edits to your features.
+
+- It turns out point field columns are not always written as `(lat,lon)` but sometimes are `(lon,lat)` and we can now deal with that.
+
+- You can now add `--token` to most commands, and presuming you have the appropriate permissions, you can do things to/with your friends' spaces.
+
+- We are now using the d3-Delaunay library for Voronoi polygons.
+
+- We check for troublesome characters in tags that break URLs, like `&` and `+` and `,`
+
+- Users can now adjust the `cacheTTL` of a space using `config --cacheTTL`
+
+- We are deprecating `here xyz describe` since `here xyz config --stats` does a much better job.
+
+Thanks for watching, and let us know what you see in the issues!
+
 ---
 
 ### XYZ Hub - 1.3.0
