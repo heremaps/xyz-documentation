@@ -79,7 +79,7 @@ When you create a new Space, the SpaceID will be generated automatically.
 `-s <schema definition>` Applies a schema validation json file to space. The schema definition can be in the form of a web address or a local schema json file. Features that do not match this schema will not be uploaded. 
 
 !!! note 
-    This is an XYZ Pro feature that requires a license. [Learn more about XYZ Pro features here](../../xyz_pro).
+    This is a Pro feature that requires a license. [Learn more about XYZ Pro features here](../../xyz_pro).
 
 
 #### Upload/Update data to a Space
@@ -113,8 +113,6 @@ When you create a new Space, the SpaceID will be generated automatically.
 `-h, --help`           output usage information
 
 
-
-
 ##### Upload GeoJSON
 
 Upload a GeoJSON file to a new space. XYZ will automatically generate a space ID and display it for you.
@@ -127,7 +125,12 @@ Upload a GeoJSON file to an existing space.
 
 !!! tip "Use streaming for faster uploads"
 
-    Using streaming via the `upload -s` option will significantly reduce the time required to upload GeoJSON files. The default non-streaming mode is useful for troubleshooting.
+    Using streaming via the `upload -s` option will significantly reduce the time required to upload GeoJSON files. The default non-streaming mode is useful for troubleshooting. If your features are small, you can also try increasing the chunk size using `-c`. 
+    
+!!! note "Feature IDs"
+
+    XYZ requires that every feature in a space has a unique id. (This lets you access features in a space using the API.) If a GeoJSON feature does not have an ID (a common occurance), XYZ's default upload behavior is to create one based on a hash of the feature's property. (Note that if you have duplicate records in a dataset at the same location, only the first will be uploaded.)
+    If you are certain that your dataset has a well-managed set of unique feature IDs, use `upload -o` to have XYZ use them. If you use `-o` to upload a new dataset, and a new feature has the same ID as an existing feature, XYZ will consider it an update and overwrite the existing feature with the new feature. Note that many public datasets often have a "unique" set of feature IDs that are simply incremental integers which can lead to feature replacement that you probably didn't want.    
 
 ##### Upload a CSV file
 
@@ -152,9 +155,9 @@ or
 
     (37.7,-122.2)
 
-you can specify the name of that column with `-p`.
+you can specify the name of that column with `-z`.
 
-    here xyz upload -f /Users/xyz/data.csv -p points
+    here xyz upload -f /Users/xyz/data.csv -z points
 
 Rows that have `0,0` or `null` values in the designated latitude and longitude columns will be tagged with `null_island`. They will not be displayed on the map, but you can access them via the API (or in geojson.tools) by appending `&tags=null_island` so you can inspect and repair the records.
 
@@ -162,7 +165,11 @@ If the lat/lon columns contain letters or other invalid characters, the features
 
 !!! tip "Use streaming for faster uploads"
 
-        Using streaming via the `upload -s` option will significantly reduce the time required to upload CSV files of any size. Standard, non-streaming mode is useful for troubleshooting.
+        Using streaming via the `upload -s` option will significantly reduce the time required to upload CSV files of any size. Standard, non-streaming mode is useful for troubleshooting. 
+        
+!!! tip "Using properties as the feature ID"
+
+    The CLI converts a CSV row into a GeoJSON feature before uploading it. If you want values in a CSV columns to be the GeoJSON feature ID, use `-i columnName.`
         
 ##### Chunking
 
@@ -174,7 +181,7 @@ You may see upload errors from the CLI if your features are large, complex geome
 
 ###### Small features
 
-If your features are small, like you might see in a GeoJSON file containing points or a CSV, you will see faster uploads if you increase the chunk size. For example, `-c 1000` will enable the CLI to upload 1000 features at a time. If the features are very simple, `-c 10000` may also be approproate. As long as the chunk size is below the size of the API gateway, this will speed up your upload. The CLI will notify you if there is an upload error. 
+If your features are small, like you might see in a GeoJSON file containing points or a CSV, you will see faster uploads if you increase the chunk size. For example, `-c 1000` will enable the CLI to upload 1000 features at a time. If the features are very simple, `-c 10000` may also be approproate. As long as the chunk size is below the size of the API gateway, this will speed up your upload. The CLI will notify you if there is an upload error. Note that if you need to restart your upload, existing features will not be duplicated.
 
 ##### Upload and stream large CSV and GeoJSON files
 
@@ -248,7 +255,7 @@ Uploads data and allows users to select tags from a list of feature keynames, wi
 ```
 here xyz upload -f file.geojson -p treatment
 ```
-Uploads data and adds the value of the selected feature property as tag. These tags can be used to filter data when querying the HERE XYZ API.
+Uploads data and adds the value of the selected feature property as tag. These tags can be used to filter data when querying the HERE XYZ API. The tags will be stored as `propertyname@value`. This is most effective when the property consists of a limited number of qualitative values.
 
 ###### Response
 
@@ -316,11 +323,22 @@ If a property has been indexed by XYZ, you can filter them with `-s` or `--searc
 
 ##### Property Filters
 
-You can use `show -p` to filter the properties that get returned by the API. This is useful when your features have a large number of properties, and you only need to return some of them along with with the geometry.
+You can use `show -p` or `--prop` to filter the properties that get returned by the API. This is useful when your features have a large number of properties, and you only need to return some of them along with with the geometry.
 
     here xyz show -p p.property1,p.property2 -w
     
 !!! Note "Your account needs access to the XYZ Pro Services." [Learn more about XYZ Pro features here](../xyz_pro).
+
+##### Spatial Search
+
+You can use `--spatial` to search for features in an XYZ space that fall within a radius, or a polygon, or along a line. You can specify a point and a radius, a feature in another XYZ space, or a feature in a geojson file.
+
+- `--center`: comma separated `lat,lon` values that specify the center point for the search
+- `--radius`: the radius of the search, in meters, from the `--center` point, or a buffer around a geometry specified with `--feature` or `--geometry`
+- `--feature`: comma separated `spaceid,featureid` values that specify a reference geometry from another XYZ space -- this will return features from the first space that fall within or along a feature from the second space
+- `--geometry`: a single GeoJSON feature in a file to be uploaded for the spatial query
+
+These results are most easily viewable using `show -w`.
 
 #### Delete a Space
 
@@ -347,14 +365,13 @@ Clear data from your space. You clear the entire space, or clear by tag or featu
 `-h --help` output usage information
 
 
-
 #### List all tokens
 
 ```
 here xyz token
 ```
 
-Lists all the xyz token you use
+Lists all the xyz token you use:
 
 ```
 id type lat description
@@ -363,9 +380,9 @@ YOUR_TOKEN_NR_1 PERMANENT 1534451767 xyz-hub=readFeatures,createFeatures,updateF
 YOUR_TOKEN_NR_2 PERMANENT 1534516620 xyz-hub=readFeatures
 ```
 
-#### Get more information about your spaces 
+#### Get more information about your spaces
 
-!!! Note "Your account needs access to the XYZ Pro Services." [Learn more about XYZ Pro features here](../xyz_pro).
+!!! Note "To use this feature, your account needs access to the XYZ Pro Services." [Learn more about XYZ Pro features here](../xyz_pro).
 
 You can use the `config` command to get and update information about your spaces.
 
@@ -418,7 +435,7 @@ You can disable sharing by passing a `false` parameter:
 
 ##### Update, upload, or delete a schema definition
 
-!!! Note "Your account needs access to the XYZ Pro Services." [Learn more about XYZ Pro features here](../xyz_pro).
+!!! Note "To use this feature, your account needs access to the XYZ Pro Services." [Learn more about XYZ Pro features here](../xyz_pro).
 
 A schema validation json file can be configured for a space. The schema definition can be in the form of a web address or a local schema json file. Features that do not match this schema will not be uploaded. 
 
@@ -432,6 +449,56 @@ To delete a schema from a space:
 here xyz config YOUR_SPACE_ID -s
 ```
 
+#### Virtual Spaces
+
+!!! Note "To use this feature, your account needs access to the XYZ Pro Services." [Learn more about XYZ Pro features here](../xyz_pro).
+
+Virtual Spaces give users access to multiple spaces with one ID. Group lets you bundle your spaces together, and changes get written back to their original spaces. Associate lets you make your own personal edits to a shared space or one with public data, merging the properties of objects with the same feature ID.
+
+    here xyz virtualize|vs -a|-g space1,space2
+    
+    
+##### Group
+
+    here xyz virtualize -g space1,space2,...
+    
+`group` takes multiple XYZ spaces and presents them via a single XYZ space ID. Duplicates can occur. Any updates will be made to the original spaces.
+
+##### Associate
+
+    here xyz vs -a space1,space2
+    
+`associate` takes features from `space1` and merges their properties into features with the same feature id in `space2`.
+
+One way of using `virtualize` is to upload CSVs of census data with unique geoID, and merge the statistics on the fly into census geometries where the geoID is the unique ID.
+
+#### Join (Virtual Spaces)
+
+The `join` command simplifies use of virtual spaces when using CSV tables and existing geometries. You can designate a CSV column to be the feature ID, and use the `associate` virtual spaces option to join it with a space with geometries that use the same set of feature IDs. 
+
+    here xyz join space_with_geometries -f data_table.csv -k column_with_id
+
+!!! note 
+
+    `join` creates a space of features with no geometries. You can inspect this space using geojson.tools via `show -w`
+    
+    You can update this "csv space" using `here xyz upload spaceID -f new.csv -k id --noGeom` and the next time the virtual space ID is references, the properties will contain the updated values.
+    
+#### Spatial search
+
+
+    
+#### GIS functions
+
+!!! Note "To use this feature, your account needs access to the XYZ Pro Services." [Learn more about XYZ Pro features here](../xyz_pro).
+
+The CLI has access to a number of convenient geopspatial data functions via the `here xyz gis` command. Some of these functions add properties to the original features, while others create data in a new space. 
+
+- `--area` uses `turf.js` to calculate the area of polygons, and saves this as a set of new properties in each polygon feature. `xyz_area_sqmiles`,`xyz_area_sqkm` are rounded for display convenience, and `xyz_area_sqm` is not rounded.
+- `--length` uses `turf.js` to calculate the length of lines in a space, and saves this as a set of new properties in each linestring feature, `xyz_length_miles`,`xyz_length_km` which are rounded for display convenience, and `xyz_length_m` which is not rounded.
+- `--centroid` uses `turf.js` to calculate the center of each polygon in a space. By default, these points are written to a new space, but can saved in the existing space using the `--samespace` option. In either case, they all receive a `centroid` tag.
+- `--voronoi` uses `d3-delaunay.js` to generate Voronoi polygons from points in an XYZ space. The edges of these polygons are equidistant from two points, and the vertices are equidistant to three points. By default, they are written to a new space, but can saved in the source point space using the `--samespace` option. In either case, they all receive a `voronoi` tag. 
+- `--tin` uses `d3-delaunay.js` to generate Delaunay triangles from points in an XYZ space. This process maximizes the minimum angle of all the angles of the triangles created from the source points. By default, they are written to a new space, but can saved in the source point space using the `--samespace` option. In either case, they all receive a `tin` tag. 
 
 #### Hexbins
 
@@ -554,25 +621,4 @@ This would create a `subcount` object in each hexbin, which would contain the re
 `  -h, --help                    ` output usage information
 
 You can create hexbins either by width in meters, or use preset widths appropriate to the zoom level.
-
-#### Virtual Spaces
-
-Virtual Spaces give users access to multiple spaces with one ID. Group lets you bundle your spaces together, and changes get written back to their original spaces. Associate lets you make your own personal edits to a shared space or one with public data, merging the properties of objects with the same feature ID.
-
-    here xyz virtualize|vs -a|-g space1,space2
-    
-    
-##### Group
-
-    here xyz virtualize -g space1,space2,...
-    
-`group` takes multiple XYZ spaces and presents them via a single XYZ space ID. Duplicates can occur. Any updates will be made to the original spaces.
-
-##### Associate
-
-    here xyz vs -a space1,space2
-    
-`associate` takes features from `space1` and merges their properties into features with the same feature id in `space2`.
-
-One way of using `virtualize` is to upload CSVs of census data with unique geoID, and merge the statistics on the fly into census geometries where the geoID is the unique ID.
 
