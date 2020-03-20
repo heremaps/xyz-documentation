@@ -8,6 +8,10 @@ This is currently available in the CLI and the API. Property Search is available
 
 More details are available in the [CLI documentation](../docs/cli/cli.md#property-search) and the [Swagger API `/search` endpoint](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/searchForFeatures).
 
+## Property Filtering
+
+You can filter the properties that get returned by the API. This is useful when your features have a large number of properties, and you only need to return some of them along with with the geometry. More details are available in the [CLI documentation](../docs/cli/cli.md#property-filters) and in the `params` options of the [Swagger API `/bbox` and `/tile` endpoints](https://xyz.api.here.com/hub/static/swagger). 
+
 ## Virtual Spaces
 
 Virtual Spaces let you group or associate geospatial features in multiple spaces and present them as a single space.
@@ -16,7 +20,18 @@ Virtual Spaces let you group or associate geospatial features in multiple spaces
 
 `associate` merges feature properties from one XYZ space into features in a second space based on feature ID matches. This allows you to import statistical data and merge it with pre-existing polygons on the fly.
 
-This is currently available in the CLI and API. More details are available in the [CLI documentation](../docs/cli/cli.md#virtual-spaces)
+This is currently available in the CLI and API. More details see the [CLI documentation](../docs/cli/cli.md#virtual-spaces)
+
+## Spatial Search
+
+Search for features in an XYZ space that fall within a radius, or a polygon, or along a line. You can specify a point and a radius, a feature in another XYZ space, or a feature in a GeoJSON file.
+
+This is cuurently available in the CLI and API. For more details, see the [CLI documentation](../docs/cli/cli.md#spatial-search) or (Swagger)[https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/getFeaturesBySpatial].
+
+
+## GIS Functions
+
+Use the CLI to calculate the area of a polygon or length of line and save it as a new property. Generate centroids of polygons. Create Voronoi polygons or Delaunay trianges from sets of points. For more details, see the [CLI documentation](../docs/cli/cli.md#gis-functions)
 
 
 ## Hexbins
@@ -39,7 +54,7 @@ Apply a schema validation JSON file to space to ensure that only valid data is u
 
 The schema definition can be in the form of a web address or a local schema JSON file.
 
-!!! note "Schema validation is not transactional (yet)"
+!!! note "Schema validation is not transactional"
     The schema validation will be non-transactional (`Transaction = FALSE`) and will upload all the objects which pass schema definition and display the list of objects rejected.
 
 ## Activity Log
