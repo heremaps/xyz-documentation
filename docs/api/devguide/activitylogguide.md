@@ -4,6 +4,8 @@
 
 ***
 
+(If you just want to have a quick go at Activity-Log, head over to the [quick start guide](../quickstart/activitylog.md).)
+
 This connector provides the user with the possibility to track changes to his space. By activating this feature, every modification of features (insert/update/delete by the **ModifyFeaturesEvent**) is tracked and stored in a separate space.
 
 To activate it, just add the listener to your space:
@@ -11,7 +13,7 @@ To activate it, just add the listener to your space:
 ``` javascript
 {
   "title": "Test space to track changes.",
-  "listeners": { 
+  "listeners": {
     "activity-log": [{
       "params": {
         "states": 3,            //(Optional) Keeps a maximum of x states per object (x > 0).
@@ -42,7 +44,7 @@ A full space definition with this feature enabled looks like this:
     "id": "<yourSpaceId>",
     "title": "Test space to track changes.",
     "description": null,
-    
+
     "enableUUID": true,
     "listeners": {
         "activity-log": [{
@@ -89,7 +91,7 @@ Additionally, the original feature element will be slightly modified:
 * A new property will be added under '@ns:com:here:xyz:log'.**invalidatedAt** to indicate the time range, when this object was the HEAD (newest) history object.
 * If diff calculation is enabled, an array with differences in accord with RFC-6902 (JSON Patch) will be added under '@ns:com:here:xyz:log'.**diff**.**ops**
 
-    * **ATTENTION**: Applying the diff to the current feature, will return the previous (older) feature. This means that adding a new property to a feature, will be shown as 'remove' & 'pathToNewProperty' in the diff of the current.
+  * **ATTENTION**: Applying the diff to the current feature, will return the previous (older) feature. This means that adding a new property to a feature, will be shown as 'remove' & 'pathToNewProperty' in the diff of the current.
 
 * The action of the operation (SAVE/UPDATE/DELETE) will be stored under '@ns:com:here:xyz:log'.**action**
 * Additional entries will be added to the tags, like:
