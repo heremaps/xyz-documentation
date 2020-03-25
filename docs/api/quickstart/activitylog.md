@@ -271,3 +271,5 @@ Response body:
   ]
 }
 ```
+
+For further information head over to the [developer guide](../devguide/activitylogguide.md) on Activity-Log.
