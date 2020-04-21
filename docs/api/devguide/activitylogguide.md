@@ -8,16 +8,18 @@
 
 This connector provides the user with the possibility to track changes to his space. By activating this feature, every modification of features (insert/update/delete by the **ModifyFeaturesEvent**) is tracked and stored in a separate space.
 
-To activate it, just add the listener to your space:
+To activate it, just create a space with the listener added and enableUUID set to true:
 
 ``` javascript
 {
   "title": "Test space to track changes.",
+  "enableUUID": true,
   "listeners": {
     "activity-log": [{
       "params": {
-        "states": 3,            //(Optional) Keeps a maximum of x states per object (x > 0).
-        "storageMode": "DIFF_ONLY" | "FULL" | ("FEATURE_ONLY" or <none> -> default)
+        "states": 5,            //(Optional) Keeps a maximum of x states per object (x > 0).
+        "storageMode": "DIFF_ONLY" | "FULL" | ("FEATURE_ONLY" or <none> -> default),
+        "writeInvalidatedAt": false | true or <none> -> default //(Optional) Write and update the invalidateAt timestamp. If set to false, this can reduce space requests.
       }
     }]
   }
@@ -26,9 +28,9 @@ To activate it, just add the listener to your space:
 
 The storage mode decides how the features will be stored.
 
-* FEATURE_ONLY: Will store features with some history relative properties (defined below).
-* DIFF_ONLY: Will store features with a 'diff'.'ops' property in the XYZ Activity-Log namespace, containing the RFC-6902 diff to its previous object. The features after the HEAD will only contain the XYZ Activity-Log & XYZ namespace properties.
-* FULL: Will store features with some history relative properties and a 'diff'.'ops' property in the XYZ Activity-Log namespace, containing the RFC-6902 diff to its previous object.
+* **FEATURE_ONLY**: Will store features with some history relative properties (defined below).
+* **DIFF_ONLY**: Will store features with a 'diff'.'ops' property in the XYZ Activity-Log namespace, containing the RFC-6902 diff to its previous object. The features after the HEAD will only contain the XYZ Activity-Log & XYZ namespace properties.
+* **FULL**: Will store features with some history relative properties and a 'diff'.'ops' property in the XYZ Activity-Log namespace, containing the RFC-6902 diff to its previous object.
 
 **ATTENTION**: Applying the diff to the current feature will return the previous (older) feature. This means that adding a new property to a feature, will be shown as 'remove' & 'pathToNewProperty' in the diff of the current.
 
@@ -41,40 +43,49 @@ A full space definition with this feature enabled looks like this:
 
 ``` JSON
 {
-    "id": "<yourSpaceId>",
-    "title": "Test space to track changes.",
-    "description": null,
-
-    "enableUUID": true,
-    "listeners": {
-        "activity-log": [{
-            "params": {
-                "states": 5,
-                "storageMode": "DIFF_ONLY"
-            },
-            "eventTypes": [
-                "ModifySpaceEvent.request"
-            ]
-        }],
-        "activity-log-writer": [{
-            "params": {
-                "spaceId": "<someNewlyCreatedSpaceId>",
-                "states": 5,
-                "storageMode": "DIFF_ONLY",
-            "spaceType": "MAIN"},
-            "eventTypes": [
-                "ModifyFeaturesEvent.response",
-            "ModifySpaceEvent.request"]
-        }]
-    },
-    "processors":{
-        "activity-log-writer": [{
-            "id": "activity-log-writer",
-            "eventTypes": [
-                "DeleteFeaturesByTagEvent.request"
-            ]
-        }]
-    }
+  "id": "<yourSpaceId>",
+  "title": "Test space to track changes.",
+  "description": null,
+  "enableUUID": true,
+  "listeners": {
+    "activity-log": [
+      {
+        "params": {
+          "states": 5,
+          "storageMode": "DIFF_ONLY",
+          "writeInvalidatedAt": true
+        },
+        "eventTypes": [
+          "ModifySpaceEvent.request"
+        ]
+      }
+    ],
+    "activity-log-writer": [
+      {
+        "params": {
+          "spaceId": "<someNewlyCreatedSpaceId>",
+          "states": 5,
+          "storageMode": "DIFF_ONLY",
+          "spaceType": "MAIN",
+          "writeInvalidatedAt": true
+        },
+        "eventTypes": [
+          "ModifyFeaturesEvent.response",
+          "ModifySpaceEvent.request"
+        ]
+      }
+    ]
+  },
+  "processors":{
+    "activity-log-writer": [
+      {
+        "id": "activity-log-writer",
+        "eventTypes": [
+          "DeleteFeaturesByTagEvent.request"
+        ]
+      }
+    ]
+  }
 }
 ```
 
