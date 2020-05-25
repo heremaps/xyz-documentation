@@ -114,6 +114,7 @@ nav:
           - Advanced Features: viewer-tool/advanced.md
       - Open Datasets:
           - Buildings: microsoft-buildings.md
+          - Earthquakes: usgs-earthquake.md
   - Releases:
       - Release notes: release-notes.md
   - Tutorials:
