@@ -104,9 +104,11 @@ nav:
   - Tools:
       - HERE CLI:
           - Overview: cli/index.md
-          - Commands: cli/cli.md
+          - Basic features: cli/basic-features.md
+          - Add-on features: cli/add-on.md
           - Shapefiles: cli/shapefiles.md
           - Hexbins: cli/hexbins.md
+          - Command reference: cli/command-reference.md
       - XYZ Space Invader: space-invader/index.md
       - GeoJSON Viewer:
           - Overview: viewer-tool/index.md
