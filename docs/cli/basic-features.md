@@ -51,9 +51,9 @@ If you have upgraded your HERE account to an [Add-On plan](https://developer.her
 here configure refresh
 ``` 
 
-to enable using Data Hub Add-on features. [Learn more about Data Hub Add-on features here.](../../xyz_pro)
+to enable using Data Hub Add-on features. [Learn more](../../datahub_add-on) about Data Hub Add-on features here.
 
-[Click here to learn how to setup and use Data Hub Add-on features Using HERE CLI.](../add-on)
+[Click here](../add-on) to learn how to setup and use Data Hub Add-on features Using HERE CLI.
 
 ### xyz
 
@@ -118,7 +118,7 @@ When you create a new Space, the SpaceID will be generated automatically.
 Applies a schema validation json file to the space. The schema definition can be in the form of a web address or a local schema json file. Features that do not match this schema will not be uploaded to the space. 
 
 !!! note 
-    This is an Add-on feature that requires a license. [Learn more about Data Hub Add-on features here](../../xyz_pro).
+    This is an Add-on feature that requires a license. Learn more about [Data Hub Add-on](../../datahub_add-on) features here.
 
 
 #### Upload/Update data to a Space
@@ -316,18 +316,19 @@ Along similar lines, `--datetag` will let you specify which date parameter tags 
 |   year_week     | date_start_time_year_week@2020-18    |
 |      hour       | date_start_time_hour@22        |
 
-You can also provide a timezone for `hour` calculation using the `--timezone` option.
-
-```
-here xyz upload <SPACE_ID> -f <CSV|GEOJSON> --date <propertyname> --dateprops [year,month,week,weekday,year_month,year_week,hour] --timezone UTC+05:30
-```
-
 
 ##### Upload history of a space
+HERE CLI saves up to 3 upload commands you execute for a space within the space metadata. This allows you to re-use one of them later with the `--history` option with a command index which can range from 0(newest) to 2 (oldest). If you use the `--history` option without an index, you will be provided with the list of historical upload commands from which you can choose one to re-execute.
 
+```here xyz upload <SPACE_ID> --history [0-2|blank]```
+You can also mark one of the history commands as your favorite so that you can execute it with a single command.
+
+```here xyz upload <SPACE_ID> --history save```
+To execute the favorite upload command directly, do:
+```here xyz upload <SPACE_ID> --history fav```
 
 ##### Upload multiple files with batch upload
-```here xyz upload <SPACE_ID> --batch -f <>```
+```here xyz upload <SPACE_ID> --batch [geojson|csv|shp|gpx] -f <PATH_TO_FOLDER>```
 
 
 ##### Options
@@ -438,7 +439,7 @@ If a property has been indexed by Data Hub, you can filter them with `-s` or `--
 - When accessing Property Search via the API, the URL-safe arguments are `=`, `!=`, `=gt=`, `=gte=`, `=lt=`, `=lte=`.
 
 !!! note 
-    Property Search is available in spaces with fewer than 15,000 features by default. For spaces larger than 15,000 features, a limited number will be indexed. To access more, you'll need a Data Hub Pro license, [learn more about Data Hub Pro features here](../xyz_pro). 
+    Property Search is available in spaces with fewer than 15,000 features by default. For spaces larger than 15,000 features, a limited number will be indexed. To access more, you'll need a Data Hub Add-on license, [learn more about Data Hub Add-on features here](../datahub_add-on). 
 
 
 ##### Property Filters
@@ -447,7 +448,7 @@ You can use `show -p` or `--prop` to filter the properties that get returned by 
 
     here xyz show -p p.property1,p.property2 -w
     
-!!! Note "Your account needs access to the Data Hub Pro Services." [Learn more about Data Hub Pro features here](../xyz_pro).
+!!! Note "Your account needs access to the Data Hub Add-on Services." Learn more about [Data Hub Add-on](../datahub_add-on) features here.
 
 ##### Spatial Search
 
@@ -502,7 +503,7 @@ YOUR_TOKEN_NR_2 PERMANENT 1534516620 xyz-hub=readFeatures
 
 #### Get more information about your spaces
 
-!!! Note "To use this feature, your account needs access to the Data Hub Pro Services." [Learn more about Data Hub Pro features here](../xyz_pro).
+!!! Note "To use this feature, your account needs access to the Data Hub Add-on Services." Learn more about [Data Hub Add-on](../datahub_add-on) features here.
 
 You can use the `config` command to get and update information about your spaces.
 
@@ -555,7 +556,7 @@ You can disable sharing by passing a `false` parameter:
 
 ##### Update, upload, or delete a schema definition
 
-!!! Note "To use this feature, your account needs access to the Data Hub Pro Services." [Learn more about Data Hub Pro features here](../xyz_pro).
+!!! Note "To use this feature, your account needs access to the Data Hub Add-on Services." [Learn more about Data Hub Add-on features here](../datahub_add-on).
 
 A schema validation json file can be configured for a space. The schema definition can be in the form of a web address or a local schema json file. Features that do not match this schema will not be uploaded. 
 
@@ -571,7 +572,7 @@ here xyz config YOUR_SPACE_ID -s
 
 #### Virtual Spaces
 
-!!! Note "To use this feature, your account needs access to the Data Hub Pro Services." [Learn more about Data Hub Pro features here](../xyz_pro).
+!!! Note "To use this feature, your account needs access to the Data Hub Add-on Services." [Learn more about Data Hub Add-on features here](../datahub_add-on).
 
 Virtual Spaces give users access to multiple spaces with one ID. Group lets you bundle your spaces together, and changes get written back to their original spaces. Associate lets you make your own personal edits to a shared space or one with public data, merging the properties of objects with the same feature ID.
 
@@ -610,7 +611,7 @@ The `join` command simplifies use of virtual spaces when using CSV tables and ex
     
 #### GIS functions
 
-!!! Note "To use this feature, your account needs access to the Data Hub Pro Services." [Learn more about Data Hub Pro features here](../xyz_pro).
+!!! Note "To use this feature, your account needs access to the Data Hub Add-on Services." [Learn more about Data Hub Add-on features here](../datahub_add-on).
 
 The CLI has access to a number of convenient geopspatial data functions via the `here xyz gis` command. Some of these functions add properties to the original features, while others create data in a new space. 
 
@@ -622,7 +623,7 @@ The CLI has access to a number of convenient geopspatial data functions via the 
 
 #### Hexbins
 
-!!! Note "Your account needs access to the Data Hub Pro Services." [Learn more about Data Hub Pro features here](../../xyz_pro).
+!!! Note "Your account needs access to the Data Hub Add-on Services." Learn more about [Data Hub Add-on](../../datahub_add-on) features here.
 
 Hexbins are a data simplification method that makes it easier to visualize large datasets of point features at low zoom levels (continent, country, state/province). A series of hexagon grids are created and the points that fall inside each are counted and written to a new Data Hub space, and statistics are calculated across the hexbin grid. 
 

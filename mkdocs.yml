@@ -120,6 +120,8 @@ nav:
       - Release notes: release-notes.md
   - Tutorials:
       - https://developer.here.com/tutorials?category=HERE%2BStudio%2Band%2BData%2BHub
+  - Data Hub Add-on:
+      - datahub_add-on.md
 
 # Extensions
 markdown_extensions:
