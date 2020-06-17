@@ -3,7 +3,7 @@
 In this section we give you a quick overview of the most commonly used advanced commands to interact
 with XYZ Spaces from the HERE CLI.
 
-## 1. Schema Defination:
+## 1. Schema Definition:
 
 A schema validation json file can be configured for a space. The schema definition can be in the form of a web address or a local schema json file. Features that do not match this schema will not be uploaded. User can use local filepath / hyper link to set or view the schema defination.
 
@@ -287,54 +287,57 @@ here xyz config --activitylog <spaceId>
 
 
 
-## 5. Virtual Space
+## Virtual Spaces
+
+!!! Note "To use this feature, your account needs access to the Data Hub Add-on Services."
 
 Virtual Spaces give users access to multiple spaces with one ID. Group lets you bundle your spaces together, and changes get written back to their original spaces. Associate lets you make your own personal edits to a shared space or one with public data, merging the properties of objects with the same feature ID.
 
-```
-here xyz virtualize|vs -a|-g space1,space2
-``` 
+    here xyz virtualize|vs -a|-g space1,space2
+    
+    
+### Group
 
-##### Options
+    here xyz virtualize -g space1,space2,...
+    
+`group` takes multiple Data Hub spaces and presents them via a single Data Hub space ID. Duplicates can occur. Any updates will be made to the original spaces.
+
+### Associate
+
+    here xyz vs -a space1,space2
+    
+`associate` takes features from `space1` and merges their properties into features with the same feature id in `space2`.
+
+One way of using `virtualize` is to upload CSVs of census data with unique geoID, and merge the statistics on the fly into census geometries where the geoID is the unique ID.
+
+### Options
 
 `  -t,--title [title]         ` Title for virtual XYZ space
 
 `  -d,--message [message]     ` set description for the space
 
-`  -g, --group [spaceids]     ` Group the spaces (all objects of each space will be part of the  
-   response) - enter comma separated space ids
+`  -g, --group [spaceids]     ` Group the spaces (all objects of each space will be part of the response) - enter comma separated space ids
 
 ` -a, --associate [spaceids]  ` Associate the spaces. Features with same id will be merged into one feature. Enter comma separated space ids [space1,space2] -- space1 properties will be merged into space2 features.
 
 `  -h, --help                 ` output usage information
 
-    
-### 5.1 Group
-
-```
-here xyz virtualize -g space1,space2,...
-```
-
-`group` takes multiple XYZ spaces and presents them via a single XYZ space ID. Duplicates can occur. Any updates will be made to the original spaces.
-
-### 5.2 Associate
-```
-here xyz vs -a space1,space2
-```
-
-`associate` takes features from `space1` and merges their properties into features with the same feature id in `space2`.
-
-One way of using `virtualize` is to upload CSVs of census data with unique geoID, and merge the statistics on the fly into census geometries where the geoID is the unique ID.
-
-## 6. Join (Virtual Spaces)
+### Join (Virtual Spaces)
 
 The `join` command simplifies use of virtual spaces when using CSV tables and existing geometries. You can designate a CSV column to be the feature ID, and use the `associate` virtual spaces option to join it with a space with geometries that use the same set of feature IDs. 
 
-```
-here xyz join space_with_geometries -f data_table.csv -k column_with_id
-```
+    here xyz join space_with_geometries -f data_table.csv -k column_with_id
 
-##### Options
+!!! note 
+
+    `join` creates a space of features with no geometries. You can inspect this space using geojson.tools via `show -w`
+    
+    You can update this "csv space" using `here xyz upload spaceID -f new.csv -k id --noGeom` and the next time the virtual space ID is references, the properties will contain the updated values.
+
+Virtual Spaces give users access to multiple spaces with one ID. Group lets you bundle your spaces together, and changes get written back to their original spaces. Associate lets you make your own personal edits to a shared space or one with public data, merging the properties of objects with the same feature ID.
+
+
+#### Join Options
 
 `-f, --file <file>`   csv to be uploaded and associated
 
@@ -365,6 +368,7 @@ here xyz join space_with_geometries -f data_table.csv -k column_with_id
     `join` creates a space of features with no geometries. You can inspect this space using geojson.tools via `show -w`
     
     You can update this "csv space" using `here xyz upload spaceID -f new.csv -k id --noGeom` and the next time the virtual space ID is references, the properties will contain the updated values.
+
 
 ## 7. GIS
 
@@ -410,9 +414,100 @@ The CLI has access to a number of convenient geopspatial data functions via the 
 
 ## 8. Hexbin
 
-Hexbins are a data simplification method that makes it easier to visualize large datasets of point features at low zoom levels (continent, country, state/province). A series of hexagon grids are created and the points that fall inside each are counted and written to a new XYZ space, and statistics are calculated across the hexbin grid. 
+Hexbins are a data simplification method that makes it easier to visualize large datasets of point features at low zoom levels (continent, country, state/province). A series of hexagon grids are created and the points that fall inside each are counted and written to a new Data Hub space, and statistics are calculated across the hexbin grid. 
 
-##### Options
+These hexagons (or their centroids) and their statistics can be quickly displayed in place of the raw data that might overwhelm a renderer. Default colors indicating relative "occupancy" are generated for convenience of display.
+
+ `here xyz hexbin spaceID -z 5-10` create hexbins appropriate for zoom levels 5 through 10
+
+ `here xyz hexbin spaceID -z 8,10,12` create hexbins appropriate for zoom 8,10,12
+
+ `here xyz hexbin spaceID -c 100,1000,100000` create hexbins that are 100 meters, 1km and 10km wide
+
+Hexbins are tagged by zoom level, width, and type, making it easy to extract one set from the hexbin space for display and comparison.
+
+You can learn more about hexbins and how to display them [in this tutorial](../hexbins).
+
+### Data contained in Data Hub Hexbins
+
+Hexbin features contain various values that can help with analysis and visualization:
+- `count`: the number of points in a hexbin 
+- `maxCount`: the largest number of points in any hexbin across that particular zoom level or cell width
+- `occupancy`: `count/maxCount`, how "full" that hexbin is compared to other across that particular zoom level or cell width
+- `color`: an `hsla` color range that correlates to relative occupancy (red = "full", green = "average", blue = "empty
+- `centroid`: the centroid of the hexbin (useful for label placement -- the centroid is also written as a separate feature)
+
+```
+      "properties": {
+        "color": "hsla(0, 100%, 50%,0.51)",
+        "count": 468,
+        "maxCount": 468,
+        "occupancy": 1,
+      },
+      ...
+      "properties": {
+        "color": "hsla(81, 100%, 50%,0.51)",
+        "count": 279,
+        "maxCount": 468,
+        "occupancy": 0.5961538461538461
+      },
+      ...
+      "properties": {
+        "color": "hsla(197, 100%, 50%,0.51)",
+        "count": 6,
+        "maxCount": 468,
+        "occupancy": 0.01282051282051282...
+      }
+```
+
+### Hexbin sum and average
+
+If a property is qualitative (property values, income, population), in addition to counting points, Data Hub Hexbins can add up the value of the properties in each hexbin as well as calculate the average.
+
+    here xyz hexbin spaceID -z 10 -a incidents
+
+```
+        "sum": {
+          "sum": 4071,
+          "maxSum": 5117,
+          "average": 8.698717948717949,
+          "property_name": "incidents"
+        }
+```
+        
+### Hexbin subcounts
+You can also specify a `subcount` within each hexbin based upon the count of the values of particular property.
+
+    `here xyz hexbin spaceID -z 8-12 -p business_type`
+    
+This would create a `subcount` object in each hexbin, which would contain the relative count of that property value across the hexbin grid.
+
+```
+        "count": 48,
+        "maxcount": 400,
+        "subcount": {
+          "bar": {
+            "color": "hsla(181, 100%, 50%,0.51)",
+            "count": 3,
+            "maxCount": 32,
+            "occupancy": 0.09375
+          },
+          "grocery_store": {
+            "color": "hsla(158, 100%, 50%,0.51)",
+            "count": 5,
+            "maxCount": 24,
+            "occupancy": 0.20833333333333334
+          },
+          "restaurant": {
+            "color": "hsla(0, 100%, 50%,0.51)",
+            "count": 20,
+            "maxCount": 40,
+            "occupancy": 1
+          }...
+```
+ 
+
+### Options
 
 `-c, --cellsize <cellsize>`      size of hexgrid cells in meters, comma-separate multiple  
                                  values
@@ -449,4 +544,4 @@ Hexbins are a data simplification method that makes it easier to visualize large
   
 `-h, --help`                     display help for command
 
-
+You can create hexbins either by width in meters, or use preset widths appropriate to the zoom level.

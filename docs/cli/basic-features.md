@@ -73,6 +73,7 @@ To list all Spaces you have access to, you can use
 ```
 here xyz list
 ```
+
 ##### Options
 
 `-r, --raw` shows the raw space list definition
@@ -268,6 +269,7 @@ Uploads data and allows users to select tags from a list of feature keynames, wi
 ```
 here xyz upload -f file.geojson -p treatment
 ```
+
 Uploads data and adds the value of the selected feature property as tag. These tags can be used to filter data when querying the HERE Data Hub API. The tags will be stored as `propertyname@value`. This is most effective when the property consists of a limited number of qualitative values.
 
 ###### Response
@@ -318,7 +320,7 @@ Along similar lines, `--datetag` will let you specify which date parameter tags 
 
 
 ##### Upload history of a space
-HERE CLI saves up to 3 upload commands you execute for a space within the space metadata. This allows you to re-use one of them later with the `--history` option with a command index which can range from 0(newest) to 2 (oldest). If you use the `--history` option without an index, you will be provided with the list of historical upload commands from which you can choose one to re-execute.
+HERE CLI saves up to 3 last used upload commands you execute for a space within the space metadata. This allows you to re-use one of them later with the `--history` option with a command index which can range from 0(newest) to 2 (oldest). If you use the `--history` option without an index, you will be provided with the list of historical upload commands from which you can choose one to re-execute.
 
 ```here xyz upload <SPACE_ID> --history [0-2|blank]```
 
@@ -327,9 +329,11 @@ You can also mark one of the history commands as your favorite so that you can e
 ```here xyz upload <SPACE_ID> --history save```
 
 To execute the favorite upload command directly, do:
+
 ```here xyz upload <SPACE_ID> --history fav```
 
 ##### Upload multiple files with batch upload
+
 ```here xyz upload <SPACE_ID> --batch [geojson|csv|shp|gpx] -f <PATH_TO_FOLDER>```
 
 
@@ -394,23 +398,6 @@ here xyz show YOUR_SPACE_ID
 
 Show the objects of a space in table, filter by tags or property values, or open the space in other tools.
 
-##### Options
-
-`-l, --limit <limit>   ` Number of objects to be fetched
-
-`-h, --handle <handle> ` The handle to continue the iteration
-
-`-t, --tags <tags>     ` Filter by tags
-
-`-r, --raw             ` show raw GeoJSON content instead of table
-
-`-s, --search <propfilter> ` search feature properties 
-
-`-p, --prop <prop>     ` property fields to include in table, can be used multiple times
-
-`-w --web         ` display xyz on [http://geojson.tools](http://geojson.tools)
-
-`-v --vector  ` inspect and anayze Data Hub spaces using Tangram / [Data Hub Space Invader](../space-invader)
 
 ##### Filter by Tags
 
@@ -463,6 +450,46 @@ You can use `--spatial` to search for features in a Data Hub space that fall wit
 
 These results are most easily viewable using `show -w`.
 
+##### Options:
+
+`  -l, --limit <limit>       ` Number of objects to be fetched
+
+`  -o, --offset <offset>     ` The offset / handle to continue the iteration
+
+`  -t, --tags <tags>         ` Tags to filter on
+
+`  -r, --raw                 ` show raw Data Hub space content
+
+`  --all                     ` iterate over entire Data Hub space to get entire data of space, output will be shown on the console in geojson format
+
+`  --geojsonl                ` to print output of --all in geojsonl format
+
+`  -c, --chunk [chunk]       ` chunk size to use in --all option, default 5000
+
+`  --token <token>           ` a external token to access another user's space
+
+`  -p, --prop <prop>         ` selection of properties, use p.<FEATUREPROP> or f.<id/updatedAt/tags/createdAt>
+
+`  -w, --web                 ` display Data Hub space on [http://geojson.tools](http://geojson.tools)
+
+`  -v, --vector              ` inspect and analyze using [Data Hub Space Invader](../space-invader) and tangram.js
+
+`  -s, --search <propfilter> ` search expression in "double quotes", use single quote to signify string value,  use p.<FEATUREPROP> or f.<id/updatedAt/tags/createdAt> (Use
+                             '+' for AND , Operators : >,<,<=,<=,=,!=) (use comma separated values to search multiple values of a property) {e.g.
+                             "p.name=John,Tom+p.age<50+p.phone='9999999'+p.zipcode=123456"}
+
+`  --spatial                 ` indicate to make spatial search on the space
+
+`  --radius <radius>         ` indicate to make radius spatial search or to thicken input geometry (in meters)
+
+`  --center <center>         ` comma separated lon,lat values to specify the center point for radius search
+
+`  --feature <feature>       ` comma separated spaceid,featureid values to specify reference geometry (taken from feature) for spatial query
+
+`  --geometry <geometry>     ` geometry file to upload for spatial query (single feature in geojson file)
+
+`  -h, --help                ` display help for command
+
 #### Delete a Space
 
 ```
@@ -470,6 +497,14 @@ here xyz delete YOUR_SPACE_ID
 ```
 
 Delete a Space you have access to.
+
+##### Options:
+
+`  --force          ` skip the confirmation prompt
+
+`  --token <token>  ` a external token to delete another user's space
+
+`  -h, --help       ` display help for command
 
 #### Clear a Space
 
@@ -481,11 +516,15 @@ Clear data from your space. You clear the entire space, or clear by tag or featu
 
 ##### Options
 
-`-t, --tags [tags]` tags in your Space
+`  -t, --tags <tags>  ` tags for the Data Hub space
 
-`-i, --ids [IDs]` IDs in your Space
+`  -i, --ids <ids>    ` ids for the Data Hub space
 
-`-h --help` output usage information
+`  --token <token>    ` a external token to clear another user's space data
+
+`  --force            ` skip the confirmation prompt
+
+`  -h, --help         ` display help for command
 
 
 #### List all tokens
@@ -503,22 +542,15 @@ YOUR_TOKEN_NR_1 PERMANENT 1534451767 xyz-hub=readFeatures,createFeatures,updateF
 YOUR_TOKEN_NR_2 PERMANENT 1534516620 xyz-hub=readFeatures
 ```
 
-#### Get more information about your spaces
+##### Options:
 
-!!! Note "To use this feature, your account needs access to the Data Hub Add-on Services." Learn more about [Data Hub Add-on](../datahub_add-on) features here.
+`  --console   ` opens web console for Data Hub
+
+`  -h, --help  ` display help for command
+
+#### Get or update more information about your spaces
 
 You can use the `config` command to get and update information about your spaces.
-
-##### Options
-
-`  --shared <flag>            ` set your space as shared / public (default is false)
-`  -s,--schema [schemadef]    ` set schema definition (local filepath / http link) for your space, all future data for this space will be validated for the schema
-`  -t,--title [title]         ` set title for the space
-`  -d,--message [message]     ` set description for the space
-`  -c,--copyright [copyright] ` set copyright text for the space
-`  --stats                    ` see detailed space statistics
-`  -r, --raw                  ` show raw output
-`  -h, --help                 ` output usage information
 
 ##### Get information about a space
 
@@ -556,191 +588,47 @@ You can disable sharing by passing a `false` parameter:
     here xyz config spaceID --shared false
 
 
-##### Update, upload, or delete a schema definition
+##### Basic Options:
 
-!!! Note "To use this feature, your account needs access to the Data Hub Add-on Services." [Learn more about Data Hub Add-on features here](../datahub_add-on).
+`  --shared <flag>           ` set your space as shared / public (default is false)
 
-A schema validation json file can be configured for a space. The schema definition can be in the form of a web address or a local schema json file. Features that do not match this schema will not be uploaded. 
+`  -t,--title [title]        ` set title for the space
 
+`  -d,--message [message]    ` set description for the space
 
-```
-here xyz config YOUR_SPACE_ID -s schema_definition.json
-```
-To delete a schema from a space:
+`  -c,--copyright [copyright]` set copyright text for the space
 
-```
-here xyz config YOUR_SPACE_ID -s
-```
+`  --cacheTTL <cacheTTL>     ` set cacheTTL value for the space with valid number
 
-#### Virtual Spaces
+`  --stats                   ` see detailed space statistics
 
-!!! Note "To use this feature, your account needs access to the Data Hub Add-on Services." [Learn more about Data Hub Add-on features here](../datahub_add-on).
+`  --token <token>           ` a external token to access another user's space config and stats information
 
-Virtual Spaces give users access to multiple spaces with one ID. Group lets you bundle your spaces together, and changes get written back to their original spaces. Associate lets you make your own personal edits to a shared space or one with public data, merging the properties of objects with the same feature ID.
+`  -r, --raw                 ` show raw json output
 
-    here xyz virtualize|vs -a|-g space1,space2
-    
-    
-##### Group
+`  --console                 ` opens web console for Data Hub
 
-    here xyz virtualize -g space1,space2,...
-    
-`group` takes multiple Data Hub spaces and presents them via a single Data Hub space ID. Duplicates can occur. Any updates will be made to the original spaces.
-
-##### Associate
-
-    here xyz vs -a space1,space2
-    
-`associate` takes features from `space1` and merges their properties into features with the same feature id in `space2`.
-
-One way of using `virtualize` is to upload CSVs of census data with unique geoID, and merge the statistics on the fly into census geometries where the geoID is the unique ID.
-
-#### Join (Virtual Spaces)
-
-The `join` command simplifies use of virtual spaces when using CSV tables and existing geometries. You can designate a CSV column to be the feature ID, and use the `associate` virtual spaces option to join it with a space with geometries that use the same set of feature IDs. 
-
-    here xyz join space_with_geometries -f data_table.csv -k column_with_id
-
-!!! note 
-
-    `join` creates a space of features with no geometries. You can inspect this space using geojson.tools via `show -w`
-    
-    You can update this "csv space" using `here xyz upload spaceID -f new.csv -k id --noGeom` and the next time the virtual space ID is references, the properties will contain the updated values.
-    
-#### Spatial search
+`  -h, --help                ` display help for command
 
 
-    
-#### GIS functions
+##### [Add-on Options](../datahub_add-on):
+!!! Note "To use these features, your account needs access to the Data Hub Add-on Services." Learn more about [Data Hub Add-on](../datahub_add-on) features here.
 
-!!! Note "To use this feature, your account needs access to the Data Hub Add-on Services." [Learn more about Data Hub Add-on features here](../datahub_add-on).
+`  -s,--schema [schemadef]   ` view or set schema definition (local filepath / http link) for your space, applicable on future data, use with add/delete/update
 
-The CLI has access to a number of convenient geopspatial data functions via the `here xyz gis` command. Some of these functions add properties to the original features, while others create data in a new space. 
+`  --searchable              ` view or configure searchable properties of an Data Hub space, use with add/delete/update
 
-- `--area` uses `turf.js` to calculate the area of polygons, and saves this as a set of new properties in each polygon feature. `xyz_area_sqmiles`,`xyz_area_sqkm` are rounded for display convenience, and `xyz_area_sqm` is not rounded.
-- `--length` uses `turf.js` to calculate the length of lines in a space, and saves this as a set of new properties in each linestring feature, `xyz_length_miles`,`xyz_length_km` which are rounded for display convenience, and `xyz_length_m` which is not rounded.
-- `--centroid` uses `turf.js` to calculate the center of each polygon in a space. By default, these points are written to a new space, but can saved in the existing space using the `--samespace` option. In either case, they all receive a `centroid` tag.
-- `--voronoi` uses `d3-delaunay.js` to generate Voronoi polygons from points in a Data Hub space. The edges of these polygons are equidistant from two points, and the vertices are equidistant to three points. By default, they are written to a new space, but can saved in the source point space using the `--samespace` option. In either case, they all receive a `voronoi` tag. 
-- `--tin` uses `d3-delaunay.js` to generate Delaunay triangles from points in a Data Hub space. This process maximizes the minimum angle of all the angles of the triangles created from the source points. By default, they are written to a new space, but can saved in the source point space using the `--samespace` option. In either case, they all receive a `tin` tag. 
+`  --tagrules                ` add, remove, view the conditional rules to tag your features automatically, use with add/delete/update -- at present all tag rules will be
+                               applied synchronously before features are stored ( mode : sync )
 
-#### Hexbins
+`  --delete                  ` use with schema/searchable/tagrules options to remove the respective configurations
 
-!!! Note "Your account needs access to the Data Hub Add-on Services." Learn more about [Data Hub Add-on](../../datahub_add-on) features here.
+`  --add                     ` use with schema/searchable/tagrules options to add/set the respective configurations
 
-Hexbins are a data simplification method that makes it easier to visualize large datasets of point features at low zoom levels (continent, country, state/province). A series of hexagon grids are created and the points that fall inside each are counted and written to a new Data Hub space, and statistics are calculated across the hexbin grid. 
+`  --update                  ` use with tagrules options to update the respective configurations
 
-These hexagons (or their centroids) and their statistics can be quickly displayed in place of the raw data that might overwhelm a renderer. Default colors indicating relative "occupancy" are generated for convenience of display.
+`  --view                    ` use with schema/searchable/tagrules options to view the respective configurations
 
- `here xyz hexbin spaceID -z 5-10` create hexbins appropriate for zoom levels 5 through 10
+`  --activitylog             ` configure activity logs for your space interactively
 
- `here xyz hexbin spaceID -z 8,10,12` create hexbins appropriate for zoom 8,10,12
 
- `here xyz hexbin spaceID -c 100,1000,100000` create hexbins that are 100 meters, 1km and 10km wide
-
-Hexbins are tagged by zoom level, width, and type, making it easy to extract one set from the hexbin space for display and comparison.
-
-You can learn more about hexbins and how to display them [in this tutorial](../hexbins).
-
-##### Data contained in Data Hub Hexbins
-
-Hexbin features contain various values that can help with analysis and visualization:
-- `count`: the number of points in a hexbin 
-- `maxCount`: the largest number of points in any hexbin across that particular zoom level or cell width
-- `occupancy`: `count/maxCount`, how "full" that hexbin is compared to other across that particular zoom level or cell width
-- `color`: an `hsla` color range that correlates to relative occupancy (red = "full", green = "average", blue = "empty
-- `centroid`: the centroid of the hexbin (useful for label placement -- the centroid is also written as a separate feature)
-
-```
-      "properties": {
-        "color": "hsla(0, 100%, 50%,0.51)",
-        "count": 468,
-        "maxCount": 468,
-        "occupancy": 1,
-      },
-      ...
-      "properties": {
-        "color": "hsla(81, 100%, 50%,0.51)",
-        "count": 279,
-        "maxCount": 468,
-        "occupancy": 0.5961538461538461
-      },
-      ...
-      "properties": {
-        "color": "hsla(197, 100%, 50%,0.51)",
-        "count": 6,
-        "maxCount": 468,
-        "occupancy": 0.01282051282051282...
-      }
-```
-
-##### Hexbin sum and average
-
-If a property is qualitative (property values, income, population), in addition to counting points, Data Hub Hexbins can add up the value of the properties in each hexbin as well as calculate the average.
-
-    here xyz hexbin spaceID -z 10 -a incidents
-
-```
-        "sum": {
-          "sum": 4071,
-          "maxSum": 5117,
-          "average": 8.698717948717949,
-          "property_name": "incidents"
-        }
-```
-        
-##### Hexbin subcounts
-You can also specify a `subcount` within each hexbin based upon the count of the values of particular property.
-
-    `here xyz hexbin spaceID -z 8-12 -p business_type`
-    
-This would create a `subcount` object in each hexbin, which would contain the relative count of that property value across the hexbin grid.
-
-```
-        "count": 48,
-        "maxcount": 400,
-        "subcount": {
-          "bar": {
-            "color": "hsla(181, 100%, 50%,0.51)",
-            "count": 3,
-            "maxCount": 32,
-            "occupancy": 0.09375
-          },
-          "grocery_store": {
-            "color": "hsla(158, 100%, 50%,0.51)",
-            "count": 5,
-            "maxCount": 24,
-            "occupancy": 0.20833333333333334
-          },
-          "restaurant": {
-            "color": "hsla(0, 100%, 50%,0.51)",
-            "count": 20,
-            "maxCount": 40,
-            "occupancy": 1
-          }...
-```
-
-##### Options
-
-`  -c, --cellsize <cellsize>     ` size of hexgrid cells in meters, comma-separate multiple values
-
-`  -i, --ids                     ` add IDs of features counted within the hexbin as an array inside the property of the hexbin created
-
-`  -p, --groupBy <groupBy>       ` name of the feature property by which hexbin counts will be further grouped. subcounts for unique values will be available as objects in the feature
-
-`  -a, --aggregate <aggregate>   ` name of the feature property used for aggregating sum value of all the features inside hexbin. A sum object will be created, with relative and max sum, and average.
-
-`  -r, --readToken <readToken>   ` token of another user's source space, from which points will be read
-
-`  -w, --writeToken <writeToken> ` token of another user's target space to which hexbins will be written
-
-`  -t, --tags <tags>             ` only make hexbins for features in the source space that match the specific tag(s), comma-separate multiple values
-
-`  -b, --bbox <bbox>             ` only create hexbins for records inside a specified bounding box - minLon,minLat,maxLon,maxLat
-
-`  -l, --latitude <latitude>     ` latitude which will be used for converting cellSize from meters to degrees
-
-`  -z, --zoomLevels <zoomLevels> ` create hexbins optimized for zoom levels -- comma separate multiple values, (-z 8,10,12) or dash for continuous range (-z 10-15)
-
-`  -h, --help                    ` output usage information
-
-You can create hexbins either by width in meters, or use preset widths appropriate to the zoom level.
