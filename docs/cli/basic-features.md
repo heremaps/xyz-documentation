@@ -321,9 +321,11 @@ Along similar lines, `--datetag` will let you specify which date parameter tags 
 HERE CLI saves up to 3 upload commands you execute for a space within the space metadata. This allows you to re-use one of them later with the `--history` option with a command index which can range from 0(newest) to 2 (oldest). If you use the `--history` option without an index, you will be provided with the list of historical upload commands from which you can choose one to re-execute.
 
 ```here xyz upload <SPACE_ID> --history [0-2|blank]```
+
 You can also mark one of the history commands as your favorite so that you can execute it with a single command.
 
 ```here xyz upload <SPACE_ID> --history save```
+
 To execute the favorite upload command directly, do:
 ```here xyz upload <SPACE_ID> --history fav```
 
