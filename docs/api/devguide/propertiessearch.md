@@ -9,7 +9,7 @@ your space.
 Not all Feature properties are necessarily searchable. So before using the property search it
 makes sense to check which of the properties in your space can be searched.
 
-*NOTE: XYZ has a space-specific algorithm to automatically decide which of the space's properties
+*NOTE: Data Hub has a space-specific algorithm to automatically decide which of the space's properties
 are searchable. In case you desire other properties to be searchable please have a look into
 the guide at ["Adjust searchable properties"](searchableproperties.md).*
 

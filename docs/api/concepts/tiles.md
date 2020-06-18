@@ -1,6 +1,6 @@
 # Tiles
 
-The XYZ Hub API supports the following tile identifiers:
+The Data Hub API supports the following tile identifiers:
 
 * ***web*** for the Mercator projection (used by OpenStreetMaps, Google Maps, Bing Maps and others)
   format: level_x_y; for example: 10_100_100 means level 10. x-coordinate 100, y-coordinate 100

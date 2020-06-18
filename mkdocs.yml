@@ -1,7 +1,7 @@
 # Project information
-site_name: HERE XYZ - Open Documentation
+site_name: HERE Data Hub - Open Documentation
 site_description: Make great maps easier
-site_author: The HERE XYZ Team
+site_author: The HERE Data Hub Team
 site_url: https://www.here.xyz/
 site_dir: ../site
 

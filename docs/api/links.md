@@ -1,6 +1,6 @@
-# HERE XYZ Links
+# HERE Data Hub Links
 
-Here is a list of links for working with HERE XYZ
+Here is a list of links for working with HERE Data Hub
 
 ## API and Service
 
@@ -14,7 +14,7 @@ Here is a list of links for working with HERE XYZ
 ### ReDoc API documentation
 [`https://xyz.api.here.com/hub/static/redoc/`](https://xyz.api.here.com/hub/static/redoc/)
 
-## XYZ Tools
+## Data Hub Tools
 
 ### Token Generation UI
 

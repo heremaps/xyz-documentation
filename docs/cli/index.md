@@ -103,7 +103,7 @@ here configure account
 When prompted, enter your email and password that you use in the HERE Developer portal.
 
 The CLI will immediately try to *verify* if the entries can be
-used to log into HERE XYZ and report back to you accordingly.
+used to log into HERE Data Hub and report back to you accordingly.
 
 !!! question "Where is my login information stored?"
 

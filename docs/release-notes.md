@@ -1,4 +1,4 @@
-# Release notes for XYZ
+# Release notes for Data Hub
 
 ---
 

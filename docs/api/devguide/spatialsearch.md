@@ -23,7 +23,7 @@ The easiest way for providing a search Geometry is submitting it via a POST-Requ
 
 ### Referencing an existing Geometry for a Spatial Search
 
-Another way to provide a search Geometry is to read it from a existing Feature, which is stored in a XYZ-Space
+Another way to provide a search Geometry is to read it from a existing Feature, which is stored in a Data Hub Space
 that you have access to. This is recommended if your search Geometry is a really complex one, or if you want to store
 frequently used Geometries for spatial searches.
 
@@ -47,7 +47,7 @@ Spatial-Search by referencing a position (lat,lon) & defining a radius indicated
 GET /spaces/{spaceId}/spatial?lon={Longitude}&lat={Latitude}&radius={raduisInMeters}
 ```
 
-Spatial-Search by referencing a Feature from a XYZ-Space:
+Spatial-Search by referencing a Feature from a Data Hub Space:
 ```HTTP
 GET /spaces/{spaceId}/spatial?refSpaceId={referencedSpace}&refFeatureId
 ={referencedFeatureId}

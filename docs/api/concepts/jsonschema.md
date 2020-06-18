@@ -47,7 +47,7 @@ It is best practice to include a unique identifier for each schema
 { "$id": "http://yourdomain.com/schemas/myschema.json" }
 ```
 
-!!! Warning "HERE XYZ does not load external schema resources"
+!!! Warning "HERE Data Hub does not load external schema resources"
 
 **$id** can also be used to reference a subschema without using JSON Pointer.
 

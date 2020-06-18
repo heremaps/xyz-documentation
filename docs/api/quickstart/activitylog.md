@@ -1,6 +1,6 @@
 # Use Activity-Log
 
-!!! Note "Your account needs access to the XYZ Pro Services."
+!!! Note "Your account needs access to the Data Hub Add-on Services."
 
 1. Create a new space with the activity-log listener and enableUUID set to true:
 
@@ -47,7 +47,7 @@ GET /spaces
  {
    "id": "<activityLogSpaceId>",
    "title": "activity-log for space <newSpaceId>",
-   "description": "This is an automatically created space for the history of space __<newSpaceId>__.  \nCreated on 2019-12-02 at 07:31  \n***\nModified features will be stored in this space by their original _uuid_.  \nThe original namespace properties of XYZ will be stored within the value 'original' of the namespace '@ns:com:here:xyz:log'.  \nIMPORTANT Deleting this space while activity-log is enabled, causes the absence of history.  \n***",
+   "description": "This is an automatically created space for the history of space __<newSpaceId>__.  \nCreated on 2019-12-02 at 07:31  \n***\nModified features will be stored in this space by their original _uuid_.  \nThe original namespace properties of Data Hub will be stored within the value 'original' of the namespace '@ns:com:here:xyz:log'.  \nIMPORTANT Deleting this space while activity-log is enabled, causes the absence of history.  \n***",
    "createdAt": 1575271894028,
    "updatedAt": 1575271894028,
    "searchableProperties": {

@@ -2,7 +2,7 @@
 
 ### Upload datasets
 
-You can upload datasets from your computer for use in XYZ by adding them 
+You can upload datasets from your computer for use in Here Studio by adding them 
 onto the map.
 
 One way is to click the **+ Add** button and select one or multiple files
@@ -18,7 +18,7 @@ Your browser does not support the video tag.
 
 ### Pick datasets
 
-One of benefits of having your dataset in the XYZ Data Hub in the cloud 
+One of benefits of having your dataset in the Data Hub in the cloud 
 is to use them in more than one map. You can pick a data from the list
 of available datasets and them to you map project.
 
