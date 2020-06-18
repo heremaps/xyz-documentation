@@ -53,7 +53,7 @@ extra:
 nav:
   - Introduction: index.md
   - Getting Started: getting-started.md
-  - Data Hub Studio:
+  - Here Studio:
       - Quick Tour: studio/index.md
       - Navigating: studio/navigating.md
       - Data: studio/data.md

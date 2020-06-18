@@ -17,7 +17,9 @@ If you don't have data handy, you can use this CSV of [bicycle parking in San Fr
 	
 You'll be prompted to enter a title and description, and Data Hub will generate a unique ID for your dataset. Copy this as you'll need it to access the data and generated hexbins.
 
-!!! note some of the features in this file do not have any coordinates -- the HERE CLI will report these as errors.
+!!! note 
+    Some of the features in this file do not have any coordinates -- the HERE CLI will report these as errors.
+    
 	
 After the upload finishes, you can preview the map using geojson.tools 
 

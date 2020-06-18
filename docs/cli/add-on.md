@@ -109,7 +109,7 @@ output:
          "required": [
             "type",  like this ...
 
-## Tagrules
+## Rule Based Tags
 
 !!! Note
 
@@ -289,7 +289,9 @@ here xyz config --activitylog <spaceId>
 
 ## Virtual Spaces
 
-!!! Note "To use this feature, your account needs access to the Data Hub Add-on Services."
+!!! note 
+
+    "To use this feature, your account needs access to the Data Hub Add-on Services."
 
 Virtual Spaces give users access to multiple spaces with one ID. Group lets you bundle your spaces together, and changes get written back to their original spaces. Associate lets you make your own personal edits to a shared space or one with public data, merging the properties of objects with the same feature ID.
 

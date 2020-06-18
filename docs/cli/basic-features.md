@@ -18,7 +18,7 @@ The general structure is that you call the `here` command followed by *command*
 which essentially corresponds to the API you want to interact with or get more information
 from.
 
-### help
+### Getting help
 
 You can always call up help on the HERE CLI either by not providing any parameter at all or
 by using the `--help` switch.
@@ -27,7 +27,7 @@ by using the `--help` switch.
 here --help
 ```
 
-### configure
+### Log-in to your Data Hub account
 
 As explained earlier, HERE CLI needs to know you to interact with your Data Hub Spaces. You can use
 
@@ -55,7 +55,7 @@ to enable using Data Hub Add-on features. [Learn more](../../datahub_add-on) abo
 
 [Click here](../add-on) to learn how to setup and use Data Hub Add-on features Using HERE CLI.
 
-### xyz
+### [Interact with Data Hub Spaces](command-reference.md#xyz)
 
 The `xyz` command is used to interact with Data Hub Spaces.
 
@@ -66,7 +66,7 @@ here xyz --help
 ```
 
 
-#### List all Spaces
+#### [List Spaces](command-reference.md#list)
 
 To list all Spaces you have access to, you can use
 
@@ -83,6 +83,7 @@ here xyz list
 Use this option to list another user's spaces using an access token they have shared with you.
 
 !!! tip
+
     You can use this option with many CLI commands to access another user's spaces. Check for `--token` option in command's help.
 
 `--filter <filter>` a comma separated list of strings to filter spaces based on title or description
@@ -92,7 +93,7 @@ Lets you list spaces whose title or description contain matching string(s).
 `-p, --prop <prop>` choose which space property to show when listing spaces: id, title or description.
  
 
-#### Create a new Space
+#### [Create a new Space](command-reference.md#create)
 
 ```
 here xyz create -t "sample test xyz" -d "sample creation"
@@ -101,6 +102,7 @@ here xyz create -t "sample test xyz" -d "sample creation"
 When you create a new Space, the SpaceID will be generated automatically.
 
 !!! tip 
+
     the `upload` command can also automatically generate a new space ID for you
 
 ##### Options
@@ -110,6 +112,7 @@ When you create a new Space, the SpaceID will be generated automatically.
 `-d <desc>` description for the space
 
 !!! tip 
+
     When you have many spaces, you will be glad you added meaningful titles and descriptions.
     
 `--token <token>` an external token to create a space in another user's account
@@ -119,10 +122,11 @@ When you create a new Space, the SpaceID will be generated automatically.
 Applies a schema validation json file to the space. The schema definition can be in the form of a web address or a local schema json file. Features that do not match this schema will not be uploaded to the space. 
 
 !!! note 
+
     This is an Add-on feature that requires a license. Learn more about [Data Hub Add-on](../../datahub_add-on) features here.
 
 
-#### Upload/Update data to a Space
+#### [Upload/Update data to a Space](command-reference.md#upload)
 
 ##### Upload GeoJSON
 
@@ -244,17 +248,20 @@ This feature should be used if your data has well-known and truly unique identif
 By default, the CLI will generate a unique feature ID during upload based on a hash of the properties and geometry. 
 
 !!! note 
+
     Unique IDs are important for Data Hub Add-on features such as [Virtual Spaces](#virtual-spaces).
 
 !!! warning 
+
     Many GIS systems will simply assign incrementing integers as feature IDs to every file. These can conflict across files.
 
 ##### Upload and assign tags 
 
 Tags are special properties that can be added to a feature that makes it easy to query them from the Data Hub API using the `&tags=` parameter.
 
-!!! note Data Hub Tags should be used selectively, ideally using [Rule-Based Tags]()
-. Tags are not meant to be a replacement for  [Property Search](#property-search) as you will be duplicating existing data in a record.
+!!! note 
+
+    Data Hub Tags should be used selectively, ideally using [Rule-Based Tags](add-on.md#rule-based-tags). Tags are not meant to be a replacement for [Property Search](#property-search) as you will be duplicating existing data in a record.
 
 ###### Assign tags interactively
 
@@ -390,7 +397,7 @@ To execute the favorite upload command directly, do:
 `-h, --help`           output usage information
 
 
-#### Show contents of a space
+#### [Show contents of a space](command-reference.md#show)
 
 ```
 here xyz show YOUR_SPACE_ID
@@ -428,6 +435,7 @@ If a property has been indexed by Data Hub, you can filter them with `-s` or `--
 - When accessing Property Search via the API, the URL-safe arguments are `=`, `!=`, `=gt=`, `=gte=`, `=lt=`, `=lte=`.
 
 !!! note 
+
     Property Search is available in spaces with fewer than 15,000 features by default. For spaces larger than 15,000 features, a limited number will be indexed. To access more, you'll need a Data Hub Add-on license, [learn more about Data Hub Add-on features here](../datahub_add-on). 
 
 
@@ -437,7 +445,9 @@ You can use `show -p` or `--prop` to filter the properties that get returned by 
 
     here xyz show -p p.property1,p.property2 -w
     
-!!! Note "Your account needs access to the Data Hub Add-on Services." Learn more about [Data Hub Add-on](../datahub_add-on) features here.
+!!! note 
+
+    "Your account needs access to the Data Hub Add-on Services." Learn more about [Data Hub Add-on](../datahub_add-on) features here.
 
 ##### Spatial Search
 
@@ -490,7 +500,7 @@ These results are most easily viewable using `show -w`.
 
 `  -h, --help                ` display help for command
 
-#### Delete a Space
+#### [Delete a Space](command-reference.md#delete)
 
 ```
 here xyz delete YOUR_SPACE_ID
@@ -506,7 +516,7 @@ Delete a Space you have access to.
 
 `  -h, --help       ` display help for command
 
-#### Clear a Space
+#### [Clear a Space](command-reference.md#clear)
 
 ```
 here xyz clear YOUR_SPACE_ID
@@ -527,7 +537,7 @@ Clear data from your space. You clear the entire space, or clear by tag or featu
 `  -h, --help         ` display help for command
 
 
-#### List all tokens
+#### [List all tokens](command-reference.md#token)
 
 ```
 here xyz token
@@ -548,7 +558,7 @@ YOUR_TOKEN_NR_2 PERMANENT 1534516620 xyz-hub=readFeatures
 
 `  -h, --help  ` display help for command
 
-#### Get or update more information about your spaces
+#### [Get or update more information about your spaces](command-reference.md#config)
 
 You can use the `config` command to get and update information about your spaces.
 
@@ -611,8 +621,11 @@ You can disable sharing by passing a `false` parameter:
 `  -h, --help                ` display help for command
 
 
-##### [Add-on Options](../datahub_add-on):
-!!! Note "To use these features, your account needs access to the Data Hub Add-on Services." Learn more about [Data Hub Add-on](../datahub_add-on) features here.
+##### [Add-on Options](../datahub_add-on.md):
+!!! note
+
+    To use these features, your account needs access to the Data Hub Add-on Services. Learn more about [Data Hub Add-on](../datahub_add-on) features here.
+
 
 `  -s,--schema [schemadef]   ` view or set schema definition (local filepath / http link) for your space, applicable on future data, use with add/delete/update
 
@@ -630,5 +643,12 @@ You can disable sharing by passing a `false` parameter:
 `  --view                    ` use with schema/searchable/tagrules options to view the respective configurations
 
 `  --activitylog             ` configure activity logs for your space interactively
+
+
+### Transform csv, shp and gpx to geojson
+
+
+### Geocode locations
+
 
 
