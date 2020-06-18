@@ -1,9 +1,9 @@
 # HERE CLI Add-on
 
-In this section we give you a quick overview of the most commonly used advanced commands to interact
-with XYZ Spaces from the HERE CLI.
+In this section we give you a quick overview of the advanced commands to use Data Hub Add-on features
+with Data Hub Spaces from the HERE CLI.
 
-## 1. Schema Definition:
+## Schema Definition:
 
 A schema validation json file can be configured for a space. The schema definition can be in the form of a web address or a local schema json file. Features that do not match this schema will not be uploaded. User can use local filepath / hyper link to set or view the schema defination.
 
@@ -12,7 +12,7 @@ A schema validation json file can be configured for a space. The schema definiti
     User can apply schema validation while creating space using **create** command  and using
     **config** command for existing space. User can use --schema or -s option to apply schema.
 
-### a. Apply schema validation to existing space using filepath [Using Config Command ]
+### Apply schema validation to existing space using filepath [Using Config Command ]
 
 check available Config options using --help or -h command:
 
@@ -20,7 +20,7 @@ check available Config options using --help or -h command:
 here xyz config --help  OR  here xyz config -h
 ```
 
-a.1 Add/Upload schema : 
+#### Add/Upload schema : 
 ```
 here xyz config YOUR_SPACE_ID --add --schema filepath/schema_definition.json 
 ```
@@ -28,7 +28,7 @@ e.g here xyz config  kqifmFel --add --schema /Users/xyz/schema_defination.json
 
 
 
-a.2 View schema :
+#### View schema :
 
 ```
 here xyz config YOUR_SPACE_ID --schema --view 
@@ -55,14 +55,14 @@ output:
     User needs to upload the data to the same space to check the schema validation is working
     or not.Applied schema validation will not work on existing data.
 
-a.3 Delete schema : 
+#### Delete schema : 
 ```
 here xyz config YOUR_SPACE_ID -s --delete
 ```
 e.g here xyz config  kqifmFel -s --delete
 
 
-### b. Apply schema validation to new space using url [Using Create Command ]
+### Apply schema validation to new space using url [Using Create Command ]
 
 check available Create options using --help or -h command:
 
@@ -70,7 +70,7 @@ check available Create options using --help or -h command:
 here xyz create --help  OR  here xyz create -h
 ```
 
-b.1 Add/Upload schema : 
+#### Add/Upload schema : 
  
 ```
 here xyz create -s website/schema_defination.json
@@ -79,9 +79,9 @@ here xyz create -s website/schema_defination.json
 e.g here xyz create -s https://xyz.api.here.com/hub/schemas/ZUHvCMys/5b15d45ebfe242cdc1ec78bdd3657e27370cd65da7b5dd202a219bda4d59d22a/1.json
 
 
-output : XYZ space '66hCJ8uY' created successfully
+output : Data Hub space '66hCJ8uY' created successfully
 
-b.2 View schema :
+#### View schema :
 
 ```
 here xyz config YOUR_SPACE_ID --schema --view 
@@ -109,13 +109,13 @@ output:
          "required": [
             "type",  like this ...
 
-## 2. Tagrules
+## Tagrules
 
 !!! Note
 
     Tagrule is not applicable on existing data. When user apply tagrules they have to upload the data again to check the tagrule details.
 
-### 2.1 Add tagrule
+### Add tagrule
 
 ```
 here xyz config –tagrules <spaceId> --add
@@ -133,7 +133,7 @@ here xyz config –tagrules <spaceId> --add
 ><b style='color:green'> ? </b> **condition :**   <b style='color:Teal'> f.id==123 </b>
 
 
-### 2.2 View tagrules
+### View tagrules
 
 ```
 here xyz config –tagrules <spaceId> or here xyz config –tagrules <spaceId> --view
@@ -147,7 +147,7 @@ output:
 | :------------- | :----------: | -----------:           |
 |  Name          | Sync        |   f.id==123              |
 
-### 2.3 Delete tagrule [user can delete one or all tagrules using delete command]:
+### Delete tagrule [user can delete one or all tagrules using delete command]:
 
 ```
 here xyz config –tagrules <spaceId> --delete
@@ -155,7 +155,7 @@ here xyz config –tagrules <spaceId> --delete
 e.g here xyz config --tagrules HJtXzHWi –delete
 
 
-### 2.4 Update tagrule [User can update tagrule name and conditions using update command] :
+### Update tagrule [User can update tagrule name and conditions using update command] :
 
 ```
 here xyz config –tagrules <spaceId> --update
@@ -186,7 +186,7 @@ here xyz config –tagrules <spaceId> --update
 </p>
 </div>
 
-### 2.5 View updated tagrules
+### View updated tagrules
 
 ```
 here xyz config –tagrules <spaceId> or here xyz config –tagrules <spaceId> --view
@@ -200,9 +200,9 @@ output:
 |  CityName          | Sync        |   p.cityname=Mumbai          |
 
 
-## 3. Searchable
+## Searchable
 
-### 3.1 Add Searchable
+### Add Searchable
 
 ```
 here xyz config <spaceId> --searchable --add 
@@ -212,7 +212,7 @@ e.g here xyz config fgtdc6tz --searchable --add
 <b style='color:green'>?</b> **Enter the property name to make searchable (create index on ) :** address
 
 
-### 3.2 View Searchable
+### View Searchable
 
 ```
 here xyz config <spaceId> --searchable --view 
@@ -228,7 +228,7 @@ output:
 |  address           | Manually     |   true         |
 
 
-### 3.3 Delete Searchable[User can delete one or all searchable properties using delete command]
+### Delete Searchable[User can delete one or all searchable properties using delete command]
 
 ```
 here xyz config <spaceId> --searchable --delete 
@@ -237,7 +237,7 @@ here xyz config <spaceId> --searchable --delete
 e.g here xyz config fgtdc6tz --searchable --delete
 
 
-## 4. Activitylog
+## Activitylog
 
 ### Check or enable activitylog
 
@@ -312,7 +312,7 @@ One way of using `virtualize` is to upload CSVs of census data with unique geoID
 
 ### Options
 
-`  -t,--title [title]         ` Title for virtual XYZ space
+`  -t,--title [title]         ` Title for virtual Data Hub space
 
 `  -d,--message [message]     ` set description for the space
 
@@ -333,8 +333,6 @@ The `join` command simplifies use of virtual spaces when using CSV tables and ex
     `join` creates a space of features with no geometries. You can inspect this space using geojson.tools via `show -w`
     
     You can update this "csv space" using `here xyz upload spaceID -f new.csv -k id --noGeom` and the next time the virtual space ID is references, the properties will contain the updated values.
-
-Virtual Spaces give users access to multiple spaces with one ID. Group lets you bundle your spaces together, and changes get written back to their original spaces. Associate lets you make your own personal edits to a shared space or one with public data, merging the properties of objects with the same feature ID.
 
 
 #### Join Options
@@ -370,11 +368,11 @@ Virtual Spaces give users access to multiple spaces with one ID. Group lets you 
     You can update this "csv space" using `here xyz upload spaceID -f new.csv -k id --noGeom` and the next time the virtual space ID is references, the properties will contain the updated values.
 
 
-## 7. GIS
+## GIS
 
 The CLI has access to a number of convenient geopspatial data functions via the `here xyz gis` command. Some of these functions add properties to the original features, while others create data in a new space. 
 
-##### Options
+### Options
 
 `--centroid`             calculates centroids of Line and Polygon features and uploads in  
                          a different space
@@ -408,11 +406,11 @@ The CLI has access to a number of convenient geopspatial data functions via the 
 - `--area` uses `turf.js` to calculate the area of polygons, and saves this as a set of new properties in each polygon feature. `xyz_area_sqmiles`,`xyz_area_sqkm` are rounded for display convenience, and `xyz_area_sqm` is not rounded.
 - `--length` uses `turf.js` to calculate the length of lines in a space, and saves this as a set of new properties in each linestring feature, `xyz_length_miles`,`xyz_length_km` which are rounded for display convenience, and `xyz_length_m` which is not rounded.
 - `--centroid` uses `turf.js` to calculate the center of each polygon in a space. By default, these points are written to a new space, but can saved in the existing space using the `--samespace` option. In either case, they all receive a `centroid` tag.
-- `--voronoi` uses `d3-delaunay.js` to generate Voronoi polygons from points in an XYZ space. The edges of these polygons are equidistant from two points, and the vertices are equidistant to three points. By default, they are written to a new space, but can saved in the source point space using the `--samespace` option. In either case, they all receive a `voronoi` tag. 
-- `--tin` uses `d3-delaunay.js` to generate Delaunay triangles from points in an XYZ space. This process maximizes the minimum angle of all the angles of the triangles created from the source points. By default, they are written to a new space, but can saved in the source point space using the `--samespace` option. In either case, they all receive a `tin` tag. 
+- `--voronoi` uses `d3-delaunay.js` to generate Voronoi polygons from points in a Data Hub space. The edges of these polygons are equidistant from two points, and the vertices are equidistant to three points. By default, they are written to a new space, but can saved in the source point space using the `--samespace` option. In either case, they all receive a `voronoi` tag. 
+- `--tin` uses `d3-delaunay.js` to generate Delaunay triangles from points in a Data Hub space. This process maximizes the minimum angle of all the angles of the triangles created from the source points. By default, they are written to a new space, but can saved in the source point space using the `--samespace` option. In either case, they all receive a `tin` tag. 
 
 
-## 8. Hexbin
+## Hexbin
 
 Hexbins are a data simplification method that makes it easier to visualize large datasets of point features at low zoom levels (continent, country, state/province). A series of hexagon grids are created and the points that fall inside each are counted and written to a new Data Hub space, and statistics are calculated across the hexbin grid. 
 
