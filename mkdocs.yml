@@ -106,8 +106,7 @@ nav:
           - Overview: cli/index.md
           - Basic features: cli/basic-features.md
           - Add-on features: cli/add-on.md
-          - Shapefiles: cli/shapefiles.md
-          - Hexbins: cli/hexbins.md
+          - Tutorials: cli/tutorials.md
           - Command reference: cli/command-reference.md
       - Data Hub Space Invader: space-invader/index.md
       - GeoJSON Viewer:

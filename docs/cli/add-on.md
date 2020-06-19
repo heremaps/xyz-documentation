@@ -1,42 +1,50 @@
-# HERE CLI Add-on
+# Add-on features via HERE CLI
 
 In this section we give you a quick overview of the advanced commands to use Data Hub Add-on features
 with Data Hub Spaces from the HERE CLI.
 
-## Schema Definition:
+## Schema Validation for GeoJSON data
 
-A schema validation json file can be configured for a space. The schema definition can be in the form of a web address or a local schema json file. Features that do not match this schema will not be uploaded. User can use local filepath / hyper link to set or view the schema defination.
+A JSON schema definition file can be configured for a space. The schema definition can be in the form of a web address or a local file. Features that do not match this schema will not be uploaded. User can use local filepath/hyper link to set or view the schema definition.
 
-!!! Note
+!!! note
 
-    User can apply schema validation while creating space using **create** command  and using
-    **config** command for existing space. User can use --schema or -s option to apply schema.
+    Schema definition configurations and modifications will be applied to future data uploads, and not to existing data in a space.
+    
 
-### Apply schema validation to existing space using filepath [Using Config Command ]
+### Configuring schema for a space
 
-check available Config options using --help or -h command:
+You can configure the JSON schema definition for an existing space using the 'config' command.
+
+!!! note
+
+    Data Hub Schema Validation expects a GeoJSON FeatureCollection schema to validate against the uploaded data.
+
+
+#### Add/Update schema 
+To set a new schema defintion or update an existing schema definition for a space using a local file or a web link:
 
 ```
-here xyz config --help  OR  here xyz config -h
+here xyz config YOUR_SPACE_ID --add --schema [LOCAL_FILE_PATH | SCHEMA_HTTP_URL]
+
 ```
 
-#### Add/Upload schema : 
+You can add a schema definition to a space while creating it as well:
+
 ```
-here xyz config YOUR_SPACE_ID --add --schema filepath/schema_definition.json 
+here xyz create -t <SPACE_TITLE> -d <SPACE_DESCRIPTION> --schema [LOCAL_FILE_PATH | SCHEMA_HTTP_URL]
 ```
-e.g here xyz config  kqifmFel --add --schema /Users/xyz/schema_defination.json   
 
-
-
-#### View schema :
+### View schema :
+To view the schema definition configured on a space:
 
 ```
 here xyz config YOUR_SPACE_ID --schema --view 
 ```
-e.g here xyz config  kqifmFel --schema --view
 
-output: 
+Sample output: 
 
+```
 {
    "definitions": {},
    "$schema": "http://json-schema.org/draft-07/schema#",
@@ -47,75 +55,65 @@ output:
       "geometry",
       "type",
       "properties"
-   ], like this ....
+   ]...
+```
 
+#### Delete schema
+To delete a schema definition for a space:
 
-!!! Note
-
-    User needs to upload the data to the same space to check the schema validation is working
-    or not.Applied schema validation will not work on existing data.
-
-#### Delete schema : 
 ```
 here xyz config YOUR_SPACE_ID -s --delete
 ```
-e.g here xyz config  kqifmFel -s --delete
-
-
-### Apply schema validation to new space using url [Using Create Command ]
-
-check available Create options using --help or -h command:
-
-```
-here xyz create --help  OR  here xyz create -h
-```
-
-#### Add/Upload schema : 
- 
-```
-here xyz create -s website/schema_defination.json
-```
-
-e.g here xyz create -s https://xyz.api.here.com/hub/schemas/ZUHvCMys/5b15d45ebfe242cdc1ec78bdd3657e27370cd65da7b5dd202a219bda4d59d22a/1.json
-
-
-output : Data Hub space '66hCJ8uY' created successfully
-
-#### View schema :
-
-```
-here xyz config YOUR_SPACE_ID --schema --view 
-```
-e.g here xyz config 66hCJ8uY --schema --view
-
-
-output: 
-{
-   "definitions": {},
-   "$schema": "http://json-schema.org/draft-07/schema#",
-   "$id": "http://example.com/root.json",
-   "type": "object",
-   "title": "The Root Schema",
-   "required": [
-      "geometry",
-      "type",
-      "properties"
-   ],
-   "properties": {
-      "geometry": {
-         "$id": "#/properties/geometry",
-         "type": "object",
-         "title": "The Geometry Schema",
-         "required": [
-            "type",  like this ...
 
 ## Rule Based Tags
 
+Rule Based Tagging feature lets you create tags on features as you upload data to a space based on the conditional rules set up against the feature properties.
+
 !!! Note
 
-    Tagrule is not applicable on existing data. When user apply tagrules they have to upload the data again to check the tagrule details.
+    Rule based tagging does not create tags on existing data you have on the space. It only tags the data you upload after setting the rules.
 
-### Add tagrule
+The tag rules can be set up for string, boolean or numeric properties and you can even combine multiple conditions as well. The name of the rule you create is set as tag on the feature of the properties of the feature satisfy the condition you set up.
+
+!!! Important tips
+    
+    The property names inside the ***properties*** key of a geojson feature need to be prefixed with a ***p.***, and those outside it, need to be have an ***f.*** prefix.
+    
+Look at the following example feature and corresponding sample tag rule conditions:
+```
+{
+  "geometry": {
+    "coordinates": [
+      52.3828125,
+      "29.53522956294847"
+    ],
+    "type": "Point"
+  },
+  "id": "987654321",
+  "properties": {
+    "averageInvoice": 25,
+    "details": {
+        "capacity": 20,
+        "employeeCount": 10
+        }
+    "category": "Coffee shop",
+    "costCategory": "High",
+    "opensEarly": true
+    "name": "Data Hub Cafe"
+  },
+  "type": "Feature"
+}
+```
+
+| Tag_name       | Auto_tag_condition         |
+| :------------- | -----------:               |
+|  coffeeShop    | p.categorey == 'Coffee Shop' |
+|  opensEarly    | p.opensEarly == true         |
+|  largeGroupFriendly | p.details.capacity > 16 && p.details.employee > 8 |
+|  id@987654321     | f.id == 987654321     |
+    
+
+### Add a tagrule
 
 ```
 here xyz config –tagrules <spaceId> --add
@@ -133,7 +131,7 @@ here xyz config –tagrules <spaceId> --add
 ><b style='color:green'> ? </b> **condition :**   <b style='color:Teal'> f.id==123 </b>
 
 
-### View tagrules
+### View tag rules
 
 ```
 here xyz config –tagrules <spaceId> or here xyz config –tagrules <spaceId> --view
@@ -147,7 +145,8 @@ output:
 | :------------- | :----------: | -----------:           |
 |  Name          | Sync        |   f.id==123              |
 
-### Delete tagrule [user can delete one or all tagrules using delete command]:
+
+### Delete tag rules
 
 ```
 here xyz config –tagrules <spaceId> --delete
@@ -186,7 +185,7 @@ here xyz config –tagrules <spaceId> --update
 </p>
 </div>
 
-### View updated tagrules
+### View updated tagr ules
 
 ```
 here xyz config –tagrules <spaceId> or here xyz config –tagrules <spaceId> --view
@@ -426,7 +425,7 @@ These hexagons (or their centroids) and their statistics can be quickly displaye
 
 Hexbins are tagged by zoom level, width, and type, making it easy to extract one set from the hexbin space for display and comparison.
 
-You can learn more about hexbins and how to display them [in this tutorial](../hexbins).
+You can learn more about hexbins and how to display them [in this tutorial](tutorials.md#hexbins).
 
 ### Data contained in Data Hub Hexbins
 
