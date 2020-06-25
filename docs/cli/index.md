@@ -4,6 +4,8 @@ We think developers deserve an easy to use, convenient and streamlined experienc
 
 <script id="asciicast-ohII9SQNs1RIuaSkfAO5UgHlX" src="https://asciinema.org/a/ohII9SQNs1RIuaSkfAO5UgHlX.js" async></script>
 
+<script id="cli-configure-show" src="../assets/gifs/cli-configure-show.gif" async></script>
+
 !!! tip "HERE CLI on GitHub"
     [HERE CLI is Open Source](https://github.com/heremaps/here-cli), where developers like yourself can contribute new functionality and features.
 
