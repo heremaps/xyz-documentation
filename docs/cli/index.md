@@ -2,9 +2,7 @@
 
 We think developers deserve an easy to use, convenient and streamlined experience to work with Data Hub APIs. That’s why we’ve built the HERE CLI. HERE CLI is a Node.js command line interface which works not only with HERE Data Hub, but eventually, with any HERE API. Right now, it allows you to interact with HERE Data Hub to create and manage your projects and easily upload and manage your datasets.
 
-<script id="asciicast-ohII9SQNs1RIuaSkfAO5UgHlX" src="https://asciinema.org/a/ohII9SQNs1RIuaSkfAO5UgHlX.js" async></script>
-
-<script id="cli-configure-show" src="../assets/gifs/cli-configure-show.gif" async></script>
+![cli-configure-show](../assets/gifs/cli-configure-show.gif)
 
 !!! tip "HERE CLI on GitHub"
     [HERE CLI is Open Source](https://github.com/heremaps/here-cli), where developers like yourself can contribute new functionality and features.
