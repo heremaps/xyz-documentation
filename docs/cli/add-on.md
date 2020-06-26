@@ -1,11 +1,11 @@
 # Add-on features via HERE CLI
 
-In this section we give you a quick overview of the advanced commands to use Data Hub Add-on features
-with Data Hub Spaces from the HERE CLI.
+In this section we give you a quick overview of the advanced HERE CLI commands for Data Hub Add-on features
+in Data Hub Spaces.
 
 ## Schema Validation for GeoJSON data
 
-A JSON schema definition file can be configured for a space. The schema definition can be in the form of a web address or a local file. Features that do not match this schema will not be uploaded. User can use local filepath/hyper link to set or view the schema definition.
+A JSON schema definition file can be configured for a space. Users can set the schema definition can be in the form of a URL or a local file. Features that do not match this schema will not be uploaded. 
 
 !!! note
 
@@ -18,11 +18,11 @@ You can configure the JSON schema definition for an existing space using the 'co
 
 !!! note
 
-    Data Hub Schema Validation expects a GeoJSON FeatureCollection schema to validate against the uploaded data.
+    Data Hub Schema Validation expects a GeoJSON feature to validate against the uploaded data.
 
 
 #### Add/Update schema 
-To set a new schema defintion or update an existing schema definition for a space using a local file or a web link:
+To set a new schema defintion or update an existing schema definition for a space using a local file or a URL:
 
 ```
 here xyz config YOUR_SPACE_ID --add --schema [LOCAL_FILE_PATH | SCHEMA_HTTP_URL]
@@ -67,17 +67,17 @@ here xyz config YOUR_SPACE_ID -s --delete
 
 ## Rule Based Tags
 
-Rule Based Tagging feature lets you create tags on features as you upload data to a space based on the conditional rules set up against the feature properties.
+Rule Based Tags let you create tags on features using conditional rules applied against feature properties as you upload data to a space.
 
 !!! Note
 
     Rule based tagging does not create tags on existing data you have on the space. It only tags the data you upload after setting the rules.
 
-The tag rules can be set up for string, boolean or numeric properties and you can even combine multiple conditions as well. The name of the rule you create is set as tag on the feature of the properties of the feature satisfy the condition you set up.
+Tag rules can be set up for string, boolean or numeric properties. Multiple conditions can also be defined. The name of the rule you create is set as the name of the tag in the features that match those conditions.
 
 !!! Important tips
     
-    The property names inside the ***properties*** key of a geojson feature need to be prefixed with a ***p.***, and those outside it, need to be have an ***f.*** prefix.
+    The property names inside the ***properties*** key of a GeoJSON feature need to be prefixed with a ***p.***, and those outside it, like the feature ID, need to be have an ***f.*** prefix.
     
 Look at the following example feature and corresponding sample tag rule conditions:
 ```
@@ -113,7 +113,7 @@ Look at the following example feature and corresponding sample tag rule conditio
 |  id@987654321     | f.id == 987654321     |
     
 
-### Add a tagrule
+### Add a tag rule
 
 ```
 here xyz config –tagrules <spaceId> --add
@@ -154,7 +154,7 @@ here xyz config –tagrules <spaceId> --delete
 e.g here xyz config --tagrules HJtXzHWi –delete
 
 
-### Update tagrule [User can update tagrule name and conditions using update command] :
+### Update tagrule [Users can update tagrule name and conditions using update command] :
 
 ```
 here xyz config –tagrules <spaceId> --update
@@ -185,7 +185,7 @@ here xyz config –tagrules <spaceId> --update
 </p>
 </div>
 
-### View updated tagr ules
+### View updated tag rules
 
 ```
 here xyz config –tagrules <spaceId> or here xyz config –tagrules <spaceId> --view
@@ -199,9 +199,11 @@ output:
 |  CityName          | Sync        |   p.cityname=Mumbai          |
 
 
-## Searchable
+## Searchable Properties
 
-### Add Searchable
+Data Hub automatically indexes certain properties based on the number of features in your space. If a property is not automatically indexed, you can force it it to be indexed using the `--searchable` option.
+
+### Add Searchable Properties
 
 ```
 here xyz config <spaceId> --searchable --add 
@@ -211,7 +213,7 @@ e.g here xyz config fgtdc6tz --searchable --add
 <b style='color:green'>?</b> **Enter the property name to make searchable (create index on ) :** address
 
 
-### View Searchable
+### View Searchable Properties
 
 ```
 here xyz config <spaceId> --searchable --view 
@@ -227,7 +229,7 @@ output:
 |  address           | Manually     |   true         |
 
 
-### Delete Searchable[User can delete one or all searchable properties using delete command]
+### Delete Searchable Properties [User can delete one or all searchable properties using delete command]
 
 ```
 here xyz config <spaceId> --searchable --delete 
@@ -236,9 +238,15 @@ here xyz config <spaceId> --searchable --delete
 e.g here xyz config fgtdc6tz --searchable --delete
 
 
-## Activitylog
+## Activity Log
 
-### Check or enable activitylog
+Activity Log tracks what has been written, modified, and deleted in a Data Hub Space. The changes are written to a second space, with options to show
+
+- FEATURE_ONLY (default): Just the full new version of the feature, with the id moved. No diff to previous.
+- DIFF_ONLY: Head (newest object) is the full feature. All older versions are only a Diff to the successor. In order from newest to oldest: Obj1: Newest, full Feature + Diff to Obj2-> Obj2: Diff to Obj3 -> Obj3: Diff to Obj4 -> Obj4 …
+- FULL
+
+### Check or enable Activity Log
 
 ```
 here xyz config --activitylog <spaceId>
@@ -371,7 +379,7 @@ The `join` command simplifies use of virtual spaces when using CSV tables and ex
 
 ## GIS
 
-The CLI has access to a number of convenient geopspatial data functions via the `here xyz gis` command. Some of these functions add properties to the original features, while others create data in a new space. 
+The CLI has access to a number of convenient geopspatial data functions via the `here xyz gis` command. Some of these functions add properties to the original features, while others create data in a new space. These functions are based on popular JavaScript tools like turf.js and D3, and are [designed to be modular](https://github.com/heremaps/here-cli/blob/master/src/gisUtil.ts) so you can easily add your own.
 
 ### Options
 
@@ -411,9 +419,11 @@ The CLI has access to a number of convenient geopspatial data functions via the 
 - `--tin` uses `d3-delaunay.js` to generate Delaunay triangles from points in a Data Hub space. This process maximizes the minimum angle of all the angles of the triangles created from the source points. By default, they are written to a new space, but can saved in the source point space using the `--samespace` option. In either case, they all receive a `tin` tag. 
 
 
-## Hexbin
+## CLI Hexbins
 
-Hexbins are a data simplification method that makes it easier to visualize large datasets of point features at low zoom levels (continent, country, state/province). A series of hexagon grids are created and the points that fall inside each are counted and written to a new Data Hub space, and statistics are calculated across the hexbin grid. 
+CLI Hexbins are a data simplification method that makes it easier to visualize large datasets of point features at low zoom levels (e.g. a continent, country, or state/province). A series of hexagon grids are created and the points that fall inside each are counted and written to a new Data Hub space, and statistics are calculated across the hexbin grid. 
+
+These differ from the H3 hexbins generated via server-side clustering in a number of ways. CLI Hexbins use the `iterate` endpoint to calculate and write hexbins to a space across the specified zoom levels, while server-side hexbins are generated on the fly for each zoom level. CLI Hexbins for a specified zoom level can be viewed at any other zoom level using tags -- for example, CLI hexbins or their centroids generated at zoom level 15 can be viewed at zoom 5 via the hexbin space, whereas server-side hexbins cannot. Server-side hexbins have detailed statistics for the values in a particular hexbin, but CLI hexbins have built-in color formatting and global "occupancy" percentages. CLI hexbins also can generate "subcounts" of unique values across a dataset.
 
 These hexagons (or their centroids) and their statistics can be quickly displayed in place of the raw data that might overwhelm a renderer. Default colors indicating relative "occupancy" are generated for convenience of display.
 
