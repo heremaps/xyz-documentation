@@ -128,6 +128,8 @@ Applies a schema validation json file to the space to be applied to future uploa
 
 #### [Upload/Update data to a Space](command-reference.md#upload)
 
+The CLI makes it easy to upload geospatial files to a Data Space, and there are a large number of options to enhance, optimize and speed up the upload process.
+
 ##### Upload GeoJSON
 
 Upload a GeoJSON file to a new space. Data Hub will automatically generate a space ID and display it for you.
@@ -276,7 +278,11 @@ Tags are special properties that can be added to a feature that makes it easy to
 here xyz upload -f file.geojson -a
 ```
 
-Uploads data and allows users to select tags from a list of feature keynames, with a preview of the first few values. 
+Uploads data and allows users to select tags from a list of feature keynames in shapefiles, CSVs and GeoJSON files, with a preview of the first few values. 
+
+!!! note 
+
+    `-a` does not allow you to stream the upload.
 
 ##### Assign tags using property names
 
@@ -293,7 +299,7 @@ treatment@green_paint, treatment@sharrows, treatment@hit_post
 ```
 
 ##### Upload data with timestamp and date properties
-If you have timestamp or date properties in your data, Here CLI can help you create additional time and date specific properties and tag your features based on them.
+If you have timestamp or date properties in your data, the CLI can help you create additional time and date specific properties and time-based tags.
 
 ```
 here xyz upload <SPACE_ID> -f <CSV|GEOJSON> --date <propertyname>
@@ -334,22 +340,34 @@ Along similar lines, `--datetag` will let you specify which date parameter tags 
 
 
 ##### Upload history of a space
-HERE CLI saves up to 3 last used upload commands you execute for a space within the space metadata. This allows you to re-use one of them later with the `--history` option with a command index which can range from 0(newest) to 2 (oldest). If you use the `--history` option without an index, you will be provided with the list of historical upload commands from which you can choose one to re-execute.
+
+The CLI saves the 3 most recent upload commands for a space within the space metadata. This allows you to re-use one of them later with the `--history` option. You can specify a command index which can range from 0(newest) to 2 (oldest), or you can use the `--history` option without an index, and you will be provided with an interactive list of historical upload commands.
 
 ```here xyz upload <SPACE_ID> --history [0-2|blank]```
 
-You can also mark one of the history commands as your favorite so that you can execute it with a single command.
+You can also mark one of the history commands as a "favorite" so that you can later re-execute it. 
 
 ```here xyz upload <SPACE_ID> --history save```
 
-To execute the favorite upload command directly, do:
+To execute the favorite upload command:
 
 ```here xyz upload <SPACE_ID> --history fav```
 
+This is a convenient way to save upload commands with particularly complex options, especially when you revisit a space a few months after you last worked with it. 
+
+Note that this will immediately upload the command.
+
+You can clear a space's `history` using `clear`
+
 ##### Upload multiple files with batch upload
+
+You can upload a directory full of geospatial files to a space in one command using `--batch`. This is convenient way to rejoin datasets that have been broken into multiple files, or to add regional files to one space in order to build a national dataset.
+
+You must specify the directory with `-f` and the filetype after `--batch`. 
 
 ```here xyz upload <SPACE_ID> --batch [geojson|csv|shp|gpx] -f <PATH_TO_FOLDER>```
 
+While uploading shapefiles, `--batch` will inspect one level of sub-directories within that specified directory to look for `.shp` and all other relevant files from when uncompressing a zipped shapefile. 
 
 ##### Options
 
@@ -410,16 +428,17 @@ To execute the favorite upload command directly, do:
 here xyz show YOUR_SPACE_ID
 ```
 
-Show the objects of a space in table, filter by tags or property values, or open the space in other tools.
+Show the objects of a space in table, filter by tags or property values, or open the space in other visualization tools.
 
-
-##### Filter by Tags
-
-Using `show` on a large space will generate a long table. You can see the raw GeoJSON of the first 5000 features using `-r`. This can also be very long. You may want to direct this output to a file.
+Using `show` on a large space will generate a long table. You can see the raw GeoJSON of the first 5000 features using `-r`. This can also be very long. You may want to direct this output to a file, or pipe to `more`.
 
     here xyz show spaceID -r > my.geojson
 
-If your space contains a few hundred to a few thousand features, you can open the space in geojson.tools, a data preview tool, using `show -w`. Larger spaces can be previewed in [Data Hub Space Invader](../space-invader), a Tangram-based tool from Data Hub Labs, using `show -v`.
+If your space contains a few hundred to a few thousand features, you can open the space in geojson.tools, a data preview tool, using `show -w`. 
+
+Larger spaces can be previewed in [Space Invader](../space-invader), a Tangram-based tool from Data Hub Labs, using `show -v`, and features like H3 hexbin and quadbin clustering can be used to visualize even larger spaces.
+
+##### Filter by Tags
 
 You can filter tags from Data Hub using tags with `-t`:
 
@@ -434,7 +453,7 @@ If a property has been indexed by Data Hub, you can filter them with `-s` or `--
     here xyz show spaceID -s "p.property_name>value"
     here xyz show spaceID -s "p.name=John,Tom+p.age<50+p.phone='9999999'+p.zipcode=123456" -w
     
-- Operators include `=,!=,>,>=,<,<=`
+- Operators include `=`,`!=`,`>`,`>=`,`<`,`<=`
 - Search expressions must be enclosed in double quotes, e.g. `"p.property_name>value"`
 - Use comma separated values to search multiple values of a property, e.g. `OR`. Use `+` for `AND`.
 - Use single quotes to signify a string value, e.g. `"p.property_name>value='100'"` vs `"p.property_name>value=100"`
@@ -448,17 +467,19 @@ If a property has been indexed by Data Hub, you can filter them with `-s` or `--
 
 ##### Property Filters
 
-You can use `show -p` or `--prop` to filter the properties that get returned by the API. This is useful when your features have a large number of properties, and you only need to return some of them along with with the geometry.
+You can use `show -p` or `--prop` to filter the properties that are returned by the Data Hub API. This is useful when your features have a large number of properties, and you only need to return some of them along with with the geometry.
 
     here xyz show -p p.property1,p.property2 -w
     
 !!! note 
 
-    "Your account needs access to the Data Hub Add-on Services." Learn more about [Data Hub Add-on](../datahub_add-on) features here.
+    This feature requires access to  Data Hub Add-on Services. Learn more about [Data Hub Add-on](../datahub_add-on) features here.
 
 ##### Spatial Search
 
-You can use `--spatial` to search for features in a Data Hub space that fall within a radius, or a polygon, or along a line. You can specify a point and a radius, a feature in another Data Hub space, or a feature in a geojson file.
+You can use `--spatial` to search for features in a Data Hub space that fall within the radius from a point, or within a polygon, or along a line. 
+
+You can specify a point and a radius, or a feature in another Data Hub space, or a GeoJSON file containing a feature.
 
 - `--center`: comma separated `lat,lon` values that specify the center point for the search
 - `--radius`: the radius of the search, in meters, from the `--center` point, or a buffer around a geometry specified with `--feature` or `--geometry`
@@ -513,7 +534,7 @@ These results are most easily viewable using `show -w`.
 here xyz delete YOUR_SPACE_ID
 ```
 
-Delete a Space you have access to.
+Delete a space you have access to. By default you will be shown information about the space for context, and a confirmation prompt.
 
 ##### Options:
 
@@ -529,7 +550,7 @@ Delete a Space you have access to.
 here xyz clear YOUR_SPACE_ID
 ```
 
-Clear data from your space. You clear the entire space, or clear by tag or feature ID.
+Clear data from your space. You clear the entire space, or clear by tag or feature ID. By default you will be shown information about the space for context, and a confirmation prompt.
 
 ##### Options
 
@@ -550,7 +571,7 @@ Clear data from your space. You clear the entire space, or clear by tag or featu
 here xyz token
 ```
 
-Lists all the xyz token you use:
+Lists all the Data Hub tokens you have availble:
 
 ```
 id type lat description
@@ -561,7 +582,7 @@ YOUR_TOKEN_NR_2 PERMANENT 1534516620 xyz-hub=readFeatures
 
 ##### Options:
 
-`  --console   ` opens web console for Data Hub
+`  --console   ` opens the web console for Data Hub https://xyz.api.here.com/console
 
 `  -h, --help  ` display help for command
 
@@ -573,11 +594,11 @@ You can use the `config` command to get and update information about your spaces
 
     here xyz config SPACE_ID
     
-This will print a table with the title, desciption, and other high-level information about the space.
+This will print a formatted table with the title, desciption, and other high-level information about the space.
 
 You can see the raw `json` response from the `/statistics` endpoing using `-r`:
 
-        here xyz config SPACE_ID -r
+    here xyz config SPACE_ID -r
 
 ##### Get a list of tags and properties used in a space
 
@@ -586,7 +607,7 @@ You can get more details about a space by using the `--stats` option. This will 
     here xyz config SPACE_ID --stats
 
 !!! Tip 
-    Use `here xyz analyze` to get a count and list of values of a property in a space. This is best suited for qualitative values. Only the first 500,000 features in a space will be analyzed.
+    Use `here xyz analyze` to get a count and list of values of a property in a space. Note that this is a client-side operation and is best suited for qualitative values. Only the first 500,000 features in a space will be analyzed.
 
 ##### Update the title and description of a space
 
@@ -604,6 +625,9 @@ You can disable sharing by passing a `false` parameter:
 
     here xyz config spaceID --shared false
 
+Note that any Data Hub user will be able to read a space you have shared, and will be able to view a list all shared spaces. 
+
+If you want to selectively share a space, you should generate a token for just that space using the [Data Hub Console](https://xyz.api.here.com/console).
 
 ##### Basic Options:
 
@@ -654,8 +678,9 @@ You can disable sharing by passing a `false` parameter:
 
 ### Transform csv, shp and gpx to geojson
 
+The `here transform` command converts CSVs, shapefiles, and GPX files to GeoJSON. Note this will generate raw GeoJSON and not save it to a space. The `upload` command uses `transform`.
 
 ### Geocode locations
 
-
+The `here geocode` command takes an address string and uses the HERE Geocoder to return a GeoJSON feature containing the coordinates. This returns raw GeoJSON and does not save it to a space.
 
