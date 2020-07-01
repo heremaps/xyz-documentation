@@ -86,9 +86,9 @@ Use this option to list another user's spaces using an access token they have sh
 
     You can use this option with many CLI commands to access another user's spaces. Check for `--token` option in command's help.
 
-`--filter <filter>` a comma separated list of strings to filter spaces based on title or description
+`--filter <filter>` a comma separated list of strings to filter spaces by, based on title or description text
 
-Lets you list spaces whose title or description contain matching string(s).
+Lists only the spaces where the title or description contain the matching string(s).
 
 `-p, --prop <prop>` choose which space property to show when listing spaces: id, title or description.
  
@@ -99,11 +99,11 @@ Lets you list spaces whose title or description contain matching string(s).
 here xyz create -t "sample test xyz" -d "sample creation"
 ```
 
-When you create a new Space, the SpaceID will be generated automatically.
+When you create a new space, the SpaceID will be automatically generated.
 
 !!! tip 
 
-    the `upload` command can also automatically generate a new space ID for you
+    the `upload` command can also automatically generate a new space ID for you if it is not specified
 
 ##### Options
 
@@ -115,11 +115,11 @@ When you create a new Space, the SpaceID will be generated automatically.
 
     When you have many spaces, you will be glad you added meaningful titles and descriptions.
     
-`--token <token>` an external token to create a space in another user's account
+`--token <token>` an external token to create a space in another user's account (must have appropriate admin permissions)
 
-`-s <schema definition>`  set json schema definition for your space
+`-s <schema definition>`  set a json schema definition for your space
 
-Applies a schema validation json file to the space. The schema definition can be in the form of a web address or a local schema json file. Features that do not match this schema will not be uploaded to the space. 
+Applies a schema validation json file to the space to be applied to future uploads. The schema definition can be in the form of a url or a local schema json file. Features that do not match this schema will not be uploaded to the space. 
 
 !!! note 
 
@@ -140,12 +140,12 @@ Upload a GeoJSON file to an existing space.
 
 !!! tip "Use streaming for faster uploads"
 
-    Using streaming via the `upload -s` option will significantly reduce the time required to upload GeoJSON files. The default non-streaming mode is useful for troubleshooting. If your features are small, you can also try increasing the chunk size using `-c`. 
+    Streaming with the `upload -s` option will significantly reduce the time required to upload GeoJSON files. The default non-streaming mode is useful for troubleshooting. If your features are small, you can also try increasing the chunk size using `-c`. Chunk size for many point datasets can be safely increased to 1000 or more (the default is 200).
     
 !!! note "Feature IDs"
 
-    Data Hub requires that every feature in a space has a unique id. (This lets you access features in a space using the API.) If a GeoJSON feature does not have an ID (a common occurance), Data Hub's default upload behavior is to create one based on a hash of the feature's property. (Note that if you have duplicate records in a dataset at the same location, only the first will be uploaded.)
-    If you are certain that your dataset has a well-managed set of unique feature IDs, use `upload -o` to have Data Hub use them. If you use `-o` to upload a new dataset, and a new feature has the same ID as an existing feature, Data Hub will consider it an update and overwrite the existing feature with the new feature. Note that many public datasets often have a "unique" set of feature IDs that are simply incremental integers which can lead to feature replacement that you probably didn't want.    
+    Data Hub requires that every feature in a space has a unique id. (This lets you access individual features in a space using the API.) If a GeoJSON feature does not have an ID (a common occurance), Data Hub's default upload behavior is to create one based on a hash of the feature's property -- if you have records with duplicate IDs in a dataset at the same location with the same properties, only one will be uploaded. You can define a new feature ID using more than one property using `-i`.)
+    If you are certain that your dataset has a well-managed set of unique feature IDs, use `upload -o` to have Data Hub use them. If you use `-o` to upload a new dataset, and a new feature has the same ID as an existing feature, Data Hub will consider it an update and overwrite the existing feature with the new feature. Note that many public datasets often have a "unique" set of feature IDs that are simply incremental integers which can lead to feature replacement that you probably didn't want when you are uploading multiple files to the same space.    
 
 ##### Upload a CSV file
 
@@ -157,7 +157,7 @@ Data Hub will attempt to choose the columns containing the latitude and longitud
     y, ycoord, ycoordinate, coordy, coordinatey, latitude, lat
     x, xcoord, xcoordinate, coordx, coordinatex, longitude, lon, lng, long, longitud
 
-If your csv uses different names, you can specify the latitude field with `-y` and longitude with `-x`.
+If your csv uses different names, you can specify the latitude field with `-y` and longitude with `-x`. (If you think this is a common field and should be automatically included, [file an issue](https://github.com/heremaps/here-cli/issues) or better yet, [create a pull request](https://github.com/heremaps/here-cli/blob/master/src/transformutil.ts#L39)!)
 
     here xyz upload -f /Users/xyz/data.csv -x the_lon -y the_lat
 
@@ -169,7 +169,7 @@ or
 
     (37.7,-122.2)
 
-you can specify the name of that column with `-z`.
+you can specify the name of that column with `-z`. (Thanks to user ToonvanStrijp for some nice regex.)
 
     here xyz upload -f /Users/xyz/data.csv -z points
 
@@ -177,17 +177,20 @@ Rows that have `0,0` or `null` values in the designated latitude and longitude c
 
 If the lat/lon columns contain letters or other invalid characters, the features are tagged with `invalid`.
 
+If you specify `upload --noCoords`, the CLI will upload the CSV rows as features with no geometry. This is useful for working with data tables that you want to dynamically merge with geometries using Virtual Spaces.
+
 !!! tip "Use streaming for faster uploads"
 
         Using streaming via the `upload -s` option will significantly reduce the time required to upload CSV files of any size. Standard, non-streaming mode is useful for troubleshooting. 
         
 !!! tip "Using properties as the feature ID"
 
-    The CLI converts a CSV row into a GeoJSON feature before uploading it. If you want values in a CSV columns to be the GeoJSON feature ID, use `-i columnName.`
+    The CLI converts a CSV row into a GeoJSON feature before uploading it. If you want values in a CSV column to be the GeoJSON feature ID, use `-i columnName.` Note that you can choose more than one column to create the feature ID.
 
         
-###### Grouping multiple rows into a single feature ID
+###### Grouping multiple rows into a single unique feature ID
 
+You can use `--groupby` with `-i` to consolidate multiple rows "belonging to" a unique ID as nested objects within a single feature. Please read the [Group By tutorial](../tutorials/groupby) for more details.
 
 ##### Chunking
 
@@ -199,11 +202,13 @@ You may see upload errors from the CLI if your features are large, complex geome
 
 ###### Small features
 
-If your features are small, like you might see in a GeoJSON file containing points or a CSV, you will see faster uploads if you increase the chunk size. For example, `-c 1000` will enable the CLI to upload 1000 features at a time. If the features are very simple, `-c 10000` may also be approproate. As long as the chunk size is below the size of the API gateway, this will speed up your upload. The CLI will notify you if there is an upload error. Note that if you need to restart your upload, existing features will not be duplicated.
+If your features are small, like you might see in a GeoJSON file containing points or a CSV, you will see faster uploads if you increase the chunk size. For example, `-c 1000` will enable the CLI to upload 1000 features at a time. If the features are very simple, `-c 10000` may also be approproate. As long as the chunk size is below the size of the API gateway, this will speed up your upload. The CLI will notify you if there is an upload error. (You can see more detailed errors using `-e`.)
+
+Note that if you need to restart your upload, existing features will not be duplicated.
 
 ##### Upload and stream large CSV and GeoJSON files
 
-To upload very large CSV and GeoJSON files to your Data Hub space, will will need to use `-s` -- this will stream the file and avoid Node.js memory errors. (It will also be considerably faster than the standard upload method.)
+To upload very large CSV and GeoJSON files to your Data Hub space, will will need to use `-s` -- this will stream the file and avoid Node.js memory errors. It will also be considerably faster than the standard upload method. (Note that you cannot currently stream a shapefile.)
 
     here xyz upload YOUR_SPACE_ID -f /Users/xyz/big_data.csv -s
 
@@ -213,7 +218,7 @@ To upload very large CSV and GeoJSON files to your Data Hub space, will will nee
     
 !!! note 
 
-    HERE Data Hub is a database. Databases trade off storage space for speed, and your data will always take up more space in Data Hub than it does in a static file. When a file is uploaded into a Data Hub Space, features, their properties, and the geometries are broken out into multiple tables, indexed and tagged. All of this lets you query your geospatial data on demand, and access it dynamically as vector tiles. You can check the size of your Data Hub Spaces in your account dashboard or the CLI.
+    HERE Data Hub is a database. Databases trade off storage space for speed, and your data will always take up more storage space in Data Hub than it does in a static file. When a file is uploaded into a Data Hub Space, features, their properties, and the geometries are broken out into multiple tables, indexed and tagged. All of this lets you query your geospatial data on demand, and access it dynamically as vector tiles. You can check the size of your Data Hub Spaces in your account dashboard or the CLI.
 
 ##### Upload a shapefile
 
@@ -227,13 +232,15 @@ here xyz upload -f /Users/dhatb/data.shp
 
 Upload shapefile data to a Space.
 
-More tips in the [Working with Shapefiles](../shapefiles) tutorial.
 
 !!! tip
 
     Instead of passing the content as a file with `-f` option you can also pipe the output of
     another command directly into the input stream of the HERE CLI like
-    `cmd | here xyz upload YOUR_SPACE_ID`
+    `cmd | here xyz upload YOUR_SPACE_ID` -- this can be useful when piping data from geospatial tools like `mapshaper`.
+
+There are many, many more tips in the [Working with Shapefiles](../tutorials/shapefiles) tutorial.
+
 
 ##### Upload with a unique ID
 
