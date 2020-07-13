@@ -5,7 +5,7 @@ in Data Hub Spaces.
 
 ## Schema Validation for GeoJSON data
 
-A JSON schema definition file can be configured for a space. Users can set the schema definition can be in the form of a URL or a local file. Features that do not match this schema will not be uploaded. 
+A JSON schema definition file can be configured for a space. Users can set the schema definition in the form of a URL or a local file. Features that do not match this schema will not be uploaded. 
 
 !!! note
 
@@ -18,11 +18,11 @@ You can configure the JSON schema definition for an existing space using the 'co
 
 !!! note
 
-    Data Hub Schema Validation expects a GeoJSON feature to validate against the uploaded data.
+    Data Hub Schema Validation expects a GeoJSON feature schema to validate against the uploaded data.
 
 
 #### Add/Update schema 
-To set a new schema defintion or update an existing schema definition for a space using a local file or a URL:
+To set a new schema definition or update an existing schema definition for a space using a local file or a URL:
 
 ```
 here xyz config YOUR_SPACE_ID --add --schema [LOCAL_FILE_PATH | SCHEMA_HTTP_URL]
@@ -62,7 +62,7 @@ Sample output:
 To delete a schema definition for a space:
 
 ```
-here xyz config YOUR_SPACE_ID -s --delete
+here xyz config YOUR_SPACE_ID --schema --delete
 ```
 
 ## Rule Based Tags
@@ -85,7 +85,7 @@ Look at the following example feature and corresponding sample tag rule conditio
   "geometry": {
     "coordinates": [
       52.3828125,
-      "29.53522956294847"
+      29.5352295
     ],
     "type": "Point"
   },
@@ -96,7 +96,7 @@ Look at the following example feature and corresponding sample tag rule conditio
         "capacity": 20,
         "employeeCount": 10
         }
-    "category": "Coffee shop",
+    "category": "Coffee Shop",
     "costCategory": "High",
     "opensEarly": true
     "name": "Data Hub Cafe"
@@ -107,7 +107,7 @@ Look at the following example feature and corresponding sample tag rule conditio
 
 | Tag_name       | Auto_tag_condition         |
 | :------------- | -----------:               |
-|  coffeeShop    | p.categorey == 'Coffee Shop' |
+|  coffeeShop    | p.category == 'Coffee Shop' |
 |  opensEarly    | p.opensEarly == true         |
 |  largeGroupFriendly | p.details.capacity > 16 && p.details.employee > 8 |
 |  id@987654321     | f.id == 987654321     |
@@ -116,11 +116,14 @@ Look at the following example feature and corresponding sample tag rule conditio
 ### Add a tag rule
 
 ```
-here xyz config –tagrules <spaceId> --add
+here xyz config <spaceId> –tagrules --add
 ```
+
+![add_tagrule](../assets/gifs/cli-tagrule-add.gif)
+
 ><div style="color:black ; background-color:silver; font-style:italic;font-size:10pt">
 
->e.g </b> here xyz config --tagrules HJtXzHWi --add
+>e.g </b> here xyz config  HJtXzHWi --tagrules --add
 
 >Starting to add a new synchronous rule to automatically tag features..
 
@@ -134,34 +137,29 @@ here xyz config –tagrules <spaceId> --add
 ### View tag rules
 
 ```
-here xyz config –tagrules <spaceId> or here xyz config –tagrules <spaceId> --view
+here xyz config <spaceId> –-tagrules  or here xyz config  <spaceId> –tagrules --view
 ```
-
-e.g here xyz config --tagrules HJtXzHWi or here xyz config --tagrules HJtXzHWi --view
-
-output:
-
-| Tag_name       | Mode         | Auto_tag_condition     |
-| :------------- | :----------: | -----------:           |
-|  Name          | Sync        |   f.id==123              |
 
 
 ### Delete tag rules
 
 ```
-here xyz config –tagrules <spaceId> --delete
+here xyz config <spaceId>  –-tagrules --delete
 ```
-e.g here xyz config --tagrules HJtXzHWi –delete
 
 
 ### Update tagrule [Users can update tagrule name and conditions using update command] :
 
 ```
-here xyz config –tagrules <spaceId> --update
+here xyz config <spaceId>  –-tagrules --update
 ```
+
+![update_tagrule](../assets/gifs/cli-tagrule-update.gif)
+
+
 <div style="color: #ffffff; background-color:silver; font-style:italic;font-size:10pt">
 
->e.g here xyz config --tagrules HJtXzHWi --update
+>e.g here xyz config HJtXzHWi --tagrules --update
 
 ><b style='color:green'>?</b> **Select tag rule to be updated (Use arrow keys)**
 
@@ -185,30 +183,19 @@ here xyz config –tagrules <spaceId> --update
 </p>
 </div>
 
-### View updated tag rules
-
-```
-here xyz config –tagrules <spaceId> or here xyz config –tagrules <spaceId> --view
-```
-e.g here xyz config --tagrules HJtXzHWi or here xyz config --tagrules HJtXzHWi --view
-
-output:
-
-| Tag_name       | Mode         | Auto_tag_condition     |
-| :------------- | :----------: | -----------:           |
-|  CityName          | Sync        |   p.cityname=Mumbai          |
-
 
 ## Searchable Properties
 
-Data Hub automatically indexes certain properties based on the number of features in your space. If a property is not automatically indexed, you can force it it to be indexed using the `--searchable` option.
+Data Hub automatically indexes certain properties based on the number of features in your space. If a property is not automatically indexed, you can force it to be indexed using the `--searchable` option.
 
 ### Add Searchable Properties
 
 ```
 here xyz config <spaceId> --searchable --add 
 ```
-e.g here xyz config fgtdc6tz --searchable --add 
+
+![add_searchable](../assets/gifs/cli-searchable-add.gif)
+
 
 <b style='color:green'>?</b> **Enter the property name to make searchable (create index on ) :** address
 
@@ -219,7 +206,7 @@ e.g here xyz config fgtdc6tz --searchable --add
 here xyz config <spaceId> --searchable --view 
 ```
 
-e.g here xyz config fgtdc6tz --searchable –view
+e.g here xyz config fgtdc6tz --searchable –-view
 
 output:
 
@@ -235,7 +222,7 @@ output:
 here xyz config <spaceId> --searchable --delete 
 ```
 
-e.g here xyz config fgtdc6tz --searchable --delete
+![delete_searchable](../assets/gifs/cli-searchable-delete.gif)
 
 
 ## Activity Log
@@ -251,6 +238,8 @@ Activity Log tracks what has been written, modified, and deleted in a Data Hub S
 ```
 here xyz config --activitylog <spaceId>
 ```
+
+![enable_activitylog](../assets/gifs/cli-activitylog-enable.gif)
 
 ><div style="color:black ; background-color:silver; font-style:italic;font-size:10pt">
 
@@ -292,7 +281,9 @@ here xyz config --activitylog <spaceId>
 
 >activity log configuration updated successfully, it may take a few seconds to take effect and reflect.
 
+You can use the same command to check the activity log status, disable or re-configure the activity log settings
 
+![reconfigure_activitylog](../assets/gifs/cli-activitylog-reconfigure.gif)
 
 ## Virtual Spaces
 
