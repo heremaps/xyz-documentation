@@ -236,14 +236,14 @@ Activity Log tracks what has been written, modified, and deleted in a Data Hub S
 ### Check or enable Activity Log
 
 ```
-here xyz config --activitylog <spaceId>
+here xyz config <spaceId> --activitylog 
 ```
 
 ![enable_activitylog](../assets/gifs/cli-activitylog-enable.gif)
 
 ><div style="color:black ; background-color:silver; font-style:italic;font-size:10pt">
 
->e.g here xyz config --activitylog jsopziJd
+>e.g here xyz config jsopziJd --activitylog 
 
 >activity log for this space is not enabled.
 

@@ -6,7 +6,7 @@ In this section you can find all the supported commands and subcommands along wi
 
 ```
 Commands:
-  configure|c [set|verify]                setup configuration for authentication
+  configure|c [verify|refresh]            setup configuration for authentication
   xyz|xs [list|create|upload]             work with Data Hub spaces
   transform|tf [csv2geo|shp2geo|gpx2geo]  convert from csv/shapefile/gpx to geojson
   geocode|gc                              geocode feature
