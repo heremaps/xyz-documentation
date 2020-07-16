@@ -1,0 +1,17 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-07-09T11:02:01+02:00",
+  "id": "ConnectorEvents",
+  "duration": 0,
+  "title": "Data Hub Events",
+  "summary": "Data Hub Event Description",
+  "source": "tutorial-3-misc/ConnectorEvents.md",
+  "theme": "",
+  "status": null,
+  "category": null,
+  "tags": [],
+  "url": "ConnectorEvents"
+}
