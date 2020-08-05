@@ -1,4 +1,4 @@
-One of the most powerful features of HERE XYZ Studio is that it allows you to publish your map
+One of the most powerful features of HERE Studio is that it allows you to publish your map
 without having to run your own infrastructure and still allows you to update the content
 whenever necessary.
 
@@ -17,7 +17,7 @@ the map is currently visible to others.
 
 [![Settings](../assets/images/studio-settings.png)](../assets/images/studio-settings.png)
 
-By default, every map you create with HERE XYZ Studio is private and visible only to you until you decide to publish it.
+By default, every map you create with HERE Studio is private and visible only to you until you decide to publish it.
 
 Your published map will be shown to people as you see it right now when you turn publishing on.
 To start with a different initial view, choose from a list of previously defined bookmark locations.

@@ -1,7 +1,7 @@
 # Project information
-site_name: HERE XYZ - Open Documentation
+site_name: HERE Data Hub - Open Documentation
 site_description: Make great maps easier
-site_author: The HERE XYZ Team
+site_author: The HERE Data Hub Team
 site_url: https://www.here.xyz/
 site_dir: ../site
 
@@ -53,14 +53,14 @@ extra:
 nav:
   - Introduction: index.md
   - Getting Started: getting-started.md
-  - XYZ Studio:
+  - Here Studio:
       - Quick Tour: studio/index.md
       - Navigating: studio/navigating.md
       - Data: studio/data.md
       - Styling: studio/styles.md
       - Publishing: studio/publish.md
-  - XYZ APIs:
-      - XYZ Hub API:
+  - Data Hub APIs:
+      - Data Hub API:
           - Overview: api/index.md
           - Manage Tokens: api/getting-token.md
           - Quick Start:
@@ -95,7 +95,7 @@ nav:
               - Common Errors: api/devguide/commonerrors.md
           - API Reference: api/apireference.md
           - Useful Links: api/links.md
-      - XYZ Maps JS:
+      - Data Hub Maps JS:
           - Overview: ui/index.md
           - Getting started: ui/gettingstarted.md
           - Display your space: ui/yourxyzspace.md
@@ -104,16 +104,19 @@ nav:
   - Tools:
       - HERE CLI:
           - Overview: cli/index.md
-          - Commands: cli/cli.md
-          - Shapefiles: cli/shapefiles.md
-          - Hexbins: cli/hexbins.md
-      - XYZ Space Invader: space-invader/index.md
+          - Basic features: cli/basic-features.md
+          - Add-on features: cli/add-on.md
+          - Tutorials: cli/tutorials.md
+          - Command reference: cli/command-reference.md
+      - Data Hub Space Invader: space-invader/index.md
       - GeoJSON Viewer:
           - Overview: viewer-tool/index.md
           - GeoJSON Basics: api/concepts/geojsonbasics.md
           - Advanced Features: viewer-tool/advanced.md
       - Open Datasets:
           - Buildings: microsoft-buildings.md
+  - Data Hub Add-on:
+        - Data Hub Add-on: datahub_add-on.md
   - Releases:
       - Release notes: release-notes.md
   - Tutorials:

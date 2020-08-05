@@ -1,5 +1,5 @@
-The easiest way to get data from an HERE XYZ Hub Space onto a map is by using our
-XYZ Maps JavaScript component in your web pages.
+The easiest way to get data from an HERE Data Hub Space onto a map is by using our
+Data Hub Maps JavaScript component in your web pages.
 
 ## Maps Playground
 
@@ -70,7 +70,7 @@ Note that there is helpful little **download** icon on the right hand side of th
 that allows you to download the code the example (with your changes) and use it as a starting
 point for you own application. There are still some small changes you need to make, like
 replacing the text `YOUR_TOKEN` with the string of your actual token (and don't forget to
-put in quotes, like this: `"xyz9876"`).
+put in quotes, like this: `"datahub9876"`).
 
 !!! hint "Playground access to your data"
 

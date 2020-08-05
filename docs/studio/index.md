@@ -1,4 +1,4 @@
-**[HERE XYZ Studio](https://xyz.here.com/studio)** is an interactive, visual, web-based application for accessing XYZ Hub data and creating maps within minutes - without any code.
+**[HERE Studio](https://xyz.here.com/studio)** is an interactive, visual, web-based application for accessing Data Hub data and creating maps within minutes - without any code.
 
 ## Sign up and log in
 
@@ -42,12 +42,12 @@ Your browser does not support the video tag.
 
 ## Load other content
 
-An extremely powerful feature of XYZ is that you do not have to create all
+An extremely powerful feature of Here Studio is that you do not have to create all
 the content yourself. A lot of open map data can be found on the web already
 when you search for it. 
 
 `GeoJSON` is a very common format for geospatial data. If you find something 
-you like you can quickly _upload_ this data into XYZ and turn such a static 
+you like you can quickly _upload_ this data into Here Studio and turn such a static 
 file into a real live map you can change and update at any time.
 
 For example you might want to highlight all the [**bike paths**](https://data.sfgov.org/Transportation/Bikeway-Network/4jy4-tbju) for the treasure hunt:

@@ -1,6 +1,6 @@
 # Using Feature Clustering
 
-This section describes how to retrieve features from XYZ Hub inside a tile or bounding-box in a
+This section describes how to retrieve features from Data Hub inside a tile or bounding-box in a
 clustered form.
 
 ## Get clustered Features in a Bounding Box

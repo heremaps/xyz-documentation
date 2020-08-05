@@ -1,8 +1,8 @@
 # HERE CLI
 
-We think developers deserve an easy to use, convenient and streamlined experience to work with XYZ Hub APIs. That’s why we’ve built the HERE CLI. HERE CLI is a Node.js command line interface which works not only with HERE XYZ Hub, but eventually, with any HERE API. Right now, it allows you to interact with HERE XYZ Hub to create and manage your Projects and easily upload and manage your datasets.
+We think developers deserve an easy to use, convenient and streamlined experience to work with Data Hub APIs. That’s why we’ve built the HERE CLI. HERE CLI is a Node.js command line interface which works not only with HERE Data Hub, but eventually, with any HERE API. Right now, it allows you to interact with HERE Data Hub to create and manage your projects and easily upload and manage your datasets.
 
-<script id="asciicast-ohII9SQNs1RIuaSkfAO5UgHlX" src="https://asciinema.org/a/ohII9SQNs1RIuaSkfAO5UgHlX.js" async></script>
+![cli-configure-show](../assets/gifs/cli-configure-show.gif)
 
 !!! tip "HERE CLI on GitHub"
     [HERE CLI is Open Source](https://github.com/heremaps/here-cli), where developers like yourself can contribute new functionality and features.
@@ -57,7 +57,7 @@ For [Debian or Ubunbtu](https://nodejs.org/en/download/package-manager/#debian-a
 it looks something like this:
 
 ```
-curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ```
 
@@ -70,7 +70,7 @@ After installing, check in the command-line if `npm` is available. Depending on 
 
 ```
 $ npm -v
-5.x.x
+6.x.x
 ```
 
 
@@ -93,7 +93,7 @@ npm install -g @here/cli
 
 ### Configure HERE CLI
 
-HERE CLI needs to have access to your projects to help you work with your data. For that, you
+HERE CLI needs to have access to your account to help you work with your data. For that, you
 need to log in using your HERE developer account. You only need to do this once for a project.
 
 ``` sh
@@ -103,7 +103,7 @@ here configure account
 When prompted, enter your email and password that you use in the HERE Developer portal.
 
 The CLI will immediately try to *verify* if the entries can be
-used to log into HERE XYZ and report back to you accordingly.
+used to log into HERE Data Hub and report back to you accordingly.
 
 !!! question "Where is my login information stored?"
 

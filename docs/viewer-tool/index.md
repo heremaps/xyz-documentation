@@ -7,7 +7,7 @@ like finding data based on content.
     Bookmark the GeoJSON Tool at:
     [`http://geojson.tools/`](http://geojson.tools/)
 
-[![XYZ GeoJSON Tool](../assets/images/viewer.png)](../assets/images/viewer.png)
+[![Data Hub GeoJSON Tool](../assets/images/viewer.png)](../assets/images/viewer.png)
 
 ## Getting around
 

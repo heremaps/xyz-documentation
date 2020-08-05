@@ -1,6 +1,6 @@
 # Accessing Features
 
-This section describes how to get features from HERE XYZ Hub by using a bounding box or a tile, and iterating features.
+This section describes how to get features from HERE Data Hub by using a bounding box or a tile, and iterating features.
 
 ## Get Features by Bounding Box
 

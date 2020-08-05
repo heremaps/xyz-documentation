@@ -1,4 +1,4 @@
-# HERE XYZ and Microsoft Building Footprints
+# HERE Data Hub and Microsoft Building Footprints
 
 During the summer of 2018 Microsoft released a set of [building footprints](https://github.com/Microsoft/USBuildingFootprints) based on analysis of aerial imagery. In all, the Microsoft dataset consisted of 125,192,184 building footprint polygon geometries in all 50 US States in GeoJSON format.
 
@@ -6,18 +6,18 @@ This dataset formed the basis for an article, published on October 12th 2018, in
 
 In early March 2019, Microsoft released a set of building footprints, using the same techniques, for all of [Canada](https://github.com/Microsoft/CanadianBuildingFootprints).
 
-Since HERE XYZ is a location data management service, we decided to see what we could do with these large datasets.
+Since HERE Data Hub is a location data management service, we decided to see what we could do with these large datasets.
 
-We started with the source data from Microsoft and processed it so that users of XYZ could quickly create maps that
+We started with the source data from Microsoft and processed it so that users of Data Hub could quickly create maps that
 - don’t require coding or GIS experience
 - don’t require large file uploads or downloads
 - allow filtering of the source data to focus in on a particular part of the US and/or Canada
 - supports maximum zoom in
 - allows exploration of the source data.
 
-Take a look [at a map created by XYZ Studio](https://xyz.here.com/viewer/?project_id=c9884248-dbda-4c2b-a45c-8a46d0c7d3fb) filtered to focus on selected ZIP codes in San Francisco.
+Take a look [at a map created by Here Studio](https://xyz.here.com/viewer/?project_id=c9884248-dbda-4c2b-a45c-8a46d0c7d3fb) filtered to focus on selected ZIP codes in San Francisco.
 
-This experience is possible because the data is in an XYZ Space, something that we think makes sense for most large geospatial datasets.
+This experience is possible because the data is in a Data Hub Space, something that we think makes sense for most large geospatial datasets.
 
 However, for those who want to get at the data directly, we have another option.
 
@@ -25,14 +25,14 @@ HERE Technologies worked with [geocode.earth](https://geocode.earth) to enhance 
 
 The data is available in two formats – GeoJSON and GeoJSONL. ([Learn more about GeoJSONL over at interline.io](https://www.interline.io/blog/here-cli-supports-geojsonl/).) It maintains the [ODbL license granted by Microsoft](https://github.com/Microsoft/USBuildingFootprints/blob/master/LICENCE-DATA). 
 
-Both formats can be efficiently uploaded to HERE XYZ Spaces using the HERE CLI using the `-s` streaming option.
+Both formats can be efficiently uploaded to HERE Data Hub Spaces using the HERE CLI using the `-s` streaming option.
 
-This geocoded dataset is also available in a shared XYZ Space, `XHmWfTCt`, which available using access tokens from your own HERE XYZ account.
+This geocoded dataset is also available in a shared Data Hub Space, `XHmWfTCt`, which available using access tokens from your own HERE Data Hub account.
 
-You can use XYZ tags to preview and extract various sub-regional admin levels, including `neighborhood`,`locality`, and `county`, along with `street` and `postalcode`. Some demonstration maps are provided below.
+You can use Data Hub tags to preview and extract various sub-regional admin levels, including `neighborhood`,`locality`, and `county`, along with `street` and `postalcode`. Some demonstration maps are provided below.
 
 
-| region | geojsonl | geojson | size | HERE XYZ map (tag,filter) |
+| region | geojsonl | geojson | size | HERE Data Hub map (tag,filter) |
 |--------|----------|---------|------|------------|
 | Alabama | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/Alabama.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/Alabama.geojson)| 2.29 GB |
 | Alaska | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/Alaska.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/Alaska.geojson)| 0.11 GB |
