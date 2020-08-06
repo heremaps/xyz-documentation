@@ -1,2 +1,1 @@
-# HERE CLI
-
+{% include "index.md" %}
