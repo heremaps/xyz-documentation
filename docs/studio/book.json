@@ -1,0 +1,14 @@
+{
+  "title": "HERE Studio",
+  "description": "A guide for HERE Studio",
+  "variables": {
+    "productName": "HERE Studio",
+    "productVersion": "v1.0",
+    "brandName": "HERE",
+    "documentName": "HERE Studio",
+    "documentStatus": "FINAL",
+    "documentType": "Developer Guide",
+    "confidentialnotice": "Confidential",
+    "appid": "YOUR_APP_ID",
+    "appcode": "YOUR_APP_CODE" }
+}
