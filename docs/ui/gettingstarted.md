@@ -1,4 +1,4 @@
-# Getting Started with XYZ Maps JS
+# Getting Started with Data Hub Maps JS
 
 Even when you're using a Playground sample as a starting point, it's good to know the mechanics of the
 data ends up on the map. And when you're starting from scratch, it's vital that you understand how to
@@ -62,4 +62,4 @@ make all of it happen yourself.
   });
 ```
 
-5. Congratulations! Your first XYZ map is ready
+5. Congratulations! Your first Data Hub map is ready

@@ -1,6 +1,6 @@
-# Working with Features
+# Work with Features
 
-## Reading Features in a Space by ID
+## Read Features in a Space by ID
 
 The following request queries a single feature using the ID of the feature.
 
@@ -39,7 +39,7 @@ GET /spaces/{spaceId}/features/{featureId}
 }
 ```
 
-## Reading Features of a Space
+## Read Features of a Space
 
 For querying multiple features in a space use the following request.
 
@@ -89,7 +89,7 @@ GET /spaces/[spaceId}/features?id={featureId1},{featureId2},{featureId3}
 }
 ```
 
-## Getting a Feature Count
+## Get a Feature Count
 
 Here is an example of getting the number of features in a space.
 
@@ -111,11 +111,13 @@ GET /spaces/{spaceId}/count
 }
 ```
 
-## Creating/Replacing Features
+## Create/Replace Features
 
 To create features in a space or to replace existing ones you can use the following request.
 
-!!! Warning "Note: Existing features will be completely erased by using this PUT request"
+> #### Warning
+>
+>Existing features will be completely erased by using this PUT request.
 
 To keep already existing features use [this request](#modifying-space-features).
 
@@ -207,7 +209,7 @@ with the following body
 }
 ```
 
-## Modifying Features
+## Modify Features
 
 This is an example for modifying existing features using a POST request.
 
@@ -299,7 +301,7 @@ with the following body
 }
 ```
 
-## Partially Updating Features in Space
+## Partially Update Features in Space
 
 This request contains only the feature properties you want to add, update or delete.
 
@@ -401,7 +403,7 @@ The *id* is the id you sent. If you did not send one, the id will be null as in 
 *Position* is the position (zero-based) in the uploaded feature collection.  
 The *message* contains the schema validation errors with a detailed description of what does not confirm to your schema.
 
-## Searching a Space for Features
+## Search a Space for Features
 
 There are two ways of searching a space. /search is one of them, the other is [/iterate](#iterating-features-from-specific-spaces). This does not order the results and it does not enable you to continue the search.
 
@@ -455,7 +457,7 @@ GET /spaces/{spaceId}/search
 }
 ```
 
-## Iterating Features from Specific Spaces
+## Iterate Features from Specific Spaces
 
 This is the second way to search a space (the other, you guessed it, is [/search](#searching-a-space-for-features)). Iterate allows you to iterate over all the matching features with the handle *handle* as a query parameter
 
@@ -509,7 +511,7 @@ GET /spaces/{spaceId}/iterate
 }
 ```
 
-## Deleting Multiple Features
+## Delete Multiple Features
 
 You can get rid of specific features by sending this request with their feature IDs
 

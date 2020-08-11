@@ -1,9 +1,9 @@
-XYZ Hub is a real-time cloud-based location hub for discovering, storing, retrieving, manipulating and publishing private or public mapping data.
+Data Hub is a real-time cloud-based location hub for discovering, storing, retrieving, manipulating and publishing private or public mapping data.
 
 It uses the concepts of **Spaces** to store your data. A Space is your own geospatial
 data repository, which you can quickly create when needed to store data.
 
-To interact with the HERE XYZ Hub API directly from your application you just need to interact with our public REST APIs. They are simple and straightforward to use from any application environment - you only need to know how to make RESTful requests.
+To interact with the HERE Data Hub API directly from your application you just need to interact with our public REST APIs. They are simple and straightforward to use from any application environment - you only need to know how to make RESTful requests.
 
 ## Authentication
 
@@ -11,7 +11,6 @@ For everything you want to do via the API, you need to use a token as described 
 [Generate Token Section](getting-token.md).
 
 [![API](../assets/images/api-auth.png)](../assets/images/api-auth.png)
-
 
 ## Data
 
@@ -50,8 +49,9 @@ API gives you together with the data, that you need to provide back when you wan
 get the next chunk of data.
 
 ## ReDoc API documentation
+
 [`https://xyz.api.here.com/hub/static/redoc/`](https://xyz.api.here.com/hub/static/redoc/)
 
-
 ## Open API documentation
+
 [`https://xyz.api.here.com/hub/static/swagger/`](https://xyz.api.here.com/hub/static/swagger/)

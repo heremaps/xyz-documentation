@@ -1,23 +1,18 @@
-## Overview
+# Overview
 
 The GeoJSON Tool is a web based visualization tool for [GeoJSON data](topics/geojsonbasics.md)
 that can quickly display data from various sources, highlight and inspect specific features and supports even complex operations like finding data based on content.
 
-> #### Hint
-> GeoJSON Tool URL
+> #### Hint: GeoJSON Tool URL
+>
 > Bookmark the GeoJSON Tool at:
-> !['http://geojson.tools/'](http://geojson.tools/)
+> ![http://geojson.tools/](http://geojson.tools/)
 
-***
-    
-    
-
-![XYZ GeoJSON Tool](images/viewer.png)
+![Data Hub GeoJSON Tool](images/viewer.png)
 
 ## Getting around
 
 ![Tool Overview](images/viewer-parts.png)
-
 
 ### Map (1)
 
@@ -54,37 +49,31 @@ GeoJSON describing the features you want to see on the map.
 
 [![Tool Overview](images/viewer-editor.png)]
 
-> #### Info:::GeoJSON structure
-> You will notice that the editor does some automatic formatting on the text you 
-> are typing to bring into a structured form. This indenting makes it easier to work
-> with the nested nature of GeoJSON.
-> 
-> In the left margin of the panel you notice line numbers, as well small triangles. 
-> The latter allow you to collapse or expand regions of the text that you don't want 
-> to see right now:
+#### GeoJSON structure
 
-    
-    
+ You will notice that the editor does some automatic formatting on the text you
+ are typing to bring into a structured form. This indenting makes it easier to work
+ with the nested nature of GeoJSON.
+
+ In the left margin of the panel you notice line numbers, as well small triangles.
+ The latter allow you to collapse or expand regions of the text that you don't want
+ to see right now:
+
  [![Tool Overview](https://www.here.xyz/assets/images/viewer-editor-collapse.png)](https://www.here.xyz/assets/images/viewer-editor-collapse.png)
 
+#### GeoJSON Syntax Check
 
-#### Fail: GeoJSON Syntax Check
- 
- In addition to outlining the structure, the editor also checks if the GeoJSON is valid. 
- A missing a bracket or a comma can make your GeoJSON invalid for display. The editor tries 
+In addition to outlining the structure, the editor also checks if the GeoJSON is valid.
+ A missing a bracket or a comma can make your GeoJSON invalid for display. The editor tries
  to give you a hint by showing a marker in the margin.
 
-    
-    
 ![Tool Overview](images/viewer-editor-syntax.png)
-
 
 ### Location bar (3)
 
 On top of the map you find the Location bar. It allows you to quickly jump to any coordinate you enter:
 
 ![Tool Overview](images/viewer-bar.png)
-
 
 ### Loading Data (4)
 
@@ -96,9 +85,9 @@ There are of course more ways to get data into the viewer than typing into the e
 * Clear the map and start afresh
 
 > #### Hint
-> You can also load a local file by **drag&drop** meaning you pull it from your desktop or 
+>
+> You can also load a local file by **drag&drop** meaning you pull it from your desktop or
 > Finder/Explorer on the map.
-
 
 ![Tool Overview](images/viewer-load.png)
 

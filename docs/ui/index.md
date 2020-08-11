@@ -1,5 +1,5 @@
-The easiest way to get data from an HERE XYZ Hub Space onto a map is by using our
-XYZ Maps JavaScript component in your web pages.
+The easiest way to get data from an HERE Data Hub Space onto a map is by using our
+Data Hub Maps JavaScript component in your web pages.
 
 ## Maps Playground
 
@@ -12,7 +12,10 @@ directly editable, you can experiment directly in the browser to try out new thi
 
 [![Maps UI](../assets/images/maps-playground.png)](../assets/images/maps-playground.png)
 
-!!! tip "Using a sample as a template for your project"
+
+> #### Hint 
+> Using a sample as a template for your project.
+
 
     Using one of the samples is probably the easiest way for you to start your own
     visualization project. By clicking the download button on right side of the editor
@@ -70,9 +73,10 @@ Note that there is helpful little **download** icon on the right hand side of th
 that allows you to download the code the example (with your changes) and use it as a starting
 point for you own application. There are still some small changes you need to make, like
 replacing the text `YOUR_TOKEN` with the string of your actual token (and don't forget to
-put in quotes, like this: `"xyz9876"`).
+put in quotes, like this: `"datahub9876"`).
 
-!!! hint "Playground access to your data"
+> #### Hint
+> Playground access to your data.
 
     The playground uses it's own credentials and token to access the Spaces used in the
     samples. This token doesn't show in the code.
@@ -89,7 +93,8 @@ The output is fully interactive.
 If you have coded yourself into a corner and the map does not work anymore as expected
 you can always **Reset** the sample back to it's original state where it should work.
 
-!!! hint "Also look into your browsers **Developer Tools** for messages"
+> #### Hint
+> Also look into your browsers **Developer Tools** for messages.
 
     It also help to understand what's going to open your browsers Developer Tools
     (for Chrome press `CTRL-SHIFT-I` or `CMD+OPTION+I` on macOS). There you see

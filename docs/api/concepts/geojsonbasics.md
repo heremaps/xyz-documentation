@@ -191,7 +191,8 @@ A **FeatureCollection** contains an array of **Features**, contained in a member
 
 A **GeometryCollection** is a collection of zero or more geometry objects like the ones above in an array member called *geometries*
 
-!!! Warning "GeometryCollection is not supported by HERE XYZ Hub. It is just included here for completeness."
+> #### Warning
+> GeometryCollection is not supported by HERE XYZ Hub. It is just included here for completeness.
 
 ### Example GeometryCollection
 

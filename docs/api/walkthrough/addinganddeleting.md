@@ -1,6 +1,8 @@
-# Adding and Deleting Features
+# Add and Delete Features
 
-!!! Note "The endpoint for the API is https://xyz.api.here.com/hub"
+> #### Note
+>
+> The endpoint for the API is <https://xyz.api.here.com/hub>.
 
 ## Adding data
 
@@ -9,7 +11,10 @@ Use *POST* and any pre-existing data is retained; use *PUT* and the only data th
 
 There is a convenience request for modifying features, but that is a subject for another example.
 
-!!! Note "Think about what tags to use before uploading and add them via the **addTags** query parameter. There is no method to add tags to all features without specifying IDs, yet."
+> #### Note
+>
+> Think about what tags to use before uploading and add them via the **addTags** query parameter.
+> There is no method to add tags to all features without specifying IDs, yet.
 
 ### Request
 

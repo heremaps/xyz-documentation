@@ -1,6 +1,6 @@
-# Reading Spaces
+# Read Spaces
 
-Once you have acquired your credentials. you can find out which spaces you have access to.
+Once you have acquired your credentials, you can determine the spaces to which you have access.
 
 ## Request
 

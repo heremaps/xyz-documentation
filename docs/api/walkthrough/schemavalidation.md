@@ -1,6 +1,8 @@
 # Use Schema Validation
 
-!!! Note "Your account needs access to the XYZ Pro Services."
+> #### Note
+>
+> Your account needs access to the XYZ Pro Services.
 
 To use Schema Validation you need to put additional data into the space
 definition. Please add a processor with the ID *schema-validator* and put
@@ -22,9 +24,11 @@ the param *schema*:
 }
 ```
 
-!!! Note "If you use an URL please make sure that the URL is public accessible."
+> #### Note
+>
+> If you use an URL please make sure that the URL is public accessible.
 
-## Request
+### Request
 
 *Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit_Spaces)*
 
@@ -47,9 +51,11 @@ POST /spaces
 }
 ```
 
-!!! Warning "The $id properties of the schema must not include whitespace characters"
+> #### Warning
+>
+> The $id properties of the schema must not include whitespace characters.
 
-## Response
+### Response
 
 ```json5
 {
@@ -61,17 +67,16 @@ POST /spaces
         {
             "id": "schema-validator",
             "params": {
-                 "schemaUrl": "<Location of schema in the XYZ managed S3 bucket>"
+                 "schemaUrl": "<Location of schema in the Data Hub managed S3 bucket>"
              }
         }
-
     ]
     //,...
 }
 ```
 
 Please note that the field *schema* has been replaced with a field *schemaUrl*
-that points to a private copy in the XYZ S3 bucket.
+that points to a private copy in the Data Hub S3 bucket.
 
 ## Validating your data
 
@@ -198,7 +203,7 @@ a *geometry* field.
 To use a different JSON schema you need to update the space definition with the
 new schema JSON string or URL.
 
-## Request
+### Request
 
 *Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit_Spaces)*
 
@@ -221,7 +226,7 @@ PATCH /spaces/{spaceId}
 }
 ```
 
-## Response
+### Response
 
 ```json5
 {
@@ -233,7 +238,7 @@ PATCH /spaces/{spaceId}
         {
             "id": "schema-validator",
             "params": {
-                 "schemaUrl": "<Location of updated schema in the XYZ managed S3 bucket>"
+                 "schemaUrl": "<Location of updated schema in the Data Hub managed S3 bucket>"
              }
         }
 
@@ -249,7 +254,7 @@ the *schema-validator* processor definition. Please note that you have to
 include **all other** processor definitions if there are multiple; otherwise
 you will disable all processors.
 
-## Request
+### Request
 
 *Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit_Spaces)*
 
@@ -265,7 +270,7 @@ PATCH /spaces/{spaceId}
 }
 ```
 
-## Response
+### Response
 
 ```json5
 {

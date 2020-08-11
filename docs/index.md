@@ -1,18 +1,17 @@
-
 ## Make great maps easier and faster
 
-HERE XYZ is an open, interoperable and real-time location data management service from HERE Technologies
+HERE Data Hub is an open, interoperable and real-time location data management service from HERE Technologies
 that offers simple APIs, SDKs, components, and interactive tools
 that enable everyone to make maps easier and faster.
 
 
 
-[![HERE XYZ](assets/images/studio.png)](assets/images/studio.png)
+[![HERE Data Hub](assets/images/studio.png)](assets/images/studio.png)
 
-At its heart HERE XYZ is a collection of tools and APIs to enable everyone to easily
+At its heart HERE Data Hub is a collection of tools and APIs to enable everyone to easily
 manage map data and build great maps. It is built around standards like
 [GeoJSON](http://geojson.org/) and designed to be **open** and **interoperable**
-with many other offerings. Most important of all, HERE XYZ offers
+with many other offerings. Most important of all, HERE Data Hub offers
 real-time **live** interaction with location data.
 
 It's built from the ground up with productivity in mind. We have taken code and concepts used internally at
@@ -23,7 +22,7 @@ enthusiasts to enable everyone to build better maps.
 
 ## Quick start
 
-The easiest way to get started is to have a look at easy to use the **[HERE XYZ Studio](https://xyz.here.com/studio/)** web application to build and publish maps. Give it a try, it's completely free and open to use for everyone - you only need a HERE Account. Have a look at our
+The easiest way to get started is to have a look at easy to use the **[HERE Studio](https://xyz.here.com/studio/)** web application to build and publish maps. Give it a try, it's completely free and open to use for everyone - you only need a HERE Account. Have a look at our
 **[documentation](studio/index.md)** for find out more about it.
 
 When you have a GeoJSON file you just want to have a look at without building a full map, check out our open **[GeoJSON Tool](viewer-tool/index.md)** tool. It's a great way to inspect data you'd want to work with.

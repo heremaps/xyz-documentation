@@ -1,24 +1,24 @@
-# XYZ Space Invader
+# Data Hub Space Invader
 
-XYZ Space Invader lets you inspect and analyze data, properties, and tags in an XYZ Space.
+Data Hub Space Invader lets you inspect and analyze data, properties, and tags in a Data Hub Space.
 
-It uses the tile query feature of the Tangram.js API, Space Invader to read, count and store all tags in the vector tiles loaded for map display, saving a second query to the XYZ endpoint.
+It uses the tile query feature of the Tangram.js API, Space Invader to read, count and store all tags in the vector tiles loaded for map display, saving a second query to the Data Hub endpoint.
 
 It can also read and analyze properties of features in the viewport, and dynamically assign color ranges based on their ranges (for numbers), or counts (of discrete values). It can calculate basic statistics on values in a space and use those to help display appropriate color ramps.
 
-From the HERE XYZ `/statistics` endpoint, it reads the number of features and the size of the space along with the bounding box of the data, and attempts to center the map there (unless the map is already centered within the bbox).
+From the HERE Data Hub `/statistics` endpoint, it reads the number of features and the size of the space along with the bounding box of the data, and attempts to center the map there (unless the map is already centered within the bbox).
 
 Multiple color palettes can be applied to property ranges and ranks, and it is designed to be easy to add more palettes.
 
 Multiple basemaps are available. Basemap properties such as roads and buildings can be toggled on and off. The size of points and lines can also be increased and decreased to help visualize data sets of various density. 
 
-XYZ Space Invader can show hundreds of thousands to millions of features, though this depends greatly on geographic density of data, zoom level, and kind and complexity of the geometries involved. In general you will be able to show more points and lines than polygons at any given zoom level. We're also working on ways to intelligently handle dense data sets using tags and hexbins.
+Data Hub Space Invader can show hundreds of thousands to millions of features, though this depends greatly on geographic density of data, zoom level, and kind and complexity of the geometries involved. In general you will be able to show more points and lines than polygons at any given zoom level. We're also working on ways to intelligently handle dense data sets using tags and hexbins.
 
 ## To get started
 
 - [install the HERE CLI](https://www.here.xyz/cli/)
-- upload a GeoJSON file, CSV or Shapefile to an XYZ Space, and add tags based on properties https://www.here.xyz/cli/cli/
-- open XYZ Space Invader from your account using `here xyz show SPACEID -v`
+- upload a GeoJSON file, CSV or Shapefile to a Data Hub Space, and add tags based on properties https://www.here.xyz/cli/cli/
+- open Data Hub Space Invader from your account using `here xyz show SPACEID -v`
 
 Here are some examples to get you familiar with the interface and what Space Invader can do:
 

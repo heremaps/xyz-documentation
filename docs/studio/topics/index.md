@@ -18,12 +18,11 @@ Simply select one you like best for your project.
 
 You can view a video overview of this content [here](https://www.here.xyz/assets/videos/create-new-project.mp4).
 
-
 ## Create your content
 
 To make your own map involves putting your content on top of it. That
-means you need a place to store that content. 
-This place is often called a _Layer_ and it can contain many _Points_, _Lines_ and 
+means you need a place to store that content.
+This place is often called a _Layer_ and it can contain many _Points_, _Lines_ and
 _Polygons_ (they are collectively called _Features_ ) that can be colored
 and styled. This way your map highlights what you want to show where you want to show it.
 
@@ -34,12 +33,12 @@ You can view a video overview of this content [here](https://www.here.xyz/assets
 
 ## Load other content
 
-An extremely powerful feature of XYZ is that you do not have to create all
+An extremely powerful feature of Here Studio is that you do not have to create all
 the content yourself. A lot of open map data can be found on the web already
-when you search for it. 
+when you search for it.
 
-`GeoJSON` is a very common format for geospatial data. If you find something 
-you like you can quickly _upload_ this data into XYZ and turn such a static 
+`GeoJSON` is a very common format for geospatial data. If you find something
+you like you can quickly _upload_ this data into Here Studio and turn such a static
 file into a real live map you can change and update at any time.
 
 For example you might want to highlight all the [**bike paths**](https://data.sfgov.org/Transportation/Bikeway-Network/4jy4-tbju) for the treasure hunt:
