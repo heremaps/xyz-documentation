@@ -115,7 +115,7 @@ nav:
       - Open Datasets:
           - Buildings: microsoft-buildings.md
   - Releases:
-      - Release notes: https://github.com/heremaps/here-cli/releases
+      - Release notes: release-notes.md
   - Tutorials:
       - https://developer.here.com/tutorials?category=HERE%2BStudio%2Band%2BData%2BHub
 
