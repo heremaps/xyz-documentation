@@ -4,7 +4,7 @@ In this section you can find all the supported commands and subcommands along wi
 
 ## here
 
-```
+```console
 Commands:
   configure|c [verify|refresh]            setup configuration for authentication
   xyz|xs [list|create|upload]             work with Data Hub spaces
@@ -14,9 +14,10 @@ Commands:
 ```
 
 ### [configure](basic-features.md#log-in-to-your-data-hub-account)
+
 Configure Here Developer account on Here CLI.
 
-```
+```console
 Commands:
   account         configure HERE account email/password for authentiction.
                   Account can be created from https://developer.here.com/
@@ -26,9 +27,10 @@ Commands:
 ```
 
 ### [xyz](basic-features.md#interact-with-data-hub-spaces)
+
 Data Hub Space related operations
 
-```
+```console
 Commands:
   list|ls [options]        information about available Data Hub spaces
   analyze [options] <id>   property based analysis of the content of the
@@ -57,9 +59,10 @@ Commands:
 ```
 
 #### [create](basic-features.md#create-a-new-space)
+
 Create a new Data Hub Space.
 
-```
+```console
 Options:
   -t, --title [title]       Title for Data Hub space
   -d, --message [message]   Short description
@@ -72,9 +75,10 @@ Options:
 ```
 
 #### [list](basic-features.md#list-spaces)
+
 Information about available Data Hub spaces
 
-```
+```console
 Options:
   -r, --raw          show raw Data Hub space definition
   --token <token>    a external token to access another user's spaces
@@ -84,9 +88,10 @@ Options:
 ```
 
 #### [show](basic-features.md#show-contents-of-a-space)
+
 Shows the contents of the given Data Hub Space.
 
-```
+```console
 Options:
   -l, --limit <limit>        Number of objects to be fetched
   -o, --offset <offset>      The offset / handle to continue the iteration
@@ -124,8 +129,10 @@ Options:
 ```
 
 #### [upload](basic-features.md#uploadupdate-data-to-a-space)
+
 Upload GeoJSON, CSV, or a Shapefile to the given Space -- if no spaceID is given, a new space will be created.
-```
+
+```console
   -f, --file <file>               comma separated list of local GeoJSON,
                                   GeoJSONL, Shapefile, GPX, or CSV files (or
                                   GeoJSON/CSV URLs); use a directory path and
@@ -201,9 +208,10 @@ Upload GeoJSON, CSV, or a Shapefile to the given Space -- if no spaceID is given
 ```
 
 #### [clear](basic-features.md#clear-a-space)
+
 Clear data from a Data Hub Space.
 
-```
+```console
 Options:
   -t, --tags <tags>  tags for the Data Hub space
   -i, --ids <ids>    ids for the Data Hub space
@@ -213,29 +221,31 @@ Options:
 ```
 
 #### [delete](basic-features.md#delete-a-space)
+
 Delete a given Data Hub Space.
 
-```
+```console
 Options:
   --force          skip the confirmation prompt
   --token <token>  a external token to delete another user's space
   -h, --help       display help for command
 ```
 
-
 #### [token](basic-features.md#list-all-tokens)
-List all Data Hub tokens. 
 
-```
+List all Data Hub tokens.
+
+```console
 Options:
   --console   opens web console for Data Hub
   -h, --help  display help for command
 ```
 
 #### [config](basic-features.md#get-or-update-more-information-about-your-spaces)
+
 Configure/view advanced Data Hub features for a space.
 
-```
+```console
 Options:
   --shared <flag>             set your space as shared / public (default is
                               false)
@@ -273,9 +283,10 @@ Options:
 ```
 
 #### [virtualize](add-on.md#virtual-spaces)
+
 Create a new virtual Data Hub space.
 
-```
+```cli
 Options:
   -t, --title [title]         Title for virtual Data Hub space
   -d, --message [message]     set description for the space
@@ -290,9 +301,10 @@ Options:
 ```
 
 #### [join](add-on.md#join-virtual-spaces)
+
 Create a new virtual Data Hub space with a CSV and a space with geometries, associating by feature ID.
 
-```
+```console
 Options:
   -f, --file <file>               csv to be uploaded and associated
   -i, --keyField <keyField>       field in csv file to become feature id
@@ -322,9 +334,10 @@ Options:
 ```
 
 #### [hexbin](add-on.md#hexbin)
+
 Create fixed height hexbins (and their centroids) using points in a Data Hub space, and upload them to another space
 
-```
+```console
 Options:
   -c, --cellsize <cellsize>      size of hexgrid cells in meters,
                                  comma-separate multiple values
@@ -355,11 +368,11 @@ Options:
   -h, --help                     display help for command
 ```
 
-
 #### [gis](add-on.md#gis)
+
 Perform GIS operations with space data.
 
-```
+```console
 Options:
   --centroid             calculates centroids of Line and Polygon features and
                          uploads in a different space
@@ -380,9 +393,10 @@ Options:
 ```
 
 ### transform
+
 Transform various file formats to geojson.
 
-```
+```console
 Commands:
   csv2geo [options] <path>  convert csv to geojson
   shp2geo <path>            convert shapefile to geojson
@@ -391,9 +405,10 @@ Commands:
 ```
 
 #### csv2geo
+
 Convert a csv file to geojson.
 
-```
+```console
 Options:
   -y, --lat [lat]                 latitude field name
   -x, --lon [lon]                 longitude field name

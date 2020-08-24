@@ -29,14 +29,13 @@ You can place a **Label** on the line, which is drawn on each segment
 
 ### Polygons
 
-Polygon features are lines closed up to describe an area. The area and the 
-circumfence line can have different colors and the line thickness can be 
+Polygon features are lines closed up to describe an area. The area and the
+circumfence line can have different colors and the line thickness can be
 adjusted (also to zero, which means no lines is drawn). A **Label** text can
 optionally be drawn at the center of the polygon, or shifted from the center
 by an offset.
 
 [![Line Styles](https://www.here.xyz/assets/images/line-styles.png)](https://www.here.xyz/assets/images/line-styles.png)
-
 
 ## Drawing order
 
@@ -66,16 +65,17 @@ the look of the map.
 
 You can view a video overview of this content [here](https://www.here.xyz/assets/videos/conditional-styling.mp4).
 
-When you select to **Add a new style** a selection dialog first asks you for the group of 
+When you select to **Add a new style** a selection dialog first asks you for the group of
 features this style should apply to. To narrow down the group from all features in your dataset
-you need to define one (or multiple) _conditions_ on properties which features must meet to 
-be considered part of the group. 
+you need to define one (or multiple) _conditions_ on properties which features must meet to
+be considered part of the group.
 
 [![Style Group Rule](https://www.here.xyz/assets/images/style-group-rule.png)](https://www.here.xyz/assets/images/style-group-rule.png)
 
-
-!!! tip
-    It is helpful to first get an overview of the data properties by looking at the data in 
-    the table view. You can also quickly define a **new rule** for a selected feature by
-    clicking on the _paint roller_ icon of the value in the form. 
-    [![Quick Style Rule](https://www.here.xyz/assets/images/quick-style-rule.png)](https://www.here.xyz/assets/images/quick-style-rule.png)
+> #### Tip
+>
+> It is helpful to first get an overview of the data properties by looking at the data in
+> the table view. You can also quickly define a **new rule** for a selected feature by
+> clicking on the _paint roller_ icon of the value in the form.
+>
+> [![Quick Style Rule](https://www.here.xyz/assets/images/quick-style-rule.png)](https://www.here.xyz/assets/images/quick-style-rule.png)

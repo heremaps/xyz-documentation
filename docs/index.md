@@ -4,8 +4,6 @@ HERE Data Hub is an open, interoperable and real-time location data management s
 that offers simple APIs, SDKs, components, and interactive tools
 that enable everyone to make maps easier and faster.
 
-
-
 [![HERE Data Hub](assets/images/studio.png)](assets/images/studio.png)
 
 At its heart HERE Data Hub is a collection of tools and APIs to enable everyone to easily
@@ -19,13 +17,12 @@ It's built from the ground up with productivity in mind. We have taken code and 
 projects and want to share that with the community of developers, cartographers and
 enthusiasts to enable everyone to build better maps.
 
-
 ## Quick start
 
-The easiest way to get started is to have a look at easy to use the **[HERE Studio](https://xyz.here.com/studio/)** web application to build and publish maps. Give it a try, it's completely free and open to use for everyone - you only need a HERE Account. Have a look at our
-**[documentation](studio/index.md)** for find out more about it.
+The easiest way to get started is to have a look at easy to use the **[HERE Studio](https://studio.here.com/)** web application to build and publish maps. Give it a try, it's completely free and open to use for everyone - you only need a HERE Account. Have a look at our
+**[documentation](studio/topics/index.md)** for find out more about it.
 
-When you have a GeoJSON file you just want to have a look at without building a full map, check out our open **[GeoJSON Tool](viewer-tool/index.md)** tool. It's a great way to inspect data you'd want to work with.
+When you have a GeoJSON file you just want to have a look at without building a full map, check out our open **[GeoJSON Tool](cli/viewer-tool/index.md)** tool. It's a great way to inspect data you'd want to work with.
 
 If you are a developer and want to use our cloud services, you need an `appId`,
 which you can get for free from the **[HERE Developer Portal](https://developer.here.com/)**.

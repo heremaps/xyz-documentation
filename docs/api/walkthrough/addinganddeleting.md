@@ -4,7 +4,7 @@
 >
 > The endpoint for the API is <https://xyz.api.here.com/hub>.
 
-## Adding data
+## Add data
 
 There are basically two ways of adding features to your space. And their only difference is the way the existing data in your space is handled:
 Use *POST* and any pre-existing data is retained; use *PUT* and the only data that is left in your space is the one you just uploaded with the *PUT* request.
@@ -18,7 +18,7 @@ There is a convenience request for modifying features, but that is a subject for
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit_Features)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit%20Features/postFeatures)*
 
 ```HTTP
 POST /spaces/{spaceId}/features
@@ -95,7 +95,7 @@ with the corresponding body:
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit_Features)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit%20Features/putFeatures)*
 
 You can achieve the same with the following *PUT* request:
 
@@ -204,7 +204,7 @@ Of course, you can also delete any of the features you added previously. This is
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit_Features)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit%20Features/deleteFeatures)*
 
 ```HTTP
 DELETE /spaces/{spaceId}/features/id={featureId1},{featureId2}
@@ -220,7 +220,7 @@ If you want to delete any features tagged the same, you can also do this like so
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit_Features)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit%20Features/deleteFeatures)*
 
 ```HTTP
 DELETE /spaces/{spaceId}/features?tags=oldFeatures
@@ -232,7 +232,7 @@ You can even delete all of your features by using the following request:
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit_Features)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit%20Features/deleteFeatures)*
 
 ```HTTP
 DELETE /spaces/{spaceId}/features?tags=*

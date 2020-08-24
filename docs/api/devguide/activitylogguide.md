@@ -4,7 +4,7 @@
 
 > #### Note
 >
-> Your account needs access to the XYZ Pro Services.
+> Your account needs access to the Data Hub Add-on Services.
 
 If you just want to have a quick go at Activity Log, head over to the [quick start guide](../quickstart/activitylog.md).
 
@@ -31,12 +31,12 @@ To activate it, just create a space with the listener added and enableUUID set t
 The storage mode decides how the features will be stored.
 
 * **FEATURE_ONLY**: Will store features with some history relative properties (defined below).
-* **DIFF_ONLY**: Will store features with a 'diff'.'ops' property in the Data Hub Activity-Log namespace, containing the RFC-6902 diff to its previous object. The features after the HEAD will only contain the Data Hub Activity-Log & Data Hub namespace properties.
-* **FULL**: Will store features with some history relative properties and a 'diff'.'ops' property in the Data Hub Activity-Log namespace, containing the RFC-6902 diff to its previous object.
+* **DIFF_ONLY**: Will store features with a 'diff'.'ops' property in the Data Hub activity-Log namespace, containing the RFC-6902 diff to its previous object. The features after the HEAD will only contain the Data Hub activity-log & Data Hub namespace properties.
+* **FULL**: Will store features with some history relative properties and a 'diff'.'ops' property in the Data Hub Activity Log namespace, containing the RFC-6902 diff to its previous object.
 
 **ATTENTION**: Applying the diff to the current feature will return the previous (older) feature. This means that adding a new property to a feature, will be shown as 'remove' & 'pathToNewProperty' in the diff of the current.
 
-**IMPORTANT**: Since it is technically not possible to write changes for *<span style="color:red">DeleteFeaturesByTagEvent</span>*, this event type is completely forbidden and the support of this event in the current space is removed.
+**IMPORTANT**: Since it is technically not possible to write changes for *`DeleteFeaturesByTagEvent`*, this event type is completely forbidden and the support of this event in the current space is removed.
 
 Within the ModifySpaceEvent, the listener prepares everything and modifies the space to log changes. It will create a new space where the features will be written to, register a new listener that will actually write the modifications and add a processor to prohibit the DeleteByTagEvents.  
 Since the ModifyFeatureEvent.response is picked up in a listener, the actual features to log are written asynchronously to the newly created space. As a result, the performance of the actual request is not decreased.
@@ -93,7 +93,6 @@ A full space definition with this feature enabled looks like this:
 
 ## Written features
 
-***
 The features written to the new space are stored by uuid. So the space with this feature enabled needs to have **enableUUID** set to true.
 
 Additionally, the original feature element will be slightly modified:

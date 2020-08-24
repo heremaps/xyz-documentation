@@ -1,7 +1,7 @@
 
 # Summary
 
-- [Overview](README.md)
+- [Overview](index.md)
 - [Manage Tokens](getting-token.md)
 - [Quick Start](quickstart/quickstart.md)
   - [Acquire Credentials](quickstart/acquiringcredentials.md)
@@ -34,4 +34,4 @@
   - [Work with Activity Log](devguide/activitylogguide.md)
   - [Common Errors](devguide/commonerrors.md)
 - [API Reference](apireference.md)
-- [HERE XYZ Links](links.md)
+- [Useful Links](links.md)

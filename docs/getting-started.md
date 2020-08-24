@@ -1,7 +1,7 @@
 
 ## Non-Developers
 
-If you are do not want to code to make a map or store your data, have a look at **[HERE Studio](studio/index.md)**. It guides you through the steps of building your own maps - no coding required.
+If you are do not want to code to make a map or store your data, have a look at **[HERE Studio](studio/topics/index.md)**. It guides you through the steps of building your own maps - no coding required.
 
 ## Developers
 
@@ -16,7 +16,6 @@ If you are building a web application and want to show a map with your data have
 To integrate Data Hub data features into a mobile, web or server application you can make
 REST calls to the **[Data Hub APIs](api/index.md)** to work with data directly.
 
-
 ### Become a HERE Developer
 
 You need to become a HERE Developer to access the cloud-based APIs. Simply go to
@@ -24,7 +23,6 @@ You need to become a HERE Developer to access the cloud-based APIs. Simply go to
 go with the Freemium offer (btw - no credit card needed).
 
 [![Developer Overview](assets/images/start-developer.png)](assets/images/start-developer.png)
-
 
 ### Get your `appId`&`appCode`
 
@@ -37,7 +35,6 @@ A couple of seconds after you selected the **Generate App ID and App Code** butt
 in the dialog. You can always get back to this, but now it's good time to make a note of both.
 
 [![Developer Overview](assets/images/start-get-appid.png)](assets/images/start-get-appid.png)
-
 
 ## Generating Tokens
 

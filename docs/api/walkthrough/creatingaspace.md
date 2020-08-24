@@ -6,7 +6,7 @@
 
 ## Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit_Spaces)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit%20Spaces/postSpace)*
 
 ```HTTP
 POST /spaces

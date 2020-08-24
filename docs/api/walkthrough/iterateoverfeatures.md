@@ -13,7 +13,7 @@ Sometimes your search will have a lot of features as a result. But the limit you
 
 ## Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read_Features)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/iterateFeatures)*
 
 ```HTTP
 GET /spaces/{spaceId}/iterate?tags=&limit=2&handle=2

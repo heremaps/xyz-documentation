@@ -2,7 +2,7 @@
 
 > #### Note
 >
-> Your account needs access to the XYZ Pro Services.
+> Your account needs access to the Data Hub Add-on Services.
 
 To use Schema Validation you need to put additional data into the space
 definition. Please add a processor with the ID *schema-validator* and put
@@ -30,7 +30,7 @@ the param *schema*:
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit_Spaces)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit%20Spaces/postSpace)*
 
 ```HTTP
 POST /spaces
@@ -88,7 +88,7 @@ returned. Please note that the position is zero based, so 0 is the first object,
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit_Features)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit%20Features/putFeatures)*
 
 ```HTTP
 PUT /spaces/{spaceId}/features
@@ -205,7 +205,7 @@ new schema JSON string or URL.
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit_Spaces)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit%20Spaces/patchSpace)*
 
 ```HTTP
 PATCH /spaces/{spaceId}
@@ -256,7 +256,7 @@ you will disable all processors.
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit_Spaces)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit%20Spaces/patchSpace)*
 
 ```HTTP
 PATCH /spaces/{spaceId}

@@ -2,7 +2,7 @@
 
 > #### Note
 >
->Your account needs access to the XYZ Pro Services.
+>Your account needs access to the Data Hub Add-on Services.
 
 This section describes how to use the extended capability of enabling property-search for
 user-specified properties of your GeoJSON features inside a space.

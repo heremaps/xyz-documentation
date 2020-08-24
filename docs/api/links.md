@@ -38,15 +38,12 @@ Core [`https://xyz.api.here.com/maps/latest/xyz-maps-core.min.js`](https://xyz.a
 
 Display [`https://xyz.api.here.com/maps/latest/xyz-maps-display.min.js`](https://xyz.api.here.com/maps/latest/xyz-maps-display.min.js)
 
-Plugins (MVT) [`https://xyz.api.here.com/maps/latest/xyz-maps-plugins.min.js`](https://xyz.api.here.com/maps/latest/xyz-maps-plugins.min.js)
-
 And here now ready for you to copy and paste into your HTML header:
 
 ```html
 <script src="https://xyz.api.here.com/maps/latest/xyz-maps-common.min.js" type="text/javascript" charset="UTF-8" ></script>
 <script src="https://xyz.api.here.com/maps/latest/xyz-maps-core.min.js" type="text/javascript" charset="UTF-8" ></script>
 <script src="https://xyz.api.here.com/maps/latest/xyz-maps-display.min.js" type="text/javascript" charset="UTF-8" ></script>
-<script src="https://xyz.api.here.com/maps/latest/xyz-maps-plugins.min.js" type="text/javascript" charset="UTF-8" ></script>
 ```
 
 ## Open Source Tools

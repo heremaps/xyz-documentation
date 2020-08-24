@@ -2,7 +2,7 @@
 
 Data Hub Space Invader lets you inspect and analyze data, properties, and tags in a Data Hub Space.
 
-It uses the tile query feature of the Tangram.js API, Space Invader to read, count and store all tags in the vector tiles loaded for map display, saving a second query to the Data Hub endpoint.
+It uses the tile query feature of the Tangram.js API to read, count and store all tags in the vector tiles loaded for map display, saving a second query to the Data Hub endpoint.
 
 It can also read and analyze properties of features in the viewport, and dynamically assign color ranges based on their ranges (for numbers), or counts (of discrete values). It can calculate basic statistics on values in a space and use those to help display appropriate color ramps.
 
@@ -10,26 +10,25 @@ From the HERE Data Hub `/statistics` endpoint, it reads the number of features a
 
 Multiple color palettes can be applied to property ranges and ranks, and it is designed to be easy to add more palettes.
 
-Multiple basemaps are available. Basemap properties such as roads and buildings can be toggled on and off. The size of points and lines can also be increased and decreased to help visualize data sets of various density. 
+Multiple basemaps are available. Basemap properties such as roads and buildings can be toggled on and off. The size of points and lines can also be increased and decreased to help visualize data sets of various density.
 
 Data Hub Space Invader can show hundreds of thousands to millions of features, though this depends greatly on geographic density of data, zoom level, and kind and complexity of the geometries involved. In general you will be able to show more points and lines than polygons at any given zoom level. We're also working on ways to intelligently handle dense data sets using tags and hexbins.
 
 ## To get started
 
-- [install the HERE CLI](https://www.here.xyz/cli/)
-- upload a GeoJSON file, CSV or Shapefile to a Data Hub Space, and add tags based on properties https://www.here.xyz/cli/cli/
+- [install the HERE CLI](../index.md)
+- upload a GeoJSON file, CSV or Shapefile to a Data Hub Space, and [add tags based on properties](../basic-features.md)
 - open Data Hub Space Invader from your account using `here xyz show SPACEID -v`
 
 Here are some examples to get you familiar with the interface and what Space Invader can do:
 
 **2018 Gubernatorial California Primary results (LA Times)**
 
-The Los Angeles Times gathers, normalizes and aggregates precinct level election data from counties in Southern California. Here is data for the 2018 Gubernatorial Primary from the 7500 precincts in Los Angeles County, Orange County, and San Diego County. 
+The Los Angeles Times gathers, normalizes and aggregates precinct level election data from counties in Southern California. Here is data for the 2018 Gubernatorial Primary from the 7500 precincts in Los Angeles County, Orange County, and San Diego County.
 
 (this will be a GIF soon)
 
 ![ca-gov-votes-range-precinct](screenshots/ca-gov-votes-range-precinct.png)
-
 
 There are several different visualization modes that can help get you familiar with your data and prepare it for visualization. _note: these URLs are based on the latest branch -- this will change, and the root URL (for now) is xyz-space-invader.netlify.com_
 
@@ -39,15 +38,17 @@ There are several different visualization modes that can help get you familiar w
 
 X-ray mode shows you an overview of the geometries in the space. This is especially useful when you have overlapping geometries, or different types of geometries, or you just want to see the coverage of the data set.
 
-https://xyz-space-invader.netlify.com/?space=ylnRzWDL&token=AOsE9k2EdCdT8lEX12PDZ38&basemap=refill-dark&buildings=0&outlines=1&roads=1&water=0&colors=xray#11.6/34.0256/-118.3172
+<https://xyz-space-invader.netlify.com/?space=ylnRzWDL&token=AOsE9k2EdCdT8lEX12PDZ38&basemap=refill-dark&buildings=0&outlines=1&roads=1&water=0&colors=xray#11.6/34.0256/-118.3172>
 
-_Note: You can toggle polygon outlines on and off (either press 'o' or click on 'outlines' in the top left panel)_
+>#### Note
+>
+>You can toggle polygon outlines on and off (either press 'o' or click on 'outlines' in the top left panel)
 
 ### Hash mode
 
-This generates unique colors based on a hash of all a feature's properties. This is useful for distinguishing adjacent or nearby features. Note however that this does not prevent similar colors from being adjacent to each other. 
+This generates unique colors based on a hash of all a feature's properties. This is useful for distinguishing adjacent or nearby features. Note however that this does not prevent similar colors from being adjacent to each other.
 
-https://xyz-space-invader.netlify.com/?space=ylnRzWDL&token=AOsE9k2EdCdT8lEX12PDZ38&basemap=refill-dark&buildings=0&outlines=1&roads=1&water=0&colors=hash&points=0&lines=0&highlight=0&property=winner&palette=viridisInferno&paletteFlip=false#13.795833333333333/34.0581/-118.2976
+<https://xyz-space-invader.netlify.com/?space=ylnRzWDL&token=AOsE9k2EdCdT8lEX12PDZ38&basemap=refill-dark&buildings=0&outlines=1&roads=1&water=0&colors=hash&points=0&lines=0&highlight=0&property=winner&palette=viridisInferno&paletteFlip=false#13.795833333333333/34.0581/-118.2976>
 
 ## Coloring features by property value
 
@@ -57,7 +58,7 @@ There are several ways to generate colors by the value of an individual property
 
 This generates a simple color hash of the values of the selected property.
 
-https://xyz-space-invader.netlify.com/?space=ylnRzWDL&token=AOsE9k2EdCdT8lEX12PDZ38&basemap=refill-dark&buildings=0&outlines=1&roads=1&water=0&colors=property&points=0&lines=0&highlight=0&property=winner&palette=viridisInferno&paletteFlip=false#11.820833333333333/34.0372/-118.2583
+<https://xyz-space-invader.netlify.com/?space=ylnRzWDL&token=AOsE9k2EdCdT8lEX12PDZ38&basemap=refill-dark&buildings=0&outlines=1&roads=1&water=0&colors=property&points=0&lines=0&highlight=0&property=winner&palette=viridisInferno&paletteFlip=false#11.820833333333333/34.0372/-118.2583>
 
 Color choices are consistent for any specific property value, but this does not prevent similar colors from being adjacent to each other.
 
@@ -67,7 +68,7 @@ This is ideal for properties with continuous numerical values (temperature, pric
 
 ![ca-gov-votes-range-precinct](screenshots/ca-gov-votes-range-precinct.png)
 
-https://xyz-space-invader.netlify.com/?space=ylnRzWDL&token=AOsE9k2EdCdT8lEX12PDZ38&basemap=refill-dark&buildings=0&outlines=1&roads=1&water=0&colors=range&points=0&lines=0&highlight=0&property=gov_votes&palette=viridisInferno&paletteFlip=false#11.050000000000011/34.0306/-118.1441
+<https://xyz-space-invader.netlify.com/?space=ylnRzWDL&token=AOsE9k2EdCdT8lEX12PDZ38&basemap=refill-dark&buildings=0&outlines=1&roads=1&water=0&colors=range&points=0&lines=0&highlight=0&property=gov_votes&palette=viridisInferno&paletteFlip=false#11.050000000000011/34.0306/-118.1441>
 
 You can choose between several different color palettes, and you can also "flip" each palette, depending on if you want to emphasize the lower or higher values with 'brighter' values.
 
@@ -91,7 +92,7 @@ A quick note on outliers: In many datasets, a few outliers can cause a max so hi
 
 The benefit of this approach can be seen in this dataset of AirBnB listings:
 
-https://xyz-space-invader.netlify.com/?space=40ILezn0&token=AOsE9k2EdCdT8lEX12PDZ38&basemap=refill-dark&buildings=0&outlines=1&roads=1&water=0&colors=range&points=3&lines=0&highlight=0&tags=listings&property=price&palette=viridis&paletteFlip=false#14.200000000000005/34.0837/-118.3770
+<https://xyz-space-invader.netlify.com/?space=40ILezn0&token=AOsE9k2EdCdT8lEX12PDZ38&basemap=refill-dark&buildings=0&outlines=1&roads=1&water=0&colors=range&points=3&lines=0&highlight=0&tags=listings&property=price&palette=viridis&paletteFlip=false#14.200000000000005/34.0837/-118.3770>
 
 ![airbnb-la-range](screenshots/airbnb-la-range.png)
 
@@ -103,12 +104,11 @@ More interesting views of AirBnB listings data include:
 - prices (range)
 - names (rank)
 
-
 US Census data by income (California and San Francisco)
 
 ![census-california-zip-income](screenshots/census-california-zip-income.png)
 
-https://xyz-space-invader.netlify.com/?space=zK3K5S6b&token=AOsE9k2EdCdT8lEX12PDZ38&basemap=none&buildings=0&points=1&lines=1&outlines=0&highlight=0&roads=0&water=0&colors=range&tags=zip&property=B19013001&palette=viridisPlasma&paletteFlip=false#7.775416573527989/37.645/-121.339
+<https://xyz-space-invader.netlify.com/?space=zK3K5S6b&token=AOsE9k2EdCdT8lEX12PDZ38&basemap=none&buildings=0&points=1&lines=1&outlines=0&highlight=0&roads=0&water=0&colors=range&tags=zip&property=B19013001&palette=viridisPlasma&paletteFlip=false#7.775416573527989/37.645/-121.339>
 
 Filter by tags to show data by
 
@@ -124,13 +124,13 @@ Excavation Permits in San Francisco, by rank:
 
 ![sf-excavation-rank-tagged-agent](screenshots/sf-excavation-rank-tagged-agent.png)
 
-https://xyz-space-invader.netlify.com/?space=ZLvdcZgi&token=AOsE9k2EdCdT8lEX12PDZ38&basemap=refill-dark&buildings=0&outlines=1&roads=1&water=0&colors=rank&points=0&lines=0&highlight=0&property=Permit_Reason&palette=viridis&paletteFlip=false#12.973739133520723/37.7546/-122.4372
+<https://xyz-space-invader.netlify.com/?space=ZLvdcZgi&token=AOsE9k2EdCdT8lEX12PDZ38&basemap=refill-dark&buildings=0&outlines=1&roads=1&water=0&colors=rank&points=0&lines=0&highlight=0&property=Permit_Reason&palette=viridis&paletteFlip=false#12.973739133520723/37.7546/-122.4372>
 
 AirBnB listings in the Hollywood Hills:
 
 ![airbnb-hollywood_hills-range-tags](screenshots/airbnb-hollywood_hills-range-tags.png)
 
-https://xyz-space-invader.netlify.com/?space=40ILezn0&token=AOsE9k2EdCdT8lEX12PDZ38&basemap=refill&buildings=0&outlines=1&roads=1&water=0&colors=range&points=0&lines=0&highlight=0&tags=neighbourhood%40hollywood_hills%2Blistings&property=price&palette=viridis&paletteFlip=true#13.779166666666672/34.1220/-118.3403
+<https://xyz-space-invader.netlify.com/?space=40ILezn0&token=AOsE9k2EdCdT8lEX12PDZ38&basemap=refill&buildings=0&outlines=1&roads=1&water=0&colors=range&points=0&lines=0&highlight=0&tags=neighbourhood%40hollywood_hills%2Blistings&property=price&palette=viridis&paletteFlip=true#13.779166666666672/34.1220/-118.3403>
 
 ## Feedback
 

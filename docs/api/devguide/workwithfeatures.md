@@ -6,7 +6,7 @@ The following request queries a single feature using the ID of the feature.
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read_Features)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/getFeature)*
 
 ```HTTP
 GET /spaces/{spaceId}/features/{featureId}
@@ -45,7 +45,7 @@ For querying multiple features in a space use the following request.
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read_Features)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/getFeatures)*
 
 ```HTTP
 GET /spaces/[spaceId}/features?id={featureId1},{featureId2},{featureId3}
@@ -89,25 +89,70 @@ GET /spaces/[spaceId}/features?id={featureId1},{featureId2},{featureId3}
 }
 ```
 
-## Get a Feature Count
+## Get a Feature Count and other statistics
 
-Here is an example of getting the number of features in a space.
+Here is an example of getting the number of features in a space, the size and a list of tags on the space.
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read_Features)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/getStatistics)*
 
 ```HTTP
-GET /spaces/{spaceId}/count
+GET /spaces/{spaceId}/statistics
 ```
 
 ### Response
 
 ```JSON
 {
-  "type": "FeatureCollection",
-  "features": [],
-  "count": 42
+  "type": "StatisticsResponse",
+  "count": {
+    "value": 29208,
+    "estimated": true
+  },
+  "byteSize": {
+    "value": 108364,
+    "estimated": true
+  },
+  "bbox": {
+    "value": [
+      -10,
+      -10,
+      10,
+      10
+    ],
+    "estimated": true
+  },
+  "geometryTypes": {
+    "value": [
+      "Point"
+    ],
+    "estimated": true
+  },
+  "properties": {
+    "value": [
+      {
+        "key": "Route",
+        "count": 29208,
+        "searchable": true
+      },
+      {
+        "key": "Route Type",
+        "count": 29208,
+        "searchable": true
+      }
+    ],
+    "estimated": true,
+    "searchable": "PARTIAL"
+  },
+  "tags": {
+    "value": [
+      {
+        "key": "PuneBusStop",
+        "count": 29208
+      }
+    ]
+  }
 }
 ```
 
@@ -123,7 +168,7 @@ To keep already existing features use [this request](#modifying-space-features).
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit_Features)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit%20Features/putFeatures)*
 
 ```HTTP
 PUT /spaces/{spaceId}/features
@@ -215,7 +260,7 @@ This is an example for modifying existing features using a POST request.
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit_Features)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit%20Features/postFeatures)*
 
 ```HTTP
 POST /spaces/{spaceId}/features
@@ -311,7 +356,7 @@ This request contains only the feature properties you want to add, update or del
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit_Features)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit%20Features/patchFeature)*
 
 ```HTTP
 PATCH /spaces/{spaceId}/features?id={featureId1},{featureId2},{featureId3}
@@ -409,7 +454,7 @@ There are two ways of searching a space. /search is one of them, the other is [/
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read_Features)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/searchForFeatures)*
 
 ```HTTP
 GET /spaces/{spaceId}/search
@@ -463,7 +508,7 @@ This is the second way to search a space (the other, you guessed it, is [/search
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read_Features)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/iterateFeatures)*
 
 ```HTTP
 GET /spaces/{spaceId}/iterate
@@ -517,7 +562,7 @@ You can get rid of specific features by sending this request with their feature 
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit_Features)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit%20Features/deleteFeatures)*
 
 ```HTTP
 DELETE /spaces/{spaceId}/features?id={id1},{id2}

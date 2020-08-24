@@ -16,7 +16,7 @@ We started with the source data from Microsoft and processed it so that users of
 - supports maximum zoom in
 - allows exploration of the source data.
 
-Take a look [at a map created by HERE Studio](https://xyz.here.com/viewer/?project_id=c9884248-dbda-4c2b-a45c-8a46d0c7d3fb) filtered to focus on selected ZIP codes in San Francisco.
+Take a look [at a map created by HERE Studio](https://studio.here.com/viewer/?project_id=c9884248-dbda-4c2b-a45c-8a46d0c7d3fb) filtered to focus on selected ZIP codes in San Francisco.
 
 This experience is possible because the data is in a Data Hub Space, something that we think makes sense for most large geospatial datasets.
 

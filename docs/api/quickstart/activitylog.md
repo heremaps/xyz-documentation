@@ -2,7 +2,7 @@
 
 > #### Note
 >
-> Your account needs access to the XYZ Pro Services.
+> Your account needs access to the Data Hub Add-on Services.
 
 1. Create a new space with the activity-log listener and enableUUID set to true:
 

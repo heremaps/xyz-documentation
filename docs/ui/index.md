@@ -12,21 +12,18 @@ directly editable, you can experiment directly in the browser to try out new thi
 
 [![Maps UI](../assets/images/maps-playground.png)](../assets/images/maps-playground.png)
 
-
-> #### Hint 
+> #### Hint
+>
 > Using a sample as a template for your project.
-
-
-    Using one of the samples is probably the easiest way for you to start your own
-    visualization project. By clicking the download button on right side of the editor
-    toolbar you can download the current file as a starter `.html`-file for your project.
-
-    [![Maps UI](../assets/images/maps-playground-download.png)](../assets/images/maps-playground-download.png)
-
-
-    The only thing left to do is to replace the `YOUR_TOKEN` placeholder with the actual
-    string for your token.
-
+>
+> Using one of the samples is probably the easiest way for you to start your own
+> visualization project. By clicking the download button on right side of the editor
+> toolbar you can download the current file as a starter `.html`-file for your project.
+>
+> [![Maps UI](../assets/images/maps-playground-download.png)](../assets/images/maps-playground-download.png)
+>
+> The only thing left to do is to replace the `YOUR_TOKEN` placeholder with the actual
+> string for your token.
 
 ### Concepts (1)
 
@@ -52,6 +49,7 @@ documentation site. You can also bookmark this for further reference:
 [`https://xyz.api.here.com/maps/latest/documentation`](https://xyz.api.here.com/maps/latest/documentation/index.html)
 
 #### Switch Code Views
+
 As normal for a web application it consists
 of both HTML and JavaScript. Usually, the interesting stuff happens in JavaScript - that's why
 this view is preselected. However, you can also see the JS in context by switching to the
@@ -76,14 +74,12 @@ replacing the text `YOUR_TOKEN` with the string of your actual token (and don't 
 put in quotes, like this: `"datahub9876"`).
 
 > #### Hint
+>
 > Playground access to your data.
-
-    The playground uses it's own credentials and token to access the Spaces used in the
-    samples. This token doesn't show in the code.
-
-    If you want to use your own data, add the token where you need it, either by globally
-    setting `YOUR_TOKEN` or by adding it to specific `credentials` configuration as the
-    `access_token:`
+>
+> The playground uses it's own credentials and token to access the Spaces used in the samples. This token doesn't show in the code.
+>
+> If you want to use your own data, add the token where you need it, either by globally setting `YOUR_TOKEN` or by adding it to specific `credentials` configuration as the `access_token.`
 
 ### Map Output (3)
 
@@ -94,9 +90,9 @@ If you have coded yourself into a corner and the map does not work anymore as ex
 you can always **Reset** the sample back to it's original state where it should work.
 
 > #### Hint
+>
 > Also look into your browsers **Developer Tools** for messages.
-
-    It also help to understand what's going to open your browsers Developer Tools
+> It also help to understand what's going to open your browsers Developer Tools
     (for Chrome press `CTRL-SHIFT-I` or `CMD+OPTION+I` on macOS). There you see
     console messages and network information for what content gets loaded, especially
     when pan and zoom the map.

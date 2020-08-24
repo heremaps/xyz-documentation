@@ -10,7 +10,7 @@ Do you have Tags assigned to your features? Then you can search your features by
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read_Features)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/searchForFeatures)*
 
 ```HTTP
 GET /spaces/{spaceId}/search?tags=mountain
@@ -61,7 +61,7 @@ This was just the simplest version of a search by tags.  Imagine having all the 
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read_Features)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/searchForFeatures)*
 
 ```HTTP
 GET /spaces/{spaceId}/search?tags=vegan+indian,vegetarian

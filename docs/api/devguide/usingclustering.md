@@ -29,7 +29,7 @@ The following clustering related parameters can be passed and combined with the 
 |clustering| string "hexbin" | | activates clustering |
 |clustering.resolution| integer [0..15] | optional | The H3 hexagon resolution |
 |clustering.property| string "{aPropertyName}" | optional | A property of the original features for which to calculate statistics |
-|clustering.pointmode | boolean [true\|false] | optional | returns the centroid of the hexagons as geojson-features geometry  |
+|clustering.pointmode | boolean [true&#124;false] | optional | returns the centroid of the hexagons as geojson-features geometry  |
 
 ### Response
 
@@ -79,7 +79,7 @@ The following clustering related parameters can be passed and combined with the 
 #### Maximum Resolution for zoomlevel
 
 The parameter clusterning.resolution specifies the size of the hexagons wanted.
-( s. <https://uber.github.io/h3/#/documentation/core-library/resolution-table> )
+( s. <https://h3geo.org/docs/core-library/restable> )
 There is a maximum resolution per zoomlevel requested (s. table below). If the value of clusterning.resolution exeeds, then the "Max H3 Resolution" will be used.
 
 |Zoomlevel|Max H3 Resolution|

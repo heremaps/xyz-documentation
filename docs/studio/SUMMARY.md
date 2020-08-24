@@ -1,5 +1,5 @@
 
-# XYZ Studio
+# HERE Studio
 
 - [Introduction](README.md)
 - [Quick Tour](topics/index.md)
