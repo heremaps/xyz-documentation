@@ -59,7 +59,7 @@ GeoJSON describing the features you want to see on the map.
  The latter allow you to collapse or expand regions of the text that you don't want
  to see right now:
 
- [![Tool Overview](https://www.here.xyz/assets/images/viewer-editor-collapse.png)](https://www.here.xyz/assets/images/viewer-editor-collapse.png)
+ [![Tool Overview](../images/viewer-editor-collapse.png)](../images/viewer-editor-collapse.png)
 
 #### GeoJSON Syntax Check
 

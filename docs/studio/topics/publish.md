@@ -14,7 +14,7 @@ You can view a video overview of this content [here](https://www.here.xyz/assets
 You can control the publishing from the **Project Settings** dialog. There you can see if
 the map is currently visible to others.
 
-[![Settings](https://www.here.xyz/assets/images/studio-settings.png)](https://www.here.xyz/assets/images/studio-settings.png)
+[![Settings](../images/studio-settings.png)](../images/studio-settings.png)
 
 By default, every map you create with HERE Studio is private and visible only to you until you decide to publish it.
 
@@ -30,7 +30,7 @@ Also, you can select a license the map will be shared with to others - but you d
 All you have to do to publish the map is to turn publishing on (you can turn it off anytime
 again as well if you wish).
 
-[![Settings](https://www.here.xyz/assets/images/studio-published.png)](https://www.here.xyz/assets/images/studio-published.png)
+[![Settings](../images/studio-published.png)](../images/studio-published.png)
 
 When the map is published, you we also see the **URL** where it can be reached. You can copy this and
 share it with people directly or you can link to it from somewhere like blog or wikipage.

@@ -205,7 +205,7 @@ $ here xyz config fgtdc6tz --searchable –-view
 here xyz config <spaceId> --searchable --delete
 ```
 
-![delete_searchable](../assets/gifs/cli-searchable-delete.gif)
+![delete_searchable](images/gifs/cli-searchable-delete.gif)
 
 ## Activity Log
 
@@ -221,7 +221,7 @@ Activity Log tracks what has been written, modified, and deleted in a Data Hub S
 here xyz config <spaceId> --activitylog
 ```
 
-![enable_activitylog](../assets/gifs/cli-activitylog-enable.gif)
+![enable_activitylog](images/gifs/cli-activitylog-enable.gif)
 
 e.g:
 
@@ -249,7 +249,7 @@ activity log configuration updated successfully, it may take a few seconds to ta
 
 You can use the same command to check the activity log status, disable or re-configure the activity log settings
 
-![reconfigure_activitylog](../assets/gifs/cli-activitylog-reconfigure.gif)
+![reconfigure_activitylog](images/gifs/cli-activitylog-reconfigure.gif)
 
 ## Virtual Spaces
 

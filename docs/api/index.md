@@ -10,7 +10,7 @@ To interact with the HERE Data Hub API directly from your application you just n
 For everything you want to do via the API, you need to use a token as described in the
 [Generate Token Section](getting-token.md).
 
-[![API](../assets/images/api-auth.png)](../assets/images/api-auth.png)
+[![API](images/api-auth.png)](images/api-auth.png)
 
 ## Data
 

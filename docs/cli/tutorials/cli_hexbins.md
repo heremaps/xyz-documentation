@@ -102,7 +102,7 @@ For convenience, here is a link to that data. Note the `&tags=zoom11_hexbin` -- 
 
 <http://geojson.tools/index.html?url=https://xyz.api.here.com/hub/spaces/ZGAzaLaA/search?limit=5000&clientId=cli&tags=zoom11_hexbin&access_token=APwC9OKv8ww_zMGWqPTSQdg>
 
-![xyz-hexbin-geojson-tools](https://github.com/heremaps/xyz-documentation/blob/master/docs/assets/images/xyz-hexbin-geojson-tools.png)
+![xyz-hexbin-geojson-tools](../images/xyz-hexbin-geojson-tools.png)
 
 ### Data contained in Data Hub Hexbins
 
@@ -147,7 +147,7 @@ In Data Hub Space Invader, you can select properties and choose data-driven colo
 
 If you do not choose a tag with `-t` in the CLI, you can select a zoom level using the tags in the right pane.
 
-![xyz-hexbin-space-invader](https://github.com/heremaps/xyz-documentation/blob/master/docs/assets/images/xyz-hexbin-space-invader.png)
+![xyz-hexbin-space-invader](../images/xyz-hexbin-space-invader.png)
 
 <https://s3.amazonaws.com/xyz-demo/scenes/xyz_tangram/index.html?space=ZGAzaLaA&token=APwC9OKv8ww_zMGWqPTSQdg&basemap=xyz-pixel-dark&buildings=1&label=undefined&colors=range&points=2&lines=0&outlines=0&highlight=0&places=1&roads=1&water=0&tags=zoom12_centroid&property=count&palette=colorBrewerYlOrRd&paletteFlip=true&sort=values&hideOutliers=false#12.858333333333318/37.7474/-122.4452>
 
@@ -211,7 +211,7 @@ If a point feature has a quantitative property, you can use `-a` to add it up wi
 
 Data Hub Space Invader can compare and color these values across the hexbin grid. [Here we see the aggregate values of Minneapolis property values summed within hexbin centroids](https://s3.amazonaws.com/xyz-demo/scenes/xyz_tangram/index.html?space=ZL228Jrk&token=AFbjoHrBlTB2K5_gqvcP_S8&basemap=xyz-pixel-dark&buildings=1&label=undefined&colors=range&points=0&lines=0&outlines=0&highlight=0&places=1&roads=1&water=0&tags=zoom13_centroid&property=sum&palette=colorBrewerYlOrRd&paletteFlip=true&rangeFilter=4&sort=values&hideOutliers=false#12.370833333333346/44.9662/-93.2612).
 
-![minneapolis](https://github.com/heremaps/xyz-documentation/blob/master/docs/assets/images/hexbin_sum.png)
+![minneapolis](../images/hexbin_sum.png)
 
 ### Updates
 
