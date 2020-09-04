@@ -124,6 +124,7 @@ The available operators are:
 - "<=" or "=lte=" - less than or equals
 - ">" or "=gt=" - greater than
 - "<" or "=lt=" - less than
+- "@>" or "=cs=" - contains
 
 The response will contain only the features matching all conditions in the query.
 In case of the bounding-box or tile queries, the search is only applied to the features located in

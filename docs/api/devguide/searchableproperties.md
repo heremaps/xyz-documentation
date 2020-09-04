@@ -43,6 +43,16 @@ Nested properties can be specified using the dot-notation e.g.:
 }
 ```
 
+It is also possible to define the datatype which is used on the property. Available datatypes
+are object, array, string, number, and boolean. If the datatype is not given, an attempt is made 
+to determine it automatically. The syntax is "someProperty::datatype"
+
+```JSON
+{
+  "some.nested.property::array": true
+}
+```
+
 *Remember: In a `PATCH`-operation only the properties to be changed are necessary*
 
 ### Request
