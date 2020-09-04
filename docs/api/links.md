@@ -1,20 +1,22 @@
-# HERE XYZ Links
+# HERE Data Hub Links
 
-Here is a list of links for working with HERE XYZ
+Here is a list of links for working with HERE Data Hub
 
 ## API and Service
 
-
 ### Base URL for API
+
 [`https://xyz.api.here.com/hub/`](https://xyz.api.here.com/hub/)
 
 ### Swagger API documentation
+
 [`https://xyz.api.here.com/hub/static/swagger/`](https://xyz.api.here.com/hub/static/swagger/)
 
 ### ReDoc API documentation
+
 [`https://xyz.api.here.com/hub/static/redoc/`](https://xyz.api.here.com/hub/static/redoc/)
 
-## XYZ Tools
+## Data Hub Tools
 
 ### Token Generation UI
 
@@ -29,13 +31,12 @@ Here is a list of links for working with HERE XYZ
 [`https://xyz.api.here.com/maps/latest/documentation/here.xyz.maps.html`](https://xyz.api.here.com/maps/latest/documentation/here.xyz.maps.html)
 
 ### JavaScript Maps UI Components
+
 Common [`https://xyz.api.here.com/maps/latest/xyz-maps-common.min.js`](https://xyz.api.here.com/maps/latest/xyz-maps-common.min.js)
 
 Core [`https://xyz.api.here.com/maps/latest/xyz-maps-core.min.js`](https://xyz.api.here.com/maps/latest/xyz-maps-core.min.js)
 
 Display [`https://xyz.api.here.com/maps/latest/xyz-maps-display.min.js`](https://xyz.api.here.com/maps/latest/xyz-maps-display.min.js)
-
-Plugins (MVT) [`https://xyz.api.here.com/maps/latest/xyz-maps-plugins.min.js`](https://xyz.api.here.com/maps/latest/xyz-maps-plugins.min.js)
 
 And here now ready for you to copy and paste into your HTML header:
 
@@ -43,7 +44,6 @@ And here now ready for you to copy and paste into your HTML header:
 <script src="https://xyz.api.here.com/maps/latest/xyz-maps-common.min.js" type="text/javascript" charset="UTF-8" ></script>
 <script src="https://xyz.api.here.com/maps/latest/xyz-maps-core.min.js" type="text/javascript" charset="UTF-8" ></script>
 <script src="https://xyz.api.here.com/maps/latest/xyz-maps-display.min.js" type="text/javascript" charset="UTF-8" ></script>
-<script src="https://xyz.api.here.com/maps/latest/xyz-maps-plugins.min.js" type="text/javascript" charset="UTF-8" ></script>
 ```
 
 ## Open Source Tools

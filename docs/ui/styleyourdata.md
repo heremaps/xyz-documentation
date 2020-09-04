@@ -17,7 +17,6 @@ bottom to top (ascending values)  - not the order in which the array was defined
 To find out more about all the possible styling options, have a look at the
 [documentation for the `TileLayer.Style`](https://xyz.api.here.com/maps/latest/documentation/here.xyz.maps.layers.TileLayer.Style.html)
 
-
 ```javascript
   // customize the styles that can be used
   style:{
@@ -32,7 +31,7 @@ To find out more about all the possible styling options, have a look at the
     // decide per feature which style to use
     assign: function(feature, zoomlevel){
       return "linkStyle";
-		}
+  }
 ```
 
 To be as dynamic as possible when it comes to styling there is the `assign(feature, zoomlevel)` function which you need to implement. This will decide which of the defined styles should be used for a given feature and zoom level.

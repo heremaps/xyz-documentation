@@ -1,4 +1,4 @@
-# Tags and Tagging
+# Tags
 
 To work efficiently with data, it is often necessary or helpful to sub-divide a data. Spaces allow you to do this with the help of tags. A Tag is just a text that can be used to only concern yourself with a subset of the data. They are completely up to you (or the owner of the Space you are working with).
 

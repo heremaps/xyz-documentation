@@ -1,4 +1,4 @@
-# Display your XYZ Space content
+# Display your Data Hub Space content
 
 Adding a `SpaceProvider` as an additional `Layer` to the `display` enables you to quickly show
 your content on top of a map, without having to impement any additional functionality to fetch
@@ -7,45 +7,48 @@ in and out. This will be handled completely by the provider/layer combination an
 thing you need to configure is where the data is you want to show, and at which zoom levels
 you want it to be visible.
 
-1. Create and configure a `SpaceProvider` acting as a datasource to your XYZ Space content
-```javascript
-// Define provider for this layer
-var mySpaceProvider = new here.xyz.maps.providers.SpaceProvider ({
-  // Name of the provider
-  name:  'SpaceProvider',
+1. Create and configure a `SpaceProvider` acting as a datasource to your Data Hub Space content
 
-  // Zoom level at which tiles are cached
-  level: 14,
+    ```javascript
+    // Define provider for this layer
+    var mySpaceProvider = new here.xyz.maps.providers.SpaceProvider ({
+      // Name of the provider
+      name:  'SpaceProvider',
 
-  // Space ID
-  space: 'playground-link',
+      // Zoom level at which tiles are cached
+      level: 14,
 
-  // User credential of the provider
-  credentials: {
-          access_token: YOUR_ACCESS_TOKEN
-  }
-});
-```
+      // Space ID
+      space: 'playground-link',
+
+      // User credential of the provider
+      credentials: {
+        access_token: YOUR_ACCESS_TOKEN
+      }
+    });
+    ```
 
 2. Create a Layer for displaying your data provided by your GeoSpaceProvider
-```javascript
-// Create data layer with Space provider
-var myLayer = new here.xyz.maps.layers.TileLayer({
-  // Name of the layer
-  name: 'mySpaceLayer',
 
-  // Minimum zoom level
-  min: 14,
+    ```javascript
+    // Create data layer with Space provider
+    var myLayer = new here.xyz.maps.layers.TileLayer({
+      // Name of the layer
+      name: 'mySpaceLayer',
 
-  // Maximum zoom level
-  max: 20,
+      // Minimum zoom level
+      min: 14,
 
-  // Define provider for this layer
-  provider: mySpaceProvider
-})
-```
+      // Maximum zoom level
+      max: 20,
+
+      // Define provider for this layer
+      provider: mySpaceProvider
+    })
+    ```
 
 3. And now add the Layer to your display
-```javascript
-display.addLayer( myLayer )
-```
+
+    ```javascript
+    display.addLayer( myLayer )
+    ```
