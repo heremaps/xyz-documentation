@@ -1,0 +1,14 @@
+{
+  "title": "HERE Data Hub API",
+  "description": "A guide for HERE API",
+  "variables": {
+    "productName": "HERE Data Hub API",
+    "productVersion": "v1.0",
+    "brandName": "HERE",
+    "documentName": "HERE Data Hub APIs",
+    "documentStatus": "FINAL",
+    "documentType": "Developer Guide",
+    "confidentialnotice": "Confidential",
+    "appid": "YOUR_APP_ID",
+    "appcode": "YOUR_APP_CODE" }
+}

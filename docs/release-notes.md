@@ -1,4 +1,322 @@
-# Release notes for XYZ
+# Release Notes for Data Hub
+
+---
+
+### HERE CLI v 1.3.0
+
+Bugs have been tracked down and features have been hoisted up. We clarified lots of the inline documentation -- check it out with `-h`. And as for the new features:
+
+🔎🗺🔍 Spatial Search  🔎🌏🔍 
+
+You can now select a set features within a radius around a point, using `--spatial` in the `show` command:
+
+    here xyz show spaceID --spatial --center "37.74,-122.43" --radius=100 -w
+
+And as if that were not exciting enough, you can _also_ select features from one space that fall within a polygon from another space! Imagine you had a space that had postal codes as the feature ID:
+
+    here xyz show space_with_points --spatial --feature space_with_zip_codes,94104 -w
+
+
+➕➕➕ CSV Join  ➕➕➕
+
+Virtual Spaces are fun, but it's sometime laborious to get the data you need into XYZ, especially when it's a CSV table with data and IDs but no coordinates (think Census tables). But now you can use the new `join` command to dynamically associate a CSV to space with geometries with those same IDs!
+
+    here xyz join space_with_geometries -f table_with_ids.csv -k unique_id
+
+This means you can pour the properties from many CSVs into the polygons of one existing space and access them through the new virtual space IDs.
+
+Note that uses the same CSV import options (delimiter, quotes, string-fields).
+
+You can also update a CSV space and the Virtual Space will dynamically update.
+
+🏃‍♀️🏃‍♂️👟 Import GPX files  🚴‍♀️🚴‍♂️🚲
+
+If you run or bike, you probably know what GPX traces are, and you'll be excited to know we can now import them into XYZ aka Data Hub! Just reference the file in `here xyz upload my.gpx` and we will convert it into delicious GeoJSON using @roberto-butti's sweet code. Thanks for the [PR](https://github.com/heremaps/here-cli/pull/179), Roberto!
+
+
+🎉🎉🎉Other interesting enhancements 🎉🎉🎉
+
+- Features are now written to XYZ spaces using `PATCH` instead of `POST`, meaning you can make more granular edits to your features.
+
+- It turns out point field columns are not always written as `(lat,lon)` but sometimes are `(lon,lat)` and we can now deal with that.
+
+- You can now add `--token` to most commands, and presuming you have the appropriate permissions, you can do things to/with your friends' spaces.
+
+- We are now using the d3-Delaunay library for Voronoi polygons.
+
+- We check for troublesome characters in tags that break URLs, like `&` and `+` and `,`
+
+- Users can now adjust the `cacheTTL` of a space using `config --cacheTTL`
+
+- We are deprecating `here xyz describe` since `here xyz config --stats` does a much better job.
+
+Thanks for watching, and let us know what you see in the issues!
+
+---
+
+### XYZ Hub - 1.3.0
+
+✨ **CHANGED** ✨
+- 4 flavours of the OpenAPI specification are now generated during the service start: stable, experimental, contract and full.
+- The connector protocol version is updated to version 0.2.0. All feature metadata values are set by Hub.
+- GeometryCollection is rejected as an input in Hub.
+
+🔨 **FIXED** 🔧
+- Fixed an issue with the initialization of connectors
+
+---
+
+### XYZ Hub - 1.2.1
+🔨 **FIXED** 🔧
+- Fix an error when updating a feature, using the query parameters addTags or removeTags, and providing a body with a feature, which does not include tags.
+
+---
+
+### XYZ Hub - 1.2.0
+
+✨ **CHANGED** ✨
+- For all POST, PUT and PATCH requests to modify features: when a feature input does not contain any changes, compared to the latest version of the feature, an update operation will not be executed. If a feature was not changed, the existing version of the object is included in the response, but its ID is not in any of the lists with inserted or updated features.
+
+🔨 **FIXED** 🔧
+- Fixed that the createdAt value can be overwritten by the value in the input.
+
+--- 
+
+### XYZ Hub - 1.1.0
+
+✨ **ADDED** ✨
+- HTTP connectors: Add new HTTP remote function client to allow communication with storage connectors over HTTP.
+- Add versioning in the connector event protocol
+
+🔨 **IMPROVED** 🔧
+- DynamoDB can be configured as a default storage for connectors and spaces
+- Add CORS support for static resources to allow loading of the OpenAPI specifications from OAS based applications hosted on a different domain.
+- Extend the list of error codes in the ErrorResponse event that the connector can send to XYZ Hub. New codes are CONFLICT, FORBIDDEN and TOO_MANY_REQUEST.
+- The default storage connector ID is now configurable.
+- Switch from SLF4J to Log4J
+- The execution trigger for statistic is move from the PSQL connector into the database.
+
+🐜 **FIXED** 🐜
+- Fix the response status code when the storage is set to null.
+- Connector is now re-initialized correctly in all cases when its config was changed.
+- Fix a potential blocking call to a ScheduledExecutorService.
+- Fix an error when updating a space without any changes. 
+- The space volatility was incorrectly calculated when the sliding window was zero.
+
+---
+
+### XYZ Hub - 1.0.1
+
+✨ **ADDED** ✨
+- Fix replacing feature with UUID
+
+🔨 **CHANGED** 🔧
+- Switch to semantic versioning 2.0.0. More information at https://semver.org/
+
+---
+
+### XYZ Hub - 2019.49.07 / 2019-12-05
+
+✨ **ADDED** ✨
+- XYZ Hub will auto configure the cache profile for a space.
+- New property cacheTTL to manually set the cache time to leave or turn off the auto cache profile for a space.
+
+---
+
+### XYZ Hub - 2019.48.01 / 2019-11-29
+
+✨ **ADDED** ✨
+- Advanced spatial requests by any geometry with or without proximity-radius
+
+---
+
+### HERE Studio - release 1.5.7 (November 28, 2019)
+
+✨ New ✨
+• Outstanding Map Experience! Upgraded to xyz-maps 0.10.0-next10. Check it out now!
+
+---
+
+### HERE XYZ Studio - release 1.5.6 (November 19, 2019)
+
+✨ NEW ✨
+• Rich media content support in Studio and Viewer. Now you can view video, image, sound files rendered within cards by providing the link.
+• New exciting color picker to select from wide ranges of colors.
+
+
+🔨 IMPROVED 🔧
+• Icon dropdown with image of icons.
+• Show zoom levels in Tangram.
+• Show and save property names as is uploaded by user.
+
+🐜 FIXED 🐜
+• Filter property bug fixes.
+• Handling of new-line break in tangram while applying style rule.
+• Performance Improvement fixes.
+• Other minor bug fixes.
+
+---
+
+### XYZ Hub - 2019.47.01 / 2019-11-20
+
+✨ **ADDED** ✨
+- Add option to return the centroid of the hexagons as a feature geometry, for the hexbin
+    clustering mode.
+    
+🔨 **CHANGED** 🔧
+- Update the format of the MVT response: nested properties are serialized as JSON.
+
+---
+
+### XYZ Hub - 2019.44.03 / 2019-10-31
+
+✨ **ADDED** ✨
+- Add property contentUpdateAt indicating the last time the content of the space was updated.
+- Add property readOnly to indicate, if the space is accessible only for read operations.
+    The service will respond with 405 Method Not Allowed, when writing features in the space,
+    when the flag is set.
+- Add an option to receive feature Ids by setting accept header to application/geo+json for delete 
+    requests.
+
+🔨 **CHANGED** 🔧
+- Update the ETag to a 128-bit hash value
+- The property "features" is now always included in FeatureCollection responses.
+- Move the global searchable field to the properties section of the statistics response.
+
+🐜 **FIXED** 🐜
+- Fix incorrect bounding box for some spaces in the statistics response.
+- Fix inconsistent status codes for delete requests.
+
+---
+
+### Studio release 1.5.4
+
+Exciting way to Filter your Properties! Add Data is more fun now. 
+
+✨ **NEW** ✨
+
+* Property Search and Filters
+
+🔨 **IMPROVED** 🔧
+
+* Add Data side panel redesign
+
+🐜 **FIXED** 🐜
+
+* Error popups now redirect to the correct feedback page
+
+---
+
+### XYZ Hub - 2019.41.01 / 2019-10-10 
+
+✨ **ADDED** ✨
+
+- Add possibility to configure, which properties are searchable in a space.
+- Add possibility to retrieve the features of a space clustered as hexbins.
+- Activate browser caching for space cacheTTL property larger than 0.
+
+---
+
+### Studio and Viewer Release 1.5
+
+New Feature: Exciting User Onboarding! Signups and Login is more fun now. Check it out!
+
+✨ **NEW** ✨
+
+* New user onboarding.
+* Styling of maps with the color property in your dataset.
+* Don't worry If a color property does not exist, we have selected best colors to style your map and make it visually more appealing.
+
+
+🔨 **IMPROVED** 🔧
+
+* UX/UI improvements.
+* Under the hood, performance improvements.
+
+
+🐜 **FIXED** 🐜
+
+* Fixed an issue of side panel UI distortion while using color palette.
+* Fixed an issue of NaN being displayed in Account Dashboard.
+* Other minor bug fixes.
+
+---
+
+### XYZ Hub - 2019.37.01 / 2019-09-09
+
+🔨 **CHANGED** 🔧
+- The values createdAt and updatedAt of the space definition are now public and visible in single space responses and space list responses.
+- A new error response code `513 Response Payload Too Large` is sent to the clients for responses which are too large for AWS API Gateway.
+- The URI length limit for requests to the API is increased from 4K to 10K.
+
+🐜 **FIXED** 🐜
+- Resolve an issue that the space is not stored, when a preprocessor returns a space definition without a modification.
+
+---
+
+### XYZ Pro Features Beta Release 1.0.1
+
+This rather significant release provides access to exciting new features in the API:
+
+🔎🔎🔎 **Property Search** 🔍🔍🔍
+
+Property Search allows users to filter data by requesting features from the XYZ API based on the values of their properties. Only need buildings taller that 100 feet, or just addresses in one county? The XYZ Hub will automatically track and index these properties as you upload them, making it easy and fast to download just what you need.
+
+
+You can access property search with -s and operators -- `here xyz show spaceID -s "p.property_name>value"`
+
+
+Note that in a url, the arguments are `=, !=, =gt=, =gte=, =lt=, =lte=`.
+
+
+Properties are automatically indexed depending on their count and value.
+
+
+✂️✂️✂️ **Property Filter** ✂️✂️✂️
+
+We've all been there -- you have a lot of properties in your features. Too many, probably. If only you could somehow... filter them, and only return what you need with your geometry.
+
+
+We're here for you with `-p` -- even if you have 100 properties, `here xyz show -p p.property1,p.property2` will just return a feature with a geometry and those properties you carefully select.
+
+
+❇️❇️❇️ **Virtual Spaces** ❇️❇️❇️
+
+Virtual Spaces give users access to multiple spaces with one ID. Group lets you bundle your spaces together, and changes get written back to their original spaces. Associate lets you make your own personal edits to a shared space or one with public data, merging the properties of objects with the same feature ID.
+
+
+`here xyz virtualize -a|-g space1,space2`
+
+
+📐📐📐 **Schema Validation** 📏📏📏
+
+Everyone needs validation, and so does your data. Upload a JSON Schema file to describe your data formats and ensure quality data in your XYZ Spaces.
+
+
+`here xyz create -s schema.json`
+
+
+⬢⬡⬢ **Hexbins** ⬢⬡⬢
+
+Hexbins are a data simplification method that makes it feasible to visualize large datasets at low zoom levels (continent, country, state/province). A series of hexagon grids are created and the points that fall inside each are counted and written to a new space. These hexagons or their centroids can be quickly displayed in place of the raw data.
+
+
+Learn more via `here xyz hexbin -h`
+
+
+Note: reading from and writing to another user's space, and reading via bbox, are works in progress.
+
+
+🔧🔧🔧 **Space Configuration** 🔧🔧🔧
+
+
+Behold the new here xyz `config` command which not only lets you get data and statistics about your space, but edit and make changes to space metadata.
+
+`here xyz config spaceID`
+
+`here xyz config spaceID --stats`
+
+---
 
 ### Studio and Viewer Release 1.4
 

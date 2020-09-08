@@ -1,0 +1,156 @@
+# Project information
+site_name: HERE Data Hub - Open Documentation
+site_description: Make great maps easier
+site_author: The HERE Data Hub Team
+site_url: https://www.here.xyz/
+site_dir: ../site
+
+# Repository
+repo_name: heremaps/xyz-documentation
+repo_url: https://github.com/heremaps/xyz-documentation
+#edit_uri:
+
+# Copyright
+copyright: 'Copyright &copy; 2018-2020 HERE Europe B.V.'
+
+# Configuration
+theme:
+  name: null
+  custom_dir: ../material
+
+  # 404 page
+  static_templates:
+    - 404.html
+
+  # Don't include MkDocs' JavaScript
+  include_search_page: true
+  search_index_only: true
+
+  # Default values, taken from mkdocs_theme.yml
+  language: en
+  feature:
+    tabs: true
+  palette:
+    primary: here
+    accent: here
+  font:
+    text: Fira Sans
+    code: Fira Mono
+  favicon: assets/images/favicon.ico
+  logo: assets/images/logo.svg
+
+# Customization
+extra:
+  social:
+    - type: globe
+      link: http://www.here.com/
+    - type: github-alt
+      link: https://github.com/heremaps
+    - type: slack
+      link: https://here-xyz.slack.com
+
+# Page tree
+nav:
+  - Introduction: index.md
+  - Getting Started: getting-started.md
+  - Here Studio:
+      - Quick Tour: studio/topics/index.md
+      - Navigating: studio/topics/navigating.md
+      - Data: studio/topics/data.md
+      - Styling: studio/topics/styles.md
+      - Publishing: studio/topics/publish.md
+  - Data Hub APIs:
+      - Data Hub API:
+          - Overview: api/index.md
+          - Manage Tokens: api/getting-token.md
+          - Quick Start:
+              - Acquiring Credentials: api/quickstart/acquiringcredentials.md
+              - Read Spaces: api/quickstart/readspaces.md
+              - Create a Space: api/quickstart/createspace.md
+              - Write to a Space: api/quickstart/writetospace.md
+              - Use Activity Log: api/quickstart/activitylog.md
+          - Concepts:
+              - GeoJSON Basics: api/concepts/geojsonbasics.md
+              - Namespaces: api/concepts/namespaces.md
+              - Tags and Tagging: api/concepts/tags.md
+              - Tiles: api/concepts/tiles.md
+              - JSON Schema: api/concepts/jsonschema.md
+          - Walkthrough:
+              - Create a Space: api/walkthrough/creatingaspace.md
+              - Add and Delete Features: api/walkthrough/addinganddeleting.md
+              - Search by Bounding Box: api/walkthrough/searchbyboundingbox.md
+              - Search by Tags: api/walkthrough/searchbytags.md
+              - Iterate over Features: api/walkthrough/iterateoverfeatures.md
+              - Use Schema Validation: api/walkthrough/schemavalidation.md
+          - Developer Guide:
+              - Work with Spaces: api/devguide/workwithspaces.md
+              - Work with Features: api/devguide/workwithfeatures.md
+              - Tags: api/devguide/tagging.md
+              - Access Features: api/devguide/accessingfeatures.md
+              - Search for Features: api/devguide/propertiessearch.md
+              - Spatial Search for Features: api/devguide/spatialsearch.md
+              - Adjust searchable properties: api/devguide/searchableproperties.md
+              - Use Clustering: api/devguide/usingclustering.md
+              - Work with Activity Log: api/devguide/activitylogguide.md
+              - Common Errors: api/devguide/commonerrors.md
+          - API Reference: api/apireference.md
+          - Useful Links: api/links.md
+      - Data Hub Maps JS:
+          - Overview: ui/index.md
+          - Get started: ui/gettingstarted.md
+          - Display your space: ui/yourxyzspace.md
+          - Style your data: ui/styleyourdata.md
+          - Add interactivity: ui/tapfeature.md
+  - Tools:
+      - HERE CLI:
+          - Overview: cli/index.md
+          - Basic features: cli/basic-features.md
+          - Add-on features: cli/add-on.md
+          - Tutorials:
+              - Shapefiles: cli/tutorials/shapefiles.md
+              - Hexbins: cli/tutorials/cli_hexbins.md
+              - Group by in CSV : cli/tutorials/group_by.md
+          - Command reference: cli/command-reference.md
+      - Data Hub Space Invader: cli/space-invader/index.md
+      - GeoJSON Viewer:
+          - Overview: cli/viewer-tool/index.md
+          - GeoJSON Basics: api/concepts/geojsonbasics.md
+          - Advanced Features: cli/viewer-tool/advanced.md
+      - Open Datasets:
+          - Buildings: cli/topics/microsoft-buildings.md
+  - Data Hub Add-on:
+        - Data Hub Add-on: cli/datahub_add-on.md
+  - Releases:
+      - Release notes: release-notes.md
+  - Tutorials:
+      - https://developer.here.com/tutorials?category=HERE%2BStudio%2Band%2BData%2BHub
+
+# Extensions
+markdown_extensions:
+  - markdown.extensions.admonition
+  - markdown.extensions.codehilite:
+      guess_lang: false
+  - markdown.extensions.def_list
+  - markdown.extensions.footnotes
+  - markdown.extensions.meta
+  - markdown.extensions.toc:
+      permalink: true
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# google_analytics: ['UA-119781446-1', 'techpreview.xyz']

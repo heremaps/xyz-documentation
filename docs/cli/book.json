@@ -1,0 +1,14 @@
+{
+  "title": "HERE CLI",
+  "description": "A guide for HERE CLI",
+  "variables": {
+    "productName": "HERE CLI",
+    "productVersion": "v1.0",
+    "brandName": "HERE",
+    "documentName": "HERE CLI",
+    "documentStatus": "FINAL",
+    "documentType": "Developer Guide",
+    "confidentialnotice": "Confidential",
+    "appid": "YOUR_APP_ID",
+    "appcode": "YOUR_APP_CODE" }
+}

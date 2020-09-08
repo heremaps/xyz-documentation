@@ -1,4 +1,6 @@
-HERE XYZ Hub APIs use project tokens that are tied to your `appId`&`appCode` or HERE Accounts SSO identity. Make sure to keep your `appId`&`appCode` safe and don't include them directly in any web pages as they are the key to generate new access tokens.
+# Manage Tokens
+
+HERE Data Hub APIs use project tokens that are tied to your Account or HERE Accounts SSO identity. Make sure to keep your credentials safe and don't include them directly in any web pages as they are the key to generate new access tokens.
 
 Usually you would use two tokens:
 
@@ -7,12 +9,11 @@ Usually you would use two tokens:
 
 ## Token Administration
 
-Log into the **XYZ Hub Token Generator** site with your `appId`&`appCode`:
+Log into the **Data Hub Token Generator** site with your `Email address` and `Password` or `HERE Accounts SSO identity`:
 
 [`https://xyz.api.here.com/token-ui/`](https://xyz.api.here.com/token-ui/)
 
-
-[![Developer Overview](../assets/images/start-token-login.png)](../assets/images/start-token-login.png)
+[![Login Screen](images/start-token-login.png)](https://xyz.api.here.com/token-ui/)
 
 ## Assign Access Rights
 
@@ -21,23 +22,23 @@ to be encoded in the token.
 
 Available permissions for the token are:
 
-*	ReadFeatures
-*	CreateFeatures
-*	UpdateFeatures
-*	DeleteFeatures
-*	ManageSpaces
+* ReadFeatures
+* CreateFeatures
+* UpdateFeatures
+* DeleteFeatures
+* ManageSpaces
 
 From the list, select the spaces the token should have access to. Note that some spaces can only be read and not written to.
-It's a good practice to keep the number rights and layers to the minimum needed for your project.
+It's a good practice to keep the number, rights and layers to the minimum needed for your project.
 
-[![Developer Overview](../assets/images/start-token-generate.png)](../assets/images/start-token-generate.png)
+![Assign Rights](images/generate-tokens.png)
 
 ## Generate Token
 
 Next click on **Generate Token** to see you token:
 
-[![Developer Overview](../assets/images/start-token-view.png)](../assets/images/start-token-view.png)
+![List of Generated Tokens](images/token-list.png)
 
-!!! note
-
-    You can revoke the token at any time by just deleting it on the **Manage Token** tab.
+> #### Note
+>
+> You can revoke the token at any time by just deleting it on the **Manage Token** tab.
