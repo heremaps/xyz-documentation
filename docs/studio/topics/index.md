@@ -4,7 +4,11 @@
 
 Simply go to - **[`https://studio.here.com/`](https://studio.here.com/)** - sign up and log in.
 
-You can view a video overview of this content [here](https://www.here.xyz/assets/videos/projects-dashboard.mp4).
+<video width="100%"  controls>
+  <source src="../videos/projects-dashboard.mp4" type="video/mp4">
+  <source src="../../videos/projects-dashboard.mp4" type="video/mp4">
+You can view a video overview of this content <a href="../videos/projects-dashboard.mp4">here</a>.
+</video>
 
 ## Create a project
 
@@ -16,7 +20,11 @@ You should give your map a good name and also a description, in case you forget 
 You can also pick a basemap - the background on which _your_ map will be drawn. There are a number of themes available (and more will be coming).
 Simply select one you like best for your project.
 
-You can view a video overview of this content [here](https://www.here.xyz/assets/videos/create-new-project.mp4).
+<video width="100%"  controls>
+  <source src="../videos/create-new-project.mp4" type="video/mp4">
+  <source src="../../videos/create-new-project.mp4" type="video/mp4">
+You can view a video overview of this content <a href="../videos/create-new-project.mp4">here</a>.
+</video>
 
 ## Create your content
 
@@ -29,7 +37,11 @@ and styled. This way your map highlights what you want to show where you want to
 Think of a _Layer_ as a transparent sheet that covers the whole world which
 you can draw on. Let's draw a small map for a local treasure hunt:
 
-You can view a video overview of this content [here](https://www.here.xyz/assets/videos/draw-layer.mp4).
+<video width="100%"  controls>
+  <source src="../videos/draw-layer.mp4" type="video/mp4">
+  <source src="../../videos/draw-layer.mp4" type="video/mp4">
+You can view a video overview of this content <a href="../videos/draw-layer.mp4">here</a>.
+</video>
 
 ## Load other content
 
@@ -43,7 +55,11 @@ file into a real live map you can change and update at any time.
 
 For example you might want to highlight all the [**bike paths**](https://data.sfgov.org/Transportation/Map-of-SFMTA-Bikeway-Network/ccs9-xdqj) for the treasure hunt:
 
-You can view a video overview of this content [here](https://www.here.xyz/assets/videos/upload-data.mp4).
+<video width="100%"  controls>
+  <source src="../videos/upload-data.mp4" type="video/mp4">
+  <source src="../../videos/upload-data.mp4" type="video/mp4">
+You can view a video overview of this content <a href="../videos/upload-data.mp4">here</a>.
+</video>
 
 ## Share the map
 
@@ -60,7 +76,11 @@ on publishing and copy the URL to _Your Map_.
 > Remember that you can share this map right now and still continue to work on it and make changes. No need to send a new URL - everybody will
     always see the most up-to-date map.
 
-You can view a video overview of this content [here](https://www.here.xyz/assets/videos/publish-map.mp4).
+<video width="100%"  controls>
+  <source src="../videos/publish-map.mp4" type="video/mp4">
+  <source src="../../videos/publish-map.mp4" type="video/mp4">
+You can view a video overview of this content <a href="../videos/publish-map.mp4">here</a>.
+</video>
 
 That was only a short overview - there are many more features of course.
 Follow the tour to learn more in-depth what you can do with Studio.
