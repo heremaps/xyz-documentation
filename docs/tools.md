@@ -40,8 +40,8 @@ For now, the documentation consists of [a small number of example Jupyter notebo
 
 ### HERE MapsJS SDK
 
-Your Data Hub Spaces can be accessed in the [HERE Maps API for JS API](https://developer.here.com/documentation/maps/3.1.19.0/dev_guide/topics/xyz-spaces.html
-) beginning in version 3.1.
+Your Data Hub Spaces can be accessed using the [HERE Maps API for JS API](https://developer.here.com/documentation/maps/3.1.19.0/dev_guide/topics/xyz-spaces.html
+) as of version 3.1.
 
 HERE Maps API for JavaScript provides a simple way to add the data presented as an XYZ space to the existing application. Also, HERE Maps API for JavaScript allows building a new application that uses HERE services, such as Routing, Geocoding, Fleet Telematics Advanced Data Sets and others, alongside with XYZ.
 
