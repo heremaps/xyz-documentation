@@ -112,6 +112,8 @@ nav:
               - Group by in CSV : cli/tutorials/group_by.md
           - Command reference: cli/command-reference.md
       - Data Hub Space Invader: cli/space-invader/index.md
+      - XYZ Spaces for Python: docs/tools.md#xyz-spaces-for-python
+      - Maps API for Javascript: docs/tools.md#here-maps-api-for-javascript
       - GeoJSON Viewer:
           - Overview: cli/viewer-tool/index.md
           - GeoJSON Basics: api/concepts/geojsonbasics.md
