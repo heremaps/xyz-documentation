@@ -1,5 +1,166 @@
 # Release Notes for Data Hub
 
+The most up-to-date release notes are available on GitHub.
+
+- https://github.com/heremaps/xyz-hub/releases
+- https://github.com/heremaps/here-cli/releases
+
+
+### HERE CLI v 1.5.1
+
+2020-08-04
+
+This minor version brings support for HERE Studio projects:
+- `here studio list` - lists your HERE Studio projects
+- `here studio show <project-id>` - launches a published project in the browser
+- `here studio delete <project-id>` - to delete a project
+
+
+### HERE CLI v 1.5.0
+
+2020-06-22
+
+Just in time for summer, v1.5.0 of the Data Hub CLI is here with new features and bug fixes that will help your geospatial data kick back and relax in a comfortable space. 
+
+## 🔤🔤🔤 CSV Group by 🔢🔢🔢
+
+`--groupby columnName` consolidates multiple rows of a CSV that share a unique ID into a single feature (designated with `-i` (usually representing a admin geography)); values in each row within that selected column will be grouped as nested properties within an object named after the column in the consolidated feature properties. 
+
+`-groupby` can be used with `upload` or the `join` command to extract the heirarchy from a CSV and upload it to a space without geometries. 
+- with `join`, the data is uploaded and the virtual space with the geometry space is created in one step.
+- `upload --groupby` is useful for updating the "data space" in a virtual space that has already been created. It can also be used to upload the grouped data before a virtual space has created with a space containing geometries matching geoIDs using `here xyz vs -a`
+
+This feature is best illustrated by election data, census data and time series data. One example is COVID-19 data from the Covid Tracking project API.
+
+    here xyz join xkRyxQl9 -f https://covidtracking.com/api/v1/states/daily.csv --noCoords -i state --groupby date
+
+This will merge daily state testing data from March 2020 into a virtual space with `xkRyxQl9`, a shared space with US state geometries.
+
+## Date tags and properties
+
+We've added `--dateprops` to the `--date` option, meaning we now let you save your time slices as new properties in the feature as well as tags -- these are prefixed by `xyz_propertyname_`.
+
+Also, while converting the date string, we no longer add a time zone offset to the ISO 8601 timestamp as this caused problems when the data wasn't collected in your timezone.
+
+## 📜💾⭐️ CLI history ⭐️💾📜
+
+You're working with that complex dataset, and you just created the _perfect upload command_. It is so good, the data in your space is excellent, and your map is happy. Then you go back to update that space six months later… and you have completely forgotten the options. Was it `-i`? What chunk size did I use? How did I make that tag?
+
+Well, never fear, `upload --history` is here. It automatically records the last three upload commands in the space definition, and it even lets you `--save` one as a `--fav`.
+
+If you've done at least one upload to a space, you can recall it using an interactive menu:
+
+    here xyz upload spaceid --history
+
+You can pick an upload command to save with `--history save`, and then re-run that particular command using `--history fav`. You can also `--clear` your history.
+
+## 🚚🚚🚚 Batch upload 🚢🚢🚢
+
+If you have a folder full of geospatial files, you can upload them all to a space in one command with `--batch`. Just specify the directory with `-f` and the filetype after `--batch`: `geojson`,`geojsonl`,`csv`, `shp`,`json`, or `gpx` and watch your files fly into Data Hub.
+
+While uploading shapefiles,`--batch` will inspect directories in that specificed directory and look for `.shp` and all the other files you get when uncompressing a zipped shapefile. (This is handy, say when you've downloaded say 50 state shapefiles from the US Census website. We've all been there.)
+
+## 🔍🔍🔍 Data Hub Console 🔎🔎🔎
+
+Both `config` and `token` have a new `--console` option that opens up the new Data Hub console in a web browser.
+
+## 🐛🐞🦟 Bug fixes and other enhancements 🛠🔧🔩
+
+- inline help was improved, along with online documentation
+- `here xyz list --filter` does a better job of handling null title and description fields
+- GeoJSON features that are not in a `featureCollection` can once again be uploaded
+- `config -r` now outputs properly formatted `json`
+- confirmation prompt added to `config --shared true`
+- `join -k` was changed to `join -i` to be more consistent with `upload -i`
+- we fixed a bug in activity log creation -- we were sending state as a string, but the API expected a number
+- we fixed some issues while streaming `voronoi` and `delaunay` polygons
+- `show -r` no longer wraps `geojsonl` output in a `featureCollection`
+- we set `skipCache=true` for `/statistics` and `/space` `GET` calls so you get the latest and greatest metadata
+
+
+
+### HERE CLI v 1.4.0
+
+2020-04-30
+
+1.4.0 is here, and so are you! In addition to various bug fixes and security updates, we also bring you normalized date strings, better list options, .json import, and easier export!
+
+### :alarm_clock::timer_clock::date: Date strings, time stamps, and date tags :mantelpiece_clock::hourglass::stopwatch:
+If you have a field or property that has a date-like field or a timestamp, you can normalize it using `--date propertyname`. We will try to convert it to an ISO 8601 friendly value and save it in `xyz_iso8601_propertyname`, along with a unix seconds timestamp, `xyz_timestamp_propertyname` for your time-slicing needs. (UTC for now.)
+If you add the `--datetag` option, we will calculate human-friendly tag buckets such as `year@2020`, `month@april`, `weekday@thursday`, `week@21`. You can also limit which tags you want using arguments like `--datetag month`. (Again, these are UTC-based for now, timezones are hard)..
+
+### :sunglasses::dark_sunglasses::headphones: Find that space using filters :headphones::dark_sunglasses::sunglasses:
+You have a lot of spaces. They are all important and you love them equally. But you need to find that special one. Why not use here `xyz list --filter theoneyouarelookingfor` to narrow down your list based on what you added to the title and description?
+
+### {{{JSON import}}}
+Just like a square is a rectangle, but a rectangle is not a square, GeoJSON is JSON, but JSON is not GeoJSON. But if your JSON file contains (non-nested) lat/lon coordinates, you can now import those non-geojson json files just like you can with a CSV.
+
+### :rocket::satellite::dizzy: Get more out of your space :dizzy::satellite::rocket:
+• `show --raw` used to be limited to 5000 features, but if you need more, try --all (this can get long, and you can redirect to a file using `>`)
+• you can also export to GeoJSONL via show `--raw` using, you guessed it, `show --raw --geojsonl`
+
+Take care and we'd love to hear from you in issues (because we have issues).
+
+### HERE CLI v 1.3.1 
+
+2020-03-24
+
+This minor release repairs options in the `show` command.
+
+---
+
+### HERE CLI v 1.3.0
+
+2020-03-19
+
+Bugs have been tracked down and features have been hoisted up. We clarified lots of the inline documentation -- check it out with `-h`. And as for the new features:
+
+🔎🗺🔍 Spatial Search  🔎🌏🔍 
+
+You can now select a set features within a radius around a point, using `--spatial` in the `show` command:
+
+    here xyz show spaceID --spatial --center "37.74,-122.43" --radius=100 -w
+
+And as if that were not exciting enough, you can _also_ select features from one space that fall within a polygon from another space! Imagine you had a space that had postal codes as the feature ID:
+
+    here xyz show space_with_points --spatial --feature space_with_zip_codes,94104 -w
+
+
+➕➕➕ CSV Join  ➕➕➕
+
+Virtual Spaces are fun, but it's sometime laborious to get the data you need into XYZ, especially when it's a CSV table with data and IDs but no coordinates (think Census tables). But now you can use the new `join` command to dynamically associate a CSV to space with geometries with those same IDs!
+
+    here xyz join space_with_geometries -f table_with_ids.csv -k unique_id
+
+This means you can pour the properties from many CSVs into the polygons of one existing space and access them through the new virtual space IDs.
+
+Note that uses the same CSV import options (delimiter, quotes, string-fields).
+
+You can also update a CSV space and the Virtual Space will dynamically update.
+
+🏃‍♀️🏃‍♂️👟 Import GPX files  🚴‍♀️🚴‍♂️🚲
+
+If you run or bike, you probably know what GPX traces are, and you'll be excited to know we can now import them into XYZ aka Data Hub! Just reference the file in `here xyz upload my.gpx` and we will convert it into delicious GeoJSON using @roberto-butti's sweet code. Thanks for the [PR](https://github.com/heremaps/here-cli/pull/179), Roberto!
+
+
+🎉🎉🎉Other interesting enhancements 🎉🎉🎉
+
+- Features are now written to XYZ spaces using `PATCH` instead of `POST`, meaning you can make more granular edits to your features.
+
+- It turns out point field columns are not always written as `(lat,lon)` but sometimes are `(lon,lat)` and we can now deal with that.
+
+- You can now add `--token` to most commands, and presuming you have the appropriate permissions, you can do things to/with your friends' spaces.
+
+- We are now using the d3-Delaunay library for Voronoi polygons.
+
+- We check for troublesome characters in tags that break URLs, like `&` and `+` and `,`
+
+- Users can now adjust the `cacheTTL` of a space using `config --cacheTTL`
+
+- We are deprecating `here xyz describe` since `here xyz config --stats` does a much better job.
+
+Thanks for watching, and let us know what you see in the issues!
+
 ---
 
 ### HERE CLI v 1.3.0
