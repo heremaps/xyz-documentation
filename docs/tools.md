@@ -11,7 +11,7 @@ This open source Python package allows to interact with your XYZ spaces and feat
 - Create, read, list, update, share, delete spaces (also: get space info and stats).
 - Add, read, update, iterate, search, cluster (hex/quad bins), delete features.
 - Search features by ID, tag, property, bbox, tile, radius, geometry.
-- Access add-on features like h
+- Access add-on features like H3 hexbin and quadbin clustering, extended property search, and more.
 
 #### Installation
 
