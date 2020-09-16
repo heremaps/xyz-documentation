@@ -39,6 +39,8 @@ amenities that the particular store provides (`coffee`, `food`, `late_night`). I
 you could use `new` as a tag for newly opened stores you want to highlight and call out on
 the map.
 
+You can combine tags in a request by using `,` for `OR` and `+` for `AND`.
+
 ## Iterating
 
 Another core concept when you are working Space it to [iterate](https://xyz.api.here.com/hub/static/redoc/#operation/iterateFeatures) over the content to get everything that you are interested in.
