@@ -14,7 +14,12 @@ your project with its settings and a small thumbnail of the map. You can also de
 If you have several projects, organizer 
 functions appear that help you get an overview or search.
 
-You can view a video overview of this content [here](https://www.here.xyz/assets/videos/projects-dashboard.mp4).
+See the following video overview:
+<video width="100%"  controls>
+  <source src="../videos/projects-dashboard.mp4" type="video/mp4">
+  <source src="../../videos/projects-dashboard.mp4" type="video/mp4">
+You can view a video overview of this content <a href="../videos/projects-dashboard.mp4">here</a>.
+</video>
 
 ### Data Hub
 
@@ -23,7 +28,12 @@ in projects. You can narrow down the list by _searching_ for a specific dataset 
 
 You can also manage your data, upload new datasets, edit entries, delete complete datasets and download a file of the content stored in the cloud.
 
-You can view a video overview of this content [here](https://www.here.xyz/assets/videos/data-hub.mp4).
+See the following video overview:
+<video width="100%"  controls>
+  <source src="../videos/data-hub.mp4" type="video/mp4">
+  <source src="../../videos/data-hub.mp4" type="video/mp4">
+You can view a video overview of this content <a href="../videos/data-hub.mp4">here</a>.
+</video>
 
 ## Project
 
@@ -32,7 +42,12 @@ You can view a video overview of this content [here](https://www.here.xyz/assets
 You can navigate the map using the mouse, changing the view
 by _dragging_ the map and using the _zoom control_ (or the mouse wheel) to zoom nearer or father away from the map. You can also **search** for cities and places by using the search bar.
 
-You can view a video overview of this content [here](https://www.here.xyz/assets/videos/navigate-map.mp4).
+See the following video overview:
+<video width="100%"  controls>
+  <source src="../videos/navigate-map.mp4" type="video/mp4">
+  <source src="../../videos/navigate-map.mp4" type="video/mp4">
+You can view a video overview of this content <a href="../videos/naivgate-map.mp4">here</a>.
+</video>
 
 ### Map Bookmarks
 
@@ -40,4 +55,9 @@ As your map becomes larger and the data more complex, you can  _switch_ between 
 project you can define your own **location bookmarks** and switch 
 between them.
 
-You can view a video overview of this content [here](https://www.here.xyz/assets/videos/navigate-bookmarks.mp4).
+See the following video overview:
+<video width="100%"  controls>
+  <source src="../videos/navigate-bookmarks.mp4" type="video/mp4">
+  <source src="../../videos/navigate-bookmarks.mp4" type="video/mp4">
+You can view a video overview of this content <a href="../videos/navigate-bookmarks.mp4">here</a>.
+</video>
