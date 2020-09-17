@@ -8,7 +8,7 @@
 
 If you just want to have a quick go at Activity Log, head over to the [quick start guide](../quickstart/activitylog.md).
 
-This connector provides the user with the possibility to track changes to his space. By activating this feature, every modification of features (insert/update/delete by the **ModifyFeaturesEvent**) is tracked and stored in a separate space.
+This connector provides the user with the possibility to track changes to their space. By activating this feature, every modification of features (insert/update/delete by the **ModifyFeaturesEvent**) is tracked and stored in a separate space.
 
 To activate it, just create a space with the listener added and enableUUID set to true:
 
