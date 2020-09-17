@@ -2,85 +2,44 @@
 
 ## Sign Up and Log In
 
-Simply go to - **[`https://studio.here.com/`](https://studio.here.com/)** - sign up and log in.
+To sign up and log in, go to**[`https://studio.here.com/`](https://studio.here.com/)**  
 
-<video width="100%"  controls>
-  <source src="../videos/projects-dashboard.mp4" type="video/mp4">
-  <source src="../../videos/projects-dashboard.mp4" type="video/mp4">
-You can view a video overview of this content <a href="../videos/projects-dashboard.mp4">here</a>.
-</video>
+You can view a video overview of this content [here](https://www.here.xyz/assets/videos/projects-dashboard.mp4).
 
 ## Create a project
 
-Next you probably want to work on your map project. When you first sign in
-you won't see any projects, so now is the time to create one.
+To create a project, name your map and add a description. You can also select a basemap, which is the background on which _your_ map is drawn. There are a number of themes available.
 
-You should give your map a good name and also a description, in case you forget later what you wanted to show.
-
-You can also pick a basemap - the background on which _your_ map will be drawn. There are a number of themes available (and more will be coming).
-Simply select one you like best for your project.
-
-<video width="100%"  controls>
-  <source src="../videos/create-new-project.mp4" type="video/mp4">
-  <source src="../../videos/create-new-project.mp4" type="video/mp4">
-You can view a video overview of this content <a href="../videos/create-new-project.mp4">here</a>.
-</video>
+You can view a video overview of this content [here](https://www.here.xyz/assets/videos/create-new-project.mp4).
 
 ## Create your content
 
-To make your own map involves putting your content on top of it. That
-means you need a place to store that content.
-This place is often called a _Layer_ and it can contain many _Points_, _Lines_ and
-_Polygons_ (they are collectively called _Features_ ) that can be colored
-and styled. This way your map highlights what you want to show where you want to show it.
+To create your content, add a layer to the map. A layer can contain 
+_Points_, _Lines_, and _Polygons_ (collectively called _Features_ ) that can be colored and styled.
 
-Think of a _Layer_ as a transparent sheet that covers the whole world which
-you can draw on. Let's draw a small map for a local treasure hunt:
+Think of a _Layer_ as a transparent sheet that covers the whole map on which you can draw features.
 
-<video width="100%"  controls>
-  <source src="../videos/draw-layer.mp4" type="video/mp4">
-  <source src="../../videos/draw-layer.mp4" type="video/mp4">
-You can view a video overview of this content <a href="../videos/draw-layer.mp4">here</a>.
-</video>
+You can view a video overview of this content [here](https://www.here.xyz/assets/videos/draw-layer.mp4).
 
 ## Load other content
 
-An extremely powerful feature of Here Studio is that you do not have to create all
-the content yourself. A lot of open map data can be found on the web already
-when you search for it.
+A powerful feature of Here Studio is that you do not have to create all the content yourself. You can find open map data on the internet.
 
-`GeoJSON` is a very common format for geospatial data. If you find something
-you like you can quickly _upload_ this data into Here Studio and turn such a static
-file into a real live map you can change and update at any time.
+`GeoJSON` is a common format for geospatial data. If you find something you want to use, you can _upload_ the data into Here Studio. For example, you might want to highlight all the [**bike paths**](https://data.sfgov.org/Transportation/Map-of-SFMTA-Bikeway-Network/ccs9-xdqj) on a map.
 
-For example you might want to highlight all the [**bike paths**](https://data.sfgov.org/Transportation/Map-of-SFMTA-Bikeway-Network/ccs9-xdqj) for the treasure hunt:
-
-<video width="100%"  controls>
-  <source src="../videos/upload-data.mp4" type="video/mp4">
-  <source src="../../videos/upload-data.mp4" type="video/mp4">
-You can view a video overview of this content <a href="../videos/upload-data.mp4">here</a>.
-</video>
+You can view a video overview of this content [here](https://www.here.xyz/assets/videos/upload-data.mp4).
 
 ## Share the map
 
-There is a lot more you can do on the map, but let's assume you are in a
-hurry to send an invite to the treasure hunt to your friends because it's
-already tomorrow.
-
-You can quickly get an interactive link to your map that can be easily
-shared via email, twitter or any messenger app. All you need to do is turn
+You can get an interactive link to your map that can be easily
+shared via email, twitter or any messenger app. Turn
 on publishing and copy the URL to _Your Map_.
 
 > #### Tip
 >
-> Remember that you can share this map right now and still continue to work on it and make changes. No need to send a new URL - everybody will
-    always see the most up-to-date map.
+> You can share a map and still continue to work on it. You do not have to send a new URL. Recipients will always see the most up-to-date map.
 
-<video width="100%"  controls>
-  <source src="../videos/publish-map.mp4" type="video/mp4">
-  <source src="../../videos/publish-map.mp4" type="video/mp4">
-You can view a video overview of this content <a href="../videos/publish-map.mp4">here</a>.
-</video>
+You can view a video overview of this content [here](https://www.here.xyz/assets/videos/publish-map.mp4).
 
-That was only a short overview - there are many more features of course.
-Follow the tour to learn more in-depth what you can do with Studio.
+
+Follow the tour to learn more about you can do with Studio.
