@@ -13,7 +13,12 @@ from the system file selection dialog.
 You can also _drag and drop_ files directly onto the map. They
 will be uploaded and added to the map automatically.
 
-You can view a video overview of this content [here](https://www.here.xyz/assets/videos/upload-datasets.mp4).
+See the following video overview:
+<video width="100%"  controls>
+  <source src="../videos/upload-datasets.mp4" type="video/mp4">
+  <source src="../../videos/upload-datasets.mp4" type="video/mp4">
+  You can view a video overview of this content <a href="../videos/upload-datasets.mp4">here</a>.
+</video>
 
 ### Pick datasets
 
@@ -31,7 +36,12 @@ reflected in each map project immediate.
 > You can also safely rename layers individually without breaking the
 > link to the dataset.
 
-You can view a video overview of this content [here](https://www.here.xyz/assets/videos/pick-datasets.mp4).
+See the following video overview:
+<video width="100%"  controls>
+  <source src="../videos/pick-datasets.mp4" type="video/mp4">
+  <source src="../../videos/pick-datasets.mp4" type="video/mp4">
+  You can view a video overview of this content <a href="../videos/pick-datasets.mp4">here</a>.
+</video>
 
 ### Add empty layer
 
@@ -54,8 +64,18 @@ additional columns.
 > The table shows data from one layer or dataset. You might have to
 > select the layer you want to see before you can switch to the table view.
 
-You can view a video overview of this content [here](https://www.here.xyz/assets/videos/data-table.mp4).
+See the following video overview:
+<video width="100%"  controls>
+  <source src="../videos/data-table.mp4" type="video/mp4">
+  <source src="../../videos/data-table.mp4" type="video/mp4">
+You can view a video overview of this content <a href="../videos/data-table.mp4">here</a>.
+</video>
 
 ## Draw and edit geometry
 
-You can view a video overview of this content [here](https://www.here.xyz/assets/videos/draw-geometry.mp4).
+See the following video overview:
+<video width="100%"  controls>
+  <source src="../videos/draw-geometry.mp4" type="video/mp4">
+  <source src="../../videos/draw-geometry.mp4" type="video/mp4">
+You can view a video overview of this content <a href="../videos/draw-geometry.mp4">here</a>.
+</video>

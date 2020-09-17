@@ -7,7 +7,12 @@ whenever necessary.
 You can share a link to your map or copy & paste a snippet of code that you can
 directly include on a web page or in a blog for example.
 
-You can view a video overview of this content [here](https://www.here.xyz/assets/videos/publish-legend.mp4).
+See the following video overview:
+<video width="100%"  controls>
+  <source src="../videos/publish-legend.mp4" type="video/mp4">
+  <source src="../../videos/publish-legend.mp4" type="video/mp4">
+You can view a video overview of this content <a href="../videos/publish-legend.mp4">here</a>.
+</video>
 
 ## Project Settings
 
