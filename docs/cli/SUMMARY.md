@@ -1,7 +1,7 @@
 
 # SUMMARY
 
-- [HERE CLI](README.md)
+- [HERE Data Hub CLI](README.md)
   - [Overview](index.md)
   - [Basic features](basic-features.md)
   - [Add-on features](add-on.md)
@@ -10,7 +10,7 @@
     - [Hexbins](tutorials/cli_hexbins.md)
     - [Group by in CSV](tutorials/group_by.md)
   - [Commands](command-reference.md)
-- [Data Hub Space Invader](space-invader/index.md)
+- [Space Invader](space-invader/index.md)
 - GeoJSON Viewer
   - [Overview](viewer-tool/index.md)
   - [GeoJSON Basics](topics/geojsonbasics.md)
