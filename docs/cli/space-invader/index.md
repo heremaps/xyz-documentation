@@ -1,6 +1,6 @@
-# Data Hub Space Invader
+# Space Invader
 
-Data Hub Space Invader lets you inspect and analyze data, properties, and tags in a Data Hub Space.
+Space Invader lets you inspect and analyze data, properties, and tags in a Space.
 
 It uses the tile query feature of the Tangram.js API to read, count and store all tags in the vector tiles loaded for map display, saving a second query to the Data Hub endpoint.
 
@@ -12,13 +12,13 @@ Multiple color palettes can be applied to property ranges and ranks, and it is d
 
 Multiple basemaps are available. Basemap properties such as roads and buildings can be toggled on and off. The size of points and lines can also be increased and decreased to help visualize data sets of various density.
 
-Data Hub Space Invader can show hundreds of thousands to millions of features, though this depends greatly on geographic density of data, zoom level, and kind and complexity of the geometries involved. In general you will be able to show more points and lines than polygons at any given zoom level. We're also working on ways to intelligently handle dense data sets using tags and hexbins.
+Space Invader can show hundreds of thousands to millions of features, though this depends greatly on geographic density of data, zoom level, and kind and complexity of the geometries involved. In general you will be able to show more points and lines than polygons at any given zoom level. We're also working on ways to intelligently handle dense data sets using tags and hexbins.
 
 ## To get started
 
-- [install the HERE CLI](../index.md)
-- upload a GeoJSON file, CSV or Shapefile to a Data Hub Space, and [add tags based on properties](../basic-features.md)
-- open Data Hub Space Invader from your account using `here xyz show SPACEID -v`
+- [install the HERE Data Hub CLI](../index.md)
+- upload a GeoJSON file, CSV or Shapefile to a Space, and [add tags based on properties](../basic-features.md)
+- open Space Invader from your account using `here xyz show SPACEID -v`
 
 Here are some examples to get you familiar with the interface and what Space Invader can do:
 
@@ -26,7 +26,6 @@ Here are some examples to get you familiar with the interface and what Space Inv
 
 The Los Angeles Times gathers, normalizes and aggregates precinct level election data from counties in Southern California. Here is data for the 2018 Gubernatorial Primary from the 7500 precincts in Los Angeles County, Orange County, and San Diego County.
 
-(this will be a GIF soon)
 
 ![ca-gov-votes-range-precinct](screenshots/ca-gov-votes-range-precinct.png)
 
@@ -42,7 +41,8 @@ X-ray mode shows you an overview of the geometries in the space. This is especia
 
 >#### Note
 >
->You can toggle polygon outlines on and off (either press 'o' or click on 'outlines' in the top left panel)
+>You can toggle polygon outlines on and off (either press 'o' or click on 'outlines' in the 
+>top left panel).
 
 ### Hash mode
 

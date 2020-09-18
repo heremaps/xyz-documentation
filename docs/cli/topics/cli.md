@@ -1,19 +1,19 @@
 # Commands
 
 In this section we give you a quick overview of the most commonly used commands to interact
-with XYZ Spaces from the HERE CLI.
+with XYZ Spaces from the HERE Data Hub CLI.
 
 
 > #### Warning 
-> Configuration is required for HERE CLI to work.
+> Configuration is required for HERE Data Hub CLI to work.
 > If you have skipped the previous section now is the time to go back and verify that
-> HERE CLI is properly configured with your developer identity. In case you are not
+> HERE Data Hub CLI is properly configured with your developer identity. In case you are not
 > certain, you can run `here configure verify` to check if your credentials are valid.
   
     
 ## Supported Commands
 
-HERE CLI is built to be modular and extensible, so it is entirely possible that when you
+HERE Data Hub CLI is built to be modular and extensible, so it is entirely possible that when you
 use the tool it has already learned a couple of new tricks.
 
 The general structure is that you call the `here` command followed by *command*
@@ -22,7 +22,7 @@ from.
 
 ### Help
 
-You can always call up help on the HERE CLI either by not providing any parameter at all or
+You can always call up help on the HERE Data Hub CLI either by not providing any parameter at all or
 by using the `--help` switch.
 
 ```
@@ -31,7 +31,7 @@ here --help
 
 ### Configure
 
-As explained earlier, HERE CLI needs to know you to interact with your XYZ Spaces. You can use
+As explained earlier, HERE Data Hub CLI needs to know you to interact with your XYZ Spaces. You can use
 
 ```
 here configure account
@@ -254,7 +254,7 @@ More tips in the [Working with Shapefiles](../shapefiles) tutorial.
     
 > #### Hint
 > Instead of passing the content as a file with `-f` option you can also pipe the output 
-> of  another command directly into the input stream of the HERE CLI like
+> of  another command directly into the input stream of the HERE Data Hub CLI like
 > `cmd | here xyz upload YOUR_SPACE_ID`.
    
    

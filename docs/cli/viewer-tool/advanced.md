@@ -24,8 +24,9 @@ Selecting a feature on map, clicking on a property label in the feature explorer
 
 >#### Example
 >
-> After clicking on the `vehicle_type` label in the overlay, all features with that same value (e.g. bus) are highlighted magenta
-    [![Tool Overview](images/viewer-filtering-data.png)](images/viewer-filtering-data.png)
+> After clicking on the `vehicle_type` label in the overlay, all features with that same value 
+> (e.g., bus) are highlighted magenta 
+> [![Tool Overview](images/viewer-filtering-data.png)](images/viewer-filtering-data.png)
 
 #### Styling hints
 
