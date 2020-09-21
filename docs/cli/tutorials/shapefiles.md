@@ -4,7 +4,7 @@
 
 [Shapefiles](https://en.wikipedia.org/wiki/Shapefile) are a proprietary but common geospatial file format developed by ESRI. It is frequently used by governments to store geospatial data.
 
-As of version 1.1 of the HERE CLI, most shapefiles can be easily uploaded into a Data Hub Space.
+As of version 1.1 of the HERE Data Hub CLI, most shapefiles can be easily uploaded into a Data Hub Space.
 
     here xyz upload -f my_shapefile.shp
 
@@ -21,7 +21,7 @@ This document assumes:
 You should also install
 
 - [mapshaper](https://github.com/mbloch/mapshaper)
-- [QGIS](https://www.qgis.org/) and the [HERE Data Hub QGIS plugin](https://plugins.qgis.org/plugins/XYZHubConnector/)
+- [QGIS](https://www.qgis.org/) and the [QGIS plugin](https://plugins.qgis.org/plugins/XYZHubConnector/)
 
 ## Standard shapefile upload via the HERE Data Hub CLI
 
@@ -69,7 +69,7 @@ Note that `mapshaper` can modify shapefiles directly, or convert shapefiles into
 
     here xyz upload -f my_geodata.geojson -p property_name -s
 
-Depending on the size of the shapefile you may be able to pipe the geojson from `mapshaper` directly to the Data Hub HERE CLI, using the `-` option in `mapshaper`:
+Depending on the size of the shapefile you may be able to pipe the geojson from `mapshaper` directly to the HERE Data Hub CLI, using the `-` option in `mapshaper`:
 
     mapshaper my_geodata.shp -o format=geojson - | here xyz upload spaceID -a -t specific_tag
 
@@ -87,13 +87,13 @@ Note that you can also run `mapshaper` as a web app, though there may be limits 
 
 ### HERE Data Hub QGIS plugin
 
-QGIS is an open-source desktop GIS tool that lets you edit, visualize, manage, analyze and convert geospatial data. You can upload and download data from your Data Hub spaces using the [HERE Data Hub QGIS plugin](https://plugins.qgis.org/plugins/XYZHubConnector/). (The plugin is also available [on Github](https://github.com/heremaps/xyz-qgis-plugin).)
+QGIS is an open-source desktop GIS tool that lets you edit, visualize, manage, analyze and convert geospatial data. You can upload and download data from your Data Hub spaces using the [QGIS plugin](https://plugins.qgis.org/plugins/XYZHubConnector/). (The plugin is also available [on Github](https://github.com/heremaps/xyz-qgis-plugin).)
 
-You can install the HERE Data Hub QGIS plugin from within QGIS Plugin search tool if you have the "show experimental plugins" option checked in the plugin console settings.
+You can install the QGIS plugin from within QGIS Plugin search tool if you have the "show experimental plugins" option checked in the plugin console settings.
 
 ![experimental](../images/qgis_plugin_experimental.png)
 
-You can easily open almost any shapefile in QGIS, at which point you can save it to your Data Hub spaces using the HERE Data Hub QGIS plugin, or export it as GeoJSON to the desktop to use the HERE Data Hub CLI streaming upload options.
+You can easily open almost any shapefile in QGIS, at which point you can save it to your Data Hub spaces using the QGIS plugin, or export it as GeoJSON to the desktop to use the HERE Data Hub CLI streaming upload options.
 
 ## Large individual features
 
@@ -127,9 +127,9 @@ As previously mentioned, for smaller shapefiles you can pipe output from `mapsha
 
 - open the shapefile in QGIS
 - choose Vector -> Geometry Tools -> Simplify
-- save the simplified data to a new Data Hub space using the HERE Data Hub plugin
+- save the simplified data to a new Data Hub space using the plugin
 
-Note that the Simplify tool works in decimal degrees, and the default is 1 degree, which is probably not what you want. Useful values depend on the extent and zoom levels of your map, but `0.01`, `0.001`, `0.0001`, and `0.00001` are interesting values.
+The Simplify tool works in decimal degrees, and the default is 1 degree, which is probably not what you want. Useful values depend on the extent and zoom levels of your map, but `0.01`, `0.001`, `0.0001`, and `0.00001` are interesting values.
 
 ## Very large shapefiles (> 200MB)
 
