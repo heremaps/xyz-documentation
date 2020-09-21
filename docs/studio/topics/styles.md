@@ -7,6 +7,7 @@ called a _style_ and there are different options between the basic primitives
 of _Points_,_Lines_ and _Polygons_.
 
 See the following video overview:
+
 <video width="100%"  controls>
   <source src="../videos/simple-styles.mp4" type="video/mp4">
   <source src="../../videos/simple-styles.mp4" type="video/mp4">
@@ -50,6 +51,7 @@ sheets placed one on top of another on top of the underlying map. You can
 change this order by dragging layers up or down in this list.
 
 See the following video overview:
+
 <video width="100%"  controls>
   <source src="../videos/drawing-order.mp4" type="video/mp4">
   <source src="../../videos/drawing-order.mp4" type="video/mp4">
@@ -65,6 +67,7 @@ feature they select. The **Cards** list allows re-ordering of the properties, wh
 all entries below the line will stay hidden. The first line becomes the title of the card.
 
 See the following video overview:
+
 <video width="100%"  controls>
   <source src="../videos/interactive-cards.mp4" type="video/mp4">
   <source src="../../videos/interactive-cards.mp4" type="video/mp4">
@@ -79,6 +82,7 @@ This is probably one of the more powerful styling features as it enables your da
 the look of the map.
 
 See the following video overview:
+
 <video width="100%"  controls>
   <source src="../videos/conditional-styling.mp4" type="video/mp4">
   <source src="../../videos/conditional-styling.mp4" type="video/mp4">

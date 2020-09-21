@@ -8,6 +8,7 @@ You can share a link to your map or copy & paste a snippet of code that you can
 directly include on a web page or in a blog for example.
 
 See the following video overview:
+
 <video width="100%"  controls>
   <source src="../videos/publish-legend.mp4" type="video/mp4">
   <source src="../../videos/publish-legend.mp4" type="video/mp4">

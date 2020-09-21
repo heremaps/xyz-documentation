@@ -14,6 +14,7 @@ You can also _drag and drop_ files directly onto the map. They
 will be uploaded and added to the map automatically.
 
 See the following video overview:
+
 <video width="100%"  controls>
   <source src="../videos/upload-datasets.mp4" type="video/mp4">
   <source src="../../videos/upload-datasets.mp4" type="video/mp4">
@@ -37,6 +38,7 @@ reflected in each map project immediate.
 > link to the dataset.
 
 See the following video overview:
+
 <video width="100%"  controls>
   <source src="../videos/pick-datasets.mp4" type="video/mp4">
   <source src="../../videos/pick-datasets.mp4" type="video/mp4">
@@ -65,6 +67,7 @@ additional columns.
 > select the layer you want to see before you can switch to the table view.
 
 See the following video overview:
+
 <video width="100%"  controls>
   <source src="../videos/data-table.mp4" type="video/mp4">
   <source src="../../videos/data-table.mp4" type="video/mp4">
@@ -74,6 +77,7 @@ You can view a video overview of this content <a href="../videos/data-table.mp4"
 ## Draw and edit geometry
 
 See the following video overview:
+
 <video width="100%"  controls>
   <source src="../videos/draw-geometry.mp4" type="video/mp4">
   <source src="../../videos/draw-geometry.mp4" type="video/mp4">
