@@ -41,7 +41,7 @@ GET /spaces/{spaceId}/features/{featureId}
 
 ## Read Features of a Space
 
-For querying multiple features in a space use the following request.
+For querying multiple features in a space use the following request:
 
 ### Request
 
@@ -164,7 +164,7 @@ To create features in a space or to replace existing ones you can use the follow
 >
 >Existing features will be completely erased by using this PUT request.
 
-To keep already existing features use [this request](#modifying-space-features).
+To keep already existing features, use [this request](#modifying-space-features).
 
 ### Request
 
@@ -426,7 +426,7 @@ A PATCH request needs something like the following body
 
 ## Validation Errors
 
-If you are using the validation feature, you sometimes will get an error message when uploading or modifying features, such as this one:
+If you are using the validation feature, you sometimes will get an error message when uploading or modifying features, such as the following:
 
 ```JSON
 {
@@ -450,7 +450,7 @@ The *message* contains the schema validation errors with a detailed description 
 
 ## Search a Space for Features
 
-There are two ways of searching a space. /search is one of them, the other is [/iterate](#iterating-features-from-specific-spaces). This does not order the results and it does not enable you to continue the search.
+There are two ways of searching a space. /search is one, the other is [/iterate](#iterating-features-from-specific-spaces). This does not order the results and it does not enable you to continue the search.
 
 ### Request
 
@@ -504,7 +504,7 @@ GET /spaces/{spaceId}/search
 
 ## Iterate Features from Specific Spaces
 
-This is the second way to search a space (the other, you guessed it, is [/search](#searching-a-space-for-features)). Iterate allows you to iterate over all the matching features with the handle *handle* as a query parameter
+This is the second way to search a space (the other is [/search](#searching-a-space-for-features)). Iterate allows you to iterate over all the matching features with the handle *handle* as a query parameter
 
 ### Request
 
@@ -558,7 +558,7 @@ GET /spaces/{spaceId}/iterate
 
 ## Delete Multiple Features
 
-You can get rid of specific features by sending this request with their feature IDs
+You can remove specific features by sending this request with their feature IDs
 
 ### Request
 

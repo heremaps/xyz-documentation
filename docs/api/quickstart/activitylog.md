@@ -28,7 +28,7 @@
     }
     ```
 
-1. Check spaces. You will find the just created one, as well as a new one, that has a title like: Activity log for space \<newSpaceId\>
+1. Check spaces. You will find one, as well as a new one, that has a title like: Activity log for space \<newSpaceId\>
 
     ```HTTP
     GET /spaces
@@ -85,7 +85,7 @@
     }
     ```
 
-1. Check into your activity log space:
+1. Check your activity log space:
 
     ```HTTP
     GET /spaces/<activityLogSpaceId>/iterate
@@ -93,7 +93,7 @@
 
     *Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/iterateFeatures)*
 
-    This results in something like this
+    This results in something similar to:
 
     ```JSON
     {

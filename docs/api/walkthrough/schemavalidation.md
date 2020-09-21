@@ -4,8 +4,8 @@
 >
 > Your account needs access to the Data Hub Add-on Services.
 
-To use Schema Validation you need to put additional data into the space
-definition. Please add a processor with the ID *schema-validator* and put
+To use Schema Validation, you need to put additional data into the space
+definition. Add a processor with the ID *schema-validator* and put
 either a URL to a valid JSON schema or the complete schema as JSON string into
 the param *schema*:
 
@@ -26,7 +26,7 @@ the param *schema*:
 
 > #### Note
 >
-> If you use an URL please make sure that the URL is public accessible.
+> If you use an URL, ensure that the URL is public accessible.
 
 ### Request
 
@@ -75,15 +75,15 @@ POST /spaces
 }
 ```
 
-Please note that the field *schema* has been replaced with a field *schemaUrl*
+Note that the field *schema* has been replaced with a field *schemaUrl*
 that points to a private copy in the Data Hub S3 bucket.
 
 ## Validating your data
 
-Just POST/PUT your data like you would without Schema Validation. If the
+POST/PUT your data as you would without Schema Validation. If the
 features are valid they will be stored. All failing objects will **NOT** be
 stored and position, ID (if set by the developer) and error messages will be
-returned. Please note that the position is zero based, so 0 is the first object,
+returned. Note that the position is zero based, so 0 is the first object,
 1 the second and so on.
 
 ### Request
@@ -250,7 +250,7 @@ PATCH /spaces/{spaceId}
 ## Disabling Schema Validation
 
 To disable the Schema Validation just update the space definition but not send
-the *schema-validator* processor definition. Please note that you have to
+the *schema-validator* processor definition. Note that you have to
 include **all other** processor definitions if there are multiple; otherwise
 you will disable all processors.
 

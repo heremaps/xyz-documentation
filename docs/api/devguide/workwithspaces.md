@@ -10,7 +10,7 @@
 POST /spaces
 ```
 
-As it is a POST request, it has to have at least the following body.
+Because it is a POST request, it has to have at least the following body.
 
 ```JSON
 {
@@ -86,7 +86,7 @@ GET /spaces
 PATCH /spaces/{spaceId}
 ```
 
-which requires a body like the following:
+which requires a body such as the following:
 
 ```JSON
 {
@@ -114,7 +114,7 @@ which requires a body like the following:
 DELETE /spaces/{spaceId}
 ```
 
-A successful response to this request is the following
+A successful response to this request is the following:
 
 ### Response
 

@@ -11,8 +11,7 @@ beside a road.
 You can realize that kind of spatial search by providing a Point or LineSting Geometry and a radius, indicated
 in meters, which gets applied to thicken the input Geometry.
 
-Another common usecase is: find all Features which are belonging to a country. Thereto you only need to provide
-the Polygon Geometry of the country.  
+Another common usecase is: find all Features which are belonging to a country. For this, you only need to provide the Polygon Geometry of the country.  
 
 All [GeoJSON](../concepts/geojsonbasics.md) Geometry
 types are allowed as input [Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon].
@@ -24,7 +23,7 @@ The easiest way for providing a search Geometry is submitting it via a POST-Requ
 ### Referencing an existing Geometry for a Spatial Search
 
 Another way to provide a search Geometry is to read it from a existing Feature, which is stored in a Data Hub Space
-that you have access to. This is recommended if your search Geometry is a really complex one, or if you want to store
+that you have access to. This is recommended if your search Geometry is very complex, or if you want to store
 frequently used Geometries for spatial searches.
 
 ### Extend Spatial Search
@@ -106,7 +105,7 @@ GET /spaces/{spaceId}/spatial?refSpaceId={referencedSpace}&refFeatureId
 Spatial-Search by posting a Geometry:
 
 ```HTTP
-POST /spaces/{spaceId}/spatial
+POST /spaces/{spaceId}
 ```
 
 with the following body
