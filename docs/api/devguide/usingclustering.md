@@ -5,7 +5,7 @@ clustered form.
 
 ## Get clustered Features in a Bounding Box
 
-While retrieving features from Spaces inside a tile or bounding box you can use the "hexbin"
+While retrieving features from Spaces inside a tile or bounding box you can use "hexbin"
 clustering to visualize your data as hexagons. Each hexagon represents the features of the area it
 covers. Additional statistical information about one property of your data can be evaluated and
 returned as properties of the returned hexagonal features.

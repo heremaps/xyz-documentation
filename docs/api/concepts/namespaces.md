@@ -74,11 +74,11 @@ with the following body
 }
 ```
 
-When you upload a feature to Data Hub, we automatically add a property *@ns:com:here:xyz* to it. The following information is recorded in this property:
+When you upload a feature to Data Hub, HERE automatically adds a property *@ns:com:here:xyz* to it. The following information is recorded in this property:
 
 + *createdAt* - date and time the feature was created in milliseconds since 01.01.1970
 + *updatedAt* - date and time the feature was updated in milliseconds since 01.01.1970
 + *space* - random unique space ID, created at space creation, a string
 + *tags* - the tags you added to the space, an array of strings
 
-We use the namespace to store the additional information in the object without interfering with the properties you provided.
+We use the namespace to store additional information in the object without interfering with the properties you provided.

@@ -7,7 +7,7 @@
 This section describes how to use the extended capability of enabling property-search for
 user-specified properties of your GeoJSON features inside a space.
 
-It is recommended that you read the ["properties-search"](propertiessearch.md) guide before going on
+It is recommended that you read the ["properties-search"](propertiessearch.md) guide before proceeding
 with this more specific guide.
 
 ## Searching for features in a space
@@ -20,7 +20,7 @@ the `/spaces/{spaceId}` endpoint.
 flags telling whether the property should be searchable or not.
 
 The following sample shows how to define `someProperty1` to be searchable and `someProperty2` to
-be not searchable. In case you're wondering about the latter: That could be necessary to tell Data Hub
+be not searchable. In case you're wondering about the latter: This could be necessary to tell Data Hub
 to revoke the decision of making `someProperty2` searchable in the automated algorithm.
 
 **TL;DR**

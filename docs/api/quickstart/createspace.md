@@ -1,6 +1,6 @@
 # Create a Space
 
-Here you see the request and response for creating a new space:
+See the following request and response for creating a new space:
 
 ## Request
 
