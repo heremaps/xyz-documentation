@@ -105,7 +105,7 @@ GET /spaces/{spaceId}/spatial?refSpaceId={referencedSpace}&refFeatureId
 Spatial-Search by posting a Geometry:
 
 ```HTTP
-POST /spaces/{spaceId}
+POST /spaces/{spaceId}/spatial
 ```
 
 with the following body

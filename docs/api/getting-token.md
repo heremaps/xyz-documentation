@@ -34,7 +34,7 @@ It's good practice to keep the number, rights and layers to a minimum needed for
 
 ## Generate Token
 
-Next, click on **Generate Token** to see you token:
+Next, click on **Generate Token** to see your token:
 
 ![List of Generated Tokens](images/token-list.png)
 

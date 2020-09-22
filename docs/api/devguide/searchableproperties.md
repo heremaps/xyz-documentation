@@ -7,7 +7,7 @@
 This section describes how to use the extended capability of enabling property-search for
 user-specified properties of your GeoJSON features inside a space.
 
-It is recommended that you read the ["properties-search"](propertiessearch.md) guide before proceding
+It is recommended that you read the ["properties-search"](propertiessearch.md) guide before proceeding
 with this more specific guide.
 
 ## Searching for features in a space
