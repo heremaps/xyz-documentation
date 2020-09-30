@@ -128,7 +128,7 @@ Applies a schema validation json file to the space to be applied to future uploa
 
 #### [Upload/Update data to a Space](command-reference.md#upload)
 
-The CLI makes it easy to upload geospatial files to a Data Space, and there are a large number of options to enhance, optimize and speed up the upload process.
+The CLI makes it easy to upload geospatial files to a Data Hub Space, and there are a large number of options to enhance, optimize and speed up the upload process. 
 
 ##### Upload GeoJSON
 
@@ -152,12 +152,11 @@ here xyz upload SPACE_ID -f /Users/xyz/data.geojson
 
 > #### Note
 >
-> Data Hub requires that every feature in a space has a unique ID. This is to access individual
-> features in a space using the API.
+> Data Hub requires that every feature in a space has a unique ID. This helps you access individual features in a space using the API.
 >
-> If a GeoJSON feature does not have an ID (a common occurance), Data Hub's default upload behavior is to create one based on a hash of the feature's property &mdash; if you have records with duplicate IDs in a dataset at the same location with the same properties, only one will be uploaded. You can define a new feature ID using more than one property using `-i`.)
+> If a GeoJSON feature does not have an ID (a common occurance), Data Hub's default upload behavior is to create one based on a hash of the feature's property &mdash; note that if you have records with duplicate IDs in a dataset at the same location with the same properties, only one will be uploaded. You can define a new feature ID using more than one property using `-i`.)
 >
-> If you are certain that your dataset has a well-managed set of unique feature IDs, use `upload -o` to have Data Hub use them. If you use `-o` to upload a new dataset, and a new feature has the same ID as an existing feature, Data Hub will consider it an update and overwrite the existing feature with the new feature. Note that many public datasets often have a "unique" set of feature IDs that are simply incremental integers which can lead to feature replacement that you probably didn't want when you are uploading multiple files to the same space.
+> By default, the CLI will respect any IDs already in a feature. Note that if a new feature has the same ID as an existing feature, Data Hub will consider it an update and overwrite the existing feature.  Note that some public datasets have a set of feature IDs that are simply incremental integers, which can lead to feature replacement that you probably didn't want when you are uploading multiple files to the same space. In this case, you may want to use `-o` to create a unique feature ID one based on a hash of the feature's properties, or use multiple properties with `-i` to generate something unique and human-readable.
 
 ##### Upload a CSV file
 
@@ -194,7 +193,7 @@ Rows that have `0,0` or `null` values in the designated latitude and longitude c
 
 If the lat/lon columns contain letters or other invalid characters, the features are tagged with `invalid`.
 
-If you specify `upload --noCoords`, the CLI will upload the CSV rows as features with no geometry. This is useful for working with data tables that you want to dynamically merge with geometries using Virtual Spaces.
+If you specify `upload --noCoords`, the CLI will upload the CSV rows as features with a null geometry obbject, and tag it with `null_island`. This is useful for working with data tables that you want to dynamically merge with geometries using Virtual Spaces.
 
 > #### Tip
 >
@@ -217,11 +216,19 @@ You can use `--groupby` with `-i` to consolidate multiple rows "belonging to" a 
 
 ##### Chunking
 
-You can adjust the "chunk" size when streaming an upload. This controls the number of features that the CLI sends to the API at a time. The default chunk size is 200 features.
+You can adjust the "chunk" size when streaming an upload. This controls the number of features that the CLI sends to the API at a time. The default chunk size is 200 features. 
+
+> #### Tip
+>
+> Using `-c 1` and `-e` can help troubleshoot problematic features in individual GeoJSON features.
 
 ###### Large features
 
-You may see upload errors from the CLI if your features are large, complex geometries. By decreasing the chunk size, you may still be able to upload these large features. Try `-c 100`, or even `-c 10` or `-c 1`. If you continue to see errors you may need to [simplify the geometries](tutorials/shapefiles.md) before uploading them.
+You may see upload errors from the CLI if your features are large, complex geometries. By decreasing the chunk size, you may still be able to upload these large features. Try `-c 100`, or even `-c 10` or `-c 1`. 
+
+As of v1.6, if the CLI receives a `413 Request Entity Too Large` error, it will cut the chunk size in half in an attempt to upload the features.
+
+If you continue to see errors -- probably because a single feature is larger than the limit of the API gateway (approximately 10MB -- you may need to [simplify the geometry](tutorials/shapefiles.md) before uploading them.
 
 ###### Small features
 
@@ -280,7 +287,7 @@ here xyz upload -f data.csv -i unique_id
 
 Upload data to a Data Hub space with a feature ID based on the feature's property `unique_id`.
 
-This feature should be used if your data has well-known and truly unique identifiers that you want to preserve. The Data Hub API can [query individual features by feature ID](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/getFeatures), so this can be a valuable method of accessing and updating data.
+This feature should be used if your data has well-known and truly unique identifiers that you want to preserve. The Data Hub API can [query individual features by feature ID](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/getFeatures), so this can be a valuable method of accessing and updating features.
 
 By default, the CLI will generate a unique feature ID during upload based on a hash of the properties and geometry.
 
@@ -322,7 +329,7 @@ Uploads data and allows users to select tags from a list of feature keynames in 
 here xyz upload -f file.geojson -p treatment
 ```
 
-Uploads data and adds the value of the selected feature property as tag. These tags can be used to filter data when querying the HERE Data Hub API. The tags will be stored as `propertyname@value`. This is most effective when the property consists of a limited number of qualitative values.
+Uploads data and adds the value of the selected feature property as tag. These tags can be used to filter data when querying the HERE Data Hub API. The tags will be stored as `propertyname@value`. This is most effective when the property consists of a limited number of qualitative values -- if you have a large number of unique values, or quantitative values, you are better off using Property Search.
 
 ###### Response
 
@@ -332,7 +339,7 @@ treatment@green_paint, treatment@sharrows, treatment@hit_post
 
 ##### Upload data with timestamp and date properties
 
-If you have timestamp or date properties in your data, the CLI can help you create additional time and date specific properties and time-based tags.
+If you have timestamp or date properties in your data, the CLI can help you create additional time and date specific properties and time-based tags. This will make it easier to use the Data Hub Property Search feature.
 
 ```console
 here xyz upload <SPACE_ID> -f <CSV|GEOJSON> --date <propertyname>
@@ -436,7 +443,7 @@ While uploading shapefiles, `--batch` will inspect one level of sub-directories 
 
 `-a, --assign`         lists a sample of properties, allowing you to assign fields to be selected as tags and Feature IDs
 
-`-o, --override`       override default property hash feature ID generation and use existing GeoJSON feature IDs
+`-o, --override`       override existing GeoJSON feature IDs and generate unique IDs using the property hash function
 
 `-d, --delimiter [,]`  an alternate delimiter used in CSV (default: ",")
 
@@ -450,9 +457,13 @@ While uploading shapefiles, `--batch` will inspect one level of sub-directories 
 
 `--groupby <groupby>`             consolidate multiple rows of a CSV into a single feature based on a unique ID designated with -i; values of each row within the selected column will become top level properties within the consolidated feature
 
+`--flatten`             stores the groupby operation output in a flattened format separated by colon (:)
+
+`--promote <promote>`             comma-separated colunm names which should not be nested in the groupby object
+
 `--date <date>`                   date-related property name(s) of a feature to be normalized as an ISO 8601 datestring (`xyz_iso8601_[propertyname]`), and unix timestamp (`xyz_timestamp_[propertyname]`)
 
-`--datetag [datetagString]`       comma separated list of granular date tags to be added via --date. possible options - year, month, week, weekday, year_month, year_week
+`--datetag [datetagString]`       comma-separated list of granular date tags to be added via --date. possible options - year, month, week, weekday, year_month, year_week
 
 `--dateprops [datepropsString]`   comma separated list of granular date properties to be added via --date. possible options - year, month, week, weekday, year_month, year_week
 
@@ -463,6 +474,26 @@ While uploading shapefiles, `--batch` will inspect one level of sub-directories 
 `--batch [batch]`                 select type of files to be uploaded in batch (select directory with -f)
 
 `-h, --help`           output usage information
+
+> #### Tip
+>
+> You can pipe data to the `upload` command and an existing space
+
+> #### Note
+>
+> Some GeoJSON features may cross the international dateline, and in older GeoJSON files, some coordinates may have longitudes greater than 180 or less than -180. You cannot upload these features to Data Hub – these features should be split into MultiPolygons or MultiLineStrings.
+
+#### [Join data to another space](command-reference.md#join)
+
+```console
+here xyz join YOUR_SPACE_ID -f data.csv --keys csv_column
+```
+
+`join` will upload a csv and create a new Virtual Space -- it simplifies the steps one does with `here xyz upload -f my.csv --noCoords` and `here xyz vs -a csvspace,geometryspace`. 
+
+> #### Note
+
+> It is not recommended you build scripts using `join` until v1.7 as the order of the command will be changing to operate more like `upload spaceID`, where the space ID in the command will contain the csv, and `--target spaceID` will contain the geometry space.
 
 #### [Show contents of a space](command-reference.md#show)
 
@@ -480,6 +511,10 @@ here xyz show spaceID -r > my.geojson
 
 If your space contains a few hundred to a few thousand features, you can open the space in geojson.tools, a data preview tool, using `show -w`.  
 Larger spaces can be previewed in [Space Invader](space-invader/index.md), a Tangram-based tool from Data Hub Labs, using `show -v`, and features like H3 hexbin and quadbin clustering can be used to visualize even larger spaces.
+
+> #### Note
+
+> As of v1.6, tokens generated using `-v` and `-w` are for the that space only. Also, these tokens expire in 48 hours by default. To generate a permanent token for a space, use `--permanent` or `-x`.
 
 ##### Filter by Tags
 
@@ -528,7 +563,7 @@ You can use `--spatial` to search for features in a Data Hub space that fall wit
 
 You can specify a point and a radius, or a feature in another Data Hub space, or a GeoJSON file containing a feature.
 
-- `--center`: comma separated `lat,lon` values that specify the center point for the search
+- `--center`: comma separated `lon,lat` values `(x,y)` that specify the center point for the search
 - `--radius`: the radius of the search, in meters, from the `--center` point, or a buffer around a geometry specified with `--feature` or `--geometry`
 - `--feature`: comma separated `spaceid,featureid` values that specify a reference geometry from another HERE Data Hub space -- this will return features from the first space that fall within or along a feature from the second space
 - `--geometry`: a single GeoJSON feature in a file to be uploaded for the spatial query
@@ -545,19 +580,21 @@ These results are most easily viewable using `show -w`.
 
 `-r, --raw` show raw Data Hub space content
 
-`--all` iterate over entire Data Hub space to get entire data of space, output will be shown on the console in geojson format
+`--all` iterate over entire Data Hub space to get entire data of space, output will be shown on the console in geojson format (and can be directed to a file using `>`)
 
 `--geojsonl` to print output of --all in geojsonl format
 
 `-c, --chunk [chunk]` chunk size to use in --all option, default 5000
 
-`--token <token>` a external token to access another user's space
+`--token <token>` an external token to access another user's space
 
 `-p, --prop <prop>` selection of properties, use p.\<FEATUREPROP\> or f.<id/updatedAt/tags/createdAt>
 
 `-w, --web` display Data Hub space on [http://geojson.tools](http://geojson.tools)
 
 `-v, --vector` inspect and analyze using [Data Hub Space Invader](space-invader/index.md) and tangram.js
+
+`-x, --permanent` generate a permanent token for the space when using `-v` or `-w` instead of a temporary token that expire in 48 hours)
 
 `-s, --search <propfilter>` search expression in "double quotes", use single quote to signify string value,  use p.\<FEATUREPROP\> or f.\<id/updatedAt/tags/createdAt\> (Use
                              '+' for AND , Operators : >,<,<=,<=,=,!=) (use comma separated values to search multiple values of a property) {e.g.
@@ -571,9 +608,10 @@ These results are most easily viewable using `show -w`.
 
 `--feature <feature>` comma separated spaceid,featureid values to specify reference geometry (taken from feature) for spatial query
 
-`--geometry <geometry>` geometry file to upload for spatial query (single feature in geojson file)
+`--geometry <geometry>` geometry file to upload for a spatial query (single feature in geojson file)
 
 `-h, --help` display help for command
+
 
 #### [Delete a Space](command-reference.md#delete)
 
@@ -735,7 +773,7 @@ If you want to selectively share a space, you should generate a token for just t
 
 ### Transform csv, shp and gpx to geojson
 
-The `here transform` command converts CSVs, shapefiles, and GPX files to GeoJSON. Note this will generate raw GeoJSON and not save it to a space. The `upload` command uses `transform`.
+The `here transform` command converts CSVs, shapefiles, XLS/XLSX, and GPX files to GeoJSON. Note this will generate raw GeoJSON and not save it to a space. The `upload` command uses `transform`.
 
 ### Geocode locations
 
