@@ -80,7 +80,7 @@ As the name suggests, a **MultiLineString** *coordinates* array contains **LineS
 
 Each element of a **Polygon** *coordinates* array has to be a special **LineString** *coordinates* array. This special kind is called a ***'linear ring'*** in the RFC specification. In a ***'linear ring'*** the first and last elements in the *coordinates* array are the same.
 
-If the **Polygon** contains more than one ***'linear ring'***, that is a shape with holes, the first ring must describe the exterior ring, the following the holes. The coordinates of the exterior ring must be listed counterclockwise, the coordinates of the hole(s) clockwise.
+If the **Polygon** contains more than one ***'linear ring'***, that is a shape with holes, the first ring must describe the exterior ring, following the holes. The coordinates of the exterior ring must be listed counterclockwise, the coordinates of the hole(s) clockwise.
 
 ### Example Polygon
 
@@ -151,7 +151,7 @@ The value of *properties* can be any GeoJSON object or a GeoJSON null value.
 
 ## FeatureCollection
 
-A **FeatureCollection** contains an array of **Features**, contained in a member called unsurprisingly *features*.
+A **FeatureCollection** contains an array of **Features**, contained in a member called *features*.
 
 ### Example FeatureCollection
 
@@ -192,7 +192,7 @@ A **FeatureCollection** contains an array of **Features**, contained in a member
 A **GeometryCollection** is a collection of zero or more geometry objects like the ones above in an array member called *geometries*
 
 > #### Warning
-> GeometryCollection is not supported by HERE XYZ Hub. It is just included here for completeness.
+> GeometryCollection is not supported by HERE XYZ Hub. It is included here for completeness.
 
 ### Example GeometryCollection
 

@@ -6,11 +6,11 @@
 >
 > Your account needs access to the Data Hub Add-on Services.
 
-If you just want to have a quick go at Activity Log, head over to the [quick start guide](../quickstart/activitylog.md).
+If you just want to use the Activity Log, go to the [quick start guide](../quickstart/activitylog.md).
 
-This connector provides the user with the possibility to track changes to his space. By activating this feature, every modification of features (insert/update/delete by the **ModifyFeaturesEvent**) is tracked and stored in a separate space.
+This connector provides the user with the possibility to track changes to their space. By activating this feature, every modification of features (insert/update/delete by the **ModifyFeaturesEvent**) is tracked and stored in a separate space.
 
-To activate it, just create a space with the listener added and enableUUID set to true:
+To activate it, create a space with the listener added and enableUUID set to true:
 
 ``` javascript
 {
@@ -36,7 +36,7 @@ The storage mode decides how the features will be stored.
 
 **ATTENTION**: Applying the diff to the current feature will return the previous (older) feature. This means that adding a new property to a feature, will be shown as 'remove' & 'pathToNewProperty' in the diff of the current.
 
-**IMPORTANT**: Since it is technically not possible to write changes for *`DeleteFeaturesByTagEvent`*, this event type is completely forbidden and the support of this event in the current space is removed.
+**IMPORTANT**: Since it is technically not possible to write changes for *`DeleteFeaturesByTagEvent`*, this event type is forbidden and the support of this event in the current space is removed.
 
 Within the ModifySpaceEvent, the listener prepares everything and modifies the space to log changes. It will create a new space where the features will be written to, register a new listener that will actually write the modifications and add a processor to prohibit the DeleteByTagEvents.  
 Since the ModifyFeatureEvent.response is picked up in a listener, the actual features to log are written asynchronously to the newly created space. As a result, the performance of the actual request is not decreased.

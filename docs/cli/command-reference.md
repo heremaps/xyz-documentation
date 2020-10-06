@@ -1,4 +1,4 @@
-# Here CLI Command Reference
+# HERE Data Hub CLI Command Reference
 
 In this section you can find all the supported commands and subcommands along with supported options.
 
@@ -15,7 +15,7 @@ Commands:
 
 ### [configure](basic-features.md#log-in-to-your-data-hub-account)
 
-Configure Here Developer account on Here CLI.
+Configure Here Developer account on HERE Data Hub CLI.
 
 ```console
 Commands:
@@ -28,33 +28,33 @@ Commands:
 
 ### [xyz](basic-features.md#interact-with-data-hub-spaces)
 
-Data Hub Space related operations
+HERE Data Hub Space related operations
 
 ```console
 Commands:
-  list|ls [options]        information about available Data Hub spaces
+  list|ls [options]        information about available Data Hub Spaces
   analyze [options] <id>   property based analysis of the content of the
                            given [id]
   hexbin [options] <id>    create fixed height hexbins (and their centroids)
                            using points in a Data Hub space, and upload them to
                            another space
   show [options] <id>      shows the content of the given [id]
-  delete [options] <id>    delete the Data Hub space with the given id
-  create [options]         create a new Data Hub space
-  clear [options] <id>     clear data from Data Hub space
+  delete [options] <id>    delete the Data Hub Space with the given id
+  create [options]         create a new Data Hub Space
+  clear [options] <id>     clear data from Data Hub Space
   token [options]          list all Data Hub tokens
   upload [options] [id]    upload GeoJSON, CSV, or a Shapefile to the given
-                           id -- if no spaceID is given, a new space will be
+                           id -- if no spaceID is given, a new Space will be
                            created
   config [options] [id]    configure/view advanced Data Hub features for
                            space
   join [options] <id>      {Data Hub Add-on} create a new virtual Data Hub
-                           space with a CSV and a space with geometries,
+                           space with a CSV and a Space with geometries,
                            associating by feature ID
   virtualize|vs [options]  {Data Hub Add-on} create a new virtual Data Hub
                            space
   gis [options] <id>       {Data Hub Add-on} perform gis operations with
-                           space data
+                           Space data
   help [command]           display help for command
 ```
 
@@ -64,13 +64,13 @@ Create a new Data Hub Space.
 
 ```console
 Options:
-  -t, --title [title]       Title for Data Hub space
+  -t, --title [title]       Title for Space
   -d, --message [message]   Short description
   --token <token>           a external token to create space in other user's
                             account
   -s, --schema [schemadef]  set json schema definition (local filepath / http
-                            link) for your space, all future data for this
-                            space will be validated for the schema
+                            link) for your Space, all future data for this
+                            Space will be validated for the schema
   -h, --help                display help for command
 ```
 
@@ -80,9 +80,9 @@ Information about available Data Hub spaces
 
 ```console
 Options:
-  -r, --raw          show raw Data Hub space definition
-  --token <token>    a external token to access another user's spaces
-  --filter <filter>  a comma separted strings to filter spaces
+  -r, --raw          show raw Space definition
+  --token <token>    a external token to access another user's Spaces
+  --filter <filter>  a comma separted strings to filter Spaces
   -p, --prop <prop>  property fields to include in table (default: [])
   -h, --help         display help for command
 ```
@@ -96,8 +96,8 @@ Options:
   -l, --limit <limit>        Number of objects to be fetched
   -o, --offset <offset>      The offset / handle to continue the iteration
   -t, --tags <tags>          Tags to filter on
-  -r, --raw                  show raw Data Hub space content
-  --all                      iterate over entire Data Hub space to get entire
+  -r, --raw                  show raw Space content
+  --all                      iterate over entire Space to get entire
                              data of space, output will be shown on the console
                              in geojson format
   --geojsonl                 to print output of --all in geojsonl format
@@ -105,7 +105,7 @@ Options:
   --token <token>            a external token to access another user's space
   -p, --prop <prop>          selection of properties, use p.<FEATUREPROP> or
                              f.<id/updatedAt/tags/createdAt>
-  -w, --web                  display Data Hub space on http://geojson.tools
+  -w, --web                  display Space on http://geojson.tools
   -v, --vector               inspect and analyze using Data Hub Space Invader
                              and tangram.js
   -s, --search <propfilter>  search expression in "double quotes", use single
@@ -113,7 +113,7 @@ Options:
                              p.<FEATUREPROP> or f.<id/updatedAt/tags/createdAt>
                              (Use '+' for AND , Operators : >,<,<=,<=,=,!=)
                              (use comma separated values to search multiple
-                             values of a property) {e.g.
+                             values of a property) {e.g.,
                              "p.name=John,Tom+p.age<50+p.phone='9999999'+p.zipcode=123456"}
   --spatial                  indicate to make spatial search on the space
   --radius <radius>          indicate to make radius spatial search or to
@@ -141,16 +141,16 @@ Upload GeoJSON, CSV, or a Shapefile to the given Space -- if no spaceID is given
   -c, --chunk [chunk]             chunk size, default 200 -- use lower values
                                   (1 to 10) to allow safer uploads of very
                                   large geometries (big polygons, many
-                                  properties), use higher values (e.g. 500 to
+                                  properties), use higher values (e.g., 500 to
                                   5000) for faster uploads of small geometries
                                   (points and lines, few properties)
-  -t, --tags [tags]               fixed tags for the Data Hub space
+  -t, --tags [tags]               fixed tags for the Space
   --token <token>                 a external token to upload data to another
-                                  user's space
+                                  user's Space
   -x, --lon [lon]                 longitude field name
   -y, --lat [lat]                 latitude field name
   -z, --point [point]             points field name with coordinates like
-                                  (Latitude,Longitude) e.g. (37.7,-122.4)
+                                  (Latitude,Longitude) e.g., (37.7,-122.4)
   --lonlat                        parse a -—point/-z csv field as (lon,lat)
                                   instead of (lat,lon)
   -p, --ptag [ptag]               property name(s) to be used to add tags,
@@ -173,7 +173,7 @@ Upload GeoJSON, CSV, or a Shapefile to the given Space -- if no spaceID is given
   -e, --errors                    print data upload errors
   --string-fields <stringFields>  property name(s) of CSV string fields *not*
                                   to be automatically converted into numbers or
-                                  booleans (e.g. number-like census geoids,
+                                  booleans (e.g., number-like census geoids,
                                   postal codes with leading zeros)
   --groupby <groupby>             consolidate multiple rows of a CSV into a
                                   single feature based on a unique ID
@@ -213,16 +213,16 @@ Clear data from a Data Hub Space.
 
 ```console
 Options:
-  -t, --tags <tags>  tags for the Data Hub space
-  -i, --ids <ids>    ids for the Data Hub space
-  --token <token>    a external token to clear another user's space data
+  -t, --tags <tags>  tags for the Space
+  -i, --ids <ids>    ids for the Space
+  --token <token>    a external token to clear another user's Space data
   --force            skip the confirmation prompt
   -h, --help         display help for command
 ```
 
 #### [delete](basic-features.md#delete-a-space)
 
-Delete a given Data Hub Space.
+Delete a given Space.
 
 ```console
 Options:
@@ -243,26 +243,26 @@ Options:
 
 #### [config](basic-features.md#get-or-update-more-information-about-your-spaces)
 
-Configure/view advanced Data Hub features for a space.
+Configure/view advanced Data Hub features for a Space.
 
 ```console
 Options:
   --shared <flag>             set your space as shared / public (default is
                               false)
-  -t,--title [title]          set title for the space
-  -d,--message [message]      set description for the space
-  -c,--copyright [copyright]  set copyright text for the space
-  --cacheTTL <cacheTTL>       set cacheTTL value for the space with valid
+  -t,--title [title]          set title for the Space
+  -d,--message [message]      set description for the Space
+  -c,--copyright [copyright]  set copyright text for the Space
+  --cacheTTL <cacheTTL>       set cacheTTL value for the Space with valid
                               number
   --stats                     see detailed space statistics
-  --token <token>             a external token to access another user's space
+  --token <token>             a external token to access another user's Space
                               config and stats information
   -r, --raw                   show raw json output
   -s,--schema [schemadef]     view or set schema definition (local filepath /
-                              http link) for your space, applicable on future
+                              http link) for your Space, applicable on future
                               data, use with add/delete/update
-  --searchable                view or configure searchable properties of an
-                              Data Hub space, use with add/delete/update
+  --searchable                view or configure searchable properties of a
+                              Space, use with add/delete/update
   --tagrules                  add, remove, view the conditional rules to tag
                               your features automatically, use with
                               add/delete/update -- at present all tag rules
@@ -276,7 +276,7 @@ Options:
                               respective configurations
   --view                      use with schema/searchable/tagrules options to
                               view the respective configurations
-  --activitylog               configure activity logs for your space
+  --activitylog               configure activity logs for your Space
                               interactively
   --console                   opens web console for Data Hub
   -h, --help                  display help for command
@@ -284,16 +284,16 @@ Options:
 
 #### [virtualize](add-on.md#virtual-spaces)
 
-Create a new virtual Data Hub space.
+Create a new virtual Space.
 
 ```cli
 Options:
-  -t, --title [title]         Title for virtual Data Hub space
-  -d, --message [message]     set description for the space
-  -g, --group [spaceids]      Group the spaces (all objects of each space will
+  -t, --title [title]         Title for virtual Space
+  -d, --message [message]     set description for the Space
+  -g, --group [spaceids]      Group the Spaces (all objects of each space will
                               be part of the response) - enter comma separated
-                              space ids
-  -a, --associate [spaceids]  Associate the spaces. Features with same id will
+                              Space ids
+  -a, --associate [spaceids]  Associate the Spaces. Features with same id will
                               be merged into one feature. Enter comma separated
                               space ids [space1,space2] -- space1 properties
                               will be merged into space2 features.
@@ -302,7 +302,7 @@ Options:
 
 #### [join](add-on.md#join-virtual-spaces)
 
-Create a new virtual Data Hub space with a CSV and a space with geometries, associating by feature ID.
+Create a new virtual Space with a CSV and a space with geometries, associating by feature ID.
 
 ```console
 Options:
@@ -311,19 +311,19 @@ Options:
   -x, --lon [lon]                 longitude field name
   -y, --lat [lat]                 latitude field name
   -z, --point [point]             points field name with coordinates like
-                                  (Latitude,Longitude) e.g. (37.7,-122.4)
+                                  (Latitude,Longitude) e.g., (37.7,-122.4)
   --lonlat                        parse a —point/-z csv field as (lon,lat)
                                   instead of (lat,lon)
   -d, --delimiter [,]             alternate delimiter used in csv (default:
                                   ",")
   -q, --quote ["]                 quote used in csv (default: "\"")
   --token <token>                 a external token to create another user's
-                                  spaces
+                                  Spaces
   -s, --stream                    streaming data for faster uploads and large
                                   csv support
   --string-fields <stringFields>  property name(s) of CSV string fields *not*
                                   to be automatically converted into numbers or
-                                  booleans (e.g. number-like census geoids,
+                                  booleans (e.g., number-like census geoids,
                                   postal codes with leading zeros)
   --groupby <groupby>             consolidate multiple rows of a CSV into a
                                   single feature based on a unique ID
@@ -335,7 +335,7 @@ Options:
 
 #### [hexbin](add-on.md#hexbin)
 
-Create fixed height hexbins (and their centroids) using points in a Data Hub space, and upload them to another space
+Create fixed height hexbins (and their centroids) using points in a Space, and upload them to another Space.
 
 ```console
 Options:
@@ -375,19 +375,19 @@ Perform GIS operations with space data.
 ```console
 Options:
   --centroid             calculates centroids of Line and Polygon features and
-                         uploads in a different space
+                         uploads in a different Space
   --length               calculates length of LineString features
   --area                 calculates area of Polygon features
   --voronoi              calculates Voronoi Polygons of point features and
-                         uploads in different space
+                         uploads in different Space
   --tin                  calculates Delaunay Polygons of point features and
-                         uploads in different space
+                         uploads in different Space
   --property <property>  populates Delaunay polygons' properties based on the
                          specified feature property
   -c, --chunk [chunk]    chunk size, default 20 -- default for polygons,
                          increase for faster point feature uploads
-  -t, --tags <tags>      source space tags to filter on
-  --samespace            option to upload centroids/voronoi/tin to same space,
+  -t, --tags <tags>      source Space tags to filter on
+  --samespace            option to upload centroids/voronoi/tin to same Space,
                          use tags to filter
   -h, --help             display help for command
 ```

@@ -1,19 +1,19 @@
-# HERE CLI
+# HERE Data Hub CLI
 
 In this section we give you a quick overview of the most commonly used commands to interact
-with Data Hub Spaces from the HERE CLI.
+with Data Hub Spaces from the HERE Data Hub CLI.
 
 > #### Warning
 >
->**Configuration is required for HERE CLI to work**
+>**Configuration is required for HERE Data Hub CLI to work**
 >
 > If you have skipped the previous section now is the time to go back and make sure
-    HERE CLI is properly configured with your developer identity. In case you are not
-    sure, you can run `here configure verify` to check if your credentials are valid.
+> HERE Data Hub CLI is properly configured with your developer identity. In case you are not
+> sure, you can run `here configure verify` to check if your credentials are valid.
 
 ## Supported Commands
 
-HERE CLI is built to be modular and extensible, so it is entirely possible that when you
+HERE Data Hub CLI is built to be modular and extensible, so it is entirely possible that when you
 use the tool it has already learned a couple of new tricks.
 
 The general structure is that you call the `here` command followed by *command*
@@ -22,7 +22,7 @@ from.
 
 ### Getting help
 
-You can always call up help on the HERE CLI either by not providing any parameter at all or
+You can always call up help on the HERE Data Hub CLI either by not providing any parameter at all or
 by using the `--help` switch.
 
 ```console
@@ -31,7 +31,7 @@ here --help
 
 ### Log-in to your Data Hub account
 
-As explained earlier, HERE CLI needs to know you to interact with your Data Hub Spaces. You can use
+As explained earlier, HERE Data Hub CLI needs to know you to interact with your Data Hub Spaces. You can use
 
 ```console
 here configure account
@@ -55,7 +55,7 @@ here configure refresh
 
 to enable using Data Hub Add-on features. [Learn more](datahub_add-on.md) about Data Hub Add-on features here.
 
-[Click here](add-on.md) to learn how to setup and use Data Hub Add-on features Using HERE CLI.
+[Click here](add-on.md) to learn how to setup and use Data Hub Add-on features Using HERE Data Hub CLI.
 
 ### [Interact with Data Hub Spaces](command-reference.md#xyz)
 
@@ -123,7 +123,8 @@ Applies a schema validation json file to the space to be applied to future uploa
 
 > #### Note
 >
-> This is an Add-on feature that requires a license. Learn more about [Data Hub Add-on](datahub_add-on.md) features here.
+> This is an Add-on feature that requires a license. Learn more about 
+> [Data Hub Add-on](datahub_add-on.md) features here.
 
 #### [Upload/Update data to a Space](command-reference.md#upload)
 
@@ -151,7 +152,8 @@ here xyz upload SPACE_ID -f /Users/xyz/data.geojson
 
 > #### Note
 >
-> Data Hub requires that every feature in a space has a unique ID. This is to access individual features in a space using the API.
+> Data Hub requires that every feature in a space has a unique ID. This is to access individual
+> features in a space using the API.
 >
 > If a GeoJSON feature does not have an ID (a common occurance), Data Hub's default upload behavior is to create one based on a hash of the feature's property &mdash; if you have records with duplicate IDs in a dataset at the same location with the same properties, only one will be uploaded. You can define a new feature ID using more than one property using `-i`.)
 >
@@ -198,13 +200,16 @@ If you specify `upload --noCoords`, the CLI will upload the CSV rows as features
 >
 > **Use streaming for faster uploads**
 >
-> Using streaming via the `upload -s` option will significantly reduce the time required to upload CSV files of any size. Standard, non-streaming mode is useful for troubleshooting.
+> Using streaming via the `upload -s` option will significantly reduce the time required to upload 
+> CSV files of any size. Standard, non-streaming mode is useful for troubleshooting.
 
 > #### Tip
 >
 > **Using properties as the feature ID**
 >
-> The CLI converts a CSV row into a GeoJSON feature before uploading it. If you want values in a CSV column to be the GeoJSON feature ID, use `-i columnName.` Note that you can choose more than one column to create the feature ID.
+> The CLI converts a CSV row into a GeoJSON feature before uploading it. If you want values in a CSV
+> column to be the GeoJSON feature ID, use `-i columnName.` Note that you can choose more than one
+> column to create the feature ID.
 
 ###### Grouping multiple rows into a single unique feature ID
 
@@ -234,11 +239,17 @@ here xyz upload YOUR_SPACE_ID -f /Users/xyz/big_data.csv -s
 
 > #### Note
 >
-> When a file is streamed with `-s` it is not loaded into memory and -a is not available to preview and assign tags. You can specify tags using `-p`.
+> When a file is streamed with `-s` it is not loaded into memory and -a is not available to preview 
+> and assign tags. You can specify tags using `-p`.
 
 > #### Note
 >
-> HERE Data Hub is a database. Databases trade off storage space for speed, and your data will always take up more storage space in Data Hub than it does in a static file. When a file is uploaded into a Data Hub Space, features, their properties, and the geometries are broken out into multiple tables, indexed and tagged. All of this lets you query your geospatial data on demand, and access it dynamically as vector tiles. You can check the size of your Data Hub Spaces in your account dashboard or the CLI.
+> HERE Data Hub is a database. Databases trade off storage space for speed, and your data will always
+> take up more storage space in Data Hub than it does in a static file. When a file is uploaded into 
+> a Data Hub Space, features, their properties, and the geometries are broken out into multiple tables,
+> indexed and tagged. All of this lets you query your geospatial data on demand, and access it
+> dynamically as vector tiles. You can check the size of your Data Hub Spaces in your account 
+> dashboard or the CLI.
 
 ##### Upload a shapefile
 
@@ -255,8 +266,9 @@ Upload shapefile data to a Space.
 > #### Tip
 >
 > Instead of passing the content as a file with `-f` option you can also pipe the output of
-    another command directly into the input stream of the HERE CLI like
-    `cmd | here xyz upload YOUR_SPACE_ID` -- this can be useful when piping data from geospatial tools like `mapshaper`.
+> another command directly into the input stream of the HERE Data Hub CLI like
+> `cmd | here xyz upload YOUR_SPACE_ID` -- this can be useful when piping data from geospatial 
+> tools like `mapshaper`.
 
 There are many, many more tips in the [Working with Shapefiles](tutorials/shapefiles.md) tutorial.
 
@@ -274,11 +286,13 @@ By default, the CLI will generate a unique feature ID during upload based on a h
 
 > #### Note
 >
-> Unique IDs are important for Data Hub Add-on features such as [Virtual Spaces](datahub_add-on.md#virtual-spaces).
+> Unique IDs are important for Data Hub Add-on features such as 
+> [Virtual Spaces](datahub_add-on.md#virtual-spaces).
 
 > #### Warning
 >
-> Many GIS systems will simply assign incrementing integers as feature IDs to every file. These can conflict across files.
+> Many GIS systems will simply assign incrementing integers as feature IDs to every file. These 
+> can conflict across files.
 
 ##### Upload and assign tags
 
@@ -286,7 +300,9 @@ Tags are special properties that can be added to a feature that makes it easy to
 
 > #### Note
 >
-> Data Hub Tags should be used selectively, ideally using [Rule-Based Tags](add-on.md#rule-based-tags). Tags are not meant to be a replacement for [Property Search](#property-search) as you will be duplicating existing data in a record.
+> Data Hub Tags should be used selectively, ideally using [Rule-Based Tags](add-on.md#rule-based-tags).
+> Tags are not meant to be a replacement for [Property Search](#property-search) as you will be 
+> duplicating existing data in a record.
 
 ###### Assign tags interactively
 
@@ -514,7 +530,7 @@ You can specify a point and a radius, or a feature in another Data Hub space, or
 
 - `--center`: comma separated `lat,lon` values that specify the center point for the search
 - `--radius`: the radius of the search, in meters, from the `--center` point, or a buffer around a geometry specified with `--feature` or `--geometry`
-- `--feature`: comma separated `spaceid,featureid` values that specify a reference geometry from another Data Hub space -- this will return features from the first space that fall within or along a feature from the second space
+- `--feature`: comma separated `spaceid,featureid` values that specify a reference geometry from another HERE Data Hub space -- this will return features from the first space that fall within or along a feature from the second space
 - `--geometry`: a single GeoJSON feature in a file to be uploaded for the spatial query
 
 These results are most easily viewable using `show -w`.

@@ -6,6 +6,8 @@ Studio allows you to control the visual appearance of your features. This is
 called a _style_ and there are different options between the basic primitives
 of _Points_,_Lines_ and _Polygons_.
 
+See the following video overview:
+
 <video width="100%"  controls>
   <source src="../videos/simple-styles.mp4" type="video/mp4">
   <source src="../../videos/simple-styles.mp4" type="video/mp4">
@@ -48,6 +50,8 @@ they will be drawn on top of each other. Think about a number of transparent
 sheets placed one on top of another on top of the underlying map. You can
 change this order by dragging layers up or down in this list.
 
+See the following video overview:
+
 <video width="100%"  controls>
   <source src="../videos/drawing-order.mp4" type="video/mp4">
   <source src="../../videos/drawing-order.mp4" type="video/mp4">
@@ -62,6 +66,8 @@ The map can show interactive cards that allows viewers to see more of the data o
 feature they select. The **Cards** list allows re-ordering of the properties, while
 all entries below the line will stay hidden. The first line becomes the title of the card.
 
+See the following video overview:
+
 <video width="100%"  controls>
   <source src="../videos/interactive-cards.mp4" type="video/mp4">
   <source src="../../videos/interactive-cards.mp4" type="video/mp4">
@@ -74,6 +80,8 @@ Features can have more than one style, which means that you can change the look 
 based on it's properties or have one feature drawn multiple times and get an overlay effect.
 This is probably one of the more powerful styling features as it enables your data to influence
 the look of the map.
+
+See the following video overview:
 
 <video width="100%"  controls>
   <source src="../videos/conditional-styling.mp4" type="video/mp4">

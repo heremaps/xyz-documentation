@@ -1,12 +1,12 @@
 # Hexbins
 
-## Creating hexbins with the HERE CLI
+## Creating hexbins with the HERE Data Hub CLI
 
-The `hexbin` command in the HERE CLI lets you easily create hexbins and their centroids from large, dense point datasets in your XYZ spaces. Hexbins can be useful for data analysis, and can also allow you to visualize datasets that are too large to effectively view at low (regional or national) map zoom levels.
+The `hexbin` command in the HERE Data Hub CLI lets you easily create hexbins and their centroids from large, dense point datasets in your Spaces. Hexbins can be useful for data analysis, and can also allow you to visualize datasets that are too large to effectively view at low (regional or national) map zoom levels.
 
 ## Getting started
 
-If you don't already have a set of points in a Data Hub space, you can upload them using the CLI.
+If you don't already have a set of points in a Space, you can upload them using the CLI.
 
 ```sh
 here xyz upload -f your.geojson
@@ -15,17 +15,18 @@ smap
 
 (You can also use a CSV with point coordinates or shapefiles.)
 
-If you don't have data handy, you can use this CSV of [bicycle parking in San Francisco](https://data.sfgov.org/Transportation/Bicycle-Parking/hn4j-6fx5).
+If you do not have data handy, you can use this CSV of [bicycle parking in San Francisco](https://data.sfgov.org/Transportation/Bicycle-Parking/hn4j-6fx5).
 
 ```sh
 here xyz upload -f "https://data.sfgov.org/api/views/hn4j-6fx5/rows.csv"
 ```
 
-You'll be prompted to enter a title and description, and Data Hub will generate a unique ID for your dataset. Copy this as you'll need it to access the data and generated hexbins.
+You'll be prompted to enter a title and description, and Data Hub will generate a unique ID for your dataset. Copy this as you will need it to access the data and generated hexbins.
 
 > #### Note
 >
-> Some of the features in this file do not have any coordinates -- the HERE CLI will report these as errors.
+> Some of the features in this file do not have any coordinates -- the HERE Data Hub CLI will 
+> report these as errors.
 
 After the upload finishes, you can preview the map using geojson.tools
 
@@ -33,7 +34,7 @@ After the upload finishes, you can preview the map using geojson.tools
 here xyz show spaceID -w
 ```
 
-or [Data Hub Space Invader](../space-invader/index.md). (Note it will be easier to view data sets larger than a few hundred points using Data Hub Space Invader.)
+or [Space Invader](../space-invader/index.md). (Note it will be easier to view data sets larger than a few hundred points using Data Hub Space Invader.)
 
 ```sh
 here xyz show spaceID -v
@@ -66,13 +67,13 @@ country: zoom 4-7
 world: zoom 1-4
 ```
 
-Data Hub Hexbins will generate a hexagonal grid for each zoom level (or width) that you selected. It will then count the points that fall within each hexagon, and save that to the properties of each hexbin.
+Hexbins will generate a hexagonal grid for each zoom level (or width) that you selected. It will then count the points that fall within each hexagon, and save that to the properties of each hexbin.
 
 It also tracks the maximum count seen in that grid, and after the pass is completed, it writes that `maxCount` value to each hexbin. An `occupancy` rate is then calculated for each hexbin relative to the rest of that grid, and a scaled `hsla` color value is written to the feature for display convenience (blue is low, red is high).
 
 ### Using tags with hexbin data
 
-If we generate hexbins for Data Hub space containing the bike parking locations...
+If we generate hexbins for Data Hub Space containing the bike parking locations...
 
 ```sh
 here xyz hexbin spaceID -z 9-13
@@ -90,7 +91,7 @@ zoom10_centroid
 ...
 ```
 
-Note tha the CLI also creates centroids for each hexbin. This is useful for an alternate display method as well as for labels. You can use Data Hub tags to pull these out separately from the hexbins.
+The CLI also creates centroids for each hexbin. This is useful for an alternate display method as well as for labels. You can use tags to pull these out separately from the hexbins.
 
 After you generate the hexbins from a Data Hub space, you can view them with any GeoJSON viewer. If you want to view just the zoom 11 hexbins, you can use the `-t` option with view:
 
@@ -104,7 +105,7 @@ For convenience, here is a link to that data. Note the `&tags=zoom11_hexbin` -- 
 
 ![xyz-hexbin-geojson-tools](../images/xyz-hexbin-geojson-tools.png)
 
-### Data contained in Data Hub Hexbins
+### Data contained in Hexbins
 
 Hexbin features contain various values that can help with analysis and visualization:
 
@@ -143,7 +144,7 @@ You can also open the hexbin space in Data Hub Space Invader and select zoom lev
 here xyz show spaceID -v
 ```
 
-In Data Hub Space Invader, you can select properties and choose data-driven color palettes, and change the basemaps to suit the data.
+In Space Invader, you can select properties and choose data-driven color palettes, and change the basemaps to suit the data.
 
 If you do not choose a tag with `-t` in the CLI, you can select a zoom level using the tags in the right pane.
 
@@ -151,7 +152,7 @@ If you do not choose a tag with `-t` in the CLI, you can select a zoom level usi
 
 <https://s3.amazonaws.com/xyz-demo/scenes/xyz_tangram/index.html?space=ZGAzaLaA&token=APwC9OKv8ww_zMGWqPTSQdg&basemap=xyz-pixel-dark&buildings=1&label=undefined&colors=range&points=2&lines=0&outlines=0&highlight=0&places=1&roads=1&water=0&tags=zoom12_centroid&property=count&palette=colorBrewerYlOrRd&paletteFlip=true&sort=values&hideOutliers=false#12.858333333333318/37.7474/-122.4452>
 
-Click for more examples on how to use [Data Hub Space Invader](../space-invader/index.md).
+Click for more examples on how to use [Space Invader](../space-invader/index.md).
 
 ## Advanced options
 
@@ -163,7 +164,7 @@ Values of properties of a feature can also be counted with `here xyz hexbin -p p
 here xyz hexbin spaceID -p street_type
 ```
 
-This would count the unique values of the `street_type` property in each feature, track the maximum, and generate an occupancy value to be used in data visualization. Data Hub Space Invader can use that value to dynamically generate a color based on that hexbin's subgroup value compared to other hexbin's subgroup values.
+This would count the unique values of the `street_type` property in each feature, track the maximum, and generate an occupancy value to be used in data visualization. Space Invader can use that value to dynamically generate a color based on that hexbin's subgroup value compared to other hexbin's subgroup values.
 
 Here's an example [showing street types in San Francisco](https://s3.amazonaws.com/xyz-demo/scenes/xyz_tangram/index.html?space=qAtS3e8G&token=AFbjoHrBlTB2K5_gqvcP_S8&basemap=xyz-pixel-dark&buildings=1&label=undefined&colors=range&points=2&lines=0&outlines=1&highlight=0&places=1&roads=1&water=0&tags=zoom12_hexbin&property=subcount.AVE.count&palette=colorBrewerYlGnBu&paletteFlip=true&rangeFilter=0&sort=values&hideOutliers=true#13.166666666666664/37.7568/-122.4384), where street type was chosen as a subgroup. `subcount.AVE` can be used to see where Avenue is the most common street type. You can click on `subcount.ST.count` to see the streets of San Francisco.
 
@@ -209,7 +210,7 @@ If a point feature has a quantitative property, you can use `-a` to add it up wi
 }
 ```
 
-Data Hub Space Invader can compare and color these values across the hexbin grid. [Here we see the aggregate values of Minneapolis property values summed within hexbin centroids](https://s3.amazonaws.com/xyz-demo/scenes/xyz_tangram/index.html?space=ZL228Jrk&token=AFbjoHrBlTB2K5_gqvcP_S8&basemap=xyz-pixel-dark&buildings=1&label=undefined&colors=range&points=0&lines=0&outlines=0&highlight=0&places=1&roads=1&water=0&tags=zoom13_centroid&property=sum&palette=colorBrewerYlOrRd&paletteFlip=true&rangeFilter=4&sort=values&hideOutliers=false#12.370833333333346/44.9662/-93.2612).
+Space Invader can compare and color these values across the hexbin grid. [Here we see the aggregate values of Minneapolis property values summed within hexbin centroids](https://s3.amazonaws.com/xyz-demo/scenes/xyz_tangram/index.html?space=ZL228Jrk&token=AFbjoHrBlTB2K5_gqvcP_S8&basemap=xyz-pixel-dark&buildings=1&label=undefined&colors=range&points=0&lines=0&outlines=0&highlight=0&places=1&roads=1&water=0&tags=zoom13_centroid&property=sum&palette=colorBrewerYlOrRd&paletteFlip=true&rangeFilter=4&sort=values&hideOutliers=false#12.370833333333346/44.9662/-93.2612).
 
 ![minneapolis](../images/hexbin_sum.png)
 

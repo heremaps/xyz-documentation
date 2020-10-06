@@ -7,12 +7,13 @@
 You can upload datasets from your computer for use in HERE Studio by adding them
 onto the map.
 
-One way is to click the **+ Add** button and select one or multiple files
+Click the **+ Add** button and select one or multiple files
 from the system file selection dialog.
 
-If you want you can also _drag and drop_ files directly onto the map. They
+You can also _drag and drop_ files directly onto the map. They
 will be uploaded and added to the map automatically.
 
+See the following video overview:
 
 <video width="100%"  controls>
   <source src="../videos/upload-datasets.mp4" type="video/mp4">
@@ -23,7 +24,7 @@ will be uploaded and added to the map automatically.
 ### Pick datasets
 
 One of the benefits of having your dataset in the Data Hub in the cloud
-is to use them in more than one map. You can pick a data from the list
+is to use them in more than one map. You can pick data from the list
 of available datasets and them to you map project.
 
 Data is then shared between all map projects and changes to the data are
@@ -36,6 +37,8 @@ reflected in each map project immediate.
 > You can also safely rename layers individually without breaking the
 > link to the dataset.
 
+See the following video overview:
+
 <video width="100%"  controls>
   <source src="../videos/pick-datasets.mp4" type="video/mp4">
   <source src="../../videos/pick-datasets.mp4" type="video/mp4">
@@ -44,7 +47,7 @@ reflected in each map project immediate.
 
 ### Add empty layer
 
-From the same dialog you can also add an empty layer if you don't have any
+From the same dialog, you can also add an empty layer if you don't have any
 file data. Then you can then create and edit features as described below.
 
 ## Feature and table view
@@ -54,7 +57,7 @@ features by selecting them on the map. This shows a form to the left of the
 map with the values (and they keys).
 
 The map is great to see data in it's geographic location. But sometimes you
-really need to see the data in a _table_ to understand the content.
+need to see the data in a _table_ to understand the content.
 You can also change the data content, sort and look for data and add
 additional columns.
 
@@ -63,6 +66,8 @@ additional columns.
 > The table shows data from one layer or dataset. You might have to
 > select the layer you want to see before you can switch to the table view.
 
+See the following video overview:
+
 <video width="100%"  controls>
   <source src="../videos/data-table.mp4" type="video/mp4">
   <source src="../../videos/data-table.mp4" type="video/mp4">
@@ -70,6 +75,8 @@ You can view a video overview of this content <a href="../videos/data-table.mp4"
 </video>
 
 ## Draw and edit geometry
+
+See the following video overview:
 
 <video width="100%"  controls>
   <source src="../videos/draw-geometry.mp4" type="video/mp4">

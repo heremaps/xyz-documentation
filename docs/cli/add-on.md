@@ -1,7 +1,6 @@
-# Add-on features via HERE CLI
+# Add-on features via HERE Data Hub CLI
 
-In this section we give you a quick overview of the advanced HERE CLI commands for Data Hub Add-on features
-in Data Hub Spaces.
+In this section we give you a quick overview of the advanced HERE Data Hub CLI commands for Data Hub Add-on features in Data Hub Spaces.
 
 ## Schema Validation for GeoJSON data
 
@@ -9,7 +8,8 @@ A JSON schema definition file can be configured for a space. Users can set the s
 
 > #### Note
 >
-> Schema definition configurations and modifications will be applied to future data uploads, and not to existing data in a space.
+> Schema definition configurations and modifications will be applied to future data uploads, and 
+> not to existing data in a space.
 
 ### Configuring schema for a space
 
@@ -71,7 +71,8 @@ Rule Based Tags let you create tags on features using conditional rules applied 
 
 > #### Note
 >
-> Rule based tagging does not create tags on existing data you have on the space. It only tags the data you upload after setting the rules.
+> Rule based tagging does not create tags on existing data you have on the space. It only tags the 
+> data you upload after setting the rules.
 
 Tag rules can be set up for string, boolean or numeric properties. Multiple conditions can also be defined. The name of the rule you create is set as the name of the tag in the features that match those conditions.
 
@@ -121,7 +122,7 @@ here xyz config <spaceId> –tagrules --add
 
 ![add_tagrule](images/gifs/cli-tagrule-add.gif)
 
-e.g.
+For example,
 
 ```console
 $ here xyz config  HJtXzHWi --tagrules --add
@@ -305,7 +306,8 @@ here xyz join space_with_geometries -f data_table.csv -k column_with_id
 >
 > `join` creates a space of features with no geometries. You can inspect this space using geojson.tools via `show -w`
 >
-> You can update this "csv space" using `here xyz upload spaceID -f new.csv -k id --noGeom` and the next time the virtual space ID is references, the properties will contain the updated values.
+> You can update this "csv space" using `here xyz upload spaceID -f new.csv -k id --noGeom` and 
+> the next time the virtual space ID is references, the properties will contain the updated values.
 
 #### Join Options
 
@@ -337,7 +339,8 @@ here xyz join space_with_geometries -f data_table.csv -k column_with_id
 >
 > `join` creates a space of features with no geometries. You can inspect this space using geojson.tools via `show -w`
 >
-> You can update this "csv space" using `here xyz upload spaceID -f new.csv -k id --noGeom` and the next time the virtual space ID is references, the properties will contain the updated values.
+> You can update this "csv space" using `here xyz upload spaceID -f new.csv -k id --noGeom` and 
+> the next time the virtual space ID is references, the properties will contain the updated values.
 
 ## GIS
 
@@ -379,7 +382,7 @@ The CLI has access to a number of convenient geopspatial data functions via the 
 
 ## CLI Hexbins
 
-CLI Hexbins are a data simplification method that makes it easier to visualize large datasets of point features at low zoom levels (e.g. a continent, country, or state/province). A series of hexagon grids are created and the points that fall inside each are counted and written to a new Data Hub space, and statistics are calculated across the hexbin grid.
+CLI Hexbins are a data simplification method that makes it easier to visualize large datasets of point features at low zoom levels (e.g., a continent, country, or state/province). A series of hexagon grids are created and the points that fall inside each are counted and written to a new Data Hub space, and statistics are calculated across the hexbin grid.
 
 These differ from the H3 hexbins generated via server-side clustering in a number of ways. CLI Hexbins use the `iterate` endpoint to calculate and write hexbins to a space across the specified zoom levels, while server-side hexbins are generated on the fly for each zoom level. CLI Hexbins for a specified zoom level can be viewed at any other zoom level using tags -- for example, CLI hexbins or their centroids generated at zoom level 15 can be viewed at zoom 5 via the hexbin space, whereas server-side hexbins cannot. Server-side hexbins have detailed statistics for the values in a particular hexbin, but CLI hexbins have built-in color formatting and global "occupancy" percentages. CLI hexbins also can generate "subcounts" of unique values across a dataset.
 
