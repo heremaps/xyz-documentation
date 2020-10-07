@@ -108,6 +108,7 @@ Options:
   -w, --web                  display Space on http://geojson.tools
   -v, --vector               inspect and analyze using Data Hub Space Invader
                              and tangram.js
+  -x, --permanent            generate a permanent token for --web and --vector option
   -s, --search <propfilter>  search expression in "double quotes", use single
                              quote to signify string value,  use
                              p.<FEATUREPROP> or f.<id/updatedAt/tags/createdAt>
@@ -116,9 +117,9 @@ Options:
                              values of a property) {e.g.,
                              "p.name=John,Tom+p.age<50+p.phone='9999999'+p.zipcode=123456"}
   --spatial                  indicate to make spatial search on the space
-  --radius <radius>          indicate to make radius spatial search or to
-                             thicken input geometry (in meters)
-  --center <center>          comma separated lon,lat values to specify the
+  --radius <radius>          make a radius spatial search using --center, 
+                             or thicken an input line or polygon (in meters)
+  --center <center>          comma separated, double quoted lon,lat values to specify the
                              center point for radius search
   --feature <feature>        comma separated spaceid,featureid values to
                              specify reference geometry (taken from feature)
@@ -130,21 +131,21 @@ Options:
 
 #### [upload](basic-features.md#uploadupdate-data-to-a-space)
 
-Upload GeoJSON, CSV, or a Shapefile to the given Space -- if no spaceID is given, a new space will be created.
+Upload GeoJSON, CSV, or a Shapefile to the given Space -- if no spaceID is given, a new space will be created. GeoJSON feature IDs will be respected unless you override with -o or specify with -i; pipe GeoJSON via stdout using | here xyz upload spaceid
 
 ```console
   -f, --file <file>               comma separated list of local GeoJSON,
-                                  GeoJSONL, Shapefile, GPX, or CSV files (or
+                                  GeoJSONL, Shapefile, CSV, GPX, or XLS/X files (or
                                   GeoJSON/CSV URLs); use a directory path and
                                   --batch [filetype] to upload all files of
                                   that type within a directory
-  -c, --chunk [chunk]             chunk size, default 200 -- use lower values
+  -c, --chunk [chunk]             chunk size, default 200 -- use smaller values
                                   (1 to 10) to allow safer uploads of very
                                   large geometries (big polygons, many
                                   properties), use higher values (e.g., 500 to
                                   5000) for faster uploads of small geometries
                                   (points and lines, few properties)
-  -t, --tags [tags]               fixed tags for the Space
+  -t, --tags [tags]               fixed tags for features uploaded to the Data Hub space
   --token <token>                 a external token to upload data to another
                                   user's Space
   -x, --lon [lon]                 longitude field name
@@ -154,16 +155,15 @@ Upload GeoJSON, CSV, or a Shapefile to the given Space -- if no spaceID is given
   --lonlat                        parse a -—point/-z csv field as (lon,lat)
                                   instead of (lat,lon)
   -p, --ptag [ptag]               property name(s) to be used to add tags,
-                                  property_name@value, best for limited
+                                  property_name@value, best for a small number of
                                   quantitative values
   -i, --id [id]                   property name(s) to be used as the feature ID
                                   (must be unique) -- multiple values can be
                                   comma separated
   -a, --assign                    interactive mode to analyze and select fields
                                   to be used as tags and unique feature IDs
-  -o, --override                  override default property hash feature ID
-                                  generation and use existing GeoJSON feature
-                                  IDs
+  -o, --override                  override existing GeoJSON feature ID and 
+                                  generate property hash as feature ID
   -s, --stream                    streaming support for upload  and/or large
                                   csv and geojson uploads using concurrent
                                   writes, tune chunk size with -c
@@ -180,6 +180,8 @@ Upload GeoJSON, CSV, or a Shapefile to the given Space -- if no spaceID is given
                                   designated with -i; values of each row within
                                   the selected column will become top level
                                   properties within the consolidated feature
+  --promote <promote>             comma separated column names which should not be nested within a top level property generated consolidated by --groupby
+  --flatten                       stores the --groupby consolidated output in flattened string separated by colon (:) instead of a nested object
   --date <date>                   date-related property name(s) of a feature to
                                   be normalized as a ISO 8601 datestring
                                   (datahub_iso8601_[propertyname]), and unix
@@ -249,6 +251,7 @@ Configure/view advanced Data Hub features for a Space.
 Options:
   --shared <flag>             set your space as shared / public (default is
                               false)
+  --readonly <flag>.          set your space as readOnly (default is false)
   -t,--title [title]          set title for the Space
   -d,--message [message]      set description for the Space
   -c,--copyright [copyright]  set copyright text for the Space
@@ -376,8 +379,8 @@ Perform GIS operations with space data.
 Options:
   --centroid             calculates centroids of Line and Polygon features and
                          uploads in a different Space
-  --length               calculates length of LineString features
-  --area                 calculates area of Polygon features
+  --length               calculates length of LineString features and adds new properties
+  --area                 calculates area of Polygon features and adds new properties
   --voronoi              calculates Voronoi Polygons of point features and
                          uploads in different Space
   --tin                  calculates Delaunay Polygons of point features and
