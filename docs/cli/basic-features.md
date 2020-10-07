@@ -77,7 +77,7 @@ here xyz list
 
 ##### Options
 
-`-r, --raw` shows the raw space list definition
+`-r, --raw` shows the raw space list definition in json
 
 `--token <token>` an external token to access another user's spaces
 
