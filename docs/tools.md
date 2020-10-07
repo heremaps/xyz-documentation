@@ -36,7 +36,7 @@ This package can be installed with `pip` or `conda` from various sources:
     ```
 #### Documentation
 
-For now, the documentation consists of [a small number of example Jupyter notebooks](https://github.com/heremaps/xyz-spaces-python/blob/master/docs/notebooks/README.md) in the docs/notebooks directory plus an API reference, which is automatically generated from the docstrings in the code.
+The detailed documentation is available [here](https://xyz-spaces-python.readthedocs.io/en/latest/).
 
 ### HERE Maps API for Javascript 
 
