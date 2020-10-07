@@ -156,7 +156,7 @@ here xyz upload SPACE_ID -f /Users/xyz/data.geojson
 >
 > If a GeoJSON feature does not have an ID (a common occurance), Data Hub's default upload behavior is to create one based on a hash of the feature's property &mdash; note that if you have records with duplicate IDs in a dataset at the same location with the same properties, only one will be uploaded. You can define a new feature ID using more than one property using `-i`.)
 >
-> By default, the CLI will respect any IDs already in a feature. Note that if a new feature has the same ID as an existing feature, Data Hub will consider it an update and overwrite the existing feature.  Note that some public datasets have a set of feature IDs that are simply incremental integers, which can lead to feature replacement that you probably didn't want when you are uploading multiple files to the same space. In this case, you may want to use `-o` to create a unique feature ID one based on a hash of the feature's properties, or use multiple properties with `-i` to generate something unique and human-readable.
+> By default, the CLI will respect any IDs already in a feature. Note that if a new feature has the same ID as an existing feature, Data Hub will consider it an update and overwrite the existing feature.  Note that some public datasets have a set of feature IDs that are simply incremental integers, which can lead to feature replacement that you probably didn't want when you are uploading multiple files to the same space. In this case, you may want to use `-o` to override the existing ID and create a unique feature ID based on a hash of the feature's properties. You can also select multiple properties with `-i` to generate something unique and human-readable.
 
 ##### Upload a CSV file
 
@@ -210,9 +210,9 @@ If you specify `upload --noCoords`, the CLI will upload the CSV rows as features
 > column to be the GeoJSON feature ID, use `-i columnName.` Note that you can choose more than one
 > column to create the feature ID.
 
-###### Grouping multiple rows into a single unique feature ID
+###### Grouping multiple CSV rows into a single unique feature ID
 
-You can use `--groupby` with `-i` to consolidate multiple rows "belonging to" a unique ID as nested objects within a single feature. Please read the [Group By tutorial](tutorials/group_by.md) for more details.
+You can use `--groupby` with `-i` to consolidate multiple rows "belonging to" a unique ID as nested objects within a single feature. A good example of this would be a CSV of election results across many electoral precincts, where each candidate running in that precinct has their own row. Please read the [Group By tutorial](tutorials/group_by.md) for more details.
 
 ##### Chunking
 
@@ -221,6 +221,8 @@ You can adjust the "chunk" size when streaming an upload. This controls the numb
 > #### Tip
 >
 > Using `-c 1` and `-e` can help troubleshoot problematic features in individual GeoJSON features.
+
+ 
 
 ###### Large features
 
@@ -260,8 +262,16 @@ here xyz upload YOUR_SPACE_ID -f /Users/xyz/big_data.csv -s
 
 ##### Upload a shapefile
 
+If a shapefile is unzipped, select the file with the .shp extension, and the CLI will look for the accompanying files in that directory
+
 ```console
 here xyz upload -f /Users/dhatb/data.shp
+```
+
+As of v1.6, the CLI can upload a zipped shapefile:
+
+```console
+here xyz upload -f /Users/dhatb/data.zip
 ```
 
 > #### Note
@@ -279,17 +289,17 @@ Upload shapefile data to a Space.
 
 There are many, many more tips in the [Working with Shapefiles](tutorials/shapefiles.md) tutorial.
 
-##### Upload with a unique ID
+##### Upload a CSV using a unique ID
 
 ```console
 here xyz upload -f data.csv -i unique_id
 ```
 
-Upload data to a Data Hub space with a feature ID based on the feature's property `unique_id`.
+You can upload CSV to a Data Hub space and select a column to be the GeoJSON feature ID.
 
 This feature should be used if your data has well-known and truly unique identifiers that you want to preserve. The Data Hub API can [query individual features by feature ID](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/getFeatures), so this can be a valuable method of accessing and updating features.
 
-By default, the CLI will generate a unique feature ID during upload based on a hash of the properties and geometry.
+By default, the CLI will generate a unique feature ID during CSV upload based on a hash of the properties and geometry.
 
 > #### Note
 >
@@ -421,7 +431,7 @@ While uploading shapefiles, `--batch` will inspect one level of sub-directories 
 
 ##### Options
 
-`-f, --file <file>`   GeoJSON, GeoJSONL, CSV or Shapefile to upload
+`-f, --file <file>`   GeoJSON, GeoJSONL, CSV, GPX, XLS/XLSX, or Shapefile to upload
 
 `-c, --chunk [chunk]` chunk size (adjusts the number of features uploaded at once)
 
@@ -477,11 +487,11 @@ While uploading shapefiles, `--batch` will inspect one level of sub-directories 
 
 > #### Tip
 >
-> You can pipe data to the `upload` command and an existing space
+> You can pipe data to the `upload` command and an existing space -- `atoolthatoutputsgeojson | here xyz upload spaceID`
 
 > #### Note
 >
-> Some GeoJSON features may cross the international dateline, and in older GeoJSON files, some coordinates may have longitudes greater than 180 or less than -180. You cannot upload these features to Data Hub – these features should be split into MultiPolygons or MultiLineStrings.
+> Some GeoJSON features may cross the international dateline. In older GeoJSON files, some coordinates may have longitudes greater than 180 or less than -180.  You cannot upload these features to Data Hub – these features should be split into MultiPolygons or MultiLineStrings. Also, some coordinates that are supposed to be 180/-180 can end up looking like `180.0000008576` thanks to floating point precision errors in whatever process created them. This is also something you can't upload to Data Hub.
 
 #### [Join data to another space](command-reference.md#join)
 
@@ -563,12 +573,14 @@ You can use `--spatial` to search for features in a Data Hub space that fall wit
 
 You can specify a point and a radius, or a feature in another Data Hub space, or a GeoJSON file containing a feature.
 
-- `--center`: comma separated `lon,lat` values `(x,y)` that specify the center point for the search
+- `--center`: comma separated `lon,lat` values `(x,y)` that specify the center point for the search. While this might work unquoted in most shells, some shells are going to interpret the `-` as an argument, so it's safest to use double quotes.
 - `--radius`: the radius of the search, in meters, from the `--center` point, or a buffer around a geometry specified with `--feature` or `--geometry`
 - `--feature`: comma separated `spaceid,featureid` values that specify a reference geometry from another HERE Data Hub space -- this will return features from the first space that fall within or along a feature from the second space
-- `--geometry`: a single GeoJSON feature in a file to be uploaded for the spatial query
+- `--geometry`: a single GeoJSON feature in a file to be uploaded for the spatial query (not a feature collection)
 
-These results are most easily viewable using `show -w`.
+> #### Tip 
+>
+> These results are most easily viewable using `show -w`.
 
 ##### Options
 
@@ -578,7 +590,7 @@ These results are most easily viewable using `show -w`.
 
 `-t, --tags <tags>` Tags to filter on
 
-`-r, --raw` show raw Data Hub space content
+`-r, --raw` show raw Data Hub space content (this iterates through every feature, so you can direct this to a file using `>`
 
 `--all` iterate over entire Data Hub space to get entire data of space, output will be shown on the console in geojson format (and can be directed to a file using `>`)
 
@@ -600,13 +612,13 @@ These results are most easily viewable using `show -w`.
                              '+' for AND , Operators : >,<,<=,<=,=,!=) (use comma separated values to search multiple values of a property) {e.g.
                              "p.name=John,Tom+p.age<50+p.phone='9999999'+p.zipcode=123456"}
 
-`--spatial` indicate to make spatial search on the space
+`--spatial`  make a spatial search on the space
 
-`--radius <radius>` indicate to make radius spatial search or to thicken input geometry (in meters)
+`--radius <radius>` indicate a radius for a spatial search, or to thicken the input linestring or polygon (in meters)
 
-`--center <center>` comma separated lon,lat values to specify the center point for radius search
+`--center <center>` comma separated `lon,lat` values to specify the center point for radius search (best to surround this with quotes)
 
-`--feature <feature>` comma separated spaceid,featureid values to specify reference geometry (taken from feature) for spatial query
+`--feature <feature>` comma separated `spaceid,featureid` values to specify reference geometry (taken from feature) for spatial query
 
 `--geometry <geometry>` geometry file to upload for a spatial query (single feature in geojson file)
 
