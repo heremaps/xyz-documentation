@@ -8,11 +8,11 @@ Property Search indexes data in your XYZ spaces and lets you use the API to sear
 
 This is currently available in the CLI and the API. Property Search is available for all spaces with less that 15,000 features. In order to use Property Search on more than 15,000 features, you'll need an XYZ Pro account.
 
-More details are available in the [CLI documentation](../docs/cli/cli.md#property-search) and the [Swagger API `/search` endpoint](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/searchForFeatures).
+More details are available in the [CLI documentation](/cli/cli.md#property-search) and the [Swagger API `/search` endpoint](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/searchForFeatures).
 
 ## Property Filtering
 
-You can filter the properties that get returned by the API. This is useful when your features have a large number of properties, and you only need to return some of them along with with the geometry. More details are available in the [CLI documentation](../docs/cli/cli.md#property-filters) and in the `params` options of the [Swagger API `/bbox` and `/tile` endpoints](https://xyz.api.here.com/hub/static/swagger). 
+You can filter the properties that get returned by the API. This is useful when your features have a large number of properties, and you only need to return some of them along with with the geometry. More details are available in the [CLI documentation](/cli/cli.md#property-filters) and in the `params` options of the [Swagger API `/bbox` and `/tile` endpoints](https://xyz.api.here.com/hub/static/swagger). 
 
 ## Virtual Spaces
 
@@ -22,13 +22,13 @@ Virtual Spaces let you group or associate geospatial features in multiple spaces
 
 `associate` merges feature properties from one XYZ space into features in a second space based on feature ID matches. This allows you to import statistical data and merge it with pre-existing polygons on the fly.
 
-This is currently available in the CLI and API. More details see the [CLI documentation](../docs/cli/cli.md#virtual-spaces)
+This is currently available in the CLI and API. More details see the [CLI documentation](/cli/cli.md#virtual-spaces)
 
 ## Spatial Search
 
 Search for features in an XYZ space that fall within a radius, or a polygon, or along a line. You can specify a point and a radius, a feature in another XYZ space, or a feature in a GeoJSON file.
 
-This is cuurently available in the CLI and API. For more details, see the [CLI documentation](../docs/cli/cli.md#spatial-search) or (Swagger)[https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/getFeaturesBySpatial].
+This is cuurently available in the CLI and API. For more details, see the [CLI documentation](/cli/cli.md#spatial-search) or (Swagger)[https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/getFeaturesBySpatial].
 
 
 ## GIS Functions
@@ -44,7 +44,7 @@ These hexagons, their centroids, and their statistics can be quickly displayed i
 
 Hexbins are tagged by zoom level and width and type, makeing it easy to extract one set from the hexbin space for display and comparison.
 
-You can learn more about hexbins and how to display them [in this tutorial](../hexbins) and the [CLI documentation](../docs/cli/cli.md#hexbins)
+You can learn more about hexbins and how to display them [in this tutorial](../hexbins) and the [CLI documentation](/cli/cli.md#hexbins)
 
 ## Rule Based Tags
 
