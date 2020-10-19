@@ -1,7 +1,7 @@
 
 # Summary
 
-- [Overview](index.md)
+- [Overview](README.md)
 - [Manage Tokens](getting-token.md)
 - [Quick Start](quickstart/quickstart.md)
   - [Acquire Credentials](quickstart/acquiringcredentials.md)
