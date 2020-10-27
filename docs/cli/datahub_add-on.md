@@ -8,13 +8,9 @@
 
 Property Search indexes data in your Spaces and lets you use the API to search by property value.
 
-This is currently available in the CLI and the API. Property Search is available for all Spaces with less that 15,000 features. In order to use Property Search on more than 15,000 features, you'll need a Data Hub Add-on account.
+This is currently available in the CLI and the API. Property Search is available for all Spaces with less than 10,000 features. In order to use Property Search on more than 10,000 features and for all properties you want, you'll need a Data Hub Add-on account.
 
 More details are available in the [CLI documentation](basic-features.md#property-search) and the [Swagger API `/search` endpoint](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/searchForFeatures).
-
-## Property Filtering
-
-You can filter the properties that get returned by the API. This is useful when your features have a large number of properties, and you only need to return some of them along with with the geometry. More details are available in the [CLI documentation](basic-features.md#property-filters) and in the `params` options of the [Swagger API `/bbox` and `/tile` endpoints](https://xyz.api.here.com/hub/static/swagger).
 
 ## <a name="virtual-spaces">Virtual Spaces</a>
 
@@ -24,17 +20,11 @@ Virtual Spaces let you group or associate geospatial features in multiple Spaces
 
 `associate` merges feature properties from one Data Hub space into features in a second space based on feature ID matches. This allows you to import statistical data and merge it with pre-existing polygons on the fly.
 
-This is currently available in the CLI and API. More details see the [CLI documentation](add-on.md#virtual-spaces)
-
-## Spatial Search
-
-Search for features in a Space that fall within a radius, or a polygon, or along a line. You can specify a point and a radius, a feature in another Space, or a feature in a GeoJSON file.
-
-This is currently available in the CLI and API. For more details, see the [CLI documentation](basic-features.md#spatial-search) or [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/getFeaturesBySpatial).
+This is currently available in the CLI and API. For more details, see the [CLI documentation](add-on.md#virtual-spaces)
 
 ## GIS Functions
 
-Use the CLI to calculate the area of a polygon or length of line and save it as a new property. Generate centroids of polygons. Create Voronoi polygons or Delaunay trianges from sets of points. For more details, see the [CLI documentation](add-on.md#gis)
+Use the CLI to calculate the area of a polygon or length of line and save it as a new property. Generate centroids of polygons. Create Voronoi polygons or Delaunay triangles from sets of points. For more details, see the [CLI documentation](add-on.md#gis)
 
 ## Hexbins
 
@@ -42,9 +32,9 @@ Hexbins are a data simplification method that makes it easier to visualize large
 
 These hexagons, their centroids, and their statistics can be quickly displayed in place of the raw data that might overwhelm a renderer. Default colors indicating relative "occupancy" are generated for convenience of display.
 
-Hexbins are tagged by zoom level and width and type, makeing it easy to extract one set from the hexbin space for display and comparison.
+Hexbins are tagged by zoom level and width and type, making it easy to extract one set from the hexbin space for display and comparison.
 
-You can learn more about hexbins and how to display them [in this tutorial](tutorials/cli_hexbins.md) and the [CLI documentation](add-on.md#hexbins)
+You can learn more about hexbins and how to display them [in this tutorial](tutorials/cli_hexbins.md) and the [CLI documentation](add-on.md#cli-hexbins)
 
 ## Rule Based Tags
 

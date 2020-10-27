@@ -8,7 +8,7 @@ A JSON schema definition file can be configured for a space. Users can set the s
 
 > #### Note
 >
-> Schema definition configurations and modifications will be applied to future data uploads, and 
+> Schema definition configurations and modifications will be applied to future data uploads, and
 > not to existing data in a space.
 
 ### Configuring schema for a space
@@ -55,6 +55,7 @@ Sample output:
       "type",
       "properties"
    ]...
+}
 ```
 
 #### Delete schema
@@ -97,10 +98,10 @@ Look at the following example feature and corresponding sample tag rule conditio
     "details": {
         "capacity": 20,
         "employeeCount": 10
-        }
+        },
     "category": "Coffee Shop",
     "costCategory": "High",
-    "opensEarly": true
+    "opensEarly": true,
     "name": "Data Hub Cafe"
   },
   "type": "Feature"
@@ -172,7 +173,8 @@ tagrules updated successully!
 
 ## Searchable Properties
 
-Data Hub automatically indexes certain properties based on the number of features in your space. If a property is not automatically indexed, you can force it to be indexed using the `--searchable` option.
+Data Hub automatically indexes certain properties based on the number of features in your Space. If you have 10,000 features or fewer in a space, all properties are searchable.
+If a property is not automatically indexed, you can force it to be indexed using the `--searchable` option. This is where you'll need a Data Hub Add-On licence.
 
 ### Add Searchable Properties
 
@@ -304,9 +306,9 @@ here xyz join space_with_geometries -f data_table.csv -k column_with_id
 
 > #### Note
 >
-> `join` creates a space of features with no geometries. You can inspect this space using geojson.tools via `show -w`
+> `join` creates a space of features with no geometries. You can inspect this space using geojson.tools via `show -w`.
 >
-> You can update this "csv space" using `here xyz upload spaceID -f new.csv -k id --noGeom` and 
+> You can update this "csv space" using `here xyz upload spaceID -f new.csv -k id --noGeom` and
 > the next time the virtual space ID is references, the properties will contain the updated values.
 
 #### Join Options
@@ -327,7 +329,7 @@ here xyz join space_with_geometries -f data_table.csv -k column_with_id
 
 `-q, --quote ["]`                 quote used in csv (default: "\"")
 
-`--token <token>`               a external token to create another user's spaces
+`--token <token>`               an external token to create another user's spaces
 
 `-s, --stream`                    streaming data for faster uploads and large csv support
 
@@ -337,14 +339,14 @@ here xyz join space_with_geometries -f data_table.csv -k column_with_id
 
 > #### Note
 >
-> `join` creates a space of features with no geometries. You can inspect this space using geojson.tools via `show -w`
+> `join` creates a space of features with no geometries. You can inspect this space using geojson.tools via `show -w`.
 >
-> You can update this "csv space" using `here xyz upload spaceID -f new.csv -k id --noGeom` and 
+> You can update this "csv space" using `here xyz upload spaceID -f new.csv -k id --noGeom` and
 > the next time the virtual space ID is references, the properties will contain the updated values.
 
 ## GIS
 
-The CLI has access to a number of convenient geopspatial data functions via the `here xyz gis` command. Some of these functions add properties to the original features, while others create data in a new space. These functions are based on popular JavaScript tools like turf.js and D3, and are [designed to be modular](https://github.com/heremaps/here-cli/blob/master/src/gisUtil.ts) so you can easily add your own.
+The CLI has access to a number of convenient geospatial data functions via the `here xyz gis` command. Some of these functions add properties to the original features, while others create data in a new space. These functions are based on popular JavaScript tools like turf.js and D3, and are [designed to be modular](https://github.com/heremaps/here-cli/blob/master/src/gisUtil.ts) so you can easily add your own.
 
 ### Options
 
@@ -374,7 +376,7 @@ The CLI has access to a number of convenient geopspatial data functions via the 
 
 `-h, --help`             display help for command
 
-- `--area` uses `turf.js` to calculate the area of polygons, and saves this as a set of new properties in each polygon feature. `xyz_area_sqmiles`,`xyz_area_sqkm` are rounded for display convenience, and `xyz_area_sqm` is not rounded.
+- `--area` uses `turf.js` to calculate the area of polygons, and saves this as a set of new properties in each polygon feature. `xyz_area_sqmiles,'xyz_area_sqkm` are rounded for display convenience, and `xyz_area_sqm` is not rounded.
 - `--length` uses `turf.js` to calculate the length of lines in a space, and saves this as a set of new properties in each linestring feature, `xyz_length_miles`,`xyz_length_km` which are rounded for display convenience, and `xyz_length_m` which is not rounded.
 - `--centroid` uses `turf.js` to calculate the center of each polygon in a space. By default, these points are written to a new space, but can saved in the existing space using the `--samespace` option. In either case, they all receive a `centroid` tag.
 - `--voronoi` uses `d3-delaunay.js` to generate Voronoi polygons from points in a Data Hub space. The edges of these polygons are equidistant from two points, and the vertices are equidistant to three points. By default, they are written to a new space, but can saved in the source point space using the `--samespace` option. In either case, they all receive a `voronoi` tag.
@@ -382,17 +384,17 @@ The CLI has access to a number of convenient geopspatial data functions via the 
 
 ## CLI Hexbins
 
-CLI Hexbins are a data simplification method that makes it easier to visualize large datasets of point features at low zoom levels (e.g., a continent, country, or state/province). A series of hexagon grids are created and the points that fall inside each are counted and written to a new Data Hub space, and statistics are calculated across the hexbin grid.
+CLI Hexbins are a data simplification method that makes it easier to visualize large datasets of point features at low zoom levels (e.g., a continent, country, or state/province). A series of hexagon grids are created. The points that fall inside each of them are counted and written to a new Data Hub space, and statistics are calculated across the hexbin grid.
 
-These differ from the H3 hexbins generated via server-side clustering in a number of ways. CLI Hexbins use the `iterate` endpoint to calculate and write hexbins to a space across the specified zoom levels, while server-side hexbins are generated on the fly for each zoom level. CLI Hexbins for a specified zoom level can be viewed at any other zoom level using tags -- for example, CLI hexbins or their centroids generated at zoom level 15 can be viewed at zoom 5 via the hexbin space, whereas server-side hexbins cannot. Server-side hexbins have detailed statistics for the values in a particular hexbin, but CLI hexbins have built-in color formatting and global "occupancy" percentages. CLI hexbins also can generate "subcounts" of unique values across a dataset.
+These differ from the H3 hexbins generated via server-side clustering in a number of ways. CLI Hexbins use the `iterate` endpoint to calculate and write hexbins to a space across the specified zoom levels, while server-side hexbins are generated on the fly for each zoom level. CLI Hexbins for a specified zoom level can be viewed at any other zoom level using tags -- for example, CLI hexbins or their centroids generated at zoom level 15 can be viewed at zoom level 5 via the hexbin space, whereas server-side hexbins cannot. Server-side hexbins have detailed statistics for the values in a particular hexbin, but CLI hexbins have built-in color formatting and global "occupancy" percentages. CLI hexbins also can generate "subcounts" of unique values across a dataset.
 
 These hexagons (or their centroids) and their statistics can be quickly displayed in place of the raw data that might overwhelm a renderer. Default colors indicating relative "occupancy" are generated for convenience of display.
 
   `here xyz hexbin spaceID -z 5-10` create hexbins appropriate for zoom levels 5 through 10
 
-  `here xyz hexbin spaceID -z 8,10,12` create hexbins appropriate for zoom 8,10,12
+  `here xyz hexbin spaceID -z 8,10,12` create hexbins appropriate for zoom levels 8,10,12
 
-   `here xyz hexbin spaceID -c 100,1000,100000` create hexbins that are 100 meters, 1km and 10km wide
+   `here xyz hexbin spaceID -c 100,1000,100000` create hexbins that are 100 meters, 1 km and 10 km wide
 
 Hexbins are tagged by zoom level, width, and type, making it easy to extract one set from the hexbin space for display and comparison.
 
@@ -409,13 +411,14 @@ Hexbin features contain various values that can help with analysis and visualiza
 - `centroid`: the centroid of the hexbin (useful for label placement -- the centroid is also written as a separate feature)
 
 ```json
+      ...,
       "properties": {
         "color": "hsla(0, 100%, 50%,0.51)",
         "count": 468,
         "maxCount": 468,
         "occupancy": 1,
       },
-      ...
+      ...,
       "properties": {
         "color": "hsla(81, 100%, 50%,0.51)",
         "count": 279,
@@ -456,6 +459,7 @@ You can also specify a `subcount` within each hexbin based upon the count of the
 This would create a `subcount` object in each hexbin, which would contain the relative count of that property value across the hexbin grid.
 
 ```json
+    {
         "count": 48,
         "maxcount": 400,
         "subcount": {
@@ -477,6 +481,7 @@ This would create a `subcount` object in each hexbin, which would contain the re
             "maxCount": 40,
             "occupancy": 1
           }...
+  }
 ```
 
 ### Options
