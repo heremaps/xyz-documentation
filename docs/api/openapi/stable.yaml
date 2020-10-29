@@ -1,8 +1,8 @@
 ---
 openapi: "3.0.1"
 info:
-  description: "HERE XYZ Hub is a REST API for simple access to geo data."
-  title: "HERE XYZ Hub"
+  description: "HERE Data Hub is a REST API for simple access to geo data."
+  title: "HERE Data Hub"
   version: "1.0.0"
 servers:
 - url: "/hub"
@@ -1113,7 +1113,7 @@ components:
       example: true
     NSXYZ:
       type: "object"
-      description: "The XYZ namespace."
+      description: "The HERE Data Hub namespace."
       properties:
         space:
           description: "The space ID."
@@ -1441,7 +1441,7 @@ components:
             type: "array"
     XyzResponse:
       type: "object"
-      description: "The base type for all possible responses returned by the XYZ Hub."
+      description: "The base type for all possible responses returned by HERE Data Hub."
       required:
       - "type"
       properties:
@@ -1462,8 +1462,8 @@ components:
         properties:
           streamId:
             description: "A unique identifier of the request. This identifier should\
-              \ be provided when reporting errors. Its used to track requests through\
-              \ the XYZ platform."
+              \ be provided when reporting errors. It is used to track requests through\
+              \ the HERE platform."
             type: "string"
           type:
             type: "string"
