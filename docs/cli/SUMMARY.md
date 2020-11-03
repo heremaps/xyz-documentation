@@ -11,6 +11,7 @@
     - [Group by in CSV](tutorials/group_by.md)
   - [Commands](command-reference.md)
 - [Space Invader](space-invader/index.md)
+- [Tools](tools.md)
 - GeoJSON Viewer
   - [Overview](viewer-tool/index.md)
   - [GeoJSON Basics](topics/geojsonbasics.md)
