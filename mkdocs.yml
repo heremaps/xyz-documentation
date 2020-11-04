@@ -1,7 +1,7 @@
 # Project information
-site_name: HERE XYZ - Open Documentation
+site_name: HERE Data Hub - Open Documentation
 site_description: Make great maps easier
-site_author: The HERE XYZ Team
+site_author: The HERE Data Hub Team
 site_url: https://www.here.xyz/
 site_dir: ../site
 
@@ -11,7 +11,7 @@ repo_url: https://github.com/heremaps/xyz-documentation
 #edit_uri:
 
 # Copyright
-copyright: 'Copyright &copy; 2018-2019 HERE Europe B.V.'
+copyright: 'Copyright &copy; 2018-2020 HERE Europe B.V.'
 
 # Configuration
 theme:
@@ -53,14 +53,14 @@ extra:
 nav:
   - Introduction: index.md
   - Getting Started: getting-started.md
-  - XYZ Studio:
-      - Quick Tour: studio/index.md
-      - Navigating: studio/navigating.md
-      - Data: studio/data.md
-      - Styling: studio/styles.md
-      - Publishing: studio/publish.md
-  - XYZ APIs:
-      - XYZ Hub API:
+  - Here Studio:
+      - Quick Tour: studio/topics/index.md
+      - Navigating: studio/topics/navigating.md
+      - Data: studio/topics/data.md
+      - Styling: studio/topics/styles.md
+      - Publishing: studio/topics/publish.md
+  - Data Hub APIs:
+      - Data Hub API:
           - Overview: api/index.md
           - Manage Tokens: api/getting-token.md
           - Quick Start:
@@ -68,7 +68,7 @@ nav:
               - Read Spaces: api/quickstart/readspaces.md
               - Create a Space: api/quickstart/createspace.md
               - Write to a Space: api/quickstart/writetospace.md
-              - Using Activity Log: api/quickstart/activitylog.md
+              - Use Activity Log: api/quickstart/activitylog.md
           - Concepts:
               - GeoJSON Basics: api/concepts/geojsonbasics.md
               - Namespaces: api/concepts/namespaces.md
@@ -76,45 +76,53 @@ nav:
               - Tiles: api/concepts/tiles.md
               - JSON Schema: api/concepts/jsonschema.md
           - Walkthrough:
-              - Creating a Space: api/walkthrough/creatingaspace.md
-              - Adding and Deleting Features: api/walkthrough/addinganddeleting.md
+              - Create a Space: api/walkthrough/creatingaspace.md
+              - Add and Delete Features: api/walkthrough/addinganddeleting.md
               - Search by Bounding Box: api/walkthrough/searchbyboundingbox.md
               - Search by Tags: api/walkthrough/searchbytags.md
               - Iterate over Features: api/walkthrough/iterateoverfeatures.md
               - Use Schema Validation: api/walkthrough/schemavalidation.md
           - Developer Guide:
-              - Working with Spaces: api/devguide/workwithspaces.md
-              - Working with Features: api/devguide/workwithfeatures.md
-              - Tagging: api/devguide/tagging.md
-              - Accessing Features: api/devguide/accessingfeatures.md
+              - Work with Spaces: api/devguide/workwithspaces.md
+              - Work with Features: api/devguide/workwithfeatures.md
+              - Tags: api/devguide/tagging.md
+              - Access Features: api/devguide/accessingfeatures.md
               - Search for Features: api/devguide/propertiessearch.md
               - Spatial Search for Features: api/devguide/spatialsearch.md
               - Adjust searchable properties: api/devguide/searchableproperties.md
-              - Using Clustering: api/devguide/usingclustering.md
-              - Working with Activity Log: api/devguide/activitylogguide.md
+              - Use Clustering: api/devguide/usingclustering.md
+              - Work with Activity Log: api/devguide/activitylogguide.md
               - Common Errors: api/devguide/commonerrors.md
           - API Reference: api/apireference.md
           - Useful Links: api/links.md
-      - XYZ Maps JS:
+      - Data Hub Maps JS:
           - Overview: ui/index.md
-          - Getting started: ui/gettingstarted.md
+          - Get started: ui/gettingstarted.md
           - Display your space: ui/yourxyzspace.md
           - Style your data: ui/styleyourdata.md
           - Add interactivity: ui/tapfeature.md
   - Tools:
       - HERE CLI:
           - Overview: cli/index.md
-          - Commands: cli/cli.md
-          - Shapefiles: cli/shapefiles.md
-          - Hexbins: cli/hexbins.md
-      - XYZ Space Invader: space-invader/index.md
+          - Basic features: cli/basic-features.md
+          - Add-on features: cli/add-on.md
+          - Tutorials:
+              - Shapefiles: cli/tutorials/shapefiles.md
+              - Hexbins: cli/tutorials/cli_hexbins.md
+              - Group by in CSV : cli/tutorials/group_by.md
+          - Command reference: cli/command-reference.md
+      - Data Hub Space Invader: cli/space-invader/index.md
+      - XYZ Spaces for Python: cli/tools#xyz-spaces-for-python
+      - Maps API for Javascript: cli/tools#here-maps-api-for-javascript
       - GeoJSON Viewer:
-          - Overview: viewer-tool/index.md
+          - Overview: cli/viewer-tool/index.md
           - GeoJSON Basics: api/concepts/geojsonbasics.md
-          - Advanced Features: viewer-tool/advanced.md
+          - Advanced Features: cli/viewer-tool/advanced.md
       - Open Datasets:
-          - Buildings: microsoft-buildings.md
-          - Earthquakes: usgs-earthquake.md
+          - Buildings: cli/topics/microsoft-buildings.md
+          - Earthquakes: cli/topics/usgs-earthquake.md
+  - Data Hub Add-on:
+        - Data Hub Add-on: cli/datahub_add-on.md
   - Releases:
       - Release notes: release-notes.md
   - Tutorials:

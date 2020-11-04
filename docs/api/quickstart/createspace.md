@@ -1,8 +1,8 @@
 # Create a Space
 
-Here you see the request and response for creating a new space:
+See the following request and response for creating a new space:
 
-### Request
+## Request
 
 *Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit_Spaces)*
 
@@ -19,9 +19,11 @@ with the following body:
 }
 ```
 
-!!! Info "Note:  The Description can contain formatting in markdown format."
+> #### Info
+>
+> The Description can contain formatting in markdown format.
 
-### Response
+## Response
 
 ```JSON
 {
@@ -31,4 +33,7 @@ with the following body:
 }
 ```
 
-!!! Info "Note:  The ID is a unique, randomly generated identifier and is mandatory as an argument in subsequent requests"
+> #### Info
+>
+> The ID is a unique, randomly generated identifier and is mandatory as an argument in
+> subsequent requests.
