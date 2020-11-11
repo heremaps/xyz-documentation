@@ -90,7 +90,10 @@ nav:
               - Search for Features: api/devguide/propertiessearch.md
               - Spatial Search for Features: api/devguide/spatialsearch.md
               - Adjust searchable properties: api/devguide/searchableproperties.md
-              - Use Clustering: api/devguide/usingclustering.md
+              - Visualization and Clustering:
+                - viz: api/devguide/visualization.md
+                - hexbin (H3): api/devguide/hexbin.md
+                - quadbin: api/devguide/quadbin.md
               - Work with Activity Log: api/devguide/activitylogguide.md
               - Common Errors: api/devguide/commonerrors.md
           - API Reference: api/apireference.md
