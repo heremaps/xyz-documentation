@@ -32,7 +32,7 @@
   - [Adjust Searchable Properties](devguide/searchableproperties.md)
   - [Visualization and Clustering](devguide/vizandclustering.md)
     - [viz](devguide/visualization.md)
-    - [hexbin (H3)](devguide/devguide/hexbin.md)
+    - [hexbin (H3)](devguide/hexbin.md)
     - [quadbin](devguide/quadbin.md)
   - [Work with Activity Log](devguide/activitylogguide.md)
   - [Common Errors](devguide/commonerrors.md)
