@@ -6,8 +6,9 @@ This affects the amount of features, their attributes and coordinates.
 
 All described parameters and values are related to tile requests.
 ## mode=viz
+The strategies to reduce datasize in "viz" mode are as follows.
 
-* reduce size of single features<br>
+* reduce payload of features<br>
 default, every feature will contain an empty feature.properties value. (e.g. properties:{} )<br>
 To get specific properties attributes, they must be explicit specified with tile parameter "selection=".
 (e.g. "http://....?mode=viz&selection=p.firstAttrib,p.secondAttrib,...p.lastAttrib )
