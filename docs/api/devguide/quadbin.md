@@ -8,6 +8,11 @@ clustered form. Two different clustering modes, "hexbin" and "quadbin", are avai
 
 
 ## quadbin
+
+![Fire data](../images/quadbin.1.jpg)
+
+### Get clustered Features in a tile
+
 The quadbin algorithm takes the geometry input from the request (e.g. quadkey / bbox..)
 and does estimated count on the features contained in the space. This clustering mode works also for very large spaces and
 can be used for getting an overview where data is geolocated in a given space. Furthermore,
