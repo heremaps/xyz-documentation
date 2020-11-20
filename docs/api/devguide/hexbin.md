@@ -10,7 +10,7 @@ hexbin clustered form. Two different clustering modes, "hexbin" and "quadbin", a
 
 ![Fire data](../images/hexbin.1.jpg)
 
-### Get clustered Features in a Bounding Box
+### Get clustered Features in a tile
 
 While retrieving features from Spaces inside a tile you can use "hexbin"
 clustering to visualize your data as hexagons. Each hexagon represents the features of the area it
