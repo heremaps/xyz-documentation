@@ -18,21 +18,21 @@ For parameter "selection=" the special values "*", for all attributes, and "none
 depending on requested tile level the coordinates of the geometries (except for point objects) are reduced, to at most one coordinate per pixel (512 pixelsize per tile)
 
 * reduce amount of features per tile<br>
-  default, a sampling threshold of max 30k objects, for a single tile on 3x3 tile grid is used (s.b)<br>
+  default, a sampling threshold of at max 30k objects for the requested tiles is used<br>
   The threshold can be controled with the additional parameter vizSampling (s.b.)
 
 ### vizSampling={value}
 
 In order to reduce the amount of data returned, only a evenly distributed sample of data can be requested. 
-Parameter vizSampling sets the wanted threshold for the 3x3 tile grid, surrounding the requested tile.
-E.g. setting "vizSampling=med" when requsting a specifc tile, will calculate the samplinratio such that, the "heaviest" tile in the related 3x3 grid will contain at most 30k objects.
+Parameter vizSampling sets the wanted threshold for the requested tiles.
+E.g. setting "vizSampling=med" when requsting a specifc tile, will calculate the samplinratio such that, the "heaviest" tile in an observed region of the dataset will contain at most 30k objects.
 
 |value | threshold |
 |---|---|
 | low  | 70k |
 | med  | 30k (default) |
 | high | 15k |
-| off  |  |
+| off  | turn off vizSampling |
 
 #### Request
 
@@ -41,6 +41,4 @@ E.g. setting "vizSampling=med" when requsting a specifc tile, will calculate the
 ```HTTP
 GET /spaces/{spaceId}/tile/{type}/{tileId}?mode=viz&vizSampling=med&selection=*
 ```
-
-#### Response
 
