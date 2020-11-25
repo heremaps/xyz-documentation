@@ -23,9 +23,9 @@ depending on requested tile level the coordinates of the geometries (except for 
 
 ### vizSampling={value}
 
-In order to reduce the amount of data returned, only a evenly distributed sample of data can be requested. 
+In order to reduce the amount of data returned, only an evenly distributed sample of data can be requested. 
 Parameter vizSampling sets the wanted threshold for the requested tiles.
-E.g. setting "vizSampling=med" when requsting a specifc tile, will calculate the samplinratio such that, the "heaviest" tile in an observed region of the dataset will contain at most 30k objects.
+E.g. setting "vizSampling=med" when requesting a specific tile, will calculate the sampling ratio such that, the "heaviest" tile in an observed region of the dataset will contain at most 30k objects.
 
 |value | threshold |
 |---|---|
