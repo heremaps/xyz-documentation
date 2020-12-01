@@ -1,7 +1,9 @@
 # HERE Data Hub CLI
 
 In this section we give you a quick overview of the most commonly used commands to interact
-with Data Hub Spaces from the HERE Data Hub CLI.
+with Data Hub Spaces from the HERE Data Hub CLI. 
+
+See [Get a HERE Account](https://developer.here.com/documentation/identity-access-management/dev_guide/topics/obtain-user-credentials.html) for additional information regarding authentication and configuration procedures.
 
 > #### Warning
 >
