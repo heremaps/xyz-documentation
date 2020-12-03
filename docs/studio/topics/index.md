@@ -2,7 +2,7 @@
 
 ## Sign Up and Log In
 
-To sign up and log in, go to**[`https://studio.here.com/`](https://studio.here.com/)**  
+To sign up and log in, go to **[`https://studio.here.com/`](https://studio.here.com/)**  
 
 See the following video overview:
 

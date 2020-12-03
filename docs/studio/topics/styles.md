@@ -4,7 +4,7 @@
 
 Studio allows you to control the visual appearance of your features. This is
 called a _style_ and there are different options between the basic primitives
-of _Points_,_Lines_ and _Polygons_.
+of _Points_, _Lines_, and _Polygons_.
 
 See the following video overview:
 
