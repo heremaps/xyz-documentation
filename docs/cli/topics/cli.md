@@ -5,7 +5,8 @@ with XYZ Spaces from the HERE Data Hub CLI.
 
 
 > #### Warning 
-> Configuration is required for HERE Data Hub CLI to work.
+> Configuration is required for HERE Data Hub CLI to work. For additional information, see
+> [Get a HERE Account](https://developer.here.com/documentation/identity-access-management/dev_guide/topics/obtain-user-credentials.html).
 > If you have skipped the previous section now is the time to go back and verify that
 > HERE Data Hub CLI is properly configured with your developer identity. In case you are not
 > certain, you can run `here configure verify` to check if your credentials are valid.
@@ -30,6 +31,8 @@ here --help
 ```
 
 ### Configure
+
+See [Get a HERE Account](https://developer.here.com/documentation/identity-access-management/dev_guide/topics/obtain-user-credentials.html) for additional information regarding authentication and configuration procedures.
 
 As explained earlier, HERE Data Hub CLI needs to know you to interact with your XYZ Spaces. You can use
 
