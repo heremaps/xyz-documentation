@@ -1,0 +1,15 @@
+{
+    "title": "Geocoder Demo",
+    "description": "Upload Airports without geometry and add with Geocoder",
+    "processors": {
+      "geocoder-preprocessor": [
+        {
+          "params": {
+               "doForwardGeocode":true,
+               "forwardQuery":["$name", "$municipality", "$iso_country","$iata_code"],
+               "apiKey":"<YourApiKey>"
+          }
+        }
+      ]
+    }
+  }
