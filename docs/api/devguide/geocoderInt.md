@@ -547,7 +547,7 @@ You can have a look at the full data set with Geojson Tools. Here the Space from
 
 ## Epilog
 
-Let's compare the Frankfurt office in the two Spaces side by side:
+Let's compare the geocoded features in the two spaces side by side:
 
 <table>
 <tr>
