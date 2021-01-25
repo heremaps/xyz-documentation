@@ -671,7 +671,7 @@ Let's compare the geocoded features in the two spaces side by side:
       }
     }</pre></code></td>
 <td>The adress is exatly the same.
-The coordines are slightly different.
-The Reverse Geocoder returnes beside the adress also coordines to access the building, a map view and a position. This position is exactly what we got from forward geocoder.</td>
+The coordinates are slightly different.
+The Reverse Geocoder returnes beside the adress also coordinates to access the building, a map view and a position. This position is exactly what we got from forward geocoder.</td>
 </tr>
 </table>
