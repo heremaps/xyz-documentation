@@ -40,6 +40,7 @@ To activate the preprocessor, just add it to your space configuration.
           "forceForwardGeocoding": (true|false), // Force forward geocoding even if object already has coordinates (Default=false)
           "forwardSaveCoords": (true|false), // Save old coordinates in case they're being overwritten. (Default=false)
           "forwardQuery":["<FIELD_1>","<FIELD_2>",...,"<FIELD_N>"], // List of property keys used to create forward Geocoding search string (Default is empty!)
+          "forwardQualifiedQuery": {"country":"<FIELD_1>",...}	// Map of qualified sub-parameters for forward geocoding which can be country, county, city, district, street, houseNumber and/or postalCode (Default is empty!)
           "apiKey":"<YourAPIKey>" // API-Key used to authenticate and authorize call to geocoder service. **REQUIRED**
         }
       }
@@ -64,10 +65,11 @@ The address data returned by HERE Reverse Geocoder will be adopted into the obje
 
 ## Forward Geocoding
 
-Forward geocoding is enabled by setting the parameter ```"doForwardGeocode":true``` in the space configuration.
-In addition, the user will need to provide a list of field names and/or String literals under the ```"properties"``` section of the space's objects.
+Forward geocoding is enabled by setting the parameter ```"doForwardGeocode":true```. Additionally, the user has to specify the ```"forwardQuery"``` and/or ```"forwardQualifiedQuery"``` parameter in the space configuration.
+The user will need to provide a list of field names and/or String literals under the ```"properties"``` section of the space's objects.
 
-Example minimum space configuration:
+### forwardQuery 
+Example minimum space configuration for ***forwardQuery***:
 
 ```json
 {
@@ -112,9 +114,9 @@ The object structure might look something like this:
 
 > #### Note
 >
-> ##### forwardQuery
+> ##### forwardQuery & forwardQualifiedQuery
 >
-> Only values residing within the ```"properties"``` part of an object can be used for forward geocoding. Therefore, "properties." must be omitted from the field names listed in the ```"forwardQuery"```.
+> Only values residing within the ```"properties"``` part of an object can be used for forward geocoding. Therefore, "properties." must be omitted from the field names listed in the ```"forwardQuery"``` and/or ```"forwardQualifiedQuery"```.
 >
 > ##### Nested Properties
 >
@@ -126,8 +128,32 @@ The object structure might look something like this:
 
 For this example object, the search string passed to HERE Forward Geocoder would look like this: ```"Ministro Pistarini International Airport Buenos Aires AR EZE"```.
 
-### Further parameters
+### forwardQualifiedQuery
+Example space configuration for both ***forwardQuery*** and ***forwardQualifiedQuery***:
 
+```json
+{
+  "title": "<SPACE_TITLE>",
+  "processors": {
+    "geocoder-preprocessor": [
+      {
+        "params": {
+             "doForwardGeocode":true,
+             "forwardQuery":["$name","$iata_code"],
+             "forwardQualifiedQuery": {
+                "city": "$municipality",
+                "country" : "$iso_country"
+              },
+             "apiKey":"<YourAPIKey>"
+        }
+      }
+    ]
+  }
+}
+```
+For the above mentioned example object, the qualified query would be ```"city=Buenos Aires;country=AR"``` in addition to the search string that would look like this: ```"Ministro Pistarini International Airport Buenos Aires EZE"```.
+
+### Further parameters
 + ```"forceForwardGeocoding"``` : If this parameter is present and set to boolean true, the Geocoder Preprocessor will perform geocoding on an object regardless of whether that object already has coordinates or not. During this operation, the object will be of type "Point" and have its coordinates set to the result from HERE Forward Geocoder call.
 + ```"forwardSaveCoords"``` : If this parameter is present and set to boolean true, any geometry that might be overwritten by a call will be saved under the key ```"previousCoordinates"``` within the top-level namespace ```"@ns:com:here:xyz:geocoderProcessor"``` so they will not be lost.
 
@@ -337,7 +363,7 @@ Beside the coordinates there is a new namespace geocoderIntegraton. This has the
 
 #### View Result
 
-You can have a look at the full data set with Geojson Tools. Add your data to the following link: <http://geojson.tools/?url=https://xyz.api.here.com/hub/spaces/<Your Space Id>/iterate?access_token=<YourToken>>
+You can have a look at the full data set with Geojson Tools. Add your data to the following link: <http://geojson.tools/?url=https://xyz.api.here.com/hub/spaces/{Your Space Id}/iterate?access_token={YourToken}>
 
 ### Reverse Geocode the HERE office location
 
