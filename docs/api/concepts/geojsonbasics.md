@@ -169,7 +169,7 @@ A **FeatureCollection** contains an array of **Features**, contained in a member
         ]
       },
       "properties": {
-        "{spaceId}@ns:com:here:xyz": {
+        "@ns:com:here:xyz": {
           "tags": [
             "football",
             "stadium"
@@ -185,7 +185,7 @@ A **FeatureCollection** contains an array of **Features**, contained in a member
 }
 ```
 
-[View this **FeatureCollection** on a map](http://geojson.tools/index.html?url=data:text/json,%7B%22type%22:%22FeatureCollection%22,%22features%22:[%7B%22type%22:%22Feature%22,%22geometry%22:%7B%22type%22:%22Point%22,%22coordinates%22:[-2.960847,53.430828]%7D,%22properties%22:%7B%22%7BspaceId%7D@ns:com:here:xyz%22:%7B%22tags%22:[%22football%22,%22stadium%22]%7D,%22name%22:%22Anfield%22,%22amenity%22:%22Football%20Stadium%22,%22capacity%22:54074,%22popupContent%22:%22Home%20of%20Liverpool%20Football%20Club%22%7D%7D]%7D)
+[View this **FeatureCollection** on a map](http://geojson.tools/index.html?url=data:text/json,%7B%22type%22:%22FeatureCollection%22,%22features%22:[%7B%22type%22:%22Feature%22,%22geometry%22:%7B%22type%22:%22Point%22,%22coordinates%22:[-2.960847,53.430828]%7D,%22properties%22:%7B%22@ns:com:here:xyz%22:%7B%22tags%22:[%22football%22,%22stadium%22]%7D,%22name%22:%22Anfield%22,%22amenity%22:%22Football%20Stadium%22,%22capacity%22:54074,%22popupContent%22:%22Home%20of%20Liverpool%20Football%20Club%22%7D%7D]%7D)
 
 ## GeometryCollection
 

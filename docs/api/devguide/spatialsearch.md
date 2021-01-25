@@ -76,7 +76,7 @@ GET /spaces/{spaceId}/spatial?refSpaceId={referencedSpace}&refFeatureId
             "properties":
             {
                 "name": "Anfield",
-                "spaceId@ns:com:here:xyz":
+                "@ns:com:here:xyz":
                 {
                     "createdAt": 1517504700726,
                     "updatedAt": 1517504700726,
@@ -186,7 +186,7 @@ with the following body
             "properties":
             {
                 "name": "Anfield",
-                "spaceId@ns:com:here:xyz":
+                "@ns:com:here:xyz":
                 {
                     "createdAt": 1517504700726,
                     "updatedAt": 1517504700726,

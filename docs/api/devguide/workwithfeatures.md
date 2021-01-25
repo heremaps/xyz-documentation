@@ -30,8 +30,14 @@ GET /spaces/{spaceId}/features/{featureId}
   "properties":
   {
     "name": "Anfield",
-    "spaceId@ns:com:here:xyz":
-        {},
+    "@ns:com:here:xyz":
+        {
+          "tags":
+             [
+               "football",
+               "stadium"
+             ]
+        },
         "amenity": "Football Stadium",
         "capacity": 54074,
         "popupContent": "Home of Liverpool Football Club"
@@ -71,7 +77,7 @@ GET /spaces/[spaceId}/features?id={featureId1},{featureId2},{featureId3}
         },
         "properties":
         {
-           "spaceId@ns:com:here:xyz":
+           "@ns:com:here:xyz":
            {
              "tags":
              [
@@ -194,7 +200,7 @@ with the following body
         },
         "properties":
         {
-          "spaceId@ns:com:here:xyz":
+          "@ns:com:here:xyz":
           {
             "tags":
             [
@@ -234,7 +240,7 @@ with the following body
         "properties":
         {
           "name": "Anfield",
-          "spaceId@ns:com:here:xyz":
+          "@ns:com:here:xyz":
           {
              "createdAt": 1517504700726,
              "updatedAt": 1517504700726,
@@ -286,7 +292,7 @@ with the following body
           },
           "properties":
           {
-            "spaceId@ns:com:here:xyz":
+            "@ns:com:here:xyz":
             {
               "tags":
               [
@@ -326,7 +332,7 @@ with the following body
         "properties":
         {
           "name": "Anfield",
-          "spaceId@ns:com:here:xyz":
+          "@ns:com:here:xyz":
           {
             "createdAt": 1517504700726,
             "updatedAt": 1517504700726,
@@ -374,7 +380,7 @@ A PATCH request needs something like the following body
     },
     "properties":
     {
-       "spaceId@ns:com:here:xyz":
+       "@ns:com:here:xyz":
        {}
     },
     "bbox":
@@ -406,7 +412,7 @@ A PATCH request needs something like the following body
       },
       "properties": {
         "name": "Anfield",
-        "spaceId@ns:com:here:xyz": {
+        "@ns:com:here:xyz": {
           "createdAt": 1517504700726,
           "updatedAt": 1517504700726,
           "space": "x-demospace",
@@ -482,7 +488,7 @@ GET /spaces/{spaceId}/search
         "properties":
         {
           "name": "Anfield",
-          "spaceId@ns:com:here:xyz":
+          "@ns:com:here:xyz":
           {
             "createdAt": 1517504700726,
             "updatedAt": 1517504700726,
@@ -536,7 +542,7 @@ GET /spaces/{spaceId}/iterate
         "properties":
         {
           "name": "Anfield",
-          "spaceId@ns:com:here:xyz":
+          "@ns:com:here:xyz":
           {
             "createdAt": 1517504700726,
             "updatedAt": 1517504700726,

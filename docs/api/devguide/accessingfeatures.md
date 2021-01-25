@@ -36,7 +36,7 @@ GET /spaces/{spaceId}/bbox?west={westLongitude}&north={northLatitude}&east={east
             "properties":
             {
                 "name": "Anfield",
-                "spaceId@ns:com:here:xyz":
+                "@ns:com:here:xyz":
                 {
                     "createdAt": 1517504700726,
                     "updatedAt": 1517504700726,
@@ -90,7 +90,7 @@ GET /spaces/{spaceId}/tile/{type}/{tileId}
             "properties":
             {
                 "name": "Anfield",
-                "spaceId@ns:com:here:xyz":
+                "@ns:com:here:xyz":
                 {
                     "createdAt": 1517504700726,
                     "updatedAt": 1517504700726,
@@ -144,7 +144,7 @@ GET /spaces/{spaceId}/iterate
             "properties":
             {
                 "name": "Anfield",
-                "spaceId@ns:com:here:xyz":
+                "@ns:com:here:xyz":
                 {
                     "createdAt": 1517504700726,
                     "updatedAt": 1517504700726,
