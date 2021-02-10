@@ -333,6 +333,16 @@ Uploads data and allows users to select tags from a list of feature keynames in 
 >
 > `-a` does not allow you to stream the upload.
 
+> #### Note
+> The mapping of CSV columns to GeoJSON is as follows:
+>
+> | Type  | CSV column | GeoJSON |
+> | ---   |-------------| -------|
+> | spatial |          |        |
+> | e.g.     |  ...;**lat**;**long**; ... <br/>...;*50.16192*;*8.53362*;... | ...<br/>"geometry": {<br/>  "type": "Point",<br/>"coordinates": {<br/>[*8.53362*,*50.16192*]<br/>}}
+> | non-spatial  | **anyOtherName** | properties.**anyOtherName**
+> | e.g. | ...;**name**;**amenity**;...<br/>...;*Anfield*;*Football Stadium*;...| ...<br/>properties {<br/>...<br/>  "**name**": "*Anfield*",<br/>"**amenity**": "*Football Stadium*",<br/>...<br/>}
+
 ##### Assign tags using property names
 
 ```console
