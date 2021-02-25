@@ -28,7 +28,7 @@ Here is a list of links for working with HERE Data Hub
 
 ### Maps UI JSDoc Documentation
 
-[`https://xyz.api.here.com/maps/latest/documentation/here.xyz.maps.html`](https://xyz.api.here.com/maps/latest/documentation/here.xyz.maps.html)
+[`https://xyz.api.here.com/maps/latest/documentation/here.xyz.maps.html`](https://xyz.api.here.com/maps/latest/documentation/index.html)
 
 ### JavaScript Maps UI Components
 
