@@ -1,12 +1,12 @@
-# Working with Features
+# Work with Features
 
-## Reading Features in a Space by ID
+## Read Features in a Space by ID
 
 The following request queries a single feature using the ID of the feature.
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read_Features)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/getFeature)*
 
 ```HTTP
 GET /spaces/{spaceId}/features/{featureId}
@@ -30,8 +30,14 @@ GET /spaces/{spaceId}/features/{featureId}
   "properties":
   {
     "name": "Anfield",
-    "spaceId@ns:com:here:xyz":
-        {},
+    "@ns:com:here:xyz":
+        {
+          "tags":
+             [
+               "football",
+               "stadium"
+             ]
+        },
         "amenity": "Football Stadium",
         "capacity": 54074,
         "popupContent": "Home of Liverpool Football Club"
@@ -39,13 +45,13 @@ GET /spaces/{spaceId}/features/{featureId}
 }
 ```
 
-## Reading Features of a Space
+## Read Features of a Space
 
-For querying multiple features in a space use the following request.
+For querying multiple features in a space use the following request:
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read_Features)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/getFeatures)*
 
 ```HTTP
 GET /spaces/[spaceId}/features?id={featureId1},{featureId2},{featureId3}
@@ -71,7 +77,7 @@ GET /spaces/[spaceId}/features?id={featureId1},{featureId2},{featureId3}
         },
         "properties":
         {
-           "spaceId@ns:com:here:xyz":
+           "@ns:com:here:xyz":
            {
              "tags":
              [
@@ -89,39 +95,86 @@ GET /spaces/[spaceId}/features?id={featureId1},{featureId2},{featureId3}
 }
 ```
 
-## Getting a Feature Count
+## Get a Feature Count and other statistics
 
-Here is an example of getting the number of features in a space.
+Here is an example of getting the number of features in a space, the size and a list of tags on the space.
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read_Features)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/getStatistics)*
 
 ```HTTP
-GET /spaces/{spaceId}/count
+GET /spaces/{spaceId}/statistics
 ```
 
 ### Response
 
 ```JSON
 {
-  "type": "FeatureCollection",
-  "features": [],
-  "count": 42
+  "type": "StatisticsResponse",
+  "count": {
+    "value": 29208,
+    "estimated": true
+  },
+  "byteSize": {
+    "value": 108364,
+    "estimated": true
+  },
+  "bbox": {
+    "value": [
+      -10,
+      -10,
+      10,
+      10
+    ],
+    "estimated": true
+  },
+  "geometryTypes": {
+    "value": [
+      "Point"
+    ],
+    "estimated": true
+  },
+  "properties": {
+    "value": [
+      {
+        "key": "Route",
+        "count": 29208,
+        "searchable": true
+      },
+      {
+        "key": "Route Type",
+        "count": 29208,
+        "searchable": true
+      }
+    ],
+    "estimated": true,
+    "searchable": "PARTIAL"
+  },
+  "tags": {
+    "value": [
+      {
+        "key": "PuneBusStop",
+        "count": 29208
+      }
+    ]
+  }
 }
 ```
 
-## Creating/Replacing Features
+## Create/Replace Features
 
 To create features in a space or to replace existing ones you can use the following request.
 
-!!! Warning "Note: Existing features will be completely erased by using this PUT request"
+> #### Warning
+>
+>Existing features will be completely erased by using this PUT request.
 
-To keep already existing features use [this request](#modifying-space-features).
+To keep already existing features, use [this request](#modifying-space-features).
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit_Features)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit%20Features/putFeatures)*
 
 ```HTTP
 PUT /spaces/{spaceId}/features
@@ -147,7 +200,7 @@ with the following body
         },
         "properties":
         {
-          "spaceId@ns:com:here:xyz":
+          "@ns:com:here:xyz":
           {
             "tags":
             [
@@ -187,7 +240,7 @@ with the following body
         "properties":
         {
           "name": "Anfield",
-          "spaceId@ns:com:here:xyz":
+          "@ns:com:here:xyz":
           {
              "createdAt": 1517504700726,
              "updatedAt": 1517504700726,
@@ -207,13 +260,13 @@ with the following body
 }
 ```
 
-## Modifying Features
+## Modify Features
 
 This is an example for modifying existing features using a POST request.
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit_Features)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit%20Features/postFeatures)*
 
 ```HTTP
 POST /spaces/{spaceId}/features
@@ -239,7 +292,7 @@ with the following body
           },
           "properties":
           {
-            "spaceId@ns:com:here:xyz":
+            "@ns:com:here:xyz":
             {
               "tags":
               [
@@ -279,7 +332,7 @@ with the following body
         "properties":
         {
           "name": "Anfield",
-          "spaceId@ns:com:here:xyz":
+          "@ns:com:here:xyz":
           {
             "createdAt": 1517504700726,
             "updatedAt": 1517504700726,
@@ -299,7 +352,7 @@ with the following body
 }
 ```
 
-## Partially Updating Features in Space
+## Partially Update Features in Space
 
 This request contains only the feature properties you want to add, update or delete.
 
@@ -309,7 +362,7 @@ This request contains only the feature properties you want to add, update or del
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit_Features)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit%20Features/patchFeature)*
 
 ```HTTP
 PATCH /spaces/{spaceId}/features?id={featureId1},{featureId2},{featureId3}
@@ -327,7 +380,7 @@ A PATCH request needs something like the following body
     },
     "properties":
     {
-       "spaceId@ns:com:here:xyz":
+       "@ns:com:here:xyz":
        {}
     },
     "bbox":
@@ -359,7 +412,7 @@ A PATCH request needs something like the following body
       },
       "properties": {
         "name": "Anfield",
-        "spaceId@ns:com:here:xyz": {
+        "@ns:com:here:xyz": {
           "createdAt": 1517504700726,
           "updatedAt": 1517504700726,
           "space": "x-demospace",
@@ -379,7 +432,7 @@ A PATCH request needs something like the following body
 
 ## Validation Errors
 
-If you are using the validation feature, you sometimes will get an error message when uploading or modifying features, such as this one:
+If you are using the validation feature, you sometimes will get an error message when uploading or modifying features, such as the following:
 
 ```JSON
 {
@@ -401,13 +454,13 @@ The *id* is the id you sent. If you did not send one, the id will be null as in 
 *Position* is the position (zero-based) in the uploaded feature collection.  
 The *message* contains the schema validation errors with a detailed description of what does not confirm to your schema.
 
-## Searching a Space for Features
+## Search a Space for Features
 
-There are two ways of searching a space. /search is one of them, the other is [/iterate](#iterating-features-from-specific-spaces). This does not order the results and it does not enable you to continue the search.
+There are two ways of searching a space. /search is one, the other is [/iterate](#iterating-features-from-specific-spaces). This does not order the results and it does not enable you to continue the search.
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read_Features)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/searchForFeatures)*
 
 ```HTTP
 GET /spaces/{spaceId}/search
@@ -435,7 +488,7 @@ GET /spaces/{spaceId}/search
         "properties":
         {
           "name": "Anfield",
-          "spaceId@ns:com:here:xyz":
+          "@ns:com:here:xyz":
           {
             "createdAt": 1517504700726,
             "updatedAt": 1517504700726,
@@ -455,13 +508,13 @@ GET /spaces/{spaceId}/search
 }
 ```
 
-## Iterating Features from Specific Spaces
+## Iterate Features from Specific Spaces
 
-This is the second way to search a space (the other, you guessed it, is [/search](#searching-a-space-for-features)). Iterate allows you to iterate over all the matching features with the handle *handle* as a query parameter
+This is the second way to search a space (the other is [/search](#searching-a-space-for-features)). Iterate allows you to iterate over all the matching features with the handle *handle* as a query parameter
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read_Features)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/iterateFeatures)*
 
 ```HTTP
 GET /spaces/{spaceId}/iterate
@@ -489,7 +542,7 @@ GET /spaces/{spaceId}/iterate
         "properties":
         {
           "name": "Anfield",
-          "spaceId@ns:com:here:xyz":
+          "@ns:com:here:xyz":
           {
             "createdAt": 1517504700726,
             "updatedAt": 1517504700726,
@@ -509,13 +562,13 @@ GET /spaces/{spaceId}/iterate
 }
 ```
 
-## Deleting Multiple Features
+## Delete Multiple Features
 
-You can get rid of specific features by sending this request with their feature IDs
+You can remove specific features by sending this request with their feature IDs
 
 ### Request
 
-*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit_Features)*
+*Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit%20Features/deleteFeatures)*
 
 ```HTTP
 DELETE /spaces/{spaceId}/features?id={id1},{id2}

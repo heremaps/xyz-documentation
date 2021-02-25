@@ -1,60 +1,63 @@
-# Use Activity-Log
+# Use Activity Log
 
-!!! Note "Your account needs access to the XYZ Pro Services."
+> #### Note
+>
+> Your account needs access to the Data Hub Add-on Services.
 
-1. Create a new space with the activity-log listener:
+1. Create a new space with the activity-log listener and enableUUID set to true:
 
     ```HTTP
-     POST /spaces
-   ```
+    POST /spaces
+    ```
 
-   *Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit_Spaces/postSpace)*
+    *Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit_Spaces/postSpace)*
 
-   ```JSON
-     {
-        "title": "Activity-Log Test",
-         "listeners": [{
-           "id": "activity-log",
-           "eventTypes": [
-             "ModifySpaceEvent.request",
-             "..."
-           ]
-         }]
-     }
-   ```
+    ```JSON
+    {
+      "title": "Activity-Log Test",
+      "enableUUID": true,
+      "listeners": [
+        {
+          "id": "activity-log",
+          "eventTypes": [
+            "ModifySpaceEvent.request",
+            "..."
+          ]
+        }
+      ]
+    }
+    ```
 
-1. Check spaces. You will find the just created one, as well as a new one, that has a title like: Activity log for space \<newSpaceId\>
+1. Check spaces. You will find one, as well as a new one, that has a title like: Activity log for space \<newSpaceId\>
 
-     ```HTTP
+    ```HTTP
     GET /spaces
     ```
 
     *Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read_Spaces/getSpaces)*
 
-   ```JSON
-   [
-    "...",
-    {
-      "id": "<newSpaceId>",
-      "title": "Activity-Log-Test",
-      "description": null,
-      "enableUUID": true,
-      "createdAt": 1575271893917,
-      "updatedAt": 1575271897152
-    },
-    {
-      "id": "<activityLogSpaceId>",
-      "title": "activity-log for space <newSpaceId>",
-      "description": "This is an automatically created space for the history of space __<newSpaceId>__.  \nCreated on 2019-12-02 at 07:31  \n***\nModified features will be stored in this space by their original _uuid_.  \nThe original namespace properties of XYZ will be stored within the value 'original' of the namespace '@ns:com:here:xyz:log'.  \nIMPORTANT Deleting this space while activity-log is enabled, causes the absence of history.  \n***",
-      "createdAt": 1575271894028,
-      "updatedAt": 1575271894028,
-      "searchableProperties": {
-        "@ns:com:here:xyz:log.id": true,
-        "@ns:com:here:xyz:log.invalidatedAt": true,
-        "@ns:com:here:xyz:log.original.updatedAt": true
+    ```JSON
+    [
+      {
+        "id": "<newSpaceId>",
+        "title": "Activity-Log-Test",
+        "description": null,
+        "enableUUID": true,
+        "createdAt": 1575271893917,
+        "updatedAt": 1575271897152
+      },
+      {
+        "id": "<activityLogSpaceId>",
+        "title": "activity-log for space <newSpaceId>",
+        "description": "This is an automatically created space for the history of space __<newSpaceId>__.  \nCreated on 2019-12-02 at 07:31  \n***\nModified features will be stored in this space by their original _uuid_.  \nThe original namespace properties of Data Hub will be stored within the value 'original' of the namespace '@ns:com:here:xyz:log'.  \nIMPORTANT Deleting this space while activity-log is enabled, causes the absence of history.  \n***",
+        "createdAt": 1575271894028,
+        "updatedAt": 1575271894028,
+        "searchableProperties": {
+          "@ns:com:here:xyz:log.id": true,
+          "@ns:com:here:xyz:log.invalidatedAt": true,
+          "@ns:com:here:xyz:log.original.updatedAt": true
+        }
       }
-    },
-    "..."
     ]
     ```
 
@@ -66,23 +69,23 @@
 
     *Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Edit_Features/putFeatures)*
 
-   ```JSON
+    ```JSON
     {
-      "type":"FeatureCollection",
-      "features":[
-        {
-          "id":"newFeatureId",
-          "type":"Feature",
-          "geometry":{
-            "type":"Point",
-            "coordinates":[1,0]
-          }
-        }
-      ]
+     "type":"FeatureCollection",
+     "features":[
+       {
+         "id": "newFeatureId",
+         "type": "Feature",
+         "geometry": {
+           "type": "Point",
+           "coordinates": [1,0]
+         }
+       }
+     ]
     }
     ```
 
-    Check into your activity log space:
+1. Check your activity log space:
 
     ```HTTP
     GET /spaces/<activityLogSpaceId>/iterate
@@ -90,10 +93,10 @@
 
     *Try in [Swagger](https://xyz.api.here.com/hub/static/swagger/#/Read%20Features/iterateFeatures)*
 
-    This results in something like this
+    This results in something similar to:
 
-   ```JSON
-   {
+    ```JSON
+    {
      "type": "FeatureCollection",
      "features": [
        {
@@ -126,12 +129,12 @@
          }
        }
      ]
-   }
+    }
     ```
 
 ## Search for specific feature
 
-You can search the Activity Log for a specific feature using its original id.
+You can search the Activity Log for a specific feature using its original id. The id of a feature is a String, so ensure that it is quoted for the property search.
 This request returns an unsorted list of all revisions of the object.
 
 ```HTTP
@@ -271,3 +274,5 @@ Response body:
   ]
 }
 ```
+
+For further information head over to the [developer guide](../devguide/activitylogguide.md) on Activity-Log.

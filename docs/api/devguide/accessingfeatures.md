@@ -1,6 +1,6 @@
-# Accessing Features
+# Access Features
 
-This section describes how to get features from HERE XYZ Hub by using a bounding box or a tile, and iterating features.
+This section describes how to get features from HERE Data Hub by using a bounding box or a tile, and iterating features.
 
 ## Get Features by Bounding Box
 
@@ -36,7 +36,7 @@ GET /spaces/{spaceId}/bbox?west={westLongitude}&north={northLatitude}&east={east
             "properties":
             {
                 "name": "Anfield",
-                "spaceId@ns:com:here:xyz":
+                "@ns:com:here:xyz":
                 {
                     "createdAt": 1517504700726,
                     "updatedAt": 1517504700726,
@@ -87,10 +87,10 @@ GET /spaces/{spaceId}/tile/{type}/{tileId}
                     53.430828
                 ]
             },
-            "properties": 
+            "properties":
             {
                 "name": "Anfield",
-                "spaceId@ns:com:here:xyz":
+                "@ns:com:here:xyz":
                 {
                     "createdAt": 1517504700726,
                     "updatedAt": 1517504700726,
@@ -144,7 +144,7 @@ GET /spaces/{spaceId}/iterate
             "properties":
             {
                 "name": "Anfield",
-                "spaceId@ns:com:here:xyz":
+                "@ns:com:here:xyz":
                 {
                     "createdAt": 1517504700726,
                     "updatedAt": 1517504700726,
