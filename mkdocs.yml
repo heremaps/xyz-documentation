@@ -97,13 +97,13 @@ nav:
               - Work with Activity Log: api/devguide/activitylogguide.md
               - Common Errors: api/devguide/commonerrors.md
           - API Reference: api/apireference.md
-          - Useful Links: api/links.md
       - Data Hub Maps JS:
           - Overview: ui/index.md
           - Get started: ui/gettingstarted.md
           - Display your space: ui/yourxyzspace.md
           - Style your data: ui/styleyourdata.md
           - Add interactivity: ui/tapfeature.md
+      - Useful Links: api/links.md
   - Tools:
       - HERE CLI:
           - Overview: cli/index.md
