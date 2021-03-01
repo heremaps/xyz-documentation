@@ -28,7 +28,7 @@ Here is a list of links for working with HERE Data Hub
 
 ### Maps UI JSDoc Documentation
 
-[`https://xyz.api.here.com/maps/latest/documentation/here.xyz.maps.html`](https://xyz.api.here.com/maps/latest/documentation/index.html)
+[`https://xyz.api.here.com/maps/latest/documentation/index.html`](https://xyz.api.here.com/maps/latest/documentation/index.html)
 
 ### JavaScript Maps UI Components
 
@@ -38,12 +38,15 @@ Core [`https://xyz.api.here.com/maps/latest/xyz-maps-core.min.js`](https://xyz.a
 
 Display [`https://xyz.api.here.com/maps/latest/xyz-maps-display.min.js`](https://xyz.api.here.com/maps/latest/xyz-maps-display.min.js)
 
+Editor [`https://xyz.api.here.com/maps/latest/xyz-maps-editor.min.js`](https://xyz.api.here.com/maps/latest/xyz-maps-editor.min.js)
+
 Links to copy and paste into your HTML header:
 
 ```html
 <script src="https://xyz.api.here.com/maps/latest/xyz-maps-common.min.js" type="text/javascript" charset="UTF-8" ></script>
 <script src="https://xyz.api.here.com/maps/latest/xyz-maps-core.min.js" type="text/javascript" charset="UTF-8" ></script>
 <script src="https://xyz.api.here.com/maps/latest/xyz-maps-display.min.js" type="text/javascript" charset="UTF-8" ></script>
+<script src="https://xyz.api.here.com/maps/latest/xyz-maps-editor.min.js" type="text/javascript" charset="UTF-8" ></script>
 ```
 
 ## Open Source Tools
