@@ -1735,10 +1735,12 @@ components:
               capacity: 54074
               description: "Home of Liverpool Football Club"
   securitySchemes:
-    authToken:
+    Bearer:
       bearerFormat: "JWTPayload"
       scheme: "bearer"
       type: "http"
+      description: "A token obtained from a separate endpoint using client credentials and an OAuth 1.0a HMAC-SHA256 signed request. 
+      For more information on how to get a bearer token, see https://developer.here.com/documentation/identity-access-management/dev_guide/index.html."
 security:
 - authToken: []
 tags:
