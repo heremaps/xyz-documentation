@@ -53,12 +53,6 @@ extra:
 nav:
   - Introduction: index.md
   - Getting Started: getting-started.md
-  - Here Studio:
-      - Quick Tour: studio/topics/index.md
-      - Navigating: studio/topics/navigating.md
-      - Data: studio/topics/data.md
-      - Styling: studio/topics/styles.md
-      - Publishing: studio/topics/publish.md
   - Data Hub APIs:
       - Data Hub API:
           - Overview: api/index.md
