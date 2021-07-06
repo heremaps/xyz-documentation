@@ -1,15 +1,5 @@
 {
   "docs": [
-    "blob-v1-openapi.yml",
-    "blob-v2-openapi.yml",
-    "config-v1-openapi.yml",
-    "index-v1-openapi.yml",
-    "ingest-v1-openapi.yml",
-    "metadata-v1-openapi.yml",
-    "notifications-v2-openapi.yml",
-    "publish-v2-openapi.yml",
-    "query-v1-openapi.yml",
-    "stream-v2-openapi.yml",
-    "volatile-blob-v1-openapi.yml"
+        "public3.yml"
   ]
 }
