@@ -50,3 +50,7 @@ API gives you together with the data, which you need to provide back when you wa
 ## Open API documentation
 
 [`https://xyz.api.here.com/hub/static/swagger/`](https://xyz.api.here.com/hub/static/swagger/)
+
+## Data Privacy
+
+HERE is committed to respecting your privacy and to complying with applicable data protection and privacy laws. For more information, see the [HERE Privacy Policy](https://legal.here.com/en-gb/privacy).
