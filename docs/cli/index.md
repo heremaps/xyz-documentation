@@ -99,3 +99,7 @@ used to log into HERE Data Hub and report back to you accordingly.
     which contains the configuration data)
 
 To learn more about the HERE Data Hub CLI's advanced options, take a look at the [detailed tutorial](https://developer.here.com/tutorials/using-the-xyz-cli/).
+
+## Data Privacy
+
+HERE is committed to respecting your privacy and to complying with applicable data protection and privacy laws. For more information, see the [HERE Privacy Policy](https://legal.here.com/en-gb/privacy).
