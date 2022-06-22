@@ -7,6 +7,12 @@ data repository, which you can quickly create when needed to store data.
 
 To interact with the HERE Data Hub API directly from your application you need to use HERE's public REST APIs. These are simple to use from any application environment - you only need to know how to make RESTful requests.
 
+> #### Note
+> 
+> Data Hub is currently "[In Maintenance](https://developer.here.com/documentation/product-lifecycle-policy/customer_notice/index.html)". Interactive map layers (IML) has been identified as the successor to Data Hub. For new users considering Data Hub, HERE recommends that you start with IML on the [HERE platform](https://platform.here.com).
+>
+> For more information on IML, see the [Data API](https://developer.here.com/documentation/data-api/data_dev_guide/rest/layers.html).
+
 ## Authentication
 
 For everything you want to do via the API, you need to use a token as described in the
