@@ -52,8 +52,8 @@ extra:
 # Page tree
 nav:
   - Introduction: index.md
+  - Migrating to IML: migrating-to-iml.md
   - Getting Started: getting-started.md
-  - Letting Go: letting-go.md
   - Data Hub APIs:
       - Data Hub API:
           - Overview: api/index.md
