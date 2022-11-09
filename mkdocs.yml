@@ -120,7 +120,7 @@ nav:
   - Data Hub Add-on:
         - Data Hub Add-on: cli/datahub_add-on.md
   - Releases:
-      - Release notes: release-notes.md
+      - Release notes: https://github.com/heremaps/here-cli/releases
   - Tutorials:
       - https://developer.here.com/tutorials?category=HERE%2BStudio%2Band%2BData%2BHub
 
