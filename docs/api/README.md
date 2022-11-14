@@ -1,3 +1,10 @@
+> # Note
+>
+> Data Hub is currently "[In Maintenance](https://developer.here.com/documentation/product-lifecycle-policy/customer_notice/index.html)". <font color="red">**Designated end of life of Data Hub is end of Q1 2023 (March 31th).**</font>
+>
+> Interactive map layers (IML) has been identified as the successor to Data Hub. For new users considering Data Hub, HERE recommends that you start with IML on the [HERE platform](https://platform.here.com).
+Data Hub is a real-time cloud-based location hub for discovering, storing, retrieving, manipulating and publishing private or public mapping data.
+
 # Overview
 
 Data Hub is a real-time cloud-based location hub for discovering, storing, retrieving, manipulating and publishing private or public mapping data.

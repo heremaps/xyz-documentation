@@ -2,6 +2,7 @@
 # Summary
 
 - [Overview](README.md)
+- [Migrating to IML] (migrating-to-iml.md)
 - [Manage Tokens](getting-token.md)
 - [Quick Start](quickstart/quickstart.md)
   - [Acquire Credentials](quickstart/acquiringcredentials.md)

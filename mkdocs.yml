@@ -52,11 +52,11 @@ extra:
 # Page tree
 nav:
   - Introduction: index.md
-  - Migrating to IML: migrating-to-iml.md
   - Getting Started: getting-started.md
   - Data Hub APIs:
       - Data Hub API:
           - Overview: api/index.md
+          - Migrating to IML: api/migrating-to-iml.md
           - Manage Tokens: api/getting-token.md
           - Quick Start:
               - Acquiring Credentials: api/quickstart/acquiringcredentials.md
