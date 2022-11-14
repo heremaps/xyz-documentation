@@ -1,8 +1,5 @@
 
 # Migrating from Data Hub to IML
-> #### Note
->
-> Data Hub is currently "[In Maintenance](https://developer.here.com/documentation/product-lifecycle-policy/customer_notice/index.html)". Interactive map layers (IML) has been identified as the successor to Data Hub. For new users considering Data Hub, HERE recommends that you start with IML on the [HERE platform](https://platform.here.com).
 
 You can migrate Data Hub spaces associated with your [developer.here.com](https://developer.here.com) accounts to the [HERE platform](https://platform.here.com) using the self-service Data Hub migration tool.
 
