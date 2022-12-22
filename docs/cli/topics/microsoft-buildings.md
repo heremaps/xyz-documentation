@@ -32,6 +32,8 @@ This geocoded dataset is also available in a shared Data Hub Space, `XHmWfTCt`, 
 
 You can use Data Hub tags to preview and extract various sub-regional admin levels, including `neighborhood`,`locality`, and `county`, along with `street` and `postalcode`. Some demonstration maps are provided below.
 
+<!-- markdown-link-check-disable -->
+
 | region | geojsonl | geojson | size | HERE Data Hub map (tag,filter) |
 |--------|----------|---------|------|------------|
 | Alabama | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/Alabama.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/Alabama.geojson)| 2.29 GB |
@@ -101,3 +103,5 @@ You can use Data Hub tags to preview and extract various sub-regional admin leve
 | Yukon Territory | [geojsonl](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojsonl/YukonTerritory.geojsonl)| [geojson](https://s3.amazonaws.com/xyz-demo/msft-buildings-pelias/geojson/YukonTerritory.geojson)| 0.02 GB | [Whitehorse (streets)](http://geojson.tools/space-invader/?space=XHmWfTCt&token=AZAMz96qYi3wWNrtOfYFMFc&buildings=0&points=3&randomColors=0&lines=0&outlines=0&highlight=0&roads=0&water=0&tags=locality%40whitehorse&property=street#14.624999999999996/60.7211/-135.0556) |
 
 (Hint: press `R` to toggle roads.)
+
+<!-- markdown-link-check-enable -->
