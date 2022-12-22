@@ -210,7 +210,7 @@ If a point feature has a quantitative property, you can use `-a` to add it up wi
 }
 ```
 
-Space Invader can compare and color these values across the hexbin grid. [Here we see the aggregate values of Minneapolis property values summed within hexbin centroids](https://s3.amazonaws.com/xyz-demo/scenes/xyz_tangram/index.html?space=ZL228Jrk&token=AFbjoHrBlTB2K5_gqvcP_S8&basemap=xyz-pixel-dark&buildings=1&label=undefined&colors=range&points=0&lines=0&outlines=0&highlight=0&places=1&roads=1&water=0&tags=zoom13_centroid&property=sum&palette=colorBrewerYlOrRd&paletteFlip=true&rangeFilter=4&sort=values&hideOutliers=false#12.370833333333346/44.9662/-93.2612).
+Space Invader can compare and color these values across the hexbin grid. Here we see the aggregate values of Minneapolis property values summed within hexbin centroids.
 
 ![minneapolis](../images/hexbin_sum.png)
 
