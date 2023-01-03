@@ -29,21 +29,21 @@ sources:
         type: GeoJSON
         # max_zoom: 13
         url_params: 
-            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            access_token: YOUR_TOKEN
             clip: true
     _tracks:
         url: https://xyz.api.here.com/hub/spaces/qCRDnZbf/tile/web/{z}_{x}_{y}
         type: GeoJSON
         # max_zoom: 13
         url_params: 
-            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            access_token: YOUR_TOKEN
             # clip: true 
     _z2:
         url: https://xyz.api.here.com/hub/spaces/uFjNTqGV/tile/web/{z}_{x}_{y}
         type: GeoJSON
         # max_zoom: 13
         url_params: 
-            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            access_token: YOUR_TOKEN
             tags: zoom2_centroid
             clip: true             
     _z3:
@@ -51,7 +51,7 @@ sources:
         type: GeoJSON
         # max_zoom: 13
         url_params: 
-            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            access_token: YOUR_TOKEN
             tags: zoom3_centroid
             clip: true 
 
@@ -60,7 +60,7 @@ sources:
         type: GeoJSON
         # max_zoom: 13
         url_params: 
-            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            access_token: YOUR_TOKEN
             tags: zoom4_centroid
             clip: true 
 
@@ -69,7 +69,7 @@ sources:
         type: GeoJSON
         # max_zoom: 13
         url_params: 
-            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            access_token: YOUR_TOKEN
             tags: zoom5_centroid
             clip: true 
 
@@ -78,7 +78,7 @@ sources:
         type: GeoJSON
         # max_zoom: 13
         url_params: 
-            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            access_token: YOUR_TOKEN
             tags: zoom5_hexbin
             clip: true 
 
@@ -87,7 +87,7 @@ sources:
         type: GeoJSON
         # max_zoom: 13
         url_params: 
-            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            access_token: YOUR_TOKEN
             tags: zoom6_centroid
             clip: true 
 
@@ -96,7 +96,7 @@ sources:
         type: GeoJSON
         # max_zoom: 13
         url_params: 
-            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            access_token: YOUR_TOKEN
             tags: zoom6_hexbin
             clip: true 
 
@@ -105,7 +105,7 @@ sources:
         type: GeoJSON
         # max_zoom: 13
         url_params: 
-            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            access_token: YOUR_TOKEN
             tags: zoom7_hexbin
             clip: true 
 
