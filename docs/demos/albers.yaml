@@ -8,7 +8,7 @@ import:
     - https://tangrams.github.io/blocks/space/screen.yaml
 
 global:
-    access_token: AS5fV38SlsAWy5busf3eizY #ALqnbtEI8h0VONQwJgBcn3Y
+    access_token: YOUR_TOKEN
     order: function () { return feature.sort_key; }
     basemap: false
     
@@ -27,7 +27,7 @@ sources:
         url: https://xyz.api.here.com/hub/spaces/MxDUEBlV/tile/web/{z}_{x}_{y}
         type: GeoJSON
         url_params:
-            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            access_token: YOUR_TOKEN
             selection: p.SUBDI1NAME
             tags: track
             # limit: 50000 #
@@ -36,7 +36,7 @@ sources:
         url: https://xyz.api.here.com/hub/spaces/LdmvFlzZ/tile/web/{z}_{x}_{y}
         type: GeoJSON
         url_params:
-            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            access_token: YOUR_TOKEN
             # selection: p.SUBDI1NAME
             tags: us-ca,us-or,us-wa,ca-bc,ca-yt
             # limit: 50000 #
@@ -45,7 +45,7 @@ sources:
         url: https://xyz.api.here.com/hub/spaces/uFjNTqGV/tile/web/{z}_{x}_{y}
         type: GeoJSON
         url_params:
-            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            access_token: YOUR_TOKEN
             # selection: p.SUBDI1NAME
             tags: zoom4_hexbin
             # limit: 50000 #
@@ -54,7 +54,7 @@ sources:
         url: https://xyz.api.here.com/hub/spaces/uFjNTqGV/tile/web/{z}_{x}_{y}
         type: GeoJSON
         url_params:
-            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            access_token: YOUR_TOKEN
             # selection: p.SUBDI1NAME
             tags: zoom4_centroid
             # limit: 50000 #
@@ -64,7 +64,7 @@ sources:
         type: GeoJSON
         # max_zoom: 13
         url_params: 
-            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            access_token: YOUR_TOKEN
             tags: zoom2_centroid
             clip: true             
     _z3:
@@ -72,7 +72,7 @@ sources:
         type: GeoJSON
         # max_zoom: 13
         url_params: 
-            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            access_token: YOUR_TOKEN
             tags: zoom3_centroid
             clip: true 
 
@@ -81,7 +81,7 @@ sources:
         type: GeoJSON
         # max_zoom: 13
         url_params: 
-            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            access_token: YOUR_TOKEN
             tags: zoom4_centroid
             clip: true 
 
@@ -90,7 +90,7 @@ sources:
         type: GeoJSON
         # max_zoom: 13
         url_params: 
-            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            access_token: YOUR_TOKEN
             tags: zoom5_centroid
             clip: true 
             

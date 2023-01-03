@@ -29,14 +29,14 @@ sources:
         type: GeoJSON
         # max_zoom: 13
         url_params: 
-            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            access_token: YOUR_TOKEN
             clip: true
     _tracks:
         url: https://xyz.api.here.com/hub/spaces/qCRDnZbf/tile/web/{z}_{x}_{y}
         type: GeoJSON
         # max_zoom: 13
         url_params: 
-            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            access_token: YOUR_TOKEN
             # clip: true 
             
     _z3:
@@ -44,35 +44,35 @@ sources:
         type: GeoJSON
         # max_zoom: 13
         url_params: 
-            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            access_token: YOUR_TOKEN
             tags: zoom3_centroid
     _z4:
         url: https://xyz.api.here.com/hub/spaces/uFjNTqGV/tile/web/{z}_{x}_{y}
         type: GeoJSON
         # max_zoom: 13
         url_params: 
-            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            access_token: YOUR_TOKEN
             tags: zoom4_centroid
     _z5:
         url: https://xyz.api.here.com/hub/spaces/uFjNTqGV/tile/web/{z}_{x}_{y}
         type: GeoJSON
         # max_zoom: 13
         url_params: 
-            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            access_token: YOUR_TOKEN
             tags: zoom5_centroid
     _z5_hexbin:
         url: https://xyz.api.here.com/hub/spaces/uFjNTqGV/tile/web/{z}_{x}_{y}
         type: GeoJSON
         # max_zoom: 13
         url_params: 
-            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            access_token: YOUR_TOKEN
             tags: zoom5_hexbin
     _z6:
         url: https://xyz.api.here.com/hub/spaces/uFjNTqGV/tile/web/{z}_{x}_{y}
         type: GeoJSON
         # max_zoom: 13
         url_params: 
-            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            access_token: YOUR_TOKEN
             tags: zoom6_centroid
 
     _z6_hexbin:
@@ -80,14 +80,14 @@ sources:
         type: GeoJSON
         # max_zoom: 13
         url_params: 
-            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            access_token: YOUR_TOKEN
             tags: zoom6_hexbin
     _z7_hexbin:
         url: https://xyz.api.here.com/hub/spaces/uFjNTqGV/tile/web/{z}_{x}_{y}
         type: GeoJSON
         # max_zoom: 13
         url_params: 
-            access_token: AVoxWfIDYgZOr4zOaUV3urg
+            access_token: YOUR_TOKEN
             tags: zoom7_hexbin
 styles:
     _points:
