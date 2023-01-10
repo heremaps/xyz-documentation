@@ -41,7 +41,7 @@ The detailed documentation is available [here](https://xyz-spaces-python.readthe
 
 ## HERE Maps API for Javascript
 
-Your Data Hub Spaces can be accessed using [HERE MapsJS](https://developer.here.com/documentation/maps/3.1.19.2/dev_guide/topics/xyz-spaces.html) as of version 3.1.
+Your Data Hub Spaces can be accessed using [HERE MapsJS](https://developer.here.com/documentation/maps/3.1.37.0/dev_guide/topics/xyz-spaces.html) as of version 3.1.
 
 HERE Maps API for JavaScript provides a simple way to add the data presented as an Data Hub Space to the existing application. Also, HERE Maps API for JavaScript allows building a new application that uses HERE services, such as Routing, Geocoding, Fleet Telematics Advanced Data Sets and others, alongside with Data Hub.
 
@@ -73,4 +73,4 @@ map.addLayer(customSpaceLayer);
 
 ### Documentation
 
-The API reference provides details on the [Provider](https://developer.here.com/documentation/maps/3.1.19.2/api_reference/H.service.xyz.Provider.html) and [Service](https://developer.here.com/documentation/maps/3.1.19.2/api_reference/H.service.xyz.Service.html) implementations.
+The API reference provides details on the [Provider](https://developer.here.com/documentation/maps/3.1.37.0/api_reference/H.service.xyz.Provider.html) and [Service](https://developer.here.com/documentation/maps/3.1.37.0/api_reference/H.service.xyz.Service.html) implementations.

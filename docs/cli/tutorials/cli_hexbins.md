@@ -150,7 +150,7 @@ If you do not choose a tag with `-t` in the CLI, you can select a zoom level usi
 
 ![xyz-hexbin-space-invader](../images/xyz-hexbin-space-invader.png)
 
-<https://s3.amazonaws.com/xyz-demo/scenes/xyz_tangram/index.html?space=ZGAzaLaA&token=APwC9OKv8ww_zMGWqPTSQdg&basemap=xyz-pixel-dark&buildings=1&label=undefined&colors=range&points=2&lines=0&outlines=0&highlight=0&places=1&roads=1&water=0&tags=zoom12_centroid&property=count&palette=colorBrewerYlOrRd&paletteFlip=true&sort=values&hideOutliers=false#12.858333333333318/37.7474/-122.4452>
+<!-- markdown-link-check-disable-line --><https://s3.amazonaws.com/xyz-demo/scenes/xyz_tangram/index.html?space=ZGAzaLaA&token=APwC9OKv8ww_zMGWqPTSQdg&basemap=xyz-pixel-dark&buildings=1&label=undefined&colors=range&points=2&lines=0&outlines=0&highlight=0&places=1&roads=1&water=0&tags=zoom12_centroid&property=count&palette=colorBrewerYlOrRd&paletteFlip=true&sort=values&hideOutliers=false#12.858333333333318/37.7474/-122.4452>
 
 Click for more examples on how to use [Space Invader](../space-invader/index.md).
 
@@ -166,7 +166,7 @@ here xyz hexbin spaceID -p street_type
 
 This would count the unique values of the `street_type` property in each feature, track the maximum, and generate an occupancy value to be used in data visualization. Space Invader can use that value to dynamically generate a color based on that hexbin's subgroup value compared to other hexbin's subgroup values.
 
-Here's an example [showing street types in San Francisco](https://s3.amazonaws.com/xyz-demo/scenes/xyz_tangram/index.html?space=qAtS3e8G&token=AFbjoHrBlTB2K5_gqvcP_S8&basemap=xyz-pixel-dark&buildings=1&label=undefined&colors=range&points=2&lines=0&outlines=1&highlight=0&places=1&roads=1&water=0&tags=zoom12_hexbin&property=subcount.AVE.count&palette=colorBrewerYlGnBu&paletteFlip=true&rangeFilter=0&sort=values&hideOutliers=true#13.166666666666664/37.7568/-122.4384), where street type was chosen as a subgroup. `subcount.AVE` can be used to see where Avenue is the most common street type. You can click on `subcount.ST.count` to see the streets of San Francisco.
+<!-- markdown-link-check-disable-line -->Here's an example [showing street types in San Francisco](https://s3.amazonaws.com/xyz-demo/scenes/xyz_tangram/index.html?space=qAtS3e8G&token=AFbjoHrBlTB2K5_gqvcP_S8&basemap=xyz-pixel-dark&buildings=1&label=undefined&colors=range&points=2&lines=0&outlines=1&highlight=0&places=1&roads=1&water=0&tags=zoom12_hexbin&property=subcount.AVE.count&palette=colorBrewerYlGnBu&paletteFlip=true&rangeFilter=0&sort=values&hideOutliers=true#13.166666666666664/37.7568/-122.4384), where street type was chosen as a subgroup. `subcount.AVE` can be used to see where Avenue is the most common street type. You can click on `subcount.ST.count` to see the streets of San Francisco.
 
 ![xyz-hexbin-space-invader](../images/hexbin_subgroup.png)
 
@@ -210,7 +210,7 @@ If a point feature has a quantitative property, you can use `-a` to add it up wi
 }
 ```
 
-Space Invader can compare and color these values across the hexbin grid. [Here we see the aggregate values of Minneapolis property values summed within hexbin centroids](https://s3.amazonaws.com/xyz-demo/scenes/xyz_tangram/index.html?space=ZL228Jrk&token=AFbjoHrBlTB2K5_gqvcP_S8&basemap=xyz-pixel-dark&buildings=1&label=undefined&colors=range&points=0&lines=0&outlines=0&highlight=0&places=1&roads=1&water=0&tags=zoom13_centroid&property=sum&palette=colorBrewerYlOrRd&paletteFlip=true&rangeFilter=4&sort=values&hideOutliers=false#12.370833333333346/44.9662/-93.2612).
+Space Invader can compare and color these values across the hexbin grid. Here we see the aggregate values of Minneapolis property values summed within hexbin centroids.
 
 ![minneapolis](../images/hexbin_sum.png)
 
