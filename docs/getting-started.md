@@ -1,7 +1,7 @@
 
 ## Non-Developers
 
-If you are do not want to code to make a map or store your data, have a look at **[HERE Studio](studio/topics/index.md)**. It guides you through the steps of building your own maps - no coding required.
+If you do not want to code to make a map or store your data, have a look at **[HERE Studio](https://studio.here.com)**. No coding required.
 
 ## Developers
 
