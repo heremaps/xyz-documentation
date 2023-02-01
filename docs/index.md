@@ -19,8 +19,7 @@ enthusiasts to enable everyone to build better maps.
 
 ## Quick start
 
-The easiest way to get started is to have a look at easy to use the **[HERE Studio](https://studio.here.com/)** web application to build and publish maps. Give it a try, it's completely free and open to use for everyone - you only need a HERE Account. Have a look at our
-**[documentation](studio/topics/index.md)** for find out more about it.
+The easiest way to get started is to have a look at the easy to use **[HERE Studio](https://studio.here.com/)** web application to build and publish maps. Give it a try, it's completely free and open to use for everyone - you only need a HERE Account.
 
 When you have a GeoJSON file you just want to have a look at without building a full map, check out our open **[GeoJSON Tool](cli/viewer-tool/index.md)** tool. It's a great way to inspect data you'd want to work with.
 
