@@ -1,0 +1,102 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+   
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.99319839,
+          31.72260094
+        ]
+      },
+      "properties": {
+        "id": "5212",
+        "ident": "OJAI",
+        "type": "large_airport",
+        "name": "Queen Alia International Airport",
+        "elevation_ft": "2395",
+        "continent": "AS",
+        "iso_country": "JO",
+        "iso_region": "JO-AM",
+        "municipality": "Amman",
+        "scheduled_service": "yes",
+        "gps_code": "OJAI",
+        "iata_code": "AMM"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.5358,
+          -34.8222
+        ]
+      },
+      "properties": {
+        "id": "5781",
+        "ident": "SAEZ",
+        "type": "large_airport",
+        "name": "Ministro Pistarini International Airport",
+        "elevation_ft": "67",
+        "continent": "SA",
+        "iso_country": "AR",
+        "iso_region": "AR-B",
+        "municipality": "Buenos Aires",
+        "scheduled_service": "yes",
+        "gps_code": "SAEZ",
+        "iata_code": "EZE"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.7861,
+          48.353802
+        ]
+      },
+      "properties": {
+        "id": "2218",
+        "ident": "EDDM",
+        "type": "large_airport",
+        "name": "Munich Airport",
+        "elevation_ft": "1487",
+        "continent": "EU",
+        "iso_country": "DE",
+        "iso_region": "DE-BY",
+        "municipality": "Munich",
+        "scheduled_service": "yes",
+        "gps_code": "EDDM",
+        "iata_code": "MUC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.3575,
+          -0.129166667
+        ]
+      },
+      "properties": {
+        "id": "308273",
+        "ident": "SEQM",
+        "type": "large_airport",
+        "name": "Mariscal Sucre International Airport",
+        "elevation_ft": "7841",
+        "continent": "SA",
+        "iso_country": "EC",
+        "iso_region": "EC-P",
+        "municipality": "Quito",
+        "scheduled_service": "yes",
+        "gps_code": "SEQM",
+        "iata_code": "UIO"
+      }
+    }
+  ]
+}

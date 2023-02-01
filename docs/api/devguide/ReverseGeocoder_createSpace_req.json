@@ -1,0 +1,14 @@
+{
+    "title": "Reverse Geocoder Demo",
+    "description": "Upload Airports with geometry and add address with Geocoder",
+    "processors": {
+      "geocoder-preprocessor": [
+        {
+          "params": {
+               "doReverseGeocode":true,
+               "apiKey":"<YOUR_API_KEY>"
+          }
+        }
+      ]
+    }
+  }

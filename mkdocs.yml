@@ -90,6 +90,7 @@ nav:
                 - hexbin (H3): api/devguide/hexbin.md
                 - quadbin: api/devguide/quadbin.md
               - Work with Activity Log: api/devguide/activitylogguide.md
+              - Geocoder Integration: api/devguide/geocoderInt.md
               - Common Errors: api/devguide/commonerrors.md
           - API Reference: api/apireference.md
       - Data Hub Maps JS:
